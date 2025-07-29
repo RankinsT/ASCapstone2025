@@ -1,0 +1,10 @@
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "review review form"
+        "companyDescription carousel carousel"
+        "services services services"
+        "locations locations map"
+        "footer footer footer";
+}
