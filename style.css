@@ -1,0 +1,58 @@
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "reviews reviews form"
+        "companyDescription carousel carousel"
+        "services services services"
+        "locations locations map"
+        "footer footer footer";
+        grid-template-columns: 1fr 4fr 4fr;
+        /* grid-template-rows: 60px 60px 60px; */
+}
+
+.header {
+    grid-area: header;
+    background-color: blue;
+    color: green;
+}
+
+.reviews {
+    grid-area: reviews;
+    background-color: lightblue;
+}
+
+.form {
+    grid-area: form;
+    background-color: lightgreen;
+}
+
+.companyDescription {
+    grid-area: companyDescription;
+    background-color: lightcoral;
+}
+
+.carousel {
+    grid-area: carousel;
+    background-color: lightgoldenrodyellow;
+}
+
+.services {
+    grid-area: services;
+    background-color: lightpink;
+}
+
+.locations {
+    grid-area: locations;   
+    background-color: lightgray;
+}
+
+.map {
+    grid-area: map;
+    background-color: lightcyan;
+}
+
+.footer {
+    grid-area: footer;
+    background-color: lightseagreen;
+}
