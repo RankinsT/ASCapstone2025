@@ -1,5 +1,6 @@
 <?php
 
+
 include __DIR__ . '/dp.php'; // Include the database connection file
 function login($username, $password) {
     global $db;
@@ -15,37 +16,3 @@ function login($username, $password) {
 
     return false;  // Return false if login failed
 }
-
-//
-/* Code for login insert at top  php
-session_start();
-$_SESSION['isLoggedIn'] = false;
-$_SESSION['username'] = '';
-$error = '';
-
-if(isset($_POST['login'])){
-
-    $username = filter_input(INPUT_POST,'username', FILTER_SANITIZE_STRING);
-    $password = filter_input(INPUT_POST,'password', FILTER_SANITIZE_STRING);
-
-    if(login($username, $password)){
-        $_SESSION['isLogginIn'] = true;
-        $_SESSION['username'] = $username;
-        header('Location: homeView.php'); test location to see if login working 
-    }
-    else{
-        $error = "You did not provide correct creds";
-    }
-/*
-/* Code for error handling Insert into a div in html
-        <?php
-            if ($error != "") {
-        ?>
-        <div class="error"><?php echo $error; ?></div>
-        <?php
-            }
-        ?>
-
-
-}
-//
