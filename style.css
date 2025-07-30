@@ -13,7 +13,7 @@
 
 .header {
     grid-area: header;
-    background-color: blue;
+    /* background-color: blue; */
     color: green;
 }
 
@@ -90,4 +90,15 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+.header-img {
+    background-image: url('');
+    background-color: blueviolet;
+    max-height: 378px;
+}
+
+.phone-num-btn {
+    background-color: brown;
+    max-width: 242px;
 }
