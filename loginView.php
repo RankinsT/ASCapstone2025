@@ -4,10 +4,11 @@ session_start(); // Start the session
 
 include 'includes/header.php'; // Include the header file
 include 'includes/footer.php'; // Include the footer file
+include __DIR__ . '/models/model_admin.php'; // Include the model for admin login
 
 $_SESSION['isLoggedIn'] = false; // Set the session variable to indicate the user is not logged in
 $_SESSION['username'] = ''; // Clear the username session variable
-
+$error = ''; // Initialize an error variable
 if (isset($_POST['username'])) {
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING); // Sanitize the username input
     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING); // Sanitize the password input
