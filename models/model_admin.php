@@ -1,7 +1,7 @@
 <?php
 
 
-include __DIR__ . '/dp.php'; // Include the database connection file
+include __DIR__ . '/db.php'; // Include the database connection file
 function login($username, $password) {
     global $db;
 

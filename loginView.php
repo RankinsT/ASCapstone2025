@@ -16,7 +16,7 @@ if (isset($_POST['username'])) {
     if (login($username, $password)) {
         $_SESSION['isLoggedIn'] = true; // Set the session variable to indicate the user is logged in
         $_SESSION['username'] = $username; // Store the username in the session
-        header('Location: homeView.php'); // Redirect to the home view
+        header('Location: adminView.php'); // Redirect to the home view
         exit();
     } else {
         $error = "Invalid username or password"; // Set an error message for invalid login
