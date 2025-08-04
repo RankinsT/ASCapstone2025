@@ -31,13 +31,19 @@
   background-color: #4caf50; /* Green */
   border: none;
   color: white;
-  padding: 10px 20px;
+  padding: 12px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 18px;
   margin: 4px 2px;
   cursor: pointer;
+  border-radius: 4px;
+}
+
+.homepageButton-customerSearch a:hover,
+.logoutButton-updateAccountButton a:hover {
+  background-color: #45a049; /* Darker Green */
 }
 
 .homepageButton {
@@ -86,4 +92,41 @@
 
 .customerSearch button:hover {
   background-color: #45a049;
+}
+
+.admin-customers table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 14px;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.admin-customers th,
+.admin-customers td {
+  padding: 12px 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.admin-customers th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+  color: #333;
+  position: sticky;
+  top: 0;
+}
+
+.admin-customers tr:hover {
+  background-color: #f5f5f5;
+}
+
+.admin-customers td {
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

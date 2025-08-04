@@ -16,6 +16,8 @@
 
     include './models/model_admin.php'; // Include the model for admin functionalities
 
+    $customers = getAllCustomers(); // Fetch all customers from the database
+
     ?>
 
     <div>
@@ -65,6 +67,25 @@
                                 <th>Notes</th>
                             </tr>
                         </thead>
+
+                        <tbody>
+                            <?php
+                            foreach ($customers as $customer): ?>
+                            <tr>
+                                <td><?= $customer["ID"] ?></td>
+                                <td><?= $customer["firstName"] ?></td>
+                                <td><?= $customer["lastName"] ?></td>
+                                <td><?= $customer["phoneNumber"] ?></td>
+                                <td><?= $customer["email"] ?></td>
+                                <td><?= $customer["street"] ?></td>
+                                <td><?= $customer["apt"] ?></td>
+                                <td><?= $customer["city"] ?></td>
+                                <td><?= $customer["state"] ?></td>
+                                <td><?= $customer["zipcode"] ?></td>
+                                <td><?= $customer["notes"] ?></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
                     </table>
                 </div>
                 <!-- div /customers -->
