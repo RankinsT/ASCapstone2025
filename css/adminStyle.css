@@ -1,26 +1,132 @@
 .admin-grid-container {
-    display: grid;
-    grid-template-areas:
-        "admin-header admin-header admin-header"
-        "admin-customers admin-customers admin-customers"
-        ". . admin-add-customers";
-    grid-template-columns: 1fr 2fr 2fr;
+  display: grid;
+  grid-template-areas:
+    "admin-header admin-header admin-header"
+    "admin-customers admin-customers admin-customers"
+    ". . admin-add-customers";
+  grid-template-columns: 1fr 2fr 2fr;
 }
 
 .admin-header {
-    grid-area: admin-header;
-    background-color: lightblue;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  grid-area: admin-header;
+  background-color: lightblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
 }
 
 .admin-customers {
-    grid-area: admin-customers;
-    background-color: lightgray;
+  grid-area: admin-customers;
+  background-color: lightgray;
 }
 
 .admin-add-customers {
-    grid-area: admin-add-customers;
-    background-color: lightgreen;
+  grid-area: admin-add-customers;
+  background-color: lightgreen;
+}
+
+.homepageButton-customerSearch a,
+.logoutButton-updateAccountButton a {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 12px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.homepageButton-customerSearch a:hover,
+.logoutButton-updateAccountButton a:hover {
+  background-color: #45a049; /* Darker Green */
+}
+
+.homepageButton {
+  margin-bottom: 10px;
+}
+
+.logoutButton-updateAccountButton {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.customerSearch {
+  margin-top: 10px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.customerSearch div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.customerSearch input[type="text"] {
+  padding: 12px 16px;
+  font-size: 18px;
+  width: 300px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.customerSearch button {
+  padding: 12px 20px;
+  font-size: 18px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  min-width: 100px;
+}
+
+.customerSearch button:hover {
+  background-color: #45a049;
+}
+
+.admin-customers table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 14px;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.admin-customers th,
+.admin-customers td {
+  padding: 12px 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.admin-customers th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+  color: #333;
+  position: sticky;
+  top: 0;
+}
+
+.admin-customers tr:hover {
+  background-color: #f5f5f5;
+}
+
+.admin-customers td {
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

@@ -17,7 +17,7 @@ function login($username, $password) {
     return false;  // Return false if login failed
 }
 
-function getCustomers() {
+function getAllCustomers() {
     global $db;
 
     $results = []; // Initialize an empty array to hold customer data
