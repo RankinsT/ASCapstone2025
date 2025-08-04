@@ -35,7 +35,7 @@
                             <div>
                                 <input type="text" placeholder="Search customers" name="searchTerm">
                                 <button>Search</button>
-                                <button class="addCustomer-button">➕ Add Customer</button>
+                                <button class="addCustomer-button">➕&nbsp;&nbsp;&nbsp;Add Customer</button>
 
                             </div>
                         </div>
