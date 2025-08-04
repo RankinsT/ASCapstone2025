@@ -25,7 +25,26 @@
 
             <div class="admin-grid-container">
                 <div class="admin-header">
-                    header here
+                    <div class="homepageButton-customerSearch">
+                        <div>
+                            <a href="homeView.php">Homepage</a>
+                        </div>
+                        <div>
+                            <div>
+                                <input type="text" placeholder="Search customers" name="searchTerm">
+                                <button>Search</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="logoutButton-updateAccountButton">
+                        <div>
+                            <a href="loginView.php">Logout</a>
+                        </div>
+                        <div>
+                            <a href="updateAccountView.php">Update Account</a>
+                        </div>
+                    </div>
                 </div>
                 <!-- div /header -->
 

@@ -10,6 +10,9 @@
 .admin-header {
     grid-area: admin-header;
     background-color: lightblue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .admin-customers {
