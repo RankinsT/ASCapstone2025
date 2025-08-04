@@ -11,30 +11,6 @@
         /* grid-template-rows: 60px 60px 60px; */
 }
 
-.admin-grid-container {
-    display: grid;
-    grid-template-areas:
-        "admin-header admin-header admin-header"
-        "admin-customers admin-customers admin-customers"
-        ". . admin-add-customers";
-    grid-template-columns: 1fr 2fr 2fr;
-}
-
-.admin-header {
-    grid-area: admin-header;
-    background-color: lightblue;
-}
-
-.admin-customers {
-    grid-area: admin-customers;
-    background-color: lightgray;
-}
-
-.admin-add-customers {
-    grid-area: admin-add-customers;
-    background-color: lightgreen;
-}
-
 .header {
     grid-area: header;
     background-color: blue;
@@ -79,39 +55,4 @@
 .footer {
     grid-area: footer;
     background-color: lightseagreen;
-}
-
-.login-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-}
-
-.login-form input {
-    margin: 10px 0;
-    padding: 10px;
-    width: 80%;
-}
-
-.login-form button {
-    padding: 10px 20px;
-    background-color: blue;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.login-form button:hover {
-    background-color: darkblue;
-}
-
-a {
-    color: blue;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
 }
