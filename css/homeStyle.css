@@ -13,18 +13,27 @@
 
 .header {
     grid-area: header;
-    /* background-color: blue; */
     color: green;
 }
 
 .reviews {
     grid-area: reviews;
+    border: 1px solid black;
     background-color: lightblue;
 }
 
+.reviews-bg-div {
+    background-color: crimson;
+    margin: 20px;
+}
+
+.reviews-p {
+    padding: 20px;
+}
 .form {
     grid-area: form;
     background-color: lightgreen;
+    border: 1px solid black;
 }
 
 .companyDescription {
