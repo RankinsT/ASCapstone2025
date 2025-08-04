@@ -9,7 +9,7 @@
 
 .admin-header {
   grid-area: admin-header;
-  background-color: lightblue;
+  background-color: #007bff;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -91,9 +91,9 @@
   min-width: 100px;
 }
 
-/* .customerSearch button:hover {
+.customerSearch button:hover {
   background-color: #45a049;
-} */
+}
 
 .admin-customers table {
   width: 100%;
@@ -156,4 +156,17 @@
 
 .edit-button:hover {
   background-color: #0056b3;
+}
+
+.addCustomer-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.addCustomer-button:hover {
+  background-color: #218838;
 }
