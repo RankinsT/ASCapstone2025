@@ -22,7 +22,7 @@ function getAllCustomers() {
 
     $results = []; // Initialize an empty array to hold customer data
 
-    $sql = 'SELECT * FROM capstone_202540_qball.customers ORDER BY ID'; // SQL query to select all customers ordered by ID
+    $sql = 'SELECT * FROM capstone_202540_qball.customers ORDER BY ID DESC '; // SQL query to select all customers ordered by ID
 
     $stmt = $db->prepare($sql); // Prepare the SQL statement
 

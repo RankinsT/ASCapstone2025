@@ -54,6 +54,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  gap: 30px;
 }
 
 .customerSearch {
@@ -90,9 +91,9 @@
   min-width: 100px;
 }
 
-.customerSearch button:hover {
+/* .customerSearch button:hover {
   background-color: #45a049;
-}
+} */
 
 .admin-customers table {
   width: 100%;
@@ -129,4 +130,22 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.edit-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
 }

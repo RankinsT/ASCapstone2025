@@ -65,6 +65,9 @@
                                 <th>State</th>
                                 <th>Zipcode</th>
                                 <th>Notes</th>
+                                <th>Date Added</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                         </thead>
 
@@ -83,6 +86,9 @@
                                 <td><?= $customer["state"] ?></td>
                                 <td><?= $customer["zipcode"] ?></td>
                                 <td><?= $customer["notes"] ?></td>
+                                <td><?= $customer["dateAdded"] ?></td>
+                                <td><button class="edit-button">Edit</button></td>
+                                <td><button class="delete-button">Delete</button></td>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>
