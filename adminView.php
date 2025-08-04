@@ -98,8 +98,8 @@
                 </div>
                 <!-- div /customers -->
 
-                <div class="admin-add-customers">
-                    add customer button?
+                <div class="footer">
+                    
                 </div>
                 <!-- div /add-customers -->
 

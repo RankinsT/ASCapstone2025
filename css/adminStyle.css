@@ -3,7 +3,7 @@
   grid-template-areas:
     "admin-header admin-header admin-header"
     "admin-customers admin-customers admin-customers"
-    ". . admin-add-customers";
+    "footer footer footer";
   grid-template-columns: 1fr 2fr 2fr;
 }
 
@@ -169,4 +169,11 @@
 
 .addCustomer-button:hover {
   background-color: #218838;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: center;
 }
