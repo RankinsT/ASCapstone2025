@@ -16,7 +16,94 @@
 
     include './models/model_admin.php'; // Include the model for admin functionalities
 
+    // Handle adding a new customer
+    // Check if the form was submitted with the 'addCustomer' field present in POST data
+    if (isset($_POST['addCustomer'])) {
+        // Create an associative array to store all customer information
+        // The ?? operator provides a default empty string if the POST value doesn't exist
+        $customerData = [
+            // Extract first name from form submission, default to empty string if not set
+            'firstName' => $_POST['firstName'] ?? '',
+            'lastName' => $_POST['lastName'] ?? '',
+            'phoneNumber' => $_POST['phoneNumber'] ?? '',
+            'email' => $_POST['email'] ?? '',
+            'street' => $_POST['street'] ?? '',
+            'apt' => $_POST['apt'] ?? '',
+            'city' => $_POST['city'] ?? '',
+            'state' => $_POST['state'] ?? '',
+            'zipcode' => $_POST['zipcode'] ?? '',
+            'notes' => $_POST['notes'] ?? ''
+        ];
+        
+        // Call the addCustomer function from model_admin.php, passing the customer data array
+        // This function will insert the new customer into the database and return a result message
+        $result = addCustomer($customerData);
+        
+        // Check if the returned result message contains the word 'successfully'
+        // strpos() returns the position of the substring, or false if not found
+        // !== false ensures we're checking for actual presence, not position 0
+        if (strpos($result, 'successfully') !== false) {
+            // Output JavaScript alert to show success message to the user
+            echo "<script>alert('Customer added successfully!');</script>";
+        } else {
+            // If operation failed, show error message
+            // addslashes() escapes quotes in the result string to prevent JavaScript syntax errors
+            echo "<script>alert('Error adding customer: " . addslashes($result) . "');</script>";
+        }
+        
+        // Redirect the browser back to the same page (adminView.php) to refresh the customer list
+        // This prevents duplicate submissions if the user refreshes the page
+        header('Location: adminView.php'); // Redirect to refresh the page
+        // Immediately stop script execution to ensure the redirect happens
+        exit();
+    }
+
     $customers = getAllCustomers(); // Fetch all customers from the database
+
+    if (isset($_POST['deleteCustomer'])) {
+        $customerID = $_POST['deleteCustomer']; // Get the customer ID to delete
+        deleteCustomer($customerID); // Call the function to delete the customer
+        header('Location: adminView.php'); // Redirect to the admin view after deletion
+        exit();
+    }
+
+    // Handle editing an existing customer
+    if (isset($_POST['editCustomer'])) {
+        // Debug: Log what data we received
+        error_log("Edit customer POST data: " . print_r($_POST, true));
+        
+        // Create customer data array using the customerID from the form
+        $customerData = [
+            'ID' => $_POST['customerID'], // Use customerID field sent from JavaScript
+            'firstName' => $_POST['firstName'] ?? '',
+            'lastName' => $_POST['lastName'] ?? '',
+            'phoneNumber' => $_POST['phoneNumber'] ?? '',
+            'email' => $_POST['email'] ?? '',
+            'street' => $_POST['street'] ?? '',
+            'apt' => $_POST['apt'] ?? '',
+            'city' => $_POST['city'] ?? '',
+            'state' => $_POST['state'] ?? '',
+            'zipcode' => $_POST['zipcode'] ?? '',
+            'notes' => $_POST['notes'] ?? ''
+        ];
+        
+        // Debug: Log the customer data being sent to update function
+        error_log("Customer data for update: " . print_r($customerData, true));
+        
+        // Call the updateCustomer function to update the customer in database
+        $result = updateCustomer($customerData); // Call the function to update the customer
+        
+        // Since updateCustomer returns true/false, not a message, handle accordingly
+        if ($result === true) {
+            echo "<script>alert('Customer updated successfully!');</script>";
+        } else {
+            echo "<script>alert('Error updating customer. Please try again.');</script>";
+        }
+        
+        // Redirect to refresh the page and show updated data
+        header('Location: adminView.php'); // Redirect to the admin view after updating
+        exit();
+    }
 
     ?>
 
@@ -35,14 +122,13 @@
                             <div>
                                 <input type="text" placeholder="Search customers" name="searchTerm">
                                 <button>Search</button>
-                                <button class="addCustomer-button">➕&nbsp;&nbsp;&nbsp;Add Customer</button>
-
+                                <button class="addCustomer-button" onclick="showAddCustomerForm()" type="button">➕&nbsp;&nbsp;&nbsp;Add Customer</button>
                             </div>
                         </div>
                     </div>
 
                     <div class="logoutButton-updateAccountButton">
-                        <div>
+                        <div class="logoutButton">
                             <a href="loginView.php">Logout</a>
                         </div>
                         <div>
@@ -89,8 +175,28 @@
                                 <td><?= $customer["zipcode"] ?></td>
                                 <td><?= $customer["notes"] ?></td>
                                 <td><?= $customer["dateAdded"] ?></td>
-                                <td><button class="edit-button">Edit</button></td>
-                                <td><button class="delete-button">Delete</button></td>
+                                <td>
+                                    <!-- Uses addslashes to escape any quotes or special characters, preventing JavaScript syntax errors. -->
+                                    <button class="edit-button" onclick="showEditCustomerForm({
+                                        ID: <?= $customer['ID'] ?>,
+                                        firstName: '<?= addslashes($customer['firstName']) ?>',
+                                        lastName: '<?= addslashes($customer['lastName']) ?>',
+                                        phoneNumber: '<?= addslashes($customer['phoneNumber']) ?>',
+                                        email: '<?= addslashes($customer['email']) ?>',
+                                        street: '<?= addslashes($customer['street']) ?>',
+                                        apt: '<?= addslashes($customer['apt']) ?>',
+                                        city: '<?= addslashes($customer['city']) ?>',
+                                        state: '<?= addslashes($customer['state']) ?>',
+                                        zipcode: '<?= addslashes($customer['zipcode']) ?>',
+                                        notes: '<?= addslashes($customer['notes']) ?>'
+                                    })">Edit</button>
+                                </td>
+                                <td>
+                                    <form method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this customer?');">
+                                        <input type="hidden" name="deleteCustomer" value="<?= $customer["ID"] ?>">
+                                        <button type="submit" class="delete-button">Delete</button>
+                                    </form>
+                                </td>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>
@@ -111,6 +217,7 @@
             exit();
         endif; ?>
     </div>
-    
+
+    <script src="script.js"></script>
 </body>
 </html>
