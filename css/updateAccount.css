@@ -1,0 +1,8 @@
+.update-account-container {
+    display:grid;
+    grid-template-areas:
+    "admin-header admin-header admin-header"
+    "admin-customers admin-customers admin-customers"
+    "footer footer footer";
+    grid-template-columns: 1fr 2fr 2fr;
+}
