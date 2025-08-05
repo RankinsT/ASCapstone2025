@@ -213,3 +213,19 @@
   padding: 10px;
   text-align: center;
 }
+
+.search-results {
+  padding: 10px;
+  background-color: #e7f3ff; 
+  border: 1px solid #b3d9ff; 
+  margin-bottom: 10px; 
+  border-radius: 4px;
+}
+
+.no-search-results {
+  padding: 10px; 
+  background-color: #f0f0f0; 
+  border: 1px solid #ccc; 
+  margin-bottom: 10px; 
+  border-radius: 4px;
+}

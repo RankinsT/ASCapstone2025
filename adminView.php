@@ -184,12 +184,12 @@
 
                 <div class="admin-customers">
                     <?php if (isset($_POST['searchTerm']) && !empty(trim($_POST['searchTerm']))): ?>
-                        <div style="padding: 10px; background-color: #e7f3ff; border: 1px solid #b3d9ff; margin-bottom: 10px; border-radius: 4px;">
+                        <div class="search-results" style="">
                             <strong>Search Results for: "<?= htmlspecialchars($_POST['searchTerm']) ?>"</strong> 
                             (<?= count($customers) ?> customer(s) found)
                         </div>
                     <?php else: ?>
-                        <div style="padding: 10px; background-color: #f0f0f0; border: 1px solid #ccc; margin-bottom: 10px; border-radius: 4px;">
+                        <div class="no-search-results" style="">
                             <strong>Showing All Customers</strong> (<?= count($customers) ?> total)
                         </div>
                     <?php endif; ?>
