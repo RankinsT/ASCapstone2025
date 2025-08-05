@@ -155,3 +155,96 @@ function getCustomer($ID) {
 
 //     return $results; // Return the array of customer data
 // }
+
+function deleteCustomer($customerID) {
+    global $db;
+
+    $results = ""; // Initialize an empty string for results
+
+    try {
+        $sql = 'DELETE FROM capstone_202540_qball.customers WHERE ID = :id'; // SQL query to delete a customer by ID
+        $stmt = $db->prepare($sql); // Prepare the SQL statement
+        $stmt->bindValue(':id', $customerID); // Bind the ID parameter
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            $results = "Customer deleted successfully"; // Set success message
+        } else {
+            $results = "No customer found with that ID"; // No customer found
+        }
+    } catch (PDOException $e) {
+            error_log("Error deleting customer: " . $e->getMessage()); // Log any errors
+            return "Error deleting customer"; // Return error message
+    }
+    return $results; // Return the results message
+}
+
+function addCustomer($customerData) {
+    global $db;
+
+    $results = ""; // Initialize an empty string for results
+
+    $sql = 'INSERT INTO capstone_202540_qball.customers (firstName, lastName, phoneNumber, email, street, apt, city, state, zipcode, notes) 
+            VALUES (:firstName, :lastName, :phoneNumber, :email, :street, :apt, :city, :state, :zipcode, :notes)';
+
+    $stmt = $db->prepare($sql); // Prepare the SQL statement
+
+    // Bind the customer data to the SQL statement
+    $stmt->bindValue(':firstName', $customerData['firstName']);
+    $stmt->bindValue(':lastName', $customerData['lastName']);
+    $stmt->bindValue(':phoneNumber', $customerData['phoneNumber']);
+    $stmt->bindValue(':email', $customerData['email']);
+    $stmt->bindValue(':street', $customerData['street']);
+    $stmt->bindValue(':apt', $customerData['apt']);
+    $stmt->bindValue(':city', $customerData['city']);
+    $stmt->bindValue(':state', $customerData['state']);
+    $stmt->bindValue(':zipcode', $customerData['zipcode']);
+    $stmt->bindValue(':notes', $customerData['notes']);
+
+    if ($stmt->execute()) {
+        $results = "Customer added successfully"; // Set success message
+        return true; // Return true if the customer was added successfully
+    } else {
+        $results = "Error adding customer"; // Set error message
+        error_log("Error adding customer: " . implode(", ", $stmt->errorInfo()));
+        return false; // Return false if there was an error
+    }
+}
+
+function updateCustomer($customerData) {
+    global $db;
+
+    $results = ""; // Initialize an empty string for results
+
+    $sql = 'UPDATE capstone_202540_qball.customers 
+            SET firstName = :firstName, lastName = :lastName, phoneNumber = :phoneNumber, email = :email, 
+                street = :street, apt = :apt, city = :city, state = :state, zipcode = :zipcode, notes = :notes 
+            WHERE ID = :id';
+
+    $stmt = $db->prepare($sql); // Prepare the SQL statement
+
+    // Bind the customer data to the SQL statement
+    $stmt->bindValue(':id', $customerData['ID']);
+    $stmt->bindValue(':firstName', $customerData['firstName']);
+    $stmt->bindValue(':lastName', $customerData['lastName']);
+    $stmt->bindValue(':phoneNumber', $customerData['phoneNumber']);
+    $stmt->bindValue(':email', $customerData['email']);
+    $stmt->bindValue(':street', $customerData['street']);
+    $stmt->bindValue(':apt', $customerData['apt']);
+    $stmt->bindValue(':city', $customerData['city']);
+    $stmt->bindValue(':state', $customerData['state']);
+    $stmt->bindValue(':zipcode', $customerData['zipcode']);
+    $stmt->bindValue(':notes', $customerData['notes']);
+
+    if ($stmt->execute()) {
+        if ($stmt->rowCount() > 0) {
+            $results = "Customer updated successfully"; // Set success message
+        } else {
+            $results = "No changes made or customer not found"; // No changes made
+        }
+        return true; // Return true if the customer was updated successfully
+    } else {
+        error_log("Error updating customer: " . implode(", ", $stmt->errorInfo())); // Log any errors
+        return false; // Return false if there was an error
+    }
+}
