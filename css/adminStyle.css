@@ -26,6 +26,7 @@
   background-color: lightgreen;
 }
 
+.homepageButton a,
 .logoutButton-updateAccountButton a {
   background-color: #4caf50; /* Green */
   border: none;
