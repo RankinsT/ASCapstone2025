@@ -248,3 +248,23 @@ function updateCustomer($customerData) {
         return false; // Return false if there was an error
     }
 }
+
+function editCustomer($customerID) {
+    global $db;
+
+    $results = []; // Initialize an empty array to hold customer data
+
+    $sql = 'SELECT * FROM capstone_202540_qball.customers WHERE ID = :id'; // SQL query to select customer by ID
+
+    $stmt = $db->prepare($sql); // Prepare the SQL statement
+
+    $binds = array(
+        ':id' => $customerID // Bind the ID parameter
+    );
+
+    if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
+        $results = $stmt->fetch(PDO::FETCH_ASSOC); // Fetch the result as an associative array
+    }
+
+    return $results; // Return the client data
+}

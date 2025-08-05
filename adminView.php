@@ -67,6 +67,44 @@
         exit();
     }
 
+    // Handle editing an existing customer
+    if (isset($_POST['editCustomer'])) {
+        // Debug: Log what data we received
+        error_log("Edit customer POST data: " . print_r($_POST, true));
+        
+        // Create customer data array using the customerID from the form
+        $customerData = [
+            'ID' => $_POST['customerID'], // Use customerID field sent from JavaScript
+            'firstName' => $_POST['firstName'] ?? '',
+            'lastName' => $_POST['lastName'] ?? '',
+            'phoneNumber' => $_POST['phoneNumber'] ?? '',
+            'email' => $_POST['email'] ?? '',
+            'street' => $_POST['street'] ?? '',
+            'apt' => $_POST['apt'] ?? '',
+            'city' => $_POST['city'] ?? '',
+            'state' => $_POST['state'] ?? '',
+            'zipcode' => $_POST['zipcode'] ?? '',
+            'notes' => $_POST['notes'] ?? ''
+        ];
+        
+        // Debug: Log the customer data being sent to update function
+        error_log("Customer data for update: " . print_r($customerData, true));
+        
+        // Call the updateCustomer function to update the customer in database
+        $result = updateCustomer($customerData); // Call the function to update the customer
+        
+        // Since updateCustomer returns true/false, not a message, handle accordingly
+        if ($result === true) {
+            echo "<script>alert('Customer updated successfully!');</script>";
+        } else {
+            echo "<script>alert('Error updating customer. Please try again.');</script>";
+        }
+        
+        // Redirect to refresh the page and show updated data
+        header('Location: adminView.php'); // Redirect to the admin view after updating
+        exit();
+    }
+
     ?>
 
     <div>
@@ -138,10 +176,20 @@
                                 <td><?= $customer["notes"] ?></td>
                                 <td><?= $customer["dateAdded"] ?></td>
                                 <td>
-                                    <form action="editCustomerView.php" method="GET">
-                                        <input type="hidden" name="editCustomer" value="<?= $customer["ID"] ?>">
-                                        <button class="edit-button">Edit</button>
-                                    </form>
+                                    //Uses addslashes to escape any quotes or special characters, preventing JavaScript syntax errors.
+                                    <button class="edit-button" onclick="showEditCustomerForm({
+                                        ID: <?= $customer['ID'] ?>,
+                                        firstName: '<?= addslashes($customer['firstName']) ?>',
+                                        lastName: '<?= addslashes($customer['lastName']) ?>',
+                                        phoneNumber: '<?= addslashes($customer['phoneNumber']) ?>',
+                                        email: '<?= addslashes($customer['email']) ?>',
+                                        street: '<?= addslashes($customer['street']) ?>',
+                                        apt: '<?= addslashes($customer['apt']) ?>',
+                                        city: '<?= addslashes($customer['city']) ?>',
+                                        state: '<?= addslashes($customer['state']) ?>',
+                                        zipcode: '<?= addslashes($customer['zipcode']) ?>',
+                                        notes: '<?= addslashes($customer['notes']) ?>'
+                                    })">Edit</button>
                                 </td>
                                 <td>
                                     <form method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this customer?');">
