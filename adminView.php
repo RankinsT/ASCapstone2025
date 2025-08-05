@@ -176,7 +176,7 @@
                                 <td><?= $customer["notes"] ?></td>
                                 <td><?= $customer["dateAdded"] ?></td>
                                 <td>
-                                    //Uses addslashes to escape any quotes or special characters, preventing JavaScript syntax errors.
+                                    <!-- Uses addslashes to escape any quotes or special characters, preventing JavaScript syntax errors. -->
                                     <button class="edit-button" onclick="showEditCustomerForm({
                                         ID: <?= $customer['ID'] ?>,
                                         firstName: '<?= addslashes($customer['firstName']) ?>',
