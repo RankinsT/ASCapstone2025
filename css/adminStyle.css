@@ -41,9 +41,26 @@
   border-radius: 4px;
 }
 
+.logoutButton a {
+  background-color: red; /* Red */
+  color: white;
+  padding: 12px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
 .homepageButton-customerSearch a:hover,
 .logoutButton-updateAccountButton a:hover {
   background-color: #45a049; /* Darker Green */
+}
+
+.logoutButton a:hover {
+  background-color: darkred; /* Darker Red */
 }
 
 .homepageButton {

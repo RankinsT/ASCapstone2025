@@ -42,7 +42,7 @@
                     </div>
 
                     <div class="logoutButton-updateAccountButton">
-                        <div>
+                        <div class="logoutButton">
                             <a href="loginView.php">Logout</a>
                         </div>
                         <div>
