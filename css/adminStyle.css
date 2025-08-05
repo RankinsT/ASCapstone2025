@@ -191,7 +191,7 @@
   background-color: #218838;
 }
 
-.show-all-button {
+/* .show-all-button {
   background-color: #6c757d;
   color: white;
   border: none;
@@ -205,7 +205,7 @@
 
 .show-all-button:hover {
   background-color: #5a6268;
-}
+} */
 
 .footer {
   grid-area: footer;
