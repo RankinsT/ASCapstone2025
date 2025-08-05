@@ -13,7 +13,8 @@
 
 .header {
     grid-area: header;
-    color: green;
+    border: 1px solid black;
+    background-color: aquamarine;
 }
 
 .reviews {
@@ -23,7 +24,7 @@
 }
 
 .reviews-bg-div {
-    background-color: crimson;
+    background-color: lightcoral;
     margin: 20px;
 }
 
