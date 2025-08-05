@@ -10,12 +10,12 @@
         
         <div class="header-img">
 
-            <img src="" alt="logo">
+            <img src="" alt="logo" class="logo-img">
 
-            <div class="phone-num-btn">
+            <button type="button" class="phone-num-btn">
                 <p>Call Now!</p>
                 <p>888-888-8888</p>
-            </div>
+            </button>
             
         </div>
 
