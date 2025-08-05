@@ -26,7 +26,6 @@
   background-color: lightgreen;
 }
 
-.homepageButton-customerSearch a,
 .logoutButton-updateAccountButton a {
   background-color: #4caf50; /* Green */
   border: none;
@@ -94,7 +93,6 @@
   width: 300px;
   border: 2px solid #ddd;
   border-radius: 4px;
-  margin-right: 10px;
 }
 
 .customerSearch button {
@@ -106,6 +104,7 @@
   border-radius: 4px;
   cursor: pointer;
   min-width: 100px;
+  margin: 0;
 }
 
 .customerSearch button:hover {
@@ -179,13 +178,32 @@
   background-color: #28a745;
   color: white;
   border: none;
-  padding: 10px 15px;
+  padding: 12px 20px;
   cursor: pointer;
   border-radius: 4px;
+  font-size: 18px;
+  min-width: 100px;
+  margin: 0;
 }
 
 .addCustomer-button:hover {
   background-color: #218838;
+}
+
+.show-all-button {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 18px;
+  min-width: 100px;
+  margin: 0;
+}
+
+.show-all-button:hover {
+  background-color: #5a6268;
 }
 
 .footer {

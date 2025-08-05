@@ -11,6 +11,10 @@
 
     <?php
 
+    // Enable error reporting for debugging (remove in production)
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+
     session_start(); // Start the session
 
 
@@ -58,13 +62,50 @@
         exit();
     }
 
-    $customers = getAllCustomers(); // Fetch all customers from the database
-
+    // Handle customer deletion
     if (isset($_POST['deleteCustomer'])) {
         $customerID = $_POST['deleteCustomer']; // Get the customer ID to delete
         deleteCustomer($customerID); // Call the function to delete the customer
         header('Location: adminView.php'); // Redirect to the admin view after deletion
         exit();
+    }
+
+    // Handle customer search functionality
+    if (isset($_POST['searchTerm']) && !empty(trim($_POST['searchTerm']))) {
+        // If search term is provided, search for customers
+        $searchTerm = trim($_POST['searchTerm']);
+        
+        try {
+            $customers = searchCustomer($searchTerm); // Search for customers matching the term
+            
+            // Debug: Log search results
+            error_log("Search performed for: '$searchTerm', found " . count($customers) . " customers");
+            
+            // Check if $customers is an array
+            if (!is_array($customers)) {
+                error_log("searchCustomer returned non-array: " . var_export($customers, true));
+                $customers = []; // Set to empty array to prevent errors
+            }
+        } catch (Exception $e) {
+            error_log("Search error: " . $e->getMessage());
+            $customers = getAllCustomers(); // Fallback to all customers
+            echo "<script>alert('Search error occurred. Showing all customers.');</script>";
+        }
+    } else {
+        // If no search term or empty search, show all customers
+        try {
+            $customers = getAllCustomers(); // Fetch all customers from the database
+            
+            // Check if $customers is an array
+            if (!is_array($customers)) {
+                error_log("getAllCustomers returned non-array: " . var_export($customers, true));
+                $customers = []; // Set to empty array to prevent errors
+            }
+        } catch (Exception $e) {
+            error_log("Error getting all customers: " . $e->getMessage());
+            $customers = []; // Set to empty array to prevent fatal errors
+            echo "<script>alert('Database error occurred.');</script>";
+        }
     }
 
     // Handle editing an existing customer
@@ -119,11 +160,14 @@
                             <a href="homeView.php">Homepage</a>
                         </div>
                         <div class="customerSearch">
-                            <div>
-                                <input type="text" placeholder="Search customers" name="searchTerm">
-                                <button>Search</button>
-                                <button class="addCustomer-button" onclick="showAddCustomerForm()" type="button">➕&nbsp;&nbsp;&nbsp;Add Customer</button>
-                            </div>
+                            <form method="POST" style="display: flex; align-items: center; gap: 10px;">
+                                <a href="adminView.php" style="text-decoration: none;">
+                                    <button type="button" class="showAll-button">📋 Show All</button>
+                                </a>
+                                <input type="text" placeholder="Search customers" name="searchTerm" value="<?= isset($_POST['searchTerm']) ? htmlspecialchars($_POST['searchTerm']) : '' ?>">
+                                <button type="submit">🔍 Search</button>
+                                <button class="addCustomer-button" onclick="showAddCustomerForm()" type="button">➕ Add Customer</button>
+                            </form>
                         </div>
                     </div>
 
@@ -139,6 +183,17 @@
                 <!-- div /header -->
 
                 <div class="admin-customers">
+                    <?php if (isset($_POST['searchTerm']) && !empty(trim($_POST['searchTerm']))): ?>
+                        <div style="padding: 10px; background-color: #e7f3ff; border: 1px solid #b3d9ff; margin-bottom: 10px; border-radius: 4px;">
+                            <strong>Search Results for: "<?= htmlspecialchars($_POST['searchTerm']) ?>"</strong> 
+                            (<?= count($customers) ?> customer(s) found)
+                        </div>
+                    <?php else: ?>
+                        <div style="padding: 10px; background-color: #f0f0f0; border: 1px solid #ccc; margin-bottom: 10px; border-radius: 4px;">
+                            <strong>Showing All Customers</strong> (<?= count($customers) ?> total)
+                        </div>
+                    <?php endif; ?>
+                    
                     <table>
                         <thead>
                             <tr>
@@ -218,6 +273,6 @@
         endif; ?>
     </div>
 
-    <script src="script.js"></script>
+    <script src="javascript/adminScript.js"></script>
 </body>
 </html>
