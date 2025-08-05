@@ -20,7 +20,7 @@
                     <a href="homeView.php">Homepage</a>
                 </div>
                 <div class="homepageButton">
-                    <a href="adminView.php">Edit</a>
+                    <a href="">Edit</a>
                 </div>
             </div>
 
