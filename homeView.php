@@ -17,7 +17,7 @@
         <div class="admin-header">
             <div class="homepageButton-customerSearch">
                 <div class="homepageButton">
-                    <a href="homeView.php">Homepage</a>
+                    <a href="adminView.php">Admin Page</a>
                 </div>
                 <div class="homepageButton">
                     <a href="">Edit</a>
