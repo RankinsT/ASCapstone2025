@@ -13,15 +13,16 @@
 }
 
 .login-form button {
-    padding: 10px 20px;
-    background-color: blue;
+    background-color: #007bff;
     color: white;
     border: none;
+    padding: 8px 12px;
     cursor: pointer;
+    border-radius: 4px;
 }
 
 .login-form button:hover {
-    background-color: darkblue;
+    background-color: #0056b3;
 }
 
 a {
