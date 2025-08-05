@@ -6,13 +6,41 @@
     <title>HomePage</title>
 
     <link rel="stylesheet" href="./css/homeStyle.css"> <!-- Link to your home CSS file -->
+    <link rel="stylesheet" href="./css/adminStyle.css"> <!-- Link to your admin CSS file -->
 </head>
 <body>
+    <?php
+    session_start(); // Start the session
+    if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) {
+        // User is logged in, you can access admin features
+        ?>
+        <div class="admin-header">
+            <div class="homepageButton-customerSearch">
+                <div class="homepageButton">
+                    <a href="homeView.php">Homepage</a>
+                </div>
+                <div class="homepageButton">
+                    <a href="adminView.php">Edit</a>
+                </div>
+            </div>
 
+            <div class="logoutButton-updateAccountButton">
+                <div class="logoutButton">
+                    <a href="loginView.php">Logout</a>
+                </div>
+            </div>
+        </div>
+    <?php }
+    
+    include './models/model_admin.php'; // Include the model file
 
+    ?>
     <!-- Your home view content goes here -->
 
     <div class="grid-container">
+
+        
+
         <div class="header">
             <?php include 'homeViewSections/header.php'; ?> <!-- Include the header section -->
         </div>

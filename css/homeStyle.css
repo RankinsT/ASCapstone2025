@@ -1,6 +1,7 @@
 .grid-container {
     display: grid;
     grid-template-areas:
+        "admin-header admin-header admin-header"
         "header header header"
         "reviews reviews form"
         "companyDescription carousel carousel"
