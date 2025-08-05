@@ -6,6 +6,7 @@
     <title>HomePage</title>
 
     <link rel="stylesheet" href="./css/homeStyle.css"> <!-- Link to your home CSS file -->
+
 </head>
 <body>
 
@@ -34,7 +35,10 @@
         <!-- div /companyDescription -->
 
         <div class="carousel">
+            <div>
             <?php include 'homeViewSections/carousel.php'; ?> <!-- Include the carousel section -->
+            <?php include 'bcmTest.php'; ?> <!-- Include the carousel image upload test form -->
+            </div>
         </div>
         <!-- div /carousel -->
 
