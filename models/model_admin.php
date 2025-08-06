@@ -195,3 +195,19 @@ function searchCustomer($searchTerm) {
 
     return $results; // Return the search results
 }
+
+function getAllAdmins() {
+    global $db;
+
+    $results = []; // Initialize an empty array to hold admin data
+
+    $sql = 'SELECT * FROM capstone_202540_qball.adminlogin ORDER BY ID DESC'; // SQL query to select all admins ordered by ID
+
+    $stmt = $db->prepare($sql); // Prepare the SQL statement
+
+    if ($stmt->execute() && $stmt->rowCount() > 0) {
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC); // Fetch all results as an associative array
+    }
+
+    return $results; // Return the array of admin data
+}
