@@ -5,16 +5,26 @@ include __DIR__ . '/db.php'; // Include the database connection file
 function login($username, $password) {
     global $db;
 
+    // First try with plain text password (for older accounts)
     $stmt = $db->prepare('SELECT username FROM capstone_202540_qball.adminlogin WHERE username = :u AND password = :p');
-
     $stmt->bindValue(':u', $username);
-    $stmt->bindValue(':p', $password); 
+    $stmt->bindValue(':p', $password);
 
     if ($stmt->execute() && $stmt->rowCount() > 0) {
-        return true;  // Return true if login is successful
+        return true;  // Return true if login is successful with plain text
     }
 
-    return false;  // Return false if login failed
+    // If plain text failed, try with SHA1 hashed password with salt (for newer accounts)
+    $hashedPassword = sha1("MY-TOP-SECRET-SALT$password");
+    $stmt = $db->prepare('SELECT username FROM capstone_202540_qball.adminlogin WHERE username = :u AND password = :p');
+    $stmt->bindValue(':u', $username);
+    $stmt->bindValue(':p', $hashedPassword);
+
+    if ($stmt->execute() && $stmt->rowCount() > 0) {
+        return true;  // Return true if login is successful with SHA1 + salt
+    }
+
+    return false;  // Return false if both attempts failed
 }
 
 function getAllCustomers() {

@@ -45,13 +45,16 @@
             <div><input type="text" name="username" placeholder="Username" required></div>
             <div><input type="password" name="password" placeholder="Password" required></div>
             <div><button type="submit">Login</button></div>
+            <div>&nbsp;</div>
 
-            <?php
-            if (isset($error) && $error != "") { ?>
-                <div class="error-message"><?php echo $error; ?></div>
-            <?php
-            }
-            ?>
+            <?php if (!empty($error)): ?>
+                        <div class="alert alert-error" style="color: red; margin-bottom: 15px; padding: 10px; border: 1px solid red; background-color: #fff0f0; border-radius: 4px;">
+                            <ul style="margin: 0; padding-left: 20px;">
+                                <?= $error ?>
+                            </ul>
+                        </div>
+            <?php endif; ?>
+            
             
         </form>
     </div>
