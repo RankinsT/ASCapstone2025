@@ -61,8 +61,11 @@
             }
             
             if ($userAdded) { 
-                // Success! Redirect to admin page
-                header("Location: adminView.php");
+                // Success! Show alert and redirect to admin page
+                echo "<script>
+                    alert('Admin registered successfully!');
+                    window.location.href = 'adminView.php';
+                </script>";
                 exit();
             } else {
                 $error .= "<li>Failed to register admin - user not found in database</li>";
