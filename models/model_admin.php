@@ -201,7 +201,7 @@ function getAllAdmins() {
 
     $results = []; // Initialize an empty array to hold admin data
 
-    $sql = 'SELECT * FROM capstone_202540_qball.adminlogin ORDER BY ID DESC'; // SQL query to select all admins ordered by ID
+    $sql = 'SELECT * FROM capstone_202540_qball.adminlogin'; // SQL query to select all admins ordered by ID
 
     $stmt = $db->prepare($sql); // Prepare the SQL statement
 
@@ -210,4 +210,31 @@ function getAllAdmins() {
     }
 
     return $results; // Return the array of admin data
+}
+
+function register($username, $password, $email) {
+    global $db;
+
+    $results = ""; // Initialize an empty string for results
+
+    try {
+        $sql = 'INSERT INTO capstone_202540_qball.adminlogin (username, password, adminEmail) 
+                VALUES (:username, :password, :email)'; // SQL query to insert a new admin
+
+        $stmt = $db->prepare($sql); // Prepare the SQL statement
+
+        // Bind the parameters
+        $bindsAdmin = array(
+            ':username' => $username,
+            ':password' => sha1("MY-TOP-SECRET-SALT$password"), // In a real application, ensure to hash the password
+            ':email' => $email
+        );
+        if ($stmt->execute($bindsAdmin) && $stmt->rowCount() > 0) {
+            $results = "Admin registered successfully"; // Set success message
+        }   
+    } catch (PDOException $e) {
+        error_log("Error registering admin: " . $e->getMessage()); // Log any errors
+        return "Error registering admin"; // Return error message
+    }
+    return $results; // Return the results message
 }
