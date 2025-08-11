@@ -29,9 +29,9 @@ body {
     "locations locations map"
     "footer footer footer";
   grid-template-columns: 1fr 4fr 4fr;
-  margin: 20px;
+  margin: 10px;
   margin-top: 10px; /* adjust to your header's height */
-  height: calc(100vh - 220px);
+  height: calc(100vh - 120px);
   overflow: auto;
   background-color: rgba(0, 161, 154, 0.7);
   border-radius: 20px;
