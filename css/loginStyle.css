@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+  background-color: rgb(255, 249, 249);
+}
 .login-grid-container {
   display: grid;
   height: 100vh;
@@ -14,6 +18,13 @@
   align-items: center;
   justify-content: center;
   height: 100%;
+  border: 1px solid #ccc;
+  background: #007BFF;
+  background: linear-gradient(0deg, rgba(0, 123, 255, 1) 0%, rgba(0, 42, 87, 1) 100%);
+  padding: 50px;
+  width: 25%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10%;
 }
 
 .login-form input {
@@ -36,7 +47,7 @@
 }
 
 a {
-  color: blue;
+  color: white;
   text-decoration: none;
 }
 

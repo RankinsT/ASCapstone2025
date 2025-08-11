@@ -1,3 +1,6 @@
+body {
+  margin: 0;
+}
 .admin-grid-container {
   display: grid;
   grid-template-areas:
@@ -234,7 +237,7 @@
 }
 
 a {
-  color: blue;
+  color: #007bff;
   text-decoration: none;
 }
 

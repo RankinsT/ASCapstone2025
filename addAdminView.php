@@ -84,9 +84,9 @@
                         <div class="homepageButton">
                             <a href="homeView.php">Homepage</a>
                         </div>
-                        <div class="homepageButton">
+                        <!-- <div class="homepageButton">
                             <a href="adminView.php">Admin Page</a>
-                        </div>
+                        </div> -->
                     </div>
 
                     <div class="logoutButton-updateAccountButton">
