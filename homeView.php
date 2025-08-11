@@ -36,16 +36,16 @@
 
     ?>
     <!-- Your home view content goes here -->
-
+    <div class="header">
+        <?php include 'homeViewSections/header.php'; ?> <!-- Include the header section -->
+    </div>
     <div class="grid-container">
 
         
 
-        <div class="header">
-            <?php include 'homeViewSections/header.php'; ?> <!-- Include the header section -->
-        </div>
+        
         <!-- div /header -->
-
+        <div></div>
         <div class="reviews">
             <?php include 'homeViewSections/reviews.php'; ?> <!-- Include the reviews section -->
         </div>
