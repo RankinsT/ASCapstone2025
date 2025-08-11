@@ -87,7 +87,7 @@ body {
 
 .phone-num-btn {
   /* border: 1px solid black; */
-  background-color: chocolate;
+  /* background-color: chocolate; */
   display: flex;
   flex-direction: column;
   background: rgba(255, 255, 255, 0.18);
@@ -107,7 +107,7 @@ body {
 .phone-num-btn p {
   margin: 0px;
 }
-.phone-num-btn p a {
+.phone-num-btn p a, p {
   color: white;
   text-decoration: none;
 }
