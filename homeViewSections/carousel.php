@@ -15,52 +15,56 @@
             <div class="col-md-12">
                 <!-- Bootstrap Carousel -->
 <!-- filepath: c:\xampp\htdocs\ASCapstone2025\homeViewSections\carousel.php -->
+<!-- filepath: c:\xampp\htdocs\ASCapstone2025\homeViewSections\carousel.php -->
+<?php
+// Include the database connection
+include __DIR__ . '/../models/db.php';
+
+try {
+    // Fetch all images from the bcimage table
+    $query = "SELECT * FROM bcimage ORDER BY id ASC";
+    $stmt = $db->query($query);
+    $images = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "<h3>Error fetching images: " . $e->getMessage() . "</h3>";
+    $images = [];
+}
+?>
 <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
-        <!-- First Slide -->
-        <div class="carousel-item active">
-            <img src="images/slide1.jpg" class="d-block w-100" alt="First Slide" style="height: 25em; object-fit: cover;">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>First Slide</h5>
-                <p>Description for the first slide.</p>
+        <?php if (!empty($images)): ?>
+            <?php foreach ($images as $index => $image): ?>
+                <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
+                    <img src="./bcimage/<?php echo htmlspecialchars($image['filename']); ?>" class="d-block w-100" alt="Slide <?php echo $index + 1; ?>" style="height: 25em; object-fit: cover;">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Slide <?php echo $index + 1; ?></h5>
+                        <p>Description for slide <?php echo $index + 1; ?>.</p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <div class="carousel-item active">
+                <div class="d-flex justify-content-center align-items-center" style="height: 25em; background-color: #f8f9fa;">
+                    <h5>No images available</h5>
+                </div>
             </div>
-        </div>
-        <!-- Second Slide -->
-        <div class="carousel-item">
-            <img src="images/slide2.jpg" class="d-block w-100" alt="Second Slide" style="height: 25em; object-fit: cover;">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>Second Slide</h5>
-                <p>Description for the second slide.</p>
-            </div>
-        </div>
-        <!-- Third Slide -->
-        <div class="carousel-item">
-            <img src="images/slide3.jpg" class="d-block w-100" alt="Third Slide" style="height: 25em; object-fit: cover;">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>Third Slide</h5>
-                <p>Description for the third slide.</p>
-            </div>
-        </div>
+        <?php endif; ?>
     </div>
     <!-- Carousel Indicators -->
     <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" style="background-color:rgb(14, 75, 28);"></button>
-        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1" aria-label="Slide 2" style="background-color:rgb(14, 75, 28);"></button>
-        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2" aria-label="Slide 3" style="background-color:rgb(14, 75, 28);"></button>
-    </div>
+        <?php foreach ($images as $index => $image): ?>
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="<?php echo $index; ?>" class="<?php echo $index === 0 ? 'active' : ''; ?>" aria-label="Slide <?php echo $index + 1; ?>"></button>
+        <?php endforeach; ?>
     </div>
     <!-- Carousel Controls -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev"style="background-color:rgba(46, 82, 51, 0.28)";>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" style="background-color:rgba(46, 82, 51, 0.28)";>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
     </button>
 </div>
-            </div>
-        </div>
-    </div>
 </body>
 </html>
