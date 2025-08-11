@@ -239,8 +239,14 @@ body {
 a {
   color: #007bff;
   text-decoration: none;
+  transition: background-color 0.3s ease;
 }
 
 a:hover {
   text-decoration: underline;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  transition: background-color 0.3s ease;
 }
