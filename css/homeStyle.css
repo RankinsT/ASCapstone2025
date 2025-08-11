@@ -110,6 +110,7 @@ body {
 .phone-num-btn p a, p {
   color: white;
   text-decoration: none;
+  font-weight: bold;
 }
 
 .reviews {
