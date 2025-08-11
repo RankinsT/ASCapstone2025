@@ -1,101 +1,124 @@
 body {
-    margin: 0;
+  margin: 0;
 }
 .grid-container {
-    display: grid;
-    grid-template-areas:
-        "admin-header admin-header admin-header"
-        "header header header"
-        "reviews reviews form"
-        "companyDescription carousel carousel"
-        "services services services"
-        "locations locations map"
-        "footer footer footer";
-        grid-template-columns: 1fr 4fr 4fr;
-        /* grid-template-rows: 60px 60px 60px; */
+  display: grid;
+  grid-template-areas:
+    "admin-header admin-header admin-header"
+    "header header header"
+    "reviews reviews form"
+    "companyDescription carousel carousel"
+    "services services services"
+    "locations locations map"
+    "footer footer footer";
+  grid-template-columns: 1fr 4fr 4fr;
+  /* grid-template-rows: 60px 60px 60px; */
 }
 
 .header {
-    grid-area: header;
-    border: 1px solid black;
-    background-color: aquamarine;
-    display: flex;
-    height: fit-content;
-    margin-bottom: 20px;
+  grid-area: header;
+  border: 1px solid black;
+  width: 100vw; /* or a fixed px value */
+  height: 200px; /* or whatever you want */
+  background-image: url("../images/25.jpg");
+  background-size: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  padding: 50px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #00A19A;
 }
 
-.header-img {
+/* .header-img {
     display: flex;
     flex-direction: column;
-}
+} */
 
 .logo-img {
-    margin: 10px;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  background: #f0f0f0;
+  display: block;
+  /* margin: 0 auto 20px auto; */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .phone-num-btn {
-    border: 1px solid black;
-    background-color: chocolate;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: fit-content;
-    margin: 10px;
+  /* border: 1px solid black; */
+  background-color: chocolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: fit-content;
+  margin: 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+.phone-num-btn:hover {
+  background-color: darkorange;
 }
 
 .phone-num-btn p {
-    margin: 0px;
+  margin: 0px;
+}
+.phone-num-btn p a {
+  color: white;
+  text-decoration: none;
 }
 
 .reviews {
-    grid-area: reviews;
-    border: 1px solid black;
-    background-color: lightblue;
-    height: fit-content;
-    margin-bottom: 20px;
+  grid-area: reviews;
+  border: 1px solid black;
+  background-color: lightblue;
+  height: fit-content;
+  margin-bottom: 20px;
 }
 
 .reviews-bg-div {
-    background-color: lightcoral;
-    margin: 20px;
+  background-color: lightcoral;
+  margin: 20px;
 }
 
 .reviews-p {
-    padding: 20px;
+  padding: 20px;
 }
 .form {
-    grid-area: form;
-    background-color: lightgreen;
-    border: 1px solid black;
-    margin-bottom: 20px;
+  grid-area: form;
+  background-color: lightgreen;
+  border: 1px solid black;
+  margin-bottom: 20px;
 }
 
 .companyDescription {
-    grid-area: companyDescription;
-    background-color: lightcoral;
+  grid-area: companyDescription;
+  background-color: lightcoral;
 }
 
 .carousel {
-    grid-area: carousel;
-    background-color: lightgoldenrodyellow;
+  grid-area: carousel;
+  background-color: lightgoldenrodyellow;
 }
 
 .services {
-    grid-area: services;
-    background-color: lightpink;
+  grid-area: services;
+  background-color: lightpink;
 }
 
 .locations {
-    grid-area: locations;   
-    background-color: lightgray;
+  grid-area: locations;
+  background-color: lightgray;
 }
 
 .map {
-    grid-area: map;
-    background-color: lightcyan;
+  grid-area: map;
+  background-color: lightcyan;
 }
 
 .footer {
-    grid-area: footer;
-    background-color: lightseagreen;
+  grid-area: footer;
+  background-color: lightseagreen;
 }

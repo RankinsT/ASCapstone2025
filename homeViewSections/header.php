@@ -1,23 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>header</title>
-    <link rel="stylesheet" href="./css/homeStyle.css">
-</head>
-    <body>
-        
-        <div class="header-img">
+<div class="header-img">
 
-            <img src="" alt="logo" class="logo-img">
+    <img src="images/LogoTemp.png" alt="logo" class="logo-img">
+ </div>
 
-            <button type="button" class="phone-num-btn">
-                <p>Call Now!</p>
-                <p>888-888-8888</p>
-            </button>
+ <div>
+    <button type="button" class="phone-num-btn">
+        <p>Call Now!</p>
+        <p><a href="tel:508-717-1249">508-717-1249</a></p>
+    </button>
+ </div>
+    
             
-        </div>
-
-    </body>
-</html>
