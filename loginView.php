@@ -11,7 +11,7 @@
 
     <?php
 
-    session_start(); // Start the session!!!!!
+    session_start(); // Start the session
 
 
     include __DIR__ . '/models/model_admin.php'; // Include the model for admin login

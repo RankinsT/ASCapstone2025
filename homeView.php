@@ -1,13 +1,18 @@
-<!-- filepath: c:\xampp\htdocs\ASCapstone2025\homeView.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HomePage</title>
+
     <link rel="stylesheet" href="./css/homeStyle.css"> <!-- Link to your home CSS file -->
+
 </head>
 <body>
+
+
+    <!-- Your home view content goes here -->
+
     <div class="grid-container">
         <div class="header">
             <?php include 'homeViewSections/header.php'; ?> <!-- Include the header section -->
@@ -32,6 +37,7 @@
         <div class="carousel">
             <div>
             <?php include 'homeViewSections/carousel.php'; ?> <!-- Include the carousel section -->
+            <?php include 'bcmTest.php'; ?> <!-- Include the carousel image upload test form -->
             </div>
         </div>
         <!-- div /carousel -->
@@ -55,7 +61,11 @@
             <?php include 'homeViewSections/footer.php'; ?> <!-- Include the footer section -->
         </div>
         <!-- div /footer -->
+
     </div>
     <!-- div /grid-container -->
+
+
+    
 </body>
 </html>
