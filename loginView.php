@@ -35,7 +35,8 @@
 
     ?>
 
-    <div>
+    <div class="login-grid-container">
+        <div class="header"></div>
         <form action="loginView.php" method="post" class="login-form">
 
             <div><img src="" alt="logo"></div>
@@ -58,6 +59,7 @@
             
         </form>
     </div>
-    
+    <div class="footer"></div>
+
 </body>
 </html>
