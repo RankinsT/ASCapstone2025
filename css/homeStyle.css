@@ -52,11 +52,11 @@ body {
   /* background-position: center; */
   /* background-repeat: no-repeat; */
   display: flex;
-  padding: 50px;
+  padding: 10px;
   justify-content: space-between;
   align-items: center;
   /* background-color: #00A19A; */
-  margin: 20px;
+  margin: 10px;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -76,6 +76,13 @@ body {
   display: block;
   /* margin: 0 auto 20px auto; */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: opacity 0.5s ease;
+}
+
+.logo-img.hide-on-scroll {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
 }
 
 .phone-num-btn {
