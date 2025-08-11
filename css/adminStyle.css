@@ -232,3 +232,12 @@
   margin-bottom: 10px; 
   border-radius: 4px;
 }
+
+a {
+  color: blue;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
