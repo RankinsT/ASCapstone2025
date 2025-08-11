@@ -1,6 +1,7 @@
 .grid-container {
     display: grid;
     grid-template-areas:
+        "admin-header admin-header admin-header"
         "header header header"
         "reviews reviews form"
         "companyDescription carousel carousel"
@@ -13,18 +14,57 @@
 
 .header {
     grid-area: header;
-    background-color: blue;
-    color: green;
+    border: 1px solid black;
+    background-color: aquamarine;
+    display: flex;
+    height: fit-content;
+    margin-bottom: 20px;
+}
+
+.header-img {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-img {
+    margin: 10px;
+}
+
+.phone-num-btn {
+    border: 1px solid black;
+    background-color: chocolate;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: fit-content;
+    margin: 10px;
+}
+
+.phone-num-btn p {
+    margin: 0px;
 }
 
 .reviews {
     grid-area: reviews;
+    border: 1px solid black;
     background-color: lightblue;
+    height: fit-content;
+    margin-bottom: 20px;
 }
 
+.reviews-bg-div {
+    background-color: lightcoral;
+    margin: 20px;
+}
+
+.reviews-p {
+    padding: 20px;
+}
 .form {
     grid-area: form;
     background-color: lightgreen;
+    border: 1px solid black;
+    margin-bottom: 20px;
 }
 
 .companyDescription {
