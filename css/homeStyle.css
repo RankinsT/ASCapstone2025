@@ -5,7 +5,8 @@ body {
     rgba(0, 123, 255, 1) 0%,
     rgba(0, 42, 87, 1) 100%
   );
-  overflow: hidden;
+  /* overflow: hidden; */
+  margin: 0;
 }
 
 /* Fixed header section at the top */
@@ -29,9 +30,9 @@ body {
     "locations locations map"
     "footer footer footer";
   grid-template-columns: 1fr 4fr 4fr;
-  margin: 5px;
-  margin-top: 10px; /* adjust to your header's height */
-  height: calc(100vh - 150px);
+  margin: 20px;
+  margin-top: 20px; /* adjust to your header's height */
+  /* height: calc(100vh - 150px); */
   overflow: auto;
   background-color: rgba(0, 161, 154, 0.7);
   border-radius: 20px;
@@ -47,9 +48,9 @@ body {
   width: 100vw; /* or a fixed px value */
   height: 100px; /* or whatever you want */
   /* background-image: url("../images/25.jpg"); */
-  background-size: auto;
-  background-position: center;
-  background-repeat: no-repeat;
+  /* background-size: auto; */
+  /* background-position: center; */
+  /* background-repeat: no-repeat; */
   display: flex;
   padding: 50px;
   justify-content: space-between;
