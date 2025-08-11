@@ -67,7 +67,10 @@
                                     <label for="username">Username:</label>
                                 </td>
                                 <td class="input-cell">
-                                    <label id="username"><?= htmlspecialchars($_SESSION['username']); ?></label>
+                                    <span id="username" style="display: inline-block; padding: 8px 12px; background: #f5f5f5; border-radius: 4px; border: 1px solid #ccc;">
+                                        <?= htmlspecialchars($_SESSION['username']); ?>
+                                    </span>
+                                    <input type="hidden" name="username" value="<?= htmlspecialchars($_SESSION['username']); ?>">
                                 </td>
                             </tr>
 
