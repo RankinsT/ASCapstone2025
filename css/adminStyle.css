@@ -1,3 +1,6 @@
+body {
+  margin: 0;
+}
 .admin-grid-container {
   display: grid;
   grid-template-areas:
@@ -9,7 +12,9 @@
 
 .admin-header {
   grid-area: admin-header;
-  background-color: #007bff;
+  /* background-color: #007bff; */
+  background: #007BFF;
+  background: linear-gradient(0deg, rgba(0, 123, 255, 1) 0%, rgba(0, 42, 87, 1) 100%);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,7 +47,7 @@
 }
 
 .logoutButton a {
-  background-color: red; /* Red */
+  background-color: #e42828; /* Red */
   color: white;
   padding: 12px 20px;
   text-align: center;
@@ -229,4 +234,13 @@
   border: 1px solid #ccc; 
   margin-bottom: 10px; 
   border-radius: 4px;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
