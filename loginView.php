@@ -39,7 +39,9 @@
         <div class="header"></div>
         <form action="loginView.php" method="post" class="login-form">
 
-            <div><img src="" alt="logo"></div>
+            <div>
+                <img src="images/LogoTemp.png" alt="logo" class="login-logo">
+            </div>
 
             <div><a href="homeView.php">Go to Homepage</a></div>
 
