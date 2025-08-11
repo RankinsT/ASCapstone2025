@@ -14,6 +14,14 @@
     session_start(); // Start the session
     include './models/model_admin.php'; // Include the model file
 
+    $error = ""; // Initialize error message variable
+    $newPassword = ""; // Initialize new password variable
+    $confirmPassword = ""; // Initialize confirm password variable
+    $username = $_SESSION['username'] ?? ''; // Get the current username from session
+    $email = ""; // Initialize email variable
+    $currentPassword = ""; // Initialize current password variable
+    $user = getAdmin($username);
+
     ?>
 
     <div>
@@ -43,20 +51,12 @@
                 <div class="title"><h1>Update Information</h1></div>
 
                 <div class="form">
+                    
                     <?php
-                    // Get current user data from database
+                    // Get current user data using model_admin.php function
                     $currentUser = null;
                     if (isset($_SESSION['username'])) {
-                        try {
-                            include './models/db.php'; // Include database connection
-                            
-                            $stmt = $db->prepare("SELECT * FROM capstone_202540_qball.adminlogin WHERE username = ?");
-                            $stmt->execute([$_SESSION['username']]);
-                            $currentUser = $stmt->fetch(PDO::FETCH_ASSOC);
-                            
-                        } catch (PDOException $e) {
-                            error_log("Database error: " . $e->getMessage());
-                        }
+                        $currentUser = getAdmin($_SESSION['username']);
                     }
                     ?>
                     
@@ -67,7 +67,7 @@
                                     <label for="username">Username:</label>
                                 </td>
                                 <td class="input-cell">
-                                    <input type="text" id="username" name="username" required value="<?= htmlspecialchars($_SESSION['username']); ?>">
+                                    <label id="username"><?= htmlspecialchars($_SESSION['username']); ?></label>
                                 </td>
                             </tr>
 
@@ -113,6 +113,20 @@
                                 </td>
                             </tr>
                         </table>
+
+                        <div>
+                            <?php
+                    // Show update success or error messages
+                    if (!empty($_SESSION['update_success'])) {
+                        echo '<div class="alert alert-success" style="color: green; margin-bottom: 15px; padding: 10px; border: 1px solid green; background-color: #f0fff0; border-radius: 4px; width: 80%;">' . htmlspecialchars($_SESSION['update_success']) . '</div>';
+                        unset($_SESSION['update_success']);
+                    }
+                    if (!empty($_SESSION['update_error'])) {
+                        echo '<div class="alert alert-error" style="color: red; margin-bottom: 15px; padding: 10px; border: 1px solid red; background-color: #fff0f0; border-radius: 4px; width: 80%;">' . htmlspecialchars($_SESSION['update_error']) . '</div>';
+                        unset($_SESSION['update_error']);
+                    }
+                    ?>
+                        </div>
                     </form>
                 </div>
 

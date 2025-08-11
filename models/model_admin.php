@@ -248,3 +248,60 @@ function register($username, $password, $email) {
     }
     return $results; // Return the results message
 }
+
+function updateAccount($username, $email, $currentPassword, $newPassword) {
+    global $db;
+    $results = "";
+    try {
+        // First try with SHA1+salt (newer accounts)
+        $sql = 'UPDATE capstone_202540_qball.adminlogin SET adminEmail = :email, password = :newPassword WHERE username = :username AND password = :currentPassword';
+        $stmt = $db->prepare($sql);
+        $binds = array(
+            ':email' => $email,
+            ':newPassword' => sha1("MY-TOP-SECRET-SALT$newPassword"),
+            ':username' => $username,
+            ':currentPassword' => sha1("MY-TOP-SECRET-SALT$currentPassword")
+        );
+        $stmt->execute($binds);
+        if ($stmt->rowCount() > 0) {
+            $results = "Account updated successfully";
+            return $results;
+        }
+        // If not, try with plain text (older accounts)
+        $sql2 = 'UPDATE capstone_202540_qball.adminlogin SET adminEmail = :email, password = :newPassword WHERE username = :username AND password = :currentPassword';
+        $stmt2 = $db->prepare($sql2);
+        $binds2 = array(
+            ':email' => $email,
+            ':newPassword' => sha1("MY-TOP-SECRET-SALT$newPassword"),
+            ':username' => $username,
+            ':currentPassword' => $currentPassword
+        );
+        $stmt2->execute($binds2);
+        if ($stmt2->rowCount() > 0) {
+            $results = "Account updated successfully";
+        } else {
+            $results = "No changes made or incorrect current password";
+        }
+    } catch (PDOException $e) {
+        error_log("Error updating account: " . $e->getMessage());
+        return "Error updating account";
+    }
+    return $results;
+}
+
+function getAdmin($username) {
+    global $db;
+
+    $admin = null;
+
+    try {
+        $sql = 'SELECT * FROM capstone_202540_qball.adminlogin WHERE username = :username';
+        $stmt = $db->prepare($sql);
+        $stmt->execute([':username' => $username]);
+        $admin = $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        error_log("Error fetching admin: " . $e->getMessage());
+    }
+
+    return $admin;
+}
