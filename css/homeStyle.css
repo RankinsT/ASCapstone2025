@@ -14,7 +14,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  /* width: 100vw; */
   z-index: 1000;
   background: inherit;
 }
@@ -45,7 +45,7 @@ body {
 .header {
   grid-area: header;
   /* border: 1px solid black; */
-  width: 100vw; /* or a fixed px value */
+  /* width: 100vw;  */
   height: 100px; /* or whatever you want */
   /* background-image: url("../images/25.jpg"); */
   /* background-size: auto; */
@@ -57,6 +57,9 @@ body {
   align-items: center;
   /* background-color: #00A19A; */
   margin: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 /* .header-img {
