@@ -98,8 +98,8 @@
                         </div> -->
                     </div>
                 </div>
-                
-                <div class="title"><br><div class="back-button"><a href="adminView.php">< Back</a></div><h1>Add New Admin</h1></div>
+
+                <div class="title"><br><div class="back-button"><a href="updateAccountView.php">< Update Account</a></div><h1>Add New Admin</h1></div>
                 <div class="form">
 
                     

@@ -33,22 +33,22 @@
                         <div class="homepageButton">
                             <a href="homeView.php">Homepage</a>
                         </div>
-                        <div class="homepageButton">
+                        <!-- <div class="homepageButton">
                             <a href="adminView.php">Admin Page</a>
-                        </div>
+                        </div> -->
                     </div>
 
                     <div class="logoutButton-updateAccountButton">
                         <div class="logoutButton">
                             <a href="loginView.php">Logout</a>
                         </div>
-                        <div>
+                        <!-- <div>
                             <a href="addAdminView.php">Add Admin Account</a>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 
-                <div class="title"><h1>Update Information</h1></div>
+                <div class="title"><br><div class="back-button"><a href="adminView.php">< Admin Page</a>&nbsp;&nbsp;<span style="font-weight: bold;">|</span>&nbsp;&nbsp;<a href="addAdminView.php">Add Admin ></a></div><h1>Update Information</h1></div>
 
                 <div class="form">
                     
