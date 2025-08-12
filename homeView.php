@@ -86,12 +86,12 @@
             </div>
             <!-- div /services -->  
         </div>
-       
 
-        <div class="locations">
-            <?php include 'homeViewSections/locations.php'; ?> <!-- Include the locations section -->
-        </div>
-        <!-- div /locations -->
+        <div class="row elements row-4">
+            <div class="locations">
+                <?php include 'homeViewSections/locations.php'; ?> <!-- Include the locations section -->
+            </div>
+            <!-- div /locations -->
 
         <div class="map">
             <?php include 'homeViewSections/map.php'; ?> <!-- Include the map section -->
