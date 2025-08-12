@@ -29,7 +29,8 @@ body {
     "services services services"
     "locations locations map"
     "footer footer footer";
-  grid-template-columns: 4fr 4fr 4fr;
+  /* grid-template-columns: repeat(3fr, 1fr); */
+  /* grid-template-rows: auto auto auto auto auto auto auto; */
   margin: 20px;
   margin-top: 20px; /* adjust to your header's height */
   /* height: calc(100vh - 150px); */
@@ -133,10 +134,17 @@ body {
   /* background-color: lightgreen; */
   /* border: 1px solid black; */
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+  font-size: 3rem;      /* Makes text bigger */
+  padding: 30px;          /* Adds more space inside */
+  min-width: 350px;       /* Makes the form area wider */
 }
 
 .companyDescription {
   grid-area: companyDescription;
+  column-count: 2;
   /* background-color: lightcoral; */
 }
 
