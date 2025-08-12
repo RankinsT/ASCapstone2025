@@ -7,6 +7,9 @@
 
     <link rel="stylesheet" href="./css/homeStyle.css"> <!-- Link to your home CSS file -->
     <link rel="stylesheet" href="./css/adminStyle.css"> <!-- Link to your admin CSS file -->
+
+    <script src="https://cdn.tiny.cloud/1/a568yvdjcxzu2hhaiwp0fdun5rd6z9s4d51urh6m0lrpw0eu/tinymce/8/tinymce.min.js" referrerpolicy="origin" crossorigin="anonymous"></script>
+
 </head>
 <body>
     <?php
@@ -20,7 +23,9 @@
                     <a href="adminView.php">Admin Page</a>
                 </div>
                 <div class="homepageButton">
-                    <a href="">Edit</a>
+                    <button class="edit-homepage-button">
+                        Edit
+                    </button>
                 </div>
             </div>
 
