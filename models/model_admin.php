@@ -305,3 +305,17 @@ function getAdmin($username) {
 
     return $admin;
 }
+
+function updateTextBoxContent($ID, $newContent) {
+    global $db;
+
+    try {
+        $sql = 'UPDATE capstone_202540_qball.company_description SET content = :content WHERE id = :id';
+        $stmt = $db->prepare($sql);
+        $stmt->execute([':content' => $newContent, ':id' => $ID]);
+        return "Content updated successfully";
+    } catch (PDOException $e) {
+        error_log("Error updating content: " . $e->getMessage());
+        return "Error updating content";
+    }
+}

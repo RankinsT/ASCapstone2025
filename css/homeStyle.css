@@ -164,3 +164,7 @@ body {
   grid-area: footer;
   background-color: #00a19ab3;
 }
+
+#company-description-container {
+  margin: 5px;
+}

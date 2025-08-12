@@ -22,11 +22,11 @@
                 <div class="homepageButton">
                     <a href="adminView.php">Admin Page</a>
                 </div>
-                <div class="homepageButton">
+                <!-- <div class="homepageButton">
                     <button class="edit-homepage-button">
                         Edit
                     </button>
-                </div>
+                </div> -->
             </div>
 
             <div class="logoutButton-updateAccountButton">
