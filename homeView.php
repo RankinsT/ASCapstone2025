@@ -67,7 +67,8 @@
         <!-- div /companyDescription -->
 
         <div class="carousel">
-            <?php include 'homeViewSections/carousel.php'; ?> <!-- Include the carousel section -->
+            <?php include 'homeViewSections/carousel.php'; ?> 
+            <!-- Include the carousel section -->
         </div>
         <!-- div /carousel -->
 
