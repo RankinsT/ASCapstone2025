@@ -75,7 +75,7 @@
             <!-- div /carousel -->
         </div>
         
-        <div class="row elements row-3">
+        <div class="row elements" style="margin:50px;">
             <div class="services col-lg-12 col-md-12 col-sm-12">
                 <?php include 'homeViewSections/services.php'; ?> <!-- Include the services section -->
             </div>

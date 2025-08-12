@@ -249,7 +249,7 @@ body {
 }
 
 .row-2 {
-  /* gap: 50px; */
+  gap: 20px;
   display: flex;
   justify-content:space-around;
 }
