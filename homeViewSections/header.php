@@ -1,4 +1,3 @@
-<div></div>
 <div class="header-img">
 
     <img src="images/LogoTemp.png" alt="logo" class="logo-img">
