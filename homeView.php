@@ -68,7 +68,7 @@
             </div>
             <!-- div /companyDescription -->
 
-            <div class="carousel col-lg-7 col-md-7 col-sm-12">
+            <div class="carousel col-lg-7 col-md-7 col-sm-12" style="margin:20px; height: 450px;">
                 <?php include 'homeViewSections/carousel.php'; ?> 
                 <!-- Include the carousel section -->
             </div>

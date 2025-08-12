@@ -186,7 +186,8 @@ body {
 
 .carousel {
   grid-area: carousel;
-  /* background-color: lightgoldenrodyellow; */
+  /* height:450px; */
+  /* width:auto; */
   margin: 20px;
   /* padding-top: 10px; */
   /* padding-bottom: 10px; */
