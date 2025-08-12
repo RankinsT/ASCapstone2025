@@ -29,12 +29,12 @@ body {
     "services services services"
     "locations locations map"
     "footer footer footer";
-  grid-template-columns: 1fr 4fr 4fr;
+  grid-template-columns: 4fr 4fr 4fr;
   margin: 20px;
   margin-top: 20px; /* adjust to your header's height */
   /* height: calc(100vh - 150px); */
   overflow: auto;
-  background-color: rgba(0, 161, 154, 0.7);
+  background-color: #00a19ab3;
   border-radius: 20px;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -162,5 +162,5 @@ body {
 
 .footer {
   grid-area: footer;
-  /* background-color: #00a19a; */
+  background-color: #00a19ab3;
 }
