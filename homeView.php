@@ -50,7 +50,7 @@
 
         
         <!-- div /header -->
-        <div class="row elements row-1" style="margin:20px;">
+        <div class="row elements row-1">
             <div class="reviews col-lg-7 col-md-6 col-sm-12">
                 <?php include 'homeViewSections/reviews.php'; ?> <!-- Include the reviews section -->
             </div>
@@ -62,24 +62,26 @@
             <!-- div /form -->
         </div>
         
-        <div class="row elements">
+        <div class="row elements row-2" style="margin:20px;">
             <div class="companyDescription col-lg-4 col-md-6 col-sm-12">
                 <?php include 'homeViewSections/companyDescription.php'; ?> <!-- Include the company description section -->
             </div>
             <!-- div /companyDescription -->
 
-            <div class="carousel col-lg-8 col-md-6 col-sm-12">
+            <div class="carousel col-lg-7 col-md-7 col-sm-12">
                 <?php include 'homeViewSections/carousel.php'; ?> 
                 <!-- Include the carousel section -->
             </div>
             <!-- div /carousel -->
         </div>
         
-
-        <div class="services">
-            <?php include 'homeViewSections/services.php'; ?> <!-- Include the services section -->
+        <div class="row elements row-3">
+            <div class="services col-lg-12 col-md-12 col-sm-12">
+                <?php include 'homeViewSections/services.php'; ?> <!-- Include the services section -->
+            </div>
+            <!-- div /services -->  
         </div>
-        <!-- div /services -->
+       
 
         <div class="locations">
             <?php include 'homeViewSections/locations.php'; ?> <!-- Include the locations section -->
