@@ -101,7 +101,6 @@
         <div class="footer">
             <?php include 'homeViewSections/footer.php'; ?> <!-- Include the footer section -->
         </div>
-        div /footer
 
     </div>
     <!-- div /grid-container -->
