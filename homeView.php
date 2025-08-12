@@ -50,8 +50,8 @@
 
         
         <!-- div /header -->
-        <div class="row elements" style="margin:10px;">
-            <div class="reviews col-lg-8 col-md-6 col-sm-12">
+        <div class="row elements row-1" style="margin:20px;">
+            <div class="reviews col-lg-7 col-md-6 col-sm-12">
                 <?php include 'homeViewSections/reviews.php'; ?> <!-- Include the reviews section -->
             </div>
             <!-- div /reviews -->

@@ -31,7 +31,7 @@ body {
     "footer footer footer"; */
   /* grid-template-columns: repeat(3fr, 1fr); */
   /* grid-template-rows: auto auto auto auto auto auto auto; */
-  margin: 10px;
+  margin: 20px;
   margin-top: 20px; /* adjust to your header's height */
   /* height: calc(100vh - 150px); */
   overflow: auto;
@@ -168,6 +168,9 @@ body {
   font-weight: bold;
   cursor: pointer;
 }
+.form button:hover {
+  background-color: #0056b3;
+}
 
 .companyDescription {
   grid-area: companyDescription;
@@ -203,6 +206,8 @@ body {
   margin: 5px;
 }
 
-.row {
-  gap: 10px;
+.row-1 {
+  gap: 50px;
+  display: flex;
+  justify-content:center
 }
