@@ -65,7 +65,7 @@
             <!-- div /form -->
         </div>
         
-        <div class="row elements row-2">
+        <div class="row elements row-4">
             <div class="companyDescription col-lg-4">
                 <?php include 'homeViewSections/companyDescription.php'; ?> <!-- Include the company description section -->
             </div>
@@ -81,7 +81,7 @@
         </div>
         
         <div class="row elements row-3 col-lg-12">
-            <div class="services ">
+            <div class="services">
                 <?php include 'homeViewSections/services.php'; ?> <!-- Include the services section -->
             </div>
             <!-- div /services -->  

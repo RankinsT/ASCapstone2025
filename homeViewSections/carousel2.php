@@ -18,7 +18,7 @@ try {
         <?php if (!empty($images)): ?>
             <?php foreach ($images as $index => $image): ?>
                 <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
-                    <img src="./bcimage/<?php echo htmlspecialchars($image['filename']); ?>" class="d-block w-100" alt="Slide <?php echo $index + 1; ?>" style="height: 25em; object-fit: cover;">
+                    <img src="./bcimage/<?php echo htmlspecialchars($image['filename']); ?>" class="d-block w-100" alt="Slide <?php echo $index + 1; ?>" style="height: 25em; object-fit: cover">
                     <div class="carousel-caption d-none d-md-block box" >
                         <h5>Slide <?php echo $index + 1; ?></h5>
 
