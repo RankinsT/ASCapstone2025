@@ -33,7 +33,7 @@ body {
   /* grid-template-rows: auto auto auto auto auto auto auto; */
   /* margin: 20px; */
   /* margin-top: 20px;  */
-  /* height: 100vh; */
+  height: fit-content;
   /* height: calc(100vh - 150px); */
   /* overflow: auto; */
   /* background-color: #00a19ab3; */
@@ -127,6 +127,7 @@ body {
   border-radius: 20px;
   padding:20px;
   height: 600px;
+  margin-bottom: 20px;
 }
 
 .reviews-p {
@@ -148,7 +149,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
   height: 600px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 .form input {
   width: 100%;
@@ -182,14 +183,17 @@ body {
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
-  height:400px;
+  height:500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.carousel div {
-  grid-area: carousel;
+.main-carousel-div {
+  /* grid-area: carousel; */
   /* height:900px; */
   /* width:auto; */
-  margin: 20px;
+  padding: 20px;
   /* padding-top: 10px; */
   /* padding-bottom: 10px; */
   background-color: #00a19a;
@@ -198,17 +202,25 @@ body {
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
+  height: 500px;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
 }
 
 .services {
-  grid-area: services;
-  /* background-color: lightpink; */
+  /* grid-area: services; */
   background-color: #00a19a;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .locations {
@@ -241,4 +253,18 @@ body {
 
 #company-description-container {
   margin: 5px;
+}
+
+.row-2 {
+  display: flex;
+  flex-direction: row;
+  gap: 20px; /* optional, for spacing between columns */
+  width: 100%;
+}
+
+.box{
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
 }
