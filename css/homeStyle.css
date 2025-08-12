@@ -20,7 +20,7 @@ body {
 }
 
 .grid-container {
-  display: grid;
+  /* display: grid;
   grid-template-areas:
     "admin-header admin-header admin-header"
     "header header header"
@@ -28,10 +28,10 @@ body {
     "companyDescription carousel carousel"
     "services services services"
     "locations locations map"
-    "footer footer footer";
+    "footer footer footer"; */
   /* grid-template-columns: repeat(3fr, 1fr); */
   /* grid-template-rows: auto auto auto auto auto auto auto; */
-  margin: 20px;
+  margin: 10px;
   margin-top: 20px; /* adjust to your header's height */
   /* height: calc(100vh - 150px); */
   overflow: auto;
@@ -41,6 +41,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  padding: 10px;
 }
 
 .header {
@@ -98,7 +99,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
   margin: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); */
 }
 .phone-num-btn:hover {
   background-color: #00a19a;
@@ -116,14 +117,14 @@ body {
 
 .reviews {
   grid-area: reviews;
-  /* border: 1px solid black; */
-  /* background-color: lightblue; */
-  height: fit-content;
-  margin-bottom: 20px;
-  /* background-color: #00a19a; */
+  /* margin: 20px; */
+  background-color: #00a19a;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
-  margin: 20px;
-  box-shadow: none;
+  padding:20px;
 }
 
 .reviews-p {
@@ -133,18 +134,43 @@ body {
   grid-area: form;
   /* background-color: lightgreen; */
   /* border: 1px solid black; */
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   display: flex;
   flex-direction: column;
-  margin: 30px;
-  font-size: 3rem;      /* Makes text bigger */
-  padding: 30px;          /* Adds more space inside */
-  min-width: 350px;       /* Makes the form area wider */
+  align-items: center;
+  /* margin: 30px; */
+  /* font-size: 1rem; */
+  padding: 20px;
+  /* min-width: 350px; */
+  /* margin: 20px; */
+  background-color: #00a19a;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+}
+.form input {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: none;
+  border-radius: 5px;
+}
+.form button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .companyDescription {
   grid-area: companyDescription;
-  column-count: 2;
   /* background-color: lightcoral; */
 }
 
@@ -175,4 +201,8 @@ body {
 
 #company-description-container {
   margin: 5px;
+}
+
+.row {
+  gap: 10px;
 }

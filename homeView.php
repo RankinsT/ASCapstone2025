@@ -50,27 +50,31 @@
 
         
         <!-- div /header -->
-        <div></div>
-        <div class="reviews">
-            <?php include 'homeViewSections/reviews.php'; ?> <!-- Include the reviews section -->
-        </div>
-        <!-- div /reviews -->
+        <div class="row elements" style="margin:10px;">
+            <div class="reviews col-lg-8 col-md-6 col-sm-12">
+                <?php include 'homeViewSections/reviews.php'; ?> <!-- Include the reviews section -->
+            </div>
+            <!-- div /reviews -->
 
-        <div class="form">
-            <?php include 'homeViewSections/form.php'; ?> <!-- Include the form section -->
+            <form method="POST" class="form col-lg-4 col-md-6 col-sm-12">
+                <?php include 'homeViewSections/form.php'; ?> <!-- Include the form section -->
+            </form>
+            <!-- div /form -->
         </div>
-        <!-- div /form -->
+        
+        <div class="row elements">
+            <div class="companyDescription col-lg-4 col-md-6 col-sm-12">
+                <?php include 'homeViewSections/companyDescription.php'; ?> <!-- Include the company description section -->
+            </div>
+            <!-- div /companyDescription -->
 
-        <div class="companyDescription">
-            <?php include 'homeViewSections/companyDescription.php'; ?> <!-- Include the company description section -->
+            <div class="carousel col-lg-8 col-md-6 col-sm-12">
+                <?php include 'homeViewSections/carousel.php'; ?> 
+                <!-- Include the carousel section -->
+            </div>
+            <!-- div /carousel -->
         </div>
-        <!-- div /companyDescription -->
-
-        <div class="carousel">
-            <?php include 'homeViewSections/carousel.php'; ?> 
-            <!-- Include the carousel section -->
-        </div>
-        <!-- div /carousel -->
+        
 
         <div class="services">
             <?php include 'homeViewSections/services.php'; ?> <!-- Include the services section -->

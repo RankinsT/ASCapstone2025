@@ -1,18 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>reviews</title>
-    <link rel="stylesheet" href="./css/homeStyle.css">
-</head>
-    <body>
 
-        <div class="reviews-bg-div">
+<div id="company-review-container">
+  <p id="company-review-text">Welcome to TinyMCE!</p>
+  <form id="company-review-form" style="display:none;">
+    <textarea id="company-review-editor">Welcome to TinyMCE!</textarea>
+  </form>
+  <button id="reviewEdit-save-btn" type="button">Edit</button>
+</div>
 
-            <p class="reviews-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ex maecenas curae laoreet feugiat eleifend malesuada taciti condimentum ullamcorper ultrices ac consequat. Fermentum quam ultrices metus integer accumsan eleifend dignissim ultrices vitae. Varius dapibus potenti vulputate cubilia ornare interdum augue fusce. Fringilla curabitur curae fames nunc volutpat viverra senectus aenean inceptos vehicula duis per mollis eleifend. Primis dolor justo lacinia lorem cras aliquam fusce. (TESTOMONIAL, REVIEWS)</p>
+<script>
+let isEditing = false;
+const revieweEditSaveBtn = document.getElementById('reviewEdit-save-btn');
+const descText = document.getElementById('company-review-text');
+const descForm = document.getElementById('company-review-form');
+const descEditor = document.getElementById('company-review-editor');
 
-        </div>
-        
-    </body>
-</html>
+reviewEditSaveBtn.addEventListener('click', function() {
+  if (!isEditing) {
+    // Switch to edit mode
+    descEditor.value = descText.innerHTML;
+    descText.style.display = 'none';
+    descForm.style.display = 'block';
+    reviewEditSaveBtn.textContent = 'Save';
+    tinymce.init({
+      selector: '#company-review-editor',
+      plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+      toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+      setup: function(editor) {
+        editor.on('init', function() {
+          editor.setContent(descText.innerHTML);
+        });
+      }
+    });
+    isEditing = true;
+  } else {
+    // Save changes
+    const content = tinymce.get('company-review-editor').getContent();
+    descText.innerHTML = content;
+    descText.style.display = 'block';
+    descForm.style.display = 'none';
+    reviewEditSaveBtn.textContent = 'Edit';
+    tinymce.get('company-review-editor').remove();
+    isEditing = false;
+    // TODO: Add AJAX here to save to backend if needed
+  }
+});
+</script>
