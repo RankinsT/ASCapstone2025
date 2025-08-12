@@ -31,24 +31,25 @@ body {
     "footer footer footer"; */
   /* grid-template-columns: repeat(3fr, 1fr); */
   /* grid-template-rows: auto auto auto auto auto auto auto; */
-  margin: 20px;
-  margin-top: 20px; /* adjust to your header's height */
+  /* margin: 20px; */
+  /* margin-top: 20px;  */
+  /* height: 100vh; */
   /* height: calc(100vh - 150px); */
-  overflow: auto;
-  background-color: #00a19ab3;
-  border-radius: 20px;
+  /* overflow: auto; */
+  /* background-color: #00a19ab3; */
+  /* border-radius: 20px;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
   border: 1px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  padding: 20px;
+  padding: 20px; */
 }
 
 .header {
-  grid-area: header;
+  /* grid-area: header; */
   /* border: 1px solid black; */
   /* width: 100vw;  */
-  height: 100px; /* or whatever you want */
+  /* height: 100px; */
   /* background-image: url("../images/25.jpg"); */
   /* background-size: auto; */
   /* background-position: center; */
@@ -115,8 +116,8 @@ body {
   font-weight: bold;
 }
 
-.reviews {
-  grid-area: reviews;
+.reviews div {
+  /* grid-area: reviews; */
   /* margin: 20px; */
   background-color: #00a19a;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
@@ -125,16 +126,14 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
   padding:20px;
+  height: 600px;
 }
 
 .reviews-p {
   padding: 20px;
 }
-.form {
-  grid-area: form;
-  /* background-color: lightgreen; */
-  /* border: 1px solid black; */
-  /* margin-bottom: 20px; */
+.form div{
+  /* grid-area: form; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -142,13 +141,14 @@ body {
   /* font-size: 1rem; */
   padding: 20px;
   /* min-width: 350px; */
-  /* margin: 20px; */
   background-color: #00a19a;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
+  height: 600px;
+  margin-bottom: 20px;
 }
 .form input {
   width: 100%;
@@ -172,8 +172,8 @@ body {
   background-color: #0056b3;
 }
 
-.companyDescription {
-  grid-area: companyDescription;
+.companyDescription div {
+  /* grid-area: companyDescription; */
   /* background-color: lightcoral; */
   padding: 20px;
   background-color: #00a19a;
@@ -182,11 +182,12 @@ body {
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
+  height:400px;
 }
 
-.carousel {
+.carousel div {
   grid-area: carousel;
-  /* height:450px; */
+  /* height:900px; */
   /* width:auto; */
   margin: 20px;
   /* padding-top: 10px; */
@@ -240,16 +241,4 @@ body {
 
 #company-description-container {
   margin: 5px;
-}
-
-.row-1 {
-  /* gap: 20px; */
-  display: flex;
-  justify-content:space-around;
-}
-
-.row-2 {
-  gap: 20px;
-  display: flex;
-  justify-content:space-around;
 }

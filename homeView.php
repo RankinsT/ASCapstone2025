@@ -51,31 +51,31 @@
         
         <!-- div /header -->
         <div class="row elements row-1">
-            <div class="reviews col-lg-7 col-md-6 col-sm-12">
+            <div class="reviews col-lg-6 col-md-6 col-sm-12">
                 <?php include 'homeViewSections/reviews.php'; ?> <!-- Include the reviews section -->
             </div>
             <!-- div /reviews -->
 
-            <form method="POST" class="form col-lg-4 col-md-6 col-sm-12">
+            <form method="POST" class="form col-lg-6 col-md-6 col-sm-12">
                 <?php include 'homeViewSections/form.php'; ?> <!-- Include the form section -->
             </form>
             <!-- div /form -->
         </div>
         
-        <div class="row elements row-2" style="margin:20px;">
+        <div class="row elements row-2">
             <div class="companyDescription col-lg-4 col-md-6 col-sm-12">
                 <?php include 'homeViewSections/companyDescription.php'; ?> <!-- Include the company description section -->
             </div>
             <!-- div /companyDescription -->
 
-            <div class="carousel col-lg-7 col-md-7 col-sm-12" style="margin:20px; height: 450px;">
+            <div class="carousel col-lg-7 col-md-8 col-sm-12">
                 <?php include 'homeViewSections/carousel.php'; ?> 
                 <!-- Include the carousel section -->
             </div>
             <!-- div /carousel -->
         </div>
         
-        <div class="row elements" style="margin:50px;">
+        <div class="row elements">
             <div class="services col-lg-12 col-md-12 col-sm-12">
                 <?php include 'homeViewSections/services.php'; ?> <!-- Include the services section -->
             </div>
@@ -96,7 +96,7 @@
         <div class="footer">
             <?php include 'homeViewSections/footer.php'; ?> <!-- Include the footer section -->
         </div>
-        <!-- div /footer -->
+        div /footer
 
     </div>
     <!-- div /grid-container -->

@@ -1,6 +1,6 @@
 
 <div id="company-review-container">
-  <p id="company-review-text">Welcome to TinyMCE!</p>
+  <p id="company-review-text">[Your Company Name] is a locally owned and operated small business based in Coventry, Connecticut, specializing in professional pool table moving, setup, and installation. We pride ourselves on delivering reliable, careful, and friendly service to ensure your pool table is transported and reassembled with the utmost care. Whether you’re relocating across town, setting up a new game room, or need expert leveling for the perfect play, we bring the tools, skill, and experience to get the job done right. As a small business, we value personal connections with our customers and go the extra mile to provide top-quality service at fair prices.</p>
   <form id="company-review-form" style="display:none;">
     <textarea id="company-review-editor">Welcome to TinyMCE!</textarea>
   </form>
