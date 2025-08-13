@@ -240,6 +240,14 @@ body {
   justify-content: space-evenly;
 }
 
+.location-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.location-header h1 {
+  border-bottom: 5px solid black;
+}
+
 .states {
   display: flex;
   flex-direction: column;
