@@ -207,3 +207,81 @@ function showEditCustomerForm(customer) {
   // Submit the form programmatically (sends data to server)
   form.submit();
 }
+
+// tinymce function
+function initEditableSection({
+  editButtonId,
+  textElementId,
+  formId,
+  editorId
+}) {
+  let isEditing = false;
+
+  const editBtn = document.getElementById(editButtonId);
+  const textEl = document.getElementById(textElementId);
+  const formEl = document.getElementById(formId);
+  const editorEl = document.getElementById(editorId);
+
+  editBtn.addEventListener('click', function() {
+    if (!isEditing) {
+      // Switch to edit mode
+      editorEl.value = textEl.innerHTML;
+      textEl.style.display = 'none';
+      formEl.style.display = 'block';
+      editBtn.textContent = 'Save';
+
+      tinymce.init({
+        selector: `#${editorId}`,
+        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+
+        // Allow selecting images from local device
+        automatic_uploads: true,
+        file_picker_types: 'image',
+        file_picker_callback: function(cb, value, meta) {
+          let input = document.createElement('input');
+          input.setAttribute('type', 'file');
+          input.setAttribute('accept', 'image/*');
+
+          input.onchange = function() {
+            let file = this.files[0];
+            let reader = new FileReader();
+
+            reader.onload = function() {
+              cb(reader.result, { title: file.name });
+            };
+            reader.readAsDataURL(file);
+          };
+
+          input.click();
+        },
+
+        setup: function(editor) {
+          editor.on('init', function() {
+            editor.setContent(textEl.innerHTML);
+          });
+        }
+      });
+
+      isEditing = true;
+    } else {
+      // Save changes
+      const content = tinymce.get(editorId).getContent();
+      textEl.innerHTML = content;
+      textEl.style.display = 'block';
+      formEl.style.display = 'none';
+      editBtn.textContent = 'Edit';
+      tinymce.get(editorId).remove();
+      isEditing = false;
+
+      // TODO: Add AJAX save if needed
+    }
+  });
+}
+// how to call
+// initEditableSection({
+//   editButtonId: 'reviews-edit-save-btn',
+//   textElementId: 'reviews-text',
+//   formId: 'reviews-form',
+//   editorId: 'reviews-editor'
+// });
