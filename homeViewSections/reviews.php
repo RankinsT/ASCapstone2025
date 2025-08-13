@@ -1,5 +1,5 @@
 <div id="reviews-container">
-  <p id="reviews-text" style="margin: 20px;">
+  <p id="reviews-text">
     "I can’t say enough good things about [Your Company Name]! From start to finish, the team was professional, punctual, and incredibly careful with my pool table. They handled every step of the move with precision—disassembly, transport, and reassembly—making sure it was perfectly leveled and ready to play. You can tell they really care about their work and their customers. It’s rare to find a small business that’s this reliable, friendly, and affordable. If you need a pool table moved anywhere in Connecticut, these are the people to call!"
   </p>
 

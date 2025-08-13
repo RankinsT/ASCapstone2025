@@ -1,3 +1,10 @@
+html, body {
+  font-family: Arial, sans-serif;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
 body {
   background: #007bff;
   background: linear-gradient(
@@ -5,7 +12,6 @@ body {
     rgba(0, 123, 255, 1) 0%,
     rgba(0, 42, 87, 1) 100%
   );
-  /* overflow: hidden; */
   margin: 0;
 }
 
@@ -14,46 +20,15 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  /* width: 100vw; */
   z-index: 1000;
   background: inherit;
 }
 
 .grid-container {
-  /* display: grid;
-  grid-template-areas:
-    "admin-header admin-header admin-header"
-    "header header header"
-    "reviews reviews form"
-    "companyDescription carousel carousel"
-    "services services services"
-    "locations locations map"
-    "footer footer footer"; */
-  /* grid-template-columns: repeat(3fr, 1fr); */
-  /* grid-template-rows: auto auto auto auto auto auto auto; */
-  /* margin: 20px; */
-  /* margin-top: 20px;  */
   height: fit-content;
-  /* height: calc(100vh - 150px); */
-  /* overflow: auto; */
-  /* background-color: #00a19ab3; */
-  /* border-radius: 20px;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  padding: 20px; */
 }
 
 .header {
-  /* grid-area: header; */
-  /* border: 1px solid black; */
-  /* width: 100vw;  */
-  /* height: 100px; */
-  /* background-image: url("../images/25.jpg"); */
-  /* background-size: auto; */
-  /* background-position: center; */
-  /* background-repeat: no-repeat; */
   display: flex;
   padding: 10px;
   justify-content: space-between;
@@ -65,10 +40,7 @@ body {
   z-index: 1000;
 }
 
-/* .header-img {
-    display: flex;
-    flex-direction: column;
-} */
+
 
 .logo-img {
   width: 100px;
@@ -77,7 +49,6 @@ body {
   border-radius: 50%;
   background: #f0f0f0;
   display: block;
-  /* margin: 0 auto 20px auto; */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   transition: opacity 0.5s ease;
 }
@@ -89,8 +60,6 @@ body {
 }
 
 .phone-num-btn {
-  /* border: 1px solid black; */
-  /* background-color: chocolate; */
   display: flex;
   flex-direction: column;
   background: rgba(255, 255, 255, 0.18);
@@ -100,7 +69,6 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
   margin: 20px;
-  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); */
 }
 .phone-num-btn:hover {
   background-color: #00a19a;
@@ -125,16 +93,25 @@ body {
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 20px;
+  /* border: 1px solid rgba(255, 255, 255, 0.3); */
+  /* border-radius: 20px; */
   padding:20px;
   height: 600px;
   margin-bottom: 20px;
 }
+/* .reviews-container {
+  background-color: #00a19a;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  margin: 20px;
+} */
 
-.reviews-p {
+#reviews-text {
   padding: 20px;
   overflow: hidden;
+  margin: 20px;
 }
 
 #reviews-text img {
@@ -145,27 +122,22 @@ body {
 
 /* Optional: limit height so it never covers buttons */
 #reviews-text img {
-  max-height: 300px; /* adjust as needed */
+  max-height: 300px;
   object-fit: contain;
 }
 
 .form div{
-  /* grid-area: form; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* margin: 30px; */
-  /* font-size: 1rem; */
   padding: 20px;
-  /* min-width: 350px; */
   background-color: #00a19a;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 20px;
+  /* border-radius: 20px; */
   height: 600px;
-  /* margin-bottom: 20px; */
 }
 .form input {
   width: 100%;
@@ -190,13 +162,13 @@ body {
 }
 
 .company-decription-container, .companyDescription {
-  padding: 20px;
+  /* padding: 20px; */
   background-color: #00a19a;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 20px;
+  /* border-radius: 20px; */
   height:800px;
   display: flex;
   flex-direction: column;
@@ -209,9 +181,13 @@ body {
 #company-description-text img {
   max-width: 100%;
   height: auto;
-  max-height: 300px; /* keeps tall images from covering the button */
+  max-height: 300px;
   object-fit: contain;
   display: block;
+}
+#company-description-text {
+  padding: 20px;
+  overflow: hidden;
 }
 
 .carousel {
@@ -221,25 +197,18 @@ body {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 20px;
+  /* border-radius: 20px; */
   height: 800px;
   display: flex;
-  /* flex-direction: column; */
   align-items: center;
   justify-content: center;
 }
 
 .services {
-  /* grid-area: services; */
-  /* background-color: #00a19a; */
-  /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18); */
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  /* border: 1px solid rgba(255, 255, 255, 0.3); */
-  border-radius: 20px;
-  /* height: 500px; */
+  /* border-radius: 20px; */
   display: flex;
-  /* align-items: center; */
   justify-content: space-evenly;
   align-items: center;
   
@@ -251,7 +220,7 @@ body {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 20px;
+  /* border-radius: 20px; */
   height: 600px;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -299,15 +268,13 @@ body {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 20px;
+  /* border-radius: 20px; */
 }
 
 footer, footer a {
-  /* background-color: #00a19a; */
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  /* border: 1px solid rgba(255, 255, 255, 0.3); */
   display: flex;
   justify-content: center;
   color: white;
@@ -320,7 +287,7 @@ footer div {
 .row-2 {
   display: flex;
   flex-direction: row;
-  gap: 20px; /* optional, for spacing between columns */
+  gap: 20px;
   width: 100%;
 }
 
@@ -328,25 +295,24 @@ footer div {
     background-color: rgba(0, 0, 0, 0.75);
     color: white;
     padding: 20px;
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
 
 .service-outer-div {
   padding: 10px;
-  /* margin: 20px; */
   background-color: #00a19a;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 20px;
+  /* border-radius: 20px; */
   min-height: 300px;
   min-width: 600px;
 }
 .service-inner-div {
   background-color: #046879;
   padding: 20px;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   min-height: 280px;
 }
 
