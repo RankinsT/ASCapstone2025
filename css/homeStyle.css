@@ -240,7 +240,9 @@ body {
   /* height: 500px; */
   display: flex;
   /* align-items: center; */
-  justify-content: space-around;
+  justify-content: space-evenly;
+  align-items: center;
+  
 }
 
 .location-panel {
@@ -331,18 +333,21 @@ footer div {
 
 .service-outer-div {
   padding: 10px;
-  margin: 20px;
+  /* margin: 20px; */
   background-color: #00a19a;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
-  height: 300px;
+  min-height: 300px;
+  min-width: 600px;
 }
 .service-inner-div {
   background-color: #046879;
   padding: 20px;
   border-radius: 20px;
-  height: 280px;
+  min-height: 280px;
 }
+
+

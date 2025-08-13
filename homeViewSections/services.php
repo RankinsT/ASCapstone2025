@@ -9,7 +9,6 @@
                     </form>
                     <button id="service-img-edit-save-btn1" type="button">Edit</button>
             </div>
-            <div class="service-text"></div>
         </div>
     </div>
 
@@ -47,14 +46,12 @@
 
     <div class="service-outer-div">
         <div class="service-inner-div">
-            <div class="service-img"></div>
             <div class="service-text"></div>
         </div>
     </div>
 
     <div class="service-outer-div">
         <div class="service-inner-div">
-            <div class="service-img"></div>
             <div class="service-text"></div>
         </div>
     </div>
