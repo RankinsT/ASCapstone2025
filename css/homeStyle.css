@@ -227,6 +227,7 @@ body {
   border-radius: 20px;
   height: 600px;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .map {
@@ -240,9 +241,19 @@ body {
   border-radius: 20px;
 }
 
-.footer {
-  grid-area: footer;
-  background-color: #00a19ab3;
+footer {
+  background-color: #00a19a;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+}
+footer div {
+  display: flex;
+  justify-content: center;
 }
 
 .row-2 {

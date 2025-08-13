@@ -93,14 +93,9 @@
             </div>
             <!-- div /locations -->
 
-        <div class="map">
-            <?php include 'homeViewSections/map.php'; ?> <!-- Include the map section -->
-        </div>
-        <!-- div /map -->
-
-        <div class="footer">
+        <footer class="row elements row-5">
             <?php include 'homeViewSections/footer.php'; ?> <!-- Include the footer section -->
-        </div>
+        </footer>
 
     </div>
     <!-- div /grid-container -->
