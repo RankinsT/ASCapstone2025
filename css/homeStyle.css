@@ -116,7 +116,7 @@ body {
   font-weight: bold;
 }
 
-.reviews div {
+.reviews {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -133,7 +133,21 @@ body {
 
 .reviews-p {
   padding: 20px;
+  overflow: hidden;
 }
+
+#reviews-text img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Optional: limit height so it never covers buttons */
+#reviews-text img {
+  max-height: 300px; /* adjust as needed */
+  object-fit: contain;
+}
+
 .form div{
   /* grid-area: form; */
   display: flex;
