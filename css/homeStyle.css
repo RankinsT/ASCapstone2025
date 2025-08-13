@@ -211,7 +211,6 @@ body {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  
 }
 
 .location-panel {
@@ -307,7 +306,8 @@ footer div {
   border: 1px solid rgba(255, 255, 255, 0.3);
   /* border-radius: 20px; */
   min-height: 300px;
-  min-width: 600px;
+  min-width: 400px;
+  margin: 20px;
 }
 .service-inner-div {
   background-color: #046879;
