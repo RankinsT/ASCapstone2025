@@ -246,6 +246,16 @@ body {
   justify-content: space-evenly;
 }
 
+.locations-right {
+  background-image: url('../images/states.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 50%;
+  height: 100%;
+  border-radius: 20px;
+}
+
 .map {
   grid-area: map;
   /* background-color: lightcyan; */

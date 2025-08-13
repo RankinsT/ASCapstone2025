@@ -13,6 +13,6 @@
         </div>
     </div>
     <div class="locations-right">
-        <h2>Location 2</h2>
+        
     </div>
 </div>
