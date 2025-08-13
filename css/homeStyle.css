@@ -204,6 +204,15 @@ body {
   margin-bottom: 20px;
 }
 
+ /* Make inserted images responsive and prevent them from hiding the button */
+#company-description-text img {
+  max-width: 100%;
+  height: auto;
+  max-height: 300px; /* keeps tall images from covering the button */
+  object-fit: contain;
+  display: block;
+}
+
 .carousel {
   padding: 20px;
   background-color: #00a19a;
