@@ -1,76 +1,54 @@
-<div id="reviews-container">
-  <p id="reviews-text">
-    "I can’t say enough good things about [Your Company Name]! From start to finish, the team was professional, punctual, and incredibly careful with my pool table. They handled every step of the move with precision—disassembly, transport, and reassembly—making sure it was perfectly leveled and ready to play. You can tell they really care about their work and their customers. It’s rare to find a small business that’s this reliable, friendly, and affordable. If you need a pool table moved anywhere in Connecticut, these are the people to call!"
-  </p>
-
-  <form action="" id="reviews-form" style="display:none;">
-    <textarea id="reviews-editor">Welcome to TinyMCE!</textarea>
+<div id="reviews">
+  <div id="review-text1">“I was nervous about moving my 8-foot pool table, but this team made it completely stress-free. They arrived on time, handled everything with care, and had it set up perfectly in my new game room. Highly professional and efficient—definitely recommend them to anyone needing a pool table moved safely!”</div>
+  <form action="" id="review-form1" style="display:none;">
+    <textarea id="review-editor1">Welcome to TinyMCE!</textarea>
   </form>
-  <button id="reviews-edit-save-btn" type="button">Edit</button>
+  <button id="review-edit-save-btn1" type="button">Edit</button>
+</div>
+
+<div id="review2">
+  <div id="review-text2">“Great experience overall. The movers were friendly, careful, and worked quickly. My only minor issue was that the setup took a little longer than expected, but the job was done right, and my pool table arrived without a scratch. I would hire them again in a heartbeat.”</div>
+  <form action="" id="review-form2" style="display:none;">
+    <textarea id="review-editor2">Welcome to TinyMCE!</textarea>
+  </form>
+  <button id="review-edit-save-btn2" type="button">Edit</button>
+</div>
+
+<div id="review3">
+  <div id="review-text3">“Exceptional service from start to finish. The crew communicated clearly, protected all corners of my table, and navigated some tricky stairs without a problem. They even gave me tips for maintaining the table after the move. Worth every penny!”</div>
+  <form action="" id="review-form3" style="display:none;">
+    <textarea id="review-editor3">Welcome to TinyMCE!</textarea>
+  </form>
+  <button id="review-edit-save-btn3" type="button">Edit</button>
 </div>
 
 <script>
-let isReviewsEditing = false;
+document.addEventListener('DOMContentLoaded', function() {
+    function debugInitEditableSection(opts) {
+        console.log('Initializing editable section:', opts);
+        // Initialize TinyMCE or any other editor here
+    }
 
-const reviewsEditSaveBtn = document.getElementById('reviews-edit-save-btn');
-const reviewsText = document.getElementById('reviews-text');
-const reviewsForm = document.getElementById('reviews-form');
-const reviewsEditor = document.getElementById('reviews-editor');
-
-reviewsEditSaveBtn.addEventListener('click', function() {
-  if (!isReviewsEditing) {
-    // Switch to edit mode
-    reviewsEditor.value = reviewsText.innerHTML;
-    reviewsText.style.display = 'none';
-    reviewsForm.style.display = 'block';
-    reviewsEditSaveBtn.textContent = 'Save';
-
-    tinymce.init({
-      selector: '#reviews-editor',
-      plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-      toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-
-      // Allow selecting images from local device
-      automatic_uploads: true,
-      file_picker_types: 'image',
-      file_picker_callback: function (cb, value, meta) {
-        let input = document.createElement('input');
-        input.setAttribute('type', 'file');
-        input.setAttribute('accept', 'image/*');
-
-        input.onchange = function () {
-          let file = this.files[0];
-          let reader = new FileReader();
-
-          reader.onload = function () {
-            // Insert as base64 string
-            cb(reader.result, { title: file.name });
-          };
-          reader.readAsDataURL(file);
-        };
-
-        input.click();
-      },
-
-      setup: function(editor) {
-        editor.on('init', function() {
-          editor.setContent(reviewsText.innerHTML);
-        });
-      }
+    // Initialize each review section
+    debugInitEditableSection({
+        id: 'review-text1',
+        formId: 'review-form1',
+        editorId: 'review-editor1',
+        buttonId: 'review-edit-save-btn1'
     });
 
-    isReviewsEditing = true;
-  } else {
-    // Save changes
-    const content = tinymce.get('reviews-editor').getContent();
-    reviewsText.innerHTML = content;
-    reviewsText.style.display = 'block';
-    reviewsForm.style.display = 'none';
-    reviewsEditSaveBtn.textContent = 'Edit';
-    tinymce.get('reviews-editor').remove();
-    isReviewsEditing = false;
+    debugInitEditableSection({
+        id: 'review-text2',
+        formId: 'review-form2',
+        editorId: 'review-editor2',
+        buttonId: 'review-edit-save-btn2'
+    });
 
-    // TODO: Add AJAX here to save to backend if needed
-  }
+    debugInitEditableSection({
+        id: 'review-text3',
+        formId: 'review-form3',
+        editorId: 'review-editor3',
+        buttonId: 'review-edit-save-btn3'
+    });
 });
 </script>

@@ -2,7 +2,6 @@
     <div class="service-outer-div">
         <div class="service-inner-div">
             <div class="service-img">
-                <p id="service-img1"></p>
                     <div id="service-img-text1" style="margin: 20px;">[Service Description 1]</div>
                     <form action="" id="service-img-form1" style="display:none;">
                         <textarea name="service-img-editor1" id="service-img-editor1">Welcome to TinyMCE!</textarea>
@@ -14,7 +13,6 @@
 
     <div class="service-outer-div">
         <div class="service-inner-div">
-            <div class="service-img"></div>
             <div id="service-img-text2" style="margin: 20px;">[Service Description 2]</div>
             <form action="" id="service-img-form2" style="display:none;">
                 <textarea name="service-img-editor2" id="service-img-editor2">Welcome to TinyMCE!</textarea>
@@ -25,7 +23,6 @@
 
     <div class="service-outer-div">
         <div class="service-inner-div">
-            <div class="service-img"></div>
             <div id="service-img-text3" style="margin: 20px;">[Service Description 3]</div>
             <form action="" id="service-img-form3" style="display:none;">
                 <textarea name="service-img-editor3" id="service-img-editor3">Welcome to TinyMCE!</textarea>
