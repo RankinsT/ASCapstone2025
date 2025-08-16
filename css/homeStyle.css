@@ -18,12 +18,7 @@
   overflow-x: hidden;
 } */
 body {
-  background: #007bff;
-  background: linear-gradient(
-    0deg,
-    rgba(0, 123, 255, 1) 0%,
-    rgba(0, 42, 87, 1) 100%
-  );
+  background: linear-gradient(135deg, #354444 0%, #4e5d5d 50%, #222c2c 100%);
   margin: 0;
 }
 
