@@ -3,7 +3,9 @@
   <form action="" id="review-form1" style="display:none;">
     <textarea id="review-editor1">Welcome to TinyMCE!</textarea>
   </form>
-  <button id="review-edit-save-btn1" type="button">Edit</button>
+  <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+    <button id="review-edit-save-btn1" type="button">Edit</button>
+  <?php } ?>
 </div>
 
 <div id="review2">
@@ -11,7 +13,9 @@
   <form action="" id="review-form2" style="display:none;">
     <textarea id="review-editor2">Welcome to TinyMCE!</textarea>
   </form>
-  <button id="review-edit-save-btn2" type="button">Edit</button>
+  <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+    <button id="review-edit-save-btn2" type="button">Edit</button>
+  <?php } ?>
 </div>
 
 <div id="review3">
@@ -19,7 +23,9 @@
   <form action="" id="review-form3" style="display:none;">
     <textarea id="review-editor3">Welcome to TinyMCE!</textarea>
   </form>
-  <button id="review-edit-save-btn3" type="button">Edit</button>
+  <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+    <button id="review-edit-save-btn3" type="button">Edit</button>
+  <?php } ?>
 </div>
 
 <script>

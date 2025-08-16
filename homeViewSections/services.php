@@ -8,7 +8,9 @@
                 <form action="" id="service-img-form1" style="display:none;">
                     <textarea name="service-img-editor1" id="service-img-editor1">Welcome to TinyMCE!</textarea>
                 </form>
-                <button id="service-img-edit-save-btn1" type="button">Edit</button>
+                        <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                            <button id="service-img-edit-save-btn1" type="button">Edit</button>
+                        <?php } ?>
             </div>
         </div>
         <div class="service-outer-div">
@@ -18,7 +20,9 @@
                 <form action="" id="service-img-form2" style="display:none;">
                     <textarea name="service-img-editor2" id="service-img-editor2">Welcome to TinyMCE!</textarea>
                 </form>
-                <button id="service-img-edit-save-btn2" type="button">Edit</button>
+                        <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                            <button id="service-img-edit-save-btn2" type="button">Edit</button>
+                        <?php } ?>
             </div>
         </div>
         <div class="service-outer-div">
@@ -28,7 +32,9 @@
                 <form action="" id="service-img-form3" style="display:none;">
                     <textarea name="service-img-editor3" id="service-img-editor3">Welcome to TinyMCE!</textarea>
                 </form>
-                <button id="service-img-edit-save-btn3" type="button">Edit</button>
+                        <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                            <button id="service-img-edit-save-btn3" type="button">Edit</button>
+                        <?php } ?>
             </div>
         </div>
     </div>
@@ -40,7 +46,9 @@
                 <form action="" id="service-img-form4" style="display:none;">
                     <textarea name="service-img-editor4" id="service-img-editor4">Welcome to TinyMCE!</textarea>
                 </form>
-                <button id="service-img-edit-save-btn4" type="button">Edit</button>
+                        <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                            <button id="service-img-edit-save-btn4" type="button">Edit</button>
+                        <?php } ?>
             </div>
         </div>
         <div class="service-outer-div">
@@ -50,7 +58,9 @@
                 <form action="" id="service-img-form5" style="display:none;">
                     <textarea name="service-img-editor5" id="service-img-editor5">Welcome to TinyMCE!</textarea>
                 </form>
-                <button id="service-img-edit-save-btn5" type="button">Edit</button>
+                        <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                            <button id="service-img-edit-save-btn5" type="button">Edit</button>
+                        <?php } ?>
             </div>
         </div>
         <div class="service-outer-div">
@@ -60,7 +70,9 @@
                 <form action="" id="service-img-form6" style="display:none;">
                     <textarea name="service-img-editor6" id="service-img-editor6">Welcome to TinyMCE!</textarea>
                 </form>
-                <button id="service-img-edit-save-btn6" type="button">Edit</button>
+                        <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                            <button id="service-img-edit-save-btn6" type="button">Edit</button>
+                        <?php } ?>
             </div>
         </div>
     </div>

@@ -5,7 +5,9 @@
   <form id="company-description-form" style="display:none;">
     <textarea id="company-description-editor">Welcome to TinyMCE!</textarea>
   </form>
-  <button id="edit-save-btn" type="button">Edit</button>
+  <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+    <button id="edit-save-btn" type="button">Edit</button>
+  <?php } ?>
 </div>
 
 <script>
