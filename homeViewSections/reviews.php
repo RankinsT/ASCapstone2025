@@ -1,5 +1,5 @@
 <div id="reviews">
-  <div id="review-text1" class="review-divs">“I was nervous about moving my 8-foot pool table, but this team made it completely stress-free. They arrived on time, handled everything with care, and had it set up perfectly in my new game room. Highly professional and efficient—definitely recommend them to anyone needing a pool table moved safely!”</div>
+  <div id="review-text1" class="review-divs">“I was nervous about moving my 8-foot pool table, but this team made it completely stress-free. They arrived on time, handled everything with care, and had it set up perfectly in my new game room. Highly professional and efficient—definitely recommend them to anyone needing a pool table moved safely!”<div><span class="review-stars" style="color: gold; font-size: 1.5em;">★★★★★</span></div></div>
   <form action="" id="review-form1" style="display:none;">
     <textarea id="review-editor1">Welcome to TinyMCE!</textarea>
   </form>
@@ -7,7 +7,7 @@
 </div>
 
 <div id="review2">
-  <div id="review-text2" class="review-divs">“Great experience overall. The movers were friendly, careful, and worked quickly. My only minor issue was that the setup took a little longer than expected, but the job was done right, and my pool table arrived without a scratch. I would hire them again in a heartbeat.”</div>
+  <div id="review-text2" class="review-divs">“Great experience overall. The movers were friendly, careful, and worked quickly. My only minor issue was that the setup took a little longer than expected, but the job was done right, and my pool table arrived without a scratch. I would hire them again in a heartbeat.”<div><span class="review-stars" style="color: gold; font-size: 1.5em;">★★★★★</span></div></div>
   <form action="" id="review-form2" style="display:none;">
     <textarea id="review-editor2">Welcome to TinyMCE!</textarea>
   </form>
@@ -15,7 +15,7 @@
 </div>
 
 <div id="review3">
-  <div id="review-text3" class="review-divs">“Exceptional service from start to finish. The crew communicated clearly, protected all corners of my table, and navigated some tricky stairs without a problem. They even gave me tips for maintaining the table after the move. Worth every penny!”</div>
+  <div id="review-text3" class="review-divs">“Exceptional service from start to finish. The crew communicated clearly, protected all corners of my table, and navigated some tricky stairs without a problem. They even gave me tips for maintaining the table after the move. Worth every penny!”<div><span class="review-stars" style="color: gold; font-size: 1.5em;">★★★★★</span></div></div>
   <form action="" id="review-form3" style="display:none;">
     <textarea id="review-editor3">Welcome to TinyMCE!</textarea>
   </form>
