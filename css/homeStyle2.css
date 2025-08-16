@@ -1,0 +1,45 @@
+/* header */
+.header {
+    display: flex;
+    /* justify-content: space-between;
+    align-items: center; */
+}
+.logo-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  background: #f0f0f0;
+  display: block;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: opacity 0.5s ease;
+}
+
+.logo-img.hide-on-scroll {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+/* .phone-num-btn {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  margin: 20px;
+}
+.phone-num-btn:hover {
+  background-color: #00a19a;
+  transition: background-color 0.3s ease;
+}
+.phone-num-btn p {
+  margin: 0px;
+}
+.phone-num-btn p a, p {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+} */
