@@ -330,4 +330,7 @@ footer div {
   padding: 20px;
   /* border-radius: 20px; */
   min-height: 280px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
