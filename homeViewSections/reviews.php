@@ -24,23 +24,13 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  initEditableSection({
-    editButtonId: 'review-edit-save-btn1',
-    textElementId: 'review-text1',
-    formId: 'review-form1',
-    editorId: 'review-editor1'
-  });
-  initEditableSection({
-    editButtonId: 'review-edit-save-btn2',
-    textElementId: 'review-text2',
-    formId: 'review-form2',
-    editorId: 'review-editor2'
-  });
-  initEditableSection({
-    editButtonId: 'review-edit-save-btn3',
-    textElementId: 'review-text3',
-    formId: 'review-form3',
-    editorId: 'review-editor3'
-  });
+  for (let i = 1; i <= 3; i++) {
+    initEditableSection({
+      editButtonId: `review-edit-save-btn${i}`,
+      textElementId: `review-text${i}`,
+      formId: `review-form${i}`,
+      editorId: `review-editor${i}`
+    });
+  }
 });
 </script>
