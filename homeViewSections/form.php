@@ -1,7 +1,7 @@
 <div class="quote-container quote-show">
     <div>
         <div><h2>Free Quote</h2></div>
-        <div><p>Get a free quote for your project today!</p></div>
+        <div><p>Get a free quote today!</p></div>
     </div>
     <div class="customer-info">
         <div>
@@ -29,7 +29,7 @@
 <div class="quote-container quote-hide">
     <div>
         <div><h2>Free Quote</h2></div>
-        <div><p>Get a free quote for your project today!</p></div>
+        <div><p>Get a free quote today!</p></div>
     </div>
     <div class="customer-info">
         <div>
