@@ -2,7 +2,7 @@
 
 if(isset($_POST['send-btn'])) {
     echo "form submitted";
-    
+
     $firstName = filter_input(INPUT_POST, 'firstName', FILTER_SANITIZE_STRING);
     $lastName = filter_input(INPUT_POST, 'lastName', FILTER_SANITIZE_STRING);
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
@@ -12,7 +12,7 @@ if(isset($_POST['send-btn'])) {
     $city = filter_input(INPUT_POST, 'city', FILTER_SANITIZE_STRING);
     $state = filter_input(INPUT_POST, 'state', FILTER_SANITIZE_STRING);
     $zip = filter_input(INPUT_POST, 'zip', FILTER_SANITIZE_STRING);
-    $serviceRequested = filter_input(INPUT_POST, 'notes', FILTER_SANITIZE_STRING);
+    $serviceRequested = filter_input(INPUT_POST, 'service-requested', FILTER_SANITIZE_STRING);
     $notes = filter_input(INPUT_POST, 'notes', FILTER_SANITIZE_STRING);
 
     requestQuote($firstName, $lastName, $email, $phoneNumber, $street, $apt, $city, $state, $zip, $serviceRequested, $notes);
@@ -90,7 +90,7 @@ if(isset($_POST['send-btn'])) {
     <div class="customer-info">
         <div>
             <div>
-                <select name="notes" id="notes" style="width:100%;">
+                <select name="service-requested" id="service-requested" style="width:100%;">
                     <option value="">Service Requested</option>
                     <option value="Felt Replacement & Repairs">Felt Replacement & Repairs</option>
                     <option value="In-Home Relocation">In-Home Relocation</option>
