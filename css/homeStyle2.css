@@ -6,9 +6,9 @@ body {
 
 /* header */
 .header {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
 }
 .logo-img {
   width: 100px;
@@ -52,11 +52,21 @@ body {
 #reviews {
   display: flex;
   flex-direction: column;
+  max-width: 500px;
+  width: 100%;
 }
 .review-divs {
   display: flex;
   justify-content: space-between;
+  background-color: #046879;
 }
 .review-divs p {
   width: 800px;
+}
+.row-1 {
+  display: flex;
+}
+.review-stars {
+  display: flex;
+  align-items: center;
 }

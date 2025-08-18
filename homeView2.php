@@ -55,15 +55,15 @@
      </div>
     <!-- end header -->
     
-    <!-- review/form -->
-     <div class="row elements row-1">
-        <div class="reviews col-lg-6" id="reviews">
-            <div id="review-text1" class="review-divs">
-                <p>
-                    “I was nervous about moving my 8-foot pool table, but this team made it completely stress-free. They arrived on time, handled everything with care, and had it set up perfectly in my new game room. Highly professional and efficient—definitely recommend them to anyone needing a pool table moved safely!”
-                </p>
 
-                <span class="review-stars" style="color: gold; font-size: 3em;">★★★★★</span>
+        <!-- review/form -->
+        <div class="review-quote-flex" style="display: flex; gap: 40px; align-items: flex-start;">
+            <div class="reviews" id="reviews" style="display: flex; flex-direction: column; flex: 1; max-width: 500px;">
+                <div id="review-text1" class="review-divs">
+                    <p>
+                        “I was nervous about moving my 8-foot pool table, but this team made it completely stress-free. They arrived on time, handled everything with care, and had it set up perfectly in my new game room. Highly professional and efficient—definitely recommend them to anyone needing a pool table moved safely!”
+                    </p>
+                    <span class="review-stars" style="color: gold; font-size: 3em;">★★★★★</span>
                 </div>
                 <form action="" id="review-form1" style="display: none;">
                     <textarea name="" id="review-editor1"></textarea>
@@ -71,14 +71,12 @@
                 <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
                     <button id="review-edit-save-btn1" type="button">Edit</button>
                 <?php } ?>
-            </div>
 
-            <div id="review-text2" class="review-divs">
-                <p>
-                    “Great experience overall. The movers were friendly, careful, and worked quickly. My only minor issue was that the setup took a little longer than expected, but the job was done right, and my pool table arrived without a scratch. I would hire them again in a heartbeat.”
-                </p>
-
-                <span class="review-stars" style="color: gold; font-size: 3em;">★★★★★</span>
+                <div id="review-text2" class="review-divs">
+                    <p>
+                        “Great experience overall. The movers were friendly, careful, and worked quickly. My only minor issue was that the setup took a little longer than expected, but the job was done right, and my pool table arrived without a scratch. I would hire them again in a heartbeat.”
+                    </p>
+                    <span class="review-stars" style="color: gold; font-size: 3em;">★★★★★</span>
                 </div>
                 <form action="" id="review-form2" style="display: none;">
                     <textarea name="" id="review-editor2"></textarea>
@@ -86,14 +84,12 @@
                 <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
                     <button id="review-edit-save-btn2" type="button">Edit</button>
                 <?php } ?>
-            </div>
 
-            <div id="review-text3" class="review-divs">
-                <p>
-                    “Exceptional service from start to finish. The crew communicated clearly, protected all corners of my table, and navigated some tricky stairs without a problem. They even gave me tips for maintaining the table after the move. Worth every penny!”
-                </p>
-
-                <span class="review-stars" style="color: gold; font-size: 3em;">★★★★★</span>
+                <div id="review-text3" class="review-divs">
+                    <p>
+                        “Exceptional service from start to finish. The crew communicated clearly, protected all corners of my table, and navigated some tricky stairs without a problem. They even gave me tips for maintaining the table after the move. Worth every penny!”
+                    </p>
+                    <span class="review-stars" style="color: gold; font-size: 3em;">★★★★★</span>
                 </div>
                 <form action="" id="review-form3" style="display: none;">
                     <textarea name="" id="review-editor3"></textarea>
@@ -103,11 +99,107 @@
                 <?php } ?>
             </div>
 
-        </div>
+            <div class="form" style="flex: 1; min-width: 320px;">
+                <form action="" method="POST">
+                    <div class="quote-container quote-show">
+                        <div>
+                            <div><h2>Free Quote</h2></div>
+                            <div><p>Get a free quote today!</p></div>
+                        </div>
+                        <div class="customer-info">
+                            <div>
+                                <div><input type="text" name="firstName" placeholder="First Name*" required></div>
+                            </div>
+                            <div>
+                                <div><input type="text" name="lastName" placeholder="Last Name*" required></div>
+                            </div>
+                            <div><input type="text" name="email" placeholder="Email*" required></div>
+                            <div><input type="text" name="phone" placeholder="Phone"></div>
+                        </div>
+                        <div class="form-btns-container">
+                            <div>
+                                <!-- <button>previous</button> -->
+                            </div>
+                            <div>
+                                <button type="button">next</button>
+                            </div>
+                        </div>
+                        <div class="progression-bar">
+                            <div>Progression bar</div>
+                        </div>
+                    </div>
 
-        <div class="form col-lg-6"></div>
-     </div>
-    <!-- end review/form -->
+                    <div class="quote-container quote-hide">
+                        <div>
+                            <div><h2>Free Quote</h2></div>
+                            <div><p>Get a free quote today!</p></div>
+                        </div>
+                        <div class="customer-info">
+                            <div>
+                                <div><input type="text" name="street" placeholder="Street Address*" required></div>
+                            </div>
+                            <div><input type="text" name="unit" placeholder="Unit/Apt"></div>
+                            <div>
+                                <div><input type="text" name="city" placeholder="City*" required></div>
+                            </div>
+                            <div>
+                                <div><input type="text" name="state" placeholder="State*" required></div>
+                            </div>
+                            <div>
+                                <div><input type="text" name="zip" placeholder="Zip Code*" required></div>
+                            </div>
+                        </div>
+                        <div class="form-btns-container">
+                            <div>
+                                <button type="button">previous</button>
+                            </div>
+                            <div>
+                                <button type="button">next</button>
+                            </div>
+                        </div>
+                        <div class="progression-bar">
+                            <div>Progression bar</div>
+                        </div>
+                    </div>
+
+                    <div class="quote-container quote-hide">
+                        <div>
+                            <div><h2>Free Quote</h2></div>
+                            <div><p>Get a free quote today!</p></div>
+                        </div>
+                        <div class="customer-info">
+                            <div>
+                                <div>
+                                    <select name="service-requested[]" id="service-requested" style="width:100%;" multiple>
+                                        <option value="Felt Replacement & Repairs">1. Felt Replacement & Repairs</option>
+                                        <option value="In-Home Relocation">2. In-Home Relocation</option>
+                                        <option value="Long-Distance Moves">3. Long-Distance Moves</option>
+                                        <option value="Residential & Commercial Pool Table Moving">4. Residential & Commercial Pool Table Moving</option>
+                                        <option value="Slate Repair & Replacement">5. Slate Repair & Replacement</option>
+                                        <option value="Assembly & Dismantle">6. Assembly & Dismantle</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <textarea name="notes" placeholder="Additional Notes"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-btns-container">
+                            <div>
+                                <button class="previous-btn" type="button">previous</button>
+                            </div>
+                            <div>
+                                <button class="send-btn" type="submit" name="send-btn">send</button>
+                            </div>
+                        </div>
+                        <div class="progression-bar">
+                            <div>Progression bar</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- end review/form -->
 
     <?php }?>
     <script src="javascript/script2.js"></script>
