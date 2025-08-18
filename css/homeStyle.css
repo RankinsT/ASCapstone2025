@@ -104,8 +104,9 @@ p {
   /* border: 1px solid rgba(255, 255, 255, 0.3); */
   /* border-radius: 20px; */
   padding: 20px;
-  min-height: 600px;
+  min-height: 1000px;
   margin-bottom: 20px;
+  max-height: 600px;
 }
 /* .reviews-container {
   background-color: #00a19a;
@@ -151,20 +152,22 @@ p {
   padding: 20px;
 }
 
-/* .form div { */
+.quote-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  justify-content: space-around;
   background-color: #00a19a;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   /* border-radius: 20px; */
-  height: 600px;
+  padding: 20px;
+  min-height: 1000px;
+  max-height: 1000px;
 }
-.form input {
+/* .form input {
   width: 100%;
   padding: 10px;
   margin: 5px 0;
@@ -184,7 +187,7 @@ p {
 }
 .form button:hover {
   background-color: #0056b3;
-}
+} */
 
 .company-decription-container,
 .companyDescription {
