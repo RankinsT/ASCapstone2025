@@ -1,8 +1,10 @@
 <?php
 
+// if(isset($_POST['send-btn'])) {
+//     echo "Form submitted!";
+// }
 
-
-?>
+// ?>
 
 <div class="quote-container quote-show">
     <div>
