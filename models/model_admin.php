@@ -130,6 +130,12 @@ function updateCustomer($customerData) {
             WHERE ID = :id';
 
     $stmt = $db->prepare($sql); // Prepare the SQL statement
+    
+                // Check required fields
+                if (empty($firstName) || empty($lastName) || empty($email) || empty($street) || empty($city) || empty($state) || empty($zip) || empty($serviceRequested)) {
+                    echo "<script>alert('Please fill out all required fields.');</script>";
+                    return "Form incomplete";
+                }
 
     // Bind the customer data to the SQL statement
     $stmt->bindValue(':id', $customerData['ID']);

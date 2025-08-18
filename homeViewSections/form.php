@@ -1,5 +1,5 @@
-<?php
 
+<?php
 if(isset($_POST['send-btn'])) {
     // Use htmlspecialchars and trim for sanitization
     $firstName = isset($_POST['firstName']) ? htmlspecialchars(trim($_POST['firstName'])) : '';
@@ -17,8 +17,9 @@ if(isset($_POST['send-btn'])) {
 
     requestQuote($firstName, $lastName, $email, $phoneNumber, $street, $apt, $city, $state, $zip, $serviceRequested, $notes);
 }
+?>
 
-// ?>
+<form class="form" method="POST">
 
 <div class="quote-container quote-show">
     <div>
@@ -143,6 +144,23 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.form-btns-container button').forEach(button => {
         button.addEventListener('click', function() {
             if (this.textContent.toLowerCase() === 'next') {
+                // Validate required fields in the current step before proceeding
+                const visibleStep = quoteContainers[currentStep];
+                const requiredFields = visibleStep.querySelectorAll('input[required], select[required], textarea[required], select[name="service-requested[]"]');
+                let missing = [];
+                requiredFields.forEach(field => {
+                    if (field.tagName === 'SELECT') {
+                        if (!field.selectedOptions.length) {
+                            missing.push('Service Requested');
+                        }
+                    } else if (!field.value.trim()) {
+                        missing.push(field.placeholder || field.name);
+                    }
+                });
+                if (missing.length > 0) {
+                    alert('Please fill out all required fields: ' + missing.join(', '));
+                    return;
+                }
                 if (currentStep < quoteContainers.length - 1) {
                     currentStep++;
                     showCurrentStep();
@@ -157,6 +175,30 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     showCurrentStep(); // Initialize the first step
+
+    // Client-side validation for required fields
+    const form = document.querySelector('form.form');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            // Only validate fields in the currently visible step
+            const visibleStep = form.querySelector('.quote-container.quote-show');
+            const requiredFields = visibleStep ? visibleStep.querySelectorAll('input[required], select[required], textarea[required], select[name="service-requested[]"]') : [];
+            let missing = [];
+            requiredFields.forEach(field => {
+                if (field.tagName === 'SELECT') {
+                    if (!field.selectedOptions.length) {
+                        missing.push('Service Requested');
+                    }
+                } else if (!field.value.trim()) {
+                    missing.push(field.placeholder || field.name);
+                }
+            });
+            if (missing.length > 0) {
+                e.preventDefault();
+                alert('Please fill out all required fields: ' + missing.join(', '));
+            }
+        });
+    }
 });
 
 $(document).ready(function() {
@@ -166,3 +208,4 @@ $(document).ready(function() {
     });
 });
 </script>
+</form>
