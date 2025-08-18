@@ -306,4 +306,38 @@ function getAdmin($username) {
     return $admin;
 }
 
+function requestQuote($firstName, $lastName, $email, $phone, $street, $unit, $city, $state, $zip, $service, $notes) {
+    global $db;
 
+    $results = ""; // Initialize an empty string for results
+
+    try {
+        $sql = 'INSERT INTO capstone_202540_qball.customers (firstName, lastName, email, phone, street, unit, city, state, zip, service, notes) 
+                VALUES (:firstName, :lastName, :email, :phone, :street, :unit, :city, :state, :zip, :service, :notes)';
+
+        $stmt = $db->prepare($sql);
+
+        // Bind the parameters
+        $binds = array(
+            ':firstName' => $firstName,
+            ':lastName' => $lastName,
+            ':email' => $email,
+            ':phone' => $phone,
+            ':street' => $street,
+            ':unit' => $unit,
+            ':city' => $city,
+            ':state' => $state,
+            ':zip' => $zip,
+            ':service' => $service,
+            ':notes' => $notes
+        );
+
+        if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
+            $results = "Quote request submitted successfully";
+        }
+    } catch (PDOException $e) {
+        error_log("Error requesting quote: " . $e->getMessage());
+        return "Error requesting quote";
+    }
+    return $results;
+}
