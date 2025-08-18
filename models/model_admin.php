@@ -306,14 +306,14 @@ function getAdmin($username) {
     return $admin;
 }
 
-function requestQuote($firstName, $lastName, $email, $phone, $street, $unit, $city, $state, $zip, $service, $notes) {
+function requestQuote($firstName, $lastName, $email, $phone, $street, $unit, $city, $state, $zip, $serviceRequested, $notes) {
     global $db;
 
     $results = ""; // Initialize an empty string for results
 
     try {
-        $sql = 'INSERT INTO capstone_202540_qball.customers (firstName, lastName, email, phone, street, unit, city, state, zip, service, notes) 
-                VALUES (:firstName, :lastName, :email, :phone, :street, :unit, :city, :state, :zip, :service, :notes)';
+        $sql = 'INSERT INTO capstone_202540_qball.customers (firstName, lastName, phoneNumber, email, street, apt, city, state, zipcode, serviceRequested, notes) 
+                VALUES (:firstName, :lastName, :phoneNumber, :email, :street, :apt, :city, :state, :zipcode, :serviceRequested, :notes)';
 
         $stmt = $db->prepare($sql);
 
@@ -322,13 +322,13 @@ function requestQuote($firstName, $lastName, $email, $phone, $street, $unit, $ci
             ':firstName' => $firstName,
             ':lastName' => $lastName,
             ':email' => $email,
-            ':phone' => $phone,
+            ':phoneNumber' => $phone,
             ':street' => $street,
-            ':unit' => $unit,
+            ':apt' => $unit,
             ':city' => $city,
             ':state' => $state,
-            ':zip' => $zip,
-            ':service' => $service,
+            ':zipcode' => $zip,
+            ':serviceRequested' => $serviceRequested,
             ':notes' => $notes
         );
 
