@@ -1,3 +1,30 @@
+<?php
+
+if(isset($_POST['send-btn'])) {
+    // Process form submission here
+    // You can access form data using $_POST['field_name']
+    // For example:
+    $firstName = filter_input(INPUT_POST, 'firstName', FILTER_SANITIZE_STRING);
+    $lastName = filter_input(INPUT_POST, 'lastName', FILTER_SANITIZE_STRING);
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+    $phone = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_STRING);
+    $street = filter_input(INPUT_POST, 'street', FILTER_SANITIZE_STRING);
+    $unit = filter_input(INPUT_POST, 'unit', FILTER_SANITIZE_STRING);
+    $city = filter_input(INPUT_POST, 'city', FILTER_SANITIZE_STRING);
+    $state = filter_input(INPUT_POST, 'state', FILTER_SANITIZE_STRING);
+    $zip = filter_input(INPUT_POST, 'zip', FILTER_SANITIZE_STRING);
+    $serviceRequested = filter_input(INPUT_POST, 'serviceRequested', FILTER_SANITIZE_STRING);
+    $notes = filter_input(INPUT_POST, 'notes', FILTER_SANITIZE_STRING);
+
+    // save the data to a database or send an email
+    requestQuote($firstName, $lastName, $email, $phone, $street, $unit, $city, $state, $zip, $serviceRequested, $notes);
+
+    // Redirect or display a success message
+    echo "<script>alert('Quote request submitted successfully!');</script>";
+}
+
+?>
+
 <div class="quote-container quote-show">
     <div>
         <div><h2>Free Quote</h2></div>
