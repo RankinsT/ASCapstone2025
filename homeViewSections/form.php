@@ -26,7 +26,7 @@
             <!-- <button>previous</button> -->
         </div>
         <div>
-            <button>next</button>
+            <button type="button">next</button>
         </div>
     </div>
     <div class="progression-bar">
@@ -57,10 +57,10 @@
     </div>
     <div class="form-btns-container">
         <div>
-            <button>previous</button>
+            <button type="button">previous</button>
         </div>
         <div>
-            <button>next</button>
+            <button type="button">next</button>
         </div>
     </div>
     <div class="progression-bar">
@@ -93,10 +93,10 @@
     </div>
     <div class="form-btns-container">
         <div>
-            <button class="previous-btn">previous</button>
+            <button class="previous-btn" type="button">previous</button>
         </div>
         <div>
-            <button class="send-btn">send</button>
+            <button class="send-btn" type="submit" name="send-btn">send</button>
         </div>
     </div>
     <div class="progression-bar">
