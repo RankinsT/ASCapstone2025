@@ -306,4 +306,27 @@ function getAdmin($username) {
     return $admin;
 }
 
+function deleteAdmin($username) {
+    global $db;
+
+    $results = "";
+
+    try {
+        $sql = 'DELETE FROM capstone_202540_qball.adminlogin WHERE username = :username'; // SQL query to delete an admin by username
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':username', $username);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            $results = "Admin deleted successfully"; // Set success message
+        } else {
+            $results = "No admin found with that username"; // Set failure message
+        }
+    } catch (PDOException $e) {
+        error_log("Error deleting admin") . $e->getMessage(); // Log any errors
+        return "Error deleting admin"; // Return error message
+    }
+    return $results;
+}
+
 
