@@ -99,11 +99,15 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const quoteContainers = document.querySelectorAll('.quote-container');
-    const progressionBar = document.querySelector('.progression-bar div');
     let currentStep = 0;
 
-    function updateProgressionBar() {
-        progressionBar.textContent = `Step ${currentStep + 1} of ${quoteContainers.length}`;
+    function updateProgressionBars() {
+        quoteContainers.forEach((container, index) => {
+            const bar = container.querySelector('.progression-bar div');
+            if (bar) {
+                bar.textContent = `Step ${currentStep + 1} of ${quoteContainers.length}`;
+            }
+        });
     }
 
     function showCurrentStep() {
@@ -111,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
             container.classList.toggle('quote-show', index === currentStep);
             container.classList.toggle('quote-hide', index !== currentStep);
         });
-        updateProgressionBar();
+        updateProgressionBars();
     }
 
     document.querySelectorAll('.form-btns-container button').forEach(button => {
