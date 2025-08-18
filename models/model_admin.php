@@ -334,10 +334,13 @@ function requestQuote($firstName, $lastName, $email, $phoneNumber, $street, $apt
 
         if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
             $results = "Quote request submitted successfully";
+        } else {
+            $errorInfo = $stmt->errorInfo();
+            return "SQL Error: " . htmlspecialchars($errorInfo[2]);
         }
     } catch (PDOException $e) {
         error_log("Error requesting quote: " . $e->getMessage());
-        return "Error requesting quote";
+        return "PDO Error: " . htmlspecialchars($e->getMessage());
     }
     return $results;
 }
