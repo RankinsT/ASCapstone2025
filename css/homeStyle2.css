@@ -1,8 +1,14 @@
+body {
+  background: linear-gradient(135deg, #354444 0%, #4e5d5d 50%, #222c2c 100%);
+  margin: 0;
+  overflow-x: hidden;
+}
+
 /* header */
 .header {
     display: flex;
-    /* justify-content: space-between;
-    align-items: center; */
+    justify-content: space-between;
+    padding: 10px;
 }
 .logo-img {
   width: 100px;
@@ -20,7 +26,7 @@
   transition: opacity 0.5s ease;
   pointer-events: none;
 }
-/* .phone-num-btn {
+.phone-num-btn {
   display: flex;
   flex-direction: column;
   background: rgba(255, 255, 255, 0.18);
@@ -30,6 +36,7 @@
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
   margin: 20px;
+  padding: 10px;
 }
 .phone-num-btn:hover {
   background-color: #00a19a;
@@ -42,4 +49,10 @@
   color: white;
   text-decoration: none;
   font-weight: bold;
-} */
+}
+
+/* reviews */
+.row-1 {
+  display: flex;
+
+}
