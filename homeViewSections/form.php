@@ -67,23 +67,20 @@
     </div>
     <div class="customer-info">
         <div>
-            <div></div>
+            <div>
+                <select name="notes" id="notes" style="width:100%;">
+                    <option value="">Service Requested</option>
+                    <option value="Need expedited service">Need expedited service</option>
+                    <option value="Request weekend move">Request weekend move</option>
+                    <option value="Have stairs">Have stairs</option>
+                    <option value="Need table assembly">Need table assembly</option>
+                    <option value="Other">Other (please specify in comments)</option>
+                </select>
+            </div>
         </div>
-                    <div>
-                        <label for="notes">Notes:</label>
-                        <select name="notes" id="notes" style="width:100%;">
-                            <option value="">Select a note...</option>
-                            <option value="Need expedited service">Need expedited service</option>
-                            <option value="Request weekend move">Request weekend move</option>
-                            <option value="Have stairs">Have stairs</option>
-                            <option value="Need table assembly">Need table assembly</option>
-                            <option value="Other">Other (please specify in comments)</option>
-                        </select>
-                    </div>
         <div>
-            <div></div>
+            <textarea name="notes" placeholder="Additional Notes"></textarea>
         </div>
-        
     </div>
     <div class="form-btns-container">
         <div>
