@@ -31,9 +31,10 @@ body {
   background: inherit;
 }
 
-.grid-container {
+/* .grid-container {
   height: fit-content;
-}
+  width: fit-content;
+} */
 
 .header {
   display: flex;
