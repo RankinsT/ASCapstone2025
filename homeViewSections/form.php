@@ -93,6 +93,7 @@ if(isset($_POST['send-btn'])) {
                 <select name="service-requested[]" id="service-requested" style="width:100%;" multiple>
                     <option value="Felt Replacement & Repairs">Felt Replacement & Repairs</option>
                     <option value="In-Home Relocation">In-Home Relocation</option>
+                    <option value="Long-Distance Moves">Long-Distance Moves</option>
                     <option value="Residential & Commercial Pool Table Moving">Residential & Commercial Pool Table Moving</option>
                     <option value="Slate Repair & Replacement">Slate Repair & Replacement</option>
                     <option value="Assembly & Dismantle">Assembly & Dismantle</option>
