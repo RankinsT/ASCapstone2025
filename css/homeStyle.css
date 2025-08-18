@@ -1,3 +1,6 @@
+.quote-hide {
+  display: none !important;
+}
 .row {
   display: flex;
   justify-content: space-evenly;
@@ -140,7 +143,9 @@ p {
   margin-left: 10px;
   margin-bottom: 10px;
 }
-#reviews, #review2, #review3 {
+#reviews,
+#review2,
+#review3 {
   display: flex;
   align-items: center;
   background-color: #046879;
@@ -178,7 +183,7 @@ p {
 .form-btns {
   display: flex;
   justify-content: space-between;
-  align-items:flex-end;
+  align-items: flex-end;
 }
 .progression-bar {
   display: flex;

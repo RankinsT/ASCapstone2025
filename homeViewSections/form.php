@@ -70,11 +70,12 @@
             <div>
                 <select name="notes" id="notes" style="width:100%;">
                     <option value="">Service Requested</option>
-                    <option value="Need expedited service">Need expedited service</option>
-                    <option value="Request weekend move">Request weekend move</option>
-                    <option value="Have stairs">Have stairs</option>
-                    <option value="Need table assembly">Need table assembly</option>
-                    <option value="Other">Other (please specify in comments)</option>
+                    <option value="Felt Replacement & Repairs">Felt Replacement & Repairs</option>
+                    <option value="In-Home Relocation">In-Home Relocation</option>
+                    <option value="Residential & Commercial  Pool Table Moving">Residential & Commercial  Pool Table Moving</option>
+                    <option value="Residential & Commercial  Pool Table Moving">Residential & Commercial  Pool Table Moving</option>
+                    <option value="Slate Repair & Replacement">Slate Repair & Replacement</option>
+                    <option value="Assembly & Dismantle">Assembly & Dismantle</option>
                 </select>
             </div>
         </div>
@@ -84,13 +85,51 @@
     </div>
     <div class="form-btns-container">
         <div>
-            <button>previous</button>
+            <button class="previous-btn">previous</button>
         </div>
         <div>
-            <button>next</button>
+            <button class="send-btn">send</button>
         </div>
     </div>
     <div class="progression-bar">
         <div>Progression bar</div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const quoteContainers = document.querySelectorAll('.quote-container');
+    const progressionBar = document.querySelector('.progression-bar div');
+    let currentStep = 0;
+
+    function updateProgressionBar() {
+        progressionBar.textContent = `Step ${currentStep + 1} of ${quoteContainers.length}`;
+    }
+
+    function showCurrentStep() {
+        quoteContainers.forEach((container, index) => {
+            container.classList.toggle('quote-show', index === currentStep);
+            container.classList.toggle('quote-hide', index !== currentStep);
+        });
+        updateProgressionBar();
+    }
+
+    document.querySelectorAll('.form-btns-container button').forEach(button => {
+        button.addEventListener('click', function() {
+            if (this.textContent.toLowerCase() === 'next') {
+                if (currentStep < quoteContainers.length - 1) {
+                    currentStep++;
+                    showCurrentStep();
+                }
+            } else if (this.textContent.toLowerCase() === 'previous') {
+                if (currentStep > 0) {
+                    currentStep--;
+                    showCurrentStep();
+                }
+            }
+        });
+    });
+
+    showCurrentStep(); // Initialize the first step
+});
+</script>
