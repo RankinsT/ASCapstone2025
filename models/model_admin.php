@@ -334,6 +334,7 @@ function requestQuote($firstName, $lastName, $email, $phoneNumber, $street, $apt
 
         if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
             $results = "Quote request submitted successfully";
+            echo "<script>alert('$results');</script>";
         } else {
             $errorInfo = $stmt->errorInfo();
             return "SQL Error: " . htmlspecialchars($errorInfo[2]);
