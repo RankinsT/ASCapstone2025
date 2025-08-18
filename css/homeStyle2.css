@@ -47,3 +47,16 @@ body {
   text-decoration: none;
   font-weight: bold;
 }
+
+/* review */
+#reviews {
+  display: flex;
+  flex-direction: column;
+}
+.review-divs {
+  display: flex;
+  justify-content: space-between;
+}
+.review-divs p {
+  width: 800px;
+}
