@@ -306,7 +306,7 @@ function getAdmin($username) {
     return $admin;
 }
 
-function requestQuote($firstName, $lastName, $email, $phone, $street, $unit, $city, $state, $zip, $serviceRequested, $notes) {
+function requestQuote($firstName, $lastName, $email, $phoneNumber, $street, $apt, $city, $state, $zip, $serviceRequested, $notes) {
     global $db;
 
     $results = ""; // Initialize an empty string for results
@@ -322,9 +322,9 @@ function requestQuote($firstName, $lastName, $email, $phone, $street, $unit, $ci
             ':firstName' => $firstName,
             ':lastName' => $lastName,
             ':email' => $email,
-            ':phoneNumber' => $phone,
+            ':phoneNumber' => $phoneNumber,
             ':street' => $street,
-            ':apt' => $unit,
+            ':apt' => $apt,
             ':city' => $city,
             ':state' => $state,
             ':zipcode' => $zip,

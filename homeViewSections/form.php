@@ -1,8 +1,22 @@
 <?php
 
-// if(isset($_POST['send-btn'])) {
-//     echo "Form submitted!";
-// }
+if(isset($_POST['send-btn'])) {
+    echo "form submitted";
+    
+    $firstName = filter_input(INPUT_POST, 'firstName', FILTER_SANITIZE_STRING);
+    $lastName = filter_input(INPUT_POST, 'lastName', FILTER_SANITIZE_STRING);
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+    $phoneNumber = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_STRING);
+    $street = filter_input(INPUT_POST, 'street', FILTER_SANITIZE_STRING);
+    $apt = filter_input(INPUT_POST, 'unit', FILTER_SANITIZE_STRING);
+    $city = filter_input(INPUT_POST, 'city', FILTER_SANITIZE_STRING);
+    $state = filter_input(INPUT_POST, 'state', FILTER_SANITIZE_STRING);
+    $zip = filter_input(INPUT_POST, 'zip', FILTER_SANITIZE_STRING);
+    $serviceRequested = filter_input(INPUT_POST, 'notes', FILTER_SANITIZE_STRING);
+    $notes = filter_input(INPUT_POST, 'notes', FILTER_SANITIZE_STRING);
+
+    requestQuote($firstName, $lastName, $email, $phoneNumber, $street, $apt, $city, $state, $zip, $serviceRequested, $notes);
+}
 
 // ?>
 
