@@ -1,29 +1,17 @@
 <div class="quote-container">
-    <div class="quote-header">
-        <div><h2>Free Quote</h2></div>
-        <div><p>Please fill out the form below to request a free quote.</p></div>
+    <div>Free quote</div>
+    <div class="customer-info1">
+        <div>information</div>
     </div>
-
-    <div>
+    <div class="form-btns-container">
         <div>
-            <input type="text" name="firstName" placeholder="Your First Name*" required>
+            <button>previous</button>
         </div>
         <div>
-            <input type="text" name="lastName" placeholder="Your Last Name*" required>
-        </div>
-        <div>
-            <input type="text" name="email" placeholder="Your Email*" required>
-        </div>
-        <div>
-            <input type="text" name="phone" placeholder="Your Phone">
-        </div>
-        <div>
-            <div><button>Previous</button></div>
-            <div><button>Next</button></div>
-        </div>
-        <div>
-            completion bar here
+            <button>next</button>
         </div>
     </div>
-
+    <div class="progression-bar">
+        <div>bar</div>
+    </div>
 </div>
