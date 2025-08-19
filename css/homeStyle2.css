@@ -11,6 +11,11 @@ body {
   text-decoration: underline;
   text-decoration-thickness: 2px;
 }
+.text {
+  font-family: 'Roboto', regular;
+  font-size: 36px;
+  color: white;
+}
 /* header */
 .header {
   display: flex;
@@ -64,11 +69,14 @@ body {
 .description-quote {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   padding: 20px;
 }
 .quote-hide {
   display: none !important;
 }
+
+ /* description/quote */
 .quote-container {
   display: flex;
   flex-direction: column;
@@ -84,6 +92,7 @@ body {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.3);
+  min-height: 600px;
 }
 .quote-container > div:first-child {
   width: 100%;
@@ -134,23 +143,4 @@ body {
   justify-content: center;
   width: 100%;
   margin-top: 18px;
-}
-#review-edit-save-btn1,
-#review-edit-save-btn2,
-#review-edit-save-btn3 {
-  align-self: flex-end;
-  margin-top: 12px;
-  font-size: 0.9rem;
-  padding: 6px 16px;
-  border-radius: 6px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-#review-edit-save-btn1:hover,
-#review-edit-save-btn2:hover,
-#review-edit-save-btn3:hover {
-  background-color: #0056b3;
 }
