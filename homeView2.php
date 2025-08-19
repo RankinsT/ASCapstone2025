@@ -231,6 +231,12 @@
     </div>
     <!-- end carousel -->
 
+    <!-- services -->
+     <div class="services">
+        <div class="title">Services</div>
+     </div>
+    <!-- end services -->
+
     <script src="javascript/script2.js"></script>
 </body>
 </html>
