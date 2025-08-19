@@ -35,10 +35,11 @@
 
         <div class="logoutButton-updateAccountButton">
             <div class="logoutButton">
-                <a href="logingView.php">Logout</a>
+                <a href="loginView.php">Logout</a>
             </div>
         </div>
      </div>
+    <?php } ?>
     <!-- end admin-header -->
 
     <!-- header -->
@@ -64,39 +65,39 @@
                         “I was nervous about moving my 8-foot pool table, but this team made it completely stress-free. They arrived on time, handled everything with care, and had it set up perfectly in my new game room. Highly professional and efficient—definitely recommend them to anyone needing a pool table moved safely!”
                     </p>
                     <span class="review-stars" style="color: gold; font-size: 3em;">★★★★★</span>
+                    <form action="" id="review-form1" style="display: none;">
+                        <textarea name="" id="review-editor1"></textarea>
+                    </form>
+                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                        <button id="review-edit-save-btn1" type="button">Edit</button>
+                    <?php } ?>
                 </div>
-                <form action="" id="review-form1" style="display: none;">
-                    <textarea name="" id="review-editor1"></textarea>
-                </form>
-                <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
-                    <button id="review-edit-save-btn1" type="button">Edit</button>
-                <?php } ?>
 
                 <div id="review-text2" class="review-divs">
                     <p>
                         “Great experience overall. The movers were friendly, careful, and worked quickly. My only minor issue was that the setup took a little longer than expected, but the job was done right, and my pool table arrived without a scratch. I would hire them again in a heartbeat.”
                     </p>
                     <span class="review-stars" style="color: gold; font-size: 3em;">★★★★★</span>
+                    <form action="" id="review-form2" style="display: none;">
+                        <textarea name="" id="review-editor2"></textarea>
+                    </form>
+                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                        <button id="review-edit-save-btn2" type="button">Edit</button>
+                    <?php } ?>
                 </div>
-                <form action="" id="review-form2" style="display: none;">
-                    <textarea name="" id="review-editor2"></textarea>
-                </form>
-                <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
-                    <button id="review-edit-save-btn2" type="button">Edit</button>
-                <?php } ?>
 
                 <div id="review-text3" class="review-divs">
                     <p>
                         “Exceptional service from start to finish. The crew communicated clearly, protected all corners of my table, and navigated some tricky stairs without a problem. They even gave me tips for maintaining the table after the move. Worth every penny!”
                     </p>
                     <span class="review-stars" style="color: gold; font-size: 3em;">★★★★★</span>
+                    <form action="" id="review-form3" style="display: none;">
+                        <textarea name="" id="review-editor3"></textarea>
+                    </form>
+                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                        <button id="review-edit-save-btn3" type="button">Edit</button>
+                    <?php } ?>
                 </div>
-                <form action="" id="review-form3" style="display: none;">
-                    <textarea name="" id="review-editor3"></textarea>
-                </form>
-                <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
-                    <button id="review-edit-save-btn3" type="button">Edit</button>
-                <?php } ?>
             </div>
 
             <div class="form">
@@ -201,7 +202,6 @@
         </div>
         <!-- end review/form -->
 
-    <?php }?>
     <script src="javascript/script2.js"></script>
 </body>
 </html>

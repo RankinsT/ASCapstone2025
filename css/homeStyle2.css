@@ -72,6 +72,9 @@ body {
   display: flex;
   justify-content: space-between;
   background-color: #046879;
+  margin-bottom: 24px;
+  padding: 16px;
+  border-radius: 10px;
 }
 .review-divs p {
   width: 800px;
@@ -96,6 +99,10 @@ body {
   height: 100%;
   flex: 1;
   background-color: #00a19a;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 .quote-container > div:first-child {
   width: 100%;
