@@ -235,7 +235,18 @@
      <div class="services">
         <div class="title">Services</div>
      </div>
-     <div class="pool-table"></div>
+     <div class="pool-table">
+        <div class="table-rows">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+        </div>
+        <div class="table-rows">
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+        </div>
+     </div>
     <!-- end services -->
 
     <script src="javascript/script2.js"></script>
