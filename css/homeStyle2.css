@@ -157,9 +157,10 @@ body {
   align-items: center;
 }
 .pool-table {
-  background-image: url("../images/table.png");
-  background-size: cover;
+  background-image: url("../images/table.jpg");
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   min-height: 1200px;
+  border-radius: 30px;
 }
