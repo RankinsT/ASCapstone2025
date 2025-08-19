@@ -181,6 +181,22 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+.service-emblem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: none;
+  margin-bottom: 24px;
+}
+
+.service-emblem svg {
+  width: 140px;
+  height: 140px;
+}
 .service-title {
   font-family: "Pacifico", cursive;
   color: white;
