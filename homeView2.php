@@ -189,7 +189,7 @@
     ?>
 
 
-    <div id="carouselExample" class="carousel slide col-lg-12" data-bs-ride="carousel">
+    <div id="carouselExample" class="carousel slide col-lg-12 col-md-12 col-sm-12" data-bs-ride="carousel">
         <div class="carousel-inner">
             <?php if (!empty($images)): ?>
                 <?php foreach ($images as $index => $image): ?>
@@ -233,7 +233,7 @@
 
     <!-- services -->
      <div class="services">
-        <div class="title">Services</div>
+        <div class="title col-12">Services</div>
      </div>
      <div class="pool-table">
         <div class="table-rows">

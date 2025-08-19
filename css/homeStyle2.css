@@ -174,7 +174,7 @@ body {
 .table-rows {
   display: flex;
   justify-content: space-evenly;
-  align-items:center;
+  align-items: center;
   padding: 200px;
 }
 .table-row-section {
@@ -236,4 +236,45 @@ body {
   justify-content: center;
   align-items: center;
   color: white;
+}
+
+/* Add responsive styles for mobile */
+@media (max-width: 600px) {
+  .pool-table {
+    min-height: 600px;
+    padding: 16px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .table-rows {
+    flex-direction: column;
+    padding: 0;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .table-row-section {
+    width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 32px;
+  }
+  .service-emblem {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 16px;
+  }
+  .service-emblem svg {
+    width: 70px;
+    height: 70px;
+  }
+  .service-title {
+    font-size: 1.5rem;
+    width: 100%;
+    text-align: left;
+  }
+  .service-text {
+    width: 100%;
+    font-size: 1rem;
+  }
 }
