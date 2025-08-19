@@ -10,10 +10,6 @@ body {
   grid-template-columns: 1fr 2fr 2fr;
 }
 
-.admin-delete-container {
-  display: flex;
-}
-
 .admin-header {
   grid-area: admin-header;
   /* background-color: #007bff; */
@@ -28,10 +24,6 @@ body {
 .admin-customers {
   grid-area: admin-customers;
   background-color: lightgray;
-}
-
-.title {
-  display: flex;
 }
 
 .admin-add-customers {
