@@ -176,5 +176,8 @@ body {
   padding: 20px;
 }
 .table-row-section {
-  
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 }
