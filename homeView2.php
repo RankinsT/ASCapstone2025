@@ -239,35 +239,35 @@
         <div class="table-rows">
             <div class="table-row-section">
                 <div class="service-emblem"></div>
-                <div class="title">Felt Replacement & Repairs</div>
-                <div class="text"> <p>Re-covering in a variety of colors, repairing small tears, and tightening rails.</p></div>
+                <div class="service-title">Felt Replacement & Repairs</div>
+                <div class="service-text text"> <p>Re-covering in a variety of colors, repairing small tears, and tightening rails.</p></div>
             </div>
             <div>
                 <div class="service-emblem"></div>
-                <div class="title">In-Home Relocation</div>
-                <div class="text"><p>Shifting your table to a new room or basement without leaving the property.</p></div>
+                <div class="service-title">In-Home Relocation</div>
+                <div class="service-text text"><p>Shifting your table to a new room or basement without leaving the property.</p></div>
             </div>
             <div>
                 <div class="service-emblem"></div>
-                <div class="title">Long-Distance Moves</div>
-                <div class="text"><p>Secure transport across states with full insurance coverage</p></div>
+                <div class="service-title">Long-Distance Moves</div>
+                <div class="service-text text"><p>Secure transport across states with full insurance coverage</p></div>
             </div>
         </div>
         <div class="table-rows">
-            <div>
+            <div class="table-row-section">
                 <div class="service-emblem"></div>
-                <div class="title">Residential & Commercial  Pool Table Moving</div>
-                <div class="text"><p>Moving tables for bars, clubs, rec centers, apartment complexs and event spaces.</p></div>
+                <div class="service-title">Residential & Commercial  Pool Table Moving</div>
+                <div class="service-text text"><p>Moving tables for bars, clubs, rec centers, apartment complexs and event spaces.</p></div>
             </div>
-            <div>
+            <div class="table-row-section">
                 <div class="service-emblem"></div>
-                <div class="title">Slate Repair & Replacement</div>
-                <div class="text"><p>Handling cracked or damaged slate </p></div>
+                <div class="service-title">Slate Repair & Replacement</div>
+                <div class="service-text text"><p>Handling cracked or damaged slate </p></div>
             </div>
-            <div>
+            <div class="table-row-section">
                 <div class="service-emblem"></div>
-                <div class="title">Assembly & Dismantle</div>
-                <div class="text"><p>Disassembly, transport, and reassembly of all table sizes, including slate tables.</p></div>
+                <div class="service-title">Assembly & Dismantle</div>
+                <div class="service-text text"><p>Disassembly, transport, and reassembly of all table sizes, including slate tables.</p></div>
             </div>
         </div>
      </div>
