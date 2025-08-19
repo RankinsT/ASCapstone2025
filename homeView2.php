@@ -57,122 +57,179 @@
     <!-- end header -->
     
 
-        <!-- review/form -->
-        <div class="description-quote row elements row-1">
-            <div class="description col-lg-6">
-                <div class="title">Who are we?</div>
-                <p id="company-description-text" class="text">
-                    NORCAL Pool Movers is a locally owned and operated small business based in Coventry, Connecticut, specializing in professional pool table moving, setup, and installation. We pride ourselves on delivering reliable, careful, and friendly service to ensure your pool table is transported and reassembled with the utmost care. Whether you’re relocating across town, setting up a new game room, or need expert leveling for the perfect play, we bring the tools, skill, and experience to get the job done right. As a small business, we value personal connections with our customers and go the extra mile to provide top-quality service at fair prices.
-                </p>
-                <form id="company-description-form" style="display:none;">
-                    <textarea id="company-description-editor">Welcome to TinyMCE!</textarea>
-                </form>
-                <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
-                    <button id="edit-save-btn" type="button">Edit</button>
-                <?php } ?>
-            </div>
-
-            <div class="form col-lg-6">
-                <form action="" method="POST">
-                    <div class="quote-container quote-show">
-                        <div>
-                            <div><h2>Free Quote</h2></div>
-                            <div><p>Get a free quote today!</p></div>
-                        </div>
-                        <div class="customer-info">
-                            <div>
-                                <div><input type="text" id="firstName" name="firstName" placeholder="First Name*" autocomplete="given-name" required></div>
-                            </div>
-                            <div>
-                                <div><input type="text" id="lastName" name="lastName" placeholder="Last Name*" autocomplete="family-name" required></div>
-                            </div>
-                            <div><input type="email" id="email" name="email" placeholder="Email*" autocomplete="email" required></div>
-                            <div><input type="tel" id="phone" name="phone" placeholder="Phone" autocomplete="tel"></div>
-                        </div>
-                        <div class="form-btns-container">
-                            <div>
-                                <!-- <button>previous</button> -->
-                            </div>
-                            <div>
-                                <button type="button">next</button>
-                            </div>
-                        </div>
-                        <div class="progression-bar">
-                            <div>Progression bar</div>
-                        </div>
-                    </div>
-
-                    <div class="quote-container quote-hide">
-                        <div>
-                            <div><h2>Free Quote</h2></div>
-                            <div><p>Get a free quote today!</p></div>
-                        </div>
-                        <div class="customer-info">
-                            <div>
-                                <div><input type="text" id="street" name="street" placeholder="Street Address*" autocomplete="street-address" required></div>
-                            </div>
-                            <div><input type="text" id="unit" name="unit" placeholder="Unit/Apt" autocomplete="address-line2"></div>
-                            <div>
-                                <div><input type="text" id="city" name="city" placeholder="City*" autocomplete="address-level2" required></div>
-                            </div>
-                            <div>
-                                <div><input type="text" id="state" name="state" placeholder="State*" autocomplete="address-level1" required></div>
-                            </div>
-                            <div>
-                                <div><input type="text" id="zip" name="zip" placeholder="Zip Code*" autocomplete="postal-code" required></div>
-                            </div>
-                        </div>
-                        <div class="form-btns-container">
-                            <div>
-                                <button type="button">previous</button>
-                            </div>
-                            <div>
-                                <button type="button">next</button>
-                            </div>
-                        </div>
-                        <div class="progression-bar">
-                            <div>Progression bar</div>
-                        </div>
-                    </div>
-
-                    <div class="quote-container quote-hide">
-                        <div>
-                            <div><h2>Free Quote</h2></div>
-                            <div><p>Get a free quote today!</p></div>
-                        </div>
-                        <div class="customer-info">
-                            <div>
-                                <div>
-                                    <select name="service-requested[]" id="service-requested" style="width:100%;" autocomplete="off" multiple>
-                                        <option value="Felt Replacement & Repairs">1. Felt Replacement & Repairs</option>
-                                        <option value="In-Home Relocation">2. In-Home Relocation</option>
-                                        <option value="Long-Distance Moves">3. Long-Distance Moves</option>
-                                        <option value="Residential & Commercial Pool Table Moving">4. Residential & Commercial Pool Table Moving</option>
-                                        <option value="Slate Repair & Replacement">5. Slate Repair & Replacement</option>
-                                        <option value="Assembly & Dismantle">6. Assembly & Dismantle</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div>
-                                <textarea id="notes" name="notes" placeholder="Additional Notes" autocomplete="off"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-btns-container">
-                            <div>
-                                <button class="previous-btn" type="button">previous</button>
-                            </div>
-                            <div>
-                                <button class="send-btn" type="submit" name="send-btn">send</button>
-                            </div>
-                        </div>
-                        <div class="progression-bar">
-                            <div>Progression bar</div>
-                        </div>
-                    </div>
-                </form>
-            </div>
+    <!-- review/form -->
+    <div class="description-quote row elements row-1">
+        <div class="description col-lg-6">
+            <div class="title">Who are we?</div>
+            <p id="company-description-text" class="text">
+                NORCAL Pool Movers is a locally owned and operated small business based in Coventry, Connecticut, specializing in professional pool table moving, setup, and installation. We pride ourselves on delivering reliable, careful, and friendly service to ensure your pool table is transported and reassembled with the utmost care. Whether you’re relocating across town, setting up a new game room, or need expert leveling for the perfect play, we bring the tools, skill, and experience to get the job done right. As a small business, we value personal connections with our customers and go the extra mile to provide top-quality service at fair prices.
+            </p>
+            <form id="company-description-form" style="display:none;">
+                <textarea id="company-description-editor">Welcome to TinyMCE!</textarea>
+            </form>
+            <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                <button id="edit-save-btn" type="button">Edit</button>
+            <?php } ?>
         </div>
-        <!-- end review/form -->
+
+        <div class="form col-lg-6">
+            <form action="" method="POST">
+                <div class="quote-container quote-show">
+                    <div>
+                        <div><h2>Free Quote</h2></div>
+                        <div><p>Get a free quote today!</p></div>
+                    </div>
+                    <div class="customer-info">
+                        <div>
+                            <div><input type="text" id="firstName" name="firstName" placeholder="First Name*" autocomplete="given-name" required></div>
+                        </div>
+                        <div>
+                            <div><input type="text" id="lastName" name="lastName" placeholder="Last Name*" autocomplete="family-name" required></div>
+                        </div>
+                        <div><input type="email" id="email" name="email" placeholder="Email*" autocomplete="email" required></div>
+                        <div><input type="tel" id="phone" name="phone" placeholder="Phone" autocomplete="tel"></div>
+                    </div>
+                    <div class="form-btns-container">
+                        <div>
+                            <!-- <button>previous</button> -->
+                        </div>
+                        <div>
+                            <button type="button">next</button>
+                        </div>
+                    </div>
+                    <div class="progression-bar">
+                        <div>Progression bar</div>
+                    </div>
+                </div>
+
+                <div class="quote-container quote-hide">
+                    <div>
+                        <div><h2>Free Quote</h2></div>
+                        <div><p>Get a free quote today!</p></div>
+                    </div>
+                    <div class="customer-info">
+                        <div>
+                            <div><input type="text" id="street" name="street" placeholder="Street Address*" autocomplete="street-address" required></div>
+                        </div>
+                        <div><input type="text" id="unit" name="unit" placeholder="Unit/Apt" autocomplete="address-line2"></div>
+                        <div>
+                            <div><input type="text" id="city" name="city" placeholder="City*" autocomplete="address-level2" required></div>
+                        </div>
+                        <div>
+                            <div><input type="text" id="state" name="state" placeholder="State*" autocomplete="address-level1" required></div>
+                        </div>
+                        <div>
+                            <div><input type="text" id="zip" name="zip" placeholder="Zip Code*" autocomplete="postal-code" required></div>
+                        </div>
+                    </div>
+                    <div class="form-btns-container">
+                        <div>
+                            <button type="button">previous</button>
+                        </div>
+                        <div>
+                            <button type="button">next</button>
+                        </div>
+                    </div>
+                    <div class="progression-bar">
+                        <div>Progression bar</div>
+                    </div>
+                </div>
+
+                <div class="quote-container quote-hide">
+                    <div>
+                        <div><h2>Free Quote</h2></div>
+                        <div><p>Get a free quote today!</p></div>
+                    </div>
+                    <div class="customer-info">
+                        <div>
+                            <div>
+                                <select name="service-requested[]" id="service-requested" style="width:100%;" autocomplete="off" multiple>
+                                    <option value="Felt Replacement & Repairs">1. Felt Replacement & Repairs</option>
+                                    <option value="In-Home Relocation">2. In-Home Relocation</option>
+                                    <option value="Long-Distance Moves">3. Long-Distance Moves</option>
+                                    <option value="Residential & Commercial Pool Table Moving">4. Residential & Commercial Pool Table Moving</option>
+                                    <option value="Slate Repair & Replacement">5. Slate Repair & Replacement</option>
+                                    <option value="Assembly & Dismantle">6. Assembly & Dismantle</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <textarea id="notes" name="notes" placeholder="Additional Notes" autocomplete="off"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-btns-container">
+                        <div>
+                            <button class="previous-btn" type="button">previous</button>
+                        </div>
+                        <div>
+                            <button class="send-btn" type="submit" name="send-btn">send</button>
+                        </div>
+                    </div>
+                    <div class="progression-bar">
+                        <div>Progression bar</div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- end review/form -->
+
+    <!-- carousel -->
+     <?php
+
+    try {
+        // Fetch all images from the database
+        $query = "SELECT * FROM bcimage ORDER BY id ASC";
+        $stmt = $db->query($query);
+        $images = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo "<h3>Error fetching images: " . $e->getMessage() . "</h3>";
+        $images = [];
+    }
+    ?>
+
+
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <?php if (!empty($images)): ?>
+                <?php foreach ($images as $index => $image): ?>
+                    <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
+                        <img src="./bcimage/<?php echo htmlspecialchars($image['filename']); ?>" class="d-block w-100" alt="Slide <?php echo $index + 1; ?>" style="height: 780px; object-fit: cover;">
+                        <div class="carousel-caption d-none d-md-block box" >
+                            <h5>Slide <?php echo $index + 1; ?></h5>
+
+                            <p><?php echo htmlspecialchars($image['description'] ?? 'No description available'); ?></p>
+                        
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <div class="carousel-item active">
+                    <div class="d-flex justify-content-center align-items-center" style="height: 25em; background-color:rgb(46, 138, 230);">
+                        <h5>No images available</h5>
+                    </div>
+                </div>
+            <?php endif; ?>
+        </div>
+        <!-- Carousel Indicators -->
+        <div class="carousel-indicators " >
+            <?php foreach ($images as $index => $image): ?>
+                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="<?php echo $index; ?>" class="<?php echo $index === 0 ? 'active' : ''; ?>" aria-label="Slide <?php echo $index + 1; ?>"></button>
+            <?php endforeach; ?>
+        </div>
+        <!-- Carousel Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true" style="filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.74));"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" style="filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.74));">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <!-- end carousel -->
 
     <script src="javascript/script2.js"></script>
 </body>
