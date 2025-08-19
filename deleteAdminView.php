@@ -27,7 +27,7 @@
 
         <?php if(isset($_SESSION['isLoggedIn']) && ($_SESSION['isLoggedIn'])): ?>
 
-            <div class="admin-grid-container">
+            <div class="admin-delete-container">
                 <div class="admin-header">
                     <div class="homepageButton-deleteAdmin">
                         <div class="homepageButton">
@@ -35,15 +35,14 @@
                         </div>
                     </div>
 
-                    <div class="title"><br><div class="back-button"><a href="updateAccountView.php"><< Update Account</a></div><h1>Delete Admin</h1></div>
-
                     <div class="logoutButton-updateAccountButton">
                         <div class="logoutButton">
                             <a href="loginView.php">Logout</a>
                         </div>
                     </div>
-
                 </div>
+
+                <div class="title"><br><div class="back-button"><a href="updateAccountView.php"><< Update Account</a></div><h1>Delete Admin</h1></div>
 
                 <div class="admin-customers">
                     <table>
