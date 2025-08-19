@@ -51,7 +51,8 @@ body {
 }
 .sticky-btn {
   position: fixed;
-  top: 0;
+  top: 30px;
+  right: 0;
   z-index: 1000;
 }
 
@@ -81,7 +82,7 @@ body {
   margin-bottom: 24px;
   padding: 16px;
   position: relative;
-  border: 10px solid #00a19a
+  border: 10px solid #00a19a;
 }
 .review-divs p {
   width: 800px;
