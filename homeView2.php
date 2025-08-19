@@ -316,16 +316,18 @@
     <!-- end services -->
 
     <!-- footer -->
-    <footer class="footer">
+    <div class="home-footer">
         <div class="contact-info">
-            <div>logo</div>
+            <div class="header-img">
+                <img src="images/LogoTemp.png" alt="logo" class="logo-img">
+            </div>
             <div><a href="tel:+1234567890">(234) 567-890</a></div>
             <div><a href="loginView.php">Admin Login</a></div>
         </div>
         <div class="footer-content">
             <p>&copy; 2025 NORCAL Pool Movers. All rights reserved.</p>
         </div>
-    </footer>
+    </div>
 
     <script src="javascript/script2.js"></script>
 </body>
