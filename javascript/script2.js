@@ -1,15 +1,15 @@
 // logo
 document.addEventListener("DOMContentLoaded", function () {
   const logo = document.querySelector(".logo-img");
-  console.log('Logo element:', logo);
+  console.log("Logo element:", logo);
   window.addEventListener("scroll", function () {
-    console.log('Scroll event fired, scrollY:', window.scrollY);
+    console.log("Scroll event fired, scrollY:", window.scrollY);
     if (window.scrollY > 0) {
       logo.classList.add("hide-on-scroll");
-      console.log('Added hide-on-scroll');
+      console.log("Added hide-on-scroll");
     } else {
       logo.classList.remove("hide-on-scroll");
-      console.log('Removed hide-on-scroll');
+      console.log("Removed hide-on-scroll");
     }
   });
 });

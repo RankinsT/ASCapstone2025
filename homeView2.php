@@ -99,7 +99,7 @@
                 <?php } ?>
             </div>
 
-            <div class="form" style="flex: 1; min-width: 320px;">
+            <div class="form">
                 <form action="" method="POST">
                     <div class="quote-container quote-show">
                         <div>
