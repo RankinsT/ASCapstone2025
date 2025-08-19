@@ -314,7 +314,8 @@
         </div>
      </div>
     <!-- end services -->
-
+<hr style="border: 5px solid white">
+<hr style="border: 5px solid white">
     <!-- footer -->
     <div class="home-footer">
         <div class="contact-info">

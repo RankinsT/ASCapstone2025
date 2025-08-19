@@ -169,7 +169,7 @@ body {
   align-items: space-between;
   justify-content: space-between;
   color: white;
-  margin: 20px;
+  margin: 50px;
 }
 .table-rows {
   display: flex;
@@ -216,6 +216,7 @@ body {
 .home-footer {
   display: flex;
   flex-direction: column;
+  padding: 20px;
 }
 .contact-info {
   display: flex;
@@ -232,4 +233,5 @@ body {
 .footer-content {
   display: flex;
   justify-content: center;
+  color: white;
 }
