@@ -23,6 +23,8 @@ body {
 
 .logo-img.hide-on-scroll {
   opacity: 0;
+  visibility: hidden;
+  position: absolute;
   transition: opacity 0.5s ease;
   pointer-events: none;
 }
@@ -69,4 +71,7 @@ body {
 .review-stars {
   display: flex;
   align-items: center;
+}
+.quote-hide {
+  display: none !important;
 }

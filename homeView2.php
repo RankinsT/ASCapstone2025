@@ -108,13 +108,13 @@
                         </div>
                         <div class="customer-info">
                             <div>
-                                <div><input type="text" name="firstName" placeholder="First Name*" required></div>
+                                <div><input type="text" id="firstName" name="firstName" placeholder="First Name*" autocomplete="given-name" required></div>
                             </div>
                             <div>
-                                <div><input type="text" name="lastName" placeholder="Last Name*" required></div>
+                                <div><input type="text" id="lastName" name="lastName" placeholder="Last Name*" autocomplete="family-name" required></div>
                             </div>
-                            <div><input type="text" name="email" placeholder="Email*" required></div>
-                            <div><input type="text" name="phone" placeholder="Phone"></div>
+                            <div><input type="email" id="email" name="email" placeholder="Email*" autocomplete="email" required></div>
+                            <div><input type="tel" id="phone" name="phone" placeholder="Phone" autocomplete="tel"></div>
                         </div>
                         <div class="form-btns-container">
                             <div>
@@ -136,17 +136,17 @@
                         </div>
                         <div class="customer-info">
                             <div>
-                                <div><input type="text" name="street" placeholder="Street Address*" required></div>
+                                <div><input type="text" id="street" name="street" placeholder="Street Address*" autocomplete="street-address" required></div>
                             </div>
-                            <div><input type="text" name="unit" placeholder="Unit/Apt"></div>
+                            <div><input type="text" id="unit" name="unit" placeholder="Unit/Apt" autocomplete="address-line2"></div>
                             <div>
-                                <div><input type="text" name="city" placeholder="City*" required></div>
-                            </div>
-                            <div>
-                                <div><input type="text" name="state" placeholder="State*" required></div>
+                                <div><input type="text" id="city" name="city" placeholder="City*" autocomplete="address-level2" required></div>
                             </div>
                             <div>
-                                <div><input type="text" name="zip" placeholder="Zip Code*" required></div>
+                                <div><input type="text" id="state" name="state" placeholder="State*" autocomplete="address-level1" required></div>
+                            </div>
+                            <div>
+                                <div><input type="text" id="zip" name="zip" placeholder="Zip Code*" autocomplete="postal-code" required></div>
                             </div>
                         </div>
                         <div class="form-btns-container">
@@ -170,7 +170,7 @@
                         <div class="customer-info">
                             <div>
                                 <div>
-                                    <select name="service-requested[]" id="service-requested" style="width:100%;" multiple>
+                                    <select name="service-requested[]" id="service-requested" style="width:100%;" autocomplete="off" multiple>
                                         <option value="Felt Replacement & Repairs">1. Felt Replacement & Repairs</option>
                                         <option value="In-Home Relocation">2. In-Home Relocation</option>
                                         <option value="Long-Distance Moves">3. Long-Distance Moves</option>
@@ -181,7 +181,7 @@
                                 </div>
                             </div>
                             <div>
-                                <textarea name="notes" placeholder="Additional Notes"></textarea>
+                                <textarea id="notes" name="notes" placeholder="Additional Notes" autocomplete="off"></textarea>
                             </div>
                         </div>
                         <div class="form-btns-container">
