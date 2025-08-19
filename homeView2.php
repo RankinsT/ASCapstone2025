@@ -322,7 +322,7 @@
             <div class="header-img">
                 <img src="images/LogoTemp.png" alt="logo" class="logo-img">
             </div>
-            <div><a href="tel:+1234567890">(234) 567-890</a></div>
+            <div><a href="tel:+1234567890"><span style="color: white; font-weight: bold;">CONTACT: </span>234.567.890</a></div>
             <div><a href="loginView.php">Admin Login</a></div>
         </div>
         <div class="footer-content">
