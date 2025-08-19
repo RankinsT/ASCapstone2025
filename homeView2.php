@@ -60,7 +60,7 @@
         <!-- review/form -->
         <div class="description-quote row elements row-1">
             <div class="description col-lg-6">
-                <h1>Who are we?</h1>
+                <div class="title">Who are we?</div>
                 <p id="company-description-text">
                     NORCAL Pool Movers is a locally owned and operated small business based in Coventry, Connecticut, specializing in professional pool table moving, setup, and installation. We pride ourselves on delivering reliable, careful, and friendly service to ensure your pool table is transported and reassembled with the utmost care. Whether you’re relocating across town, setting up a new game room, or need expert leveling for the perfect play, we bring the tools, skill, and experience to get the job done right. As a small business, we value personal connections with our customers and go the extra mile to provide top-quality service at fair prices.
                 </p>

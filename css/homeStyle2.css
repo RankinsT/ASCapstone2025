@@ -3,7 +3,14 @@ body {
   margin: 0;
   overflow-x: hidden;
 }
-
+.title {
+  font-family: 'Pacifico', cursive;
+  color: white;
+  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
+  font-size: 81px;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
 /* header */
 .header {
   display: flex;
