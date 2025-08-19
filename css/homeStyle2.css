@@ -70,11 +70,13 @@ body {
 }
 .review-divs {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: flex-end;
   background-color: #046879;
   margin-bottom: 24px;
   padding: 16px;
   border-radius: 10px;
+  position: relative;
 }
 .review-divs p {
   width: 800px;
@@ -153,4 +155,23 @@ body {
   justify-content: center;
   width: 100%;
   margin-top: 18px;
+}
+#review-edit-save-btn1,
+#review-edit-save-btn2,
+#review-edit-save-btn3 {
+  align-self: flex-end;
+  margin-top: 12px;
+  font-size: 0.9rem;
+  padding: 6px 16px;
+  border-radius: 6px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#review-edit-save-btn1:hover,
+#review-edit-save-btn2:hover,
+#review-edit-save-btn3:hover {
+  background-color: #0056b3;
 }
