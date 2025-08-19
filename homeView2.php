@@ -314,10 +314,11 @@
         </div>
      </div>
     <!-- end services -->
-<hr style="border: 5px solid white">
-<hr style="border: 5px solid white">
+
     <!-- footer -->
     <div class="home-footer">
+        <hr style="border: 5px solid white">
+        <hr style="border: 5px solid white">
         <div class="contact-info">
             <div class="header-img">
                 <img src="images/LogoTemp.png" alt="logo" class="logo-img">
@@ -325,6 +326,7 @@
             <div><a href="tel:+1234567890"><span style="color: white; font-weight: bold;">CONTACT: </span>234.567.890</a></div>
             <div><a href="loginView.php">Admin Login</a></div>
         </div>
+        <hr style="border: 5px solid white">
         <div class="footer-content">
             <p>&copy; 2025 NORCAL Pool Movers. All rights reserved.</p>
             <!-- link to top -->
