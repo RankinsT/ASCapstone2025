@@ -235,6 +235,7 @@
      <div class="services">
         <div class="title">Services</div>
      </div>
+     <div class="pool-table"></div>
     <!-- end services -->
 
     <script src="javascript/script2.js"></script>
