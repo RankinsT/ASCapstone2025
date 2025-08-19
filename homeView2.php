@@ -335,7 +335,7 @@
             </div>
         </div>
     </div>
-
+    <!-- end footer -->
     <script src="javascript/script2.js"></script>
 </body>
 </html>
