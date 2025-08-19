@@ -1,0 +1,138 @@
+Code Reference Documentation
+Project: ASCapstone2025
+
+---
+
+## models/db.php
+
+- **Variables:**
+  - `$ini`: Array containing database configuration loaded from `dbconfig.ini`.
+  - `$db`: PDO instance for database connection.
+
+---
+
+## models/model_admin.php
+
+- **Functions:**
+
+  - `login($username, $password): bool`
+    - Parameters:
+      - `$username` (string): Admin username
+      - `$password` (string): Admin password
+    - Returns: `true` if login is successful, `false` otherwise.
+
+  - `getAllCustomers(): array`
+    - Parameters: None
+    - Returns: Array of all customers.
+
+  - `getCustomer($ID): array`
+    - Parameters:
+      - `$ID` (int): Customer ID
+    - Returns: Array of customer data.
+
+  - `deleteCustomer($customerID): string`
+    - Parameters:
+      - `$customerID` (int): Customer ID
+    - Returns: Status message.
+
+  - `addCustomer($customerData): bool`
+    - Parameters:
+      - `$customerData` (array): Associative array of customer fields
+    - Returns: `true` on success, `false` on error.
+
+  - `updateCustomer($customerData): bool`
+    - Parameters:
+      - `$customerData` (array): Associative array including `ID`
+    - Returns: `true` on success, `false` on error.
+
+  - `editCustomer($customerID): array`
+    - Parameters:
+      - `$customerID` (int): Customer ID
+    - Returns: Array of customer data.
+
+  - `searchCustomer($searchTerm): array`
+    - Parameters:
+      - `$searchTerm` (string): Search term
+    - Returns: Array of matching customers.
+
+  - `getAllAdmins(): array`
+    - Parameters: None
+    - Returns: Array of all admin users.
+
+  - `register($username, $password, $email): string`
+    - Parameters:
+      - `$username` (string): Admin username
+      - `$password` (string): Admin password
+      - `$email` (string): Admin email
+    - Returns: Status message.
+
+  - `updateAccount($username, $email, $currentPassword, $newPassword): string`
+    - Parameters:
+      - `$username` (string): Admin username
+      - `$email` (string): Admin email
+      - `$currentPassword` (string): Current password
+      - `$newPassword` (string): New password
+    - Returns: Status message.
+
+  - `getAdmin($username): array|null`
+    - Parameters:
+      - `$username` (string): Admin username
+    - Returns: Admin data or null.
+
+  - `requestQuote($firstName, $lastName, $email, $phoneNumber, $street, $apt, $city, $state, $zip, $serviceRequested, $notes): string`
+    - Parameters:
+      - `$firstName` (string): First name
+      - `$lastName` (string): Last name
+      - `$email` (string): Email
+      - `$phoneNumber` (string): Phone number
+      - `$street` (string): Street address
+      - `$apt` (string): Apartment/unit
+      - `$city` (string): City
+      - `$state` (string): State
+      - `$zip` (string): Zip code
+      - `$serviceRequested` (string): Service requested
+      - `$notes` (string): Additional notes
+    - Returns: Status message.
+
+- **Variables:**
+  - `$db`: Global PDO instance for database operations.
+
+---
+
+## models/customer_profiles.php
+
+- (File is mostly empty or includes another file. No documented functions/classes.)
+
+---
+
+## JavaScript Reference (adminScript.js)
+
+- **Functions:**
+  - `showAddCustomerForm()`
+    - Parameters: None
+    - Prompts user for customer info and submits via a hidden form.
+
+  - `showEditCustomerForm(customer)`
+    - Parameters:
+      - `customer` (object): Customer data to pre-fill the form
+    - Prompts user to edit customer info and submits via a hidden form.
+
+  - `initEditableSection({editButtonId, textElementId, formId, editorId})`
+    - Parameters:
+      - `editButtonId` (string): ID of the edit button
+      - `textElementId` (string): ID of the text element
+      - `formId` (string): ID of the form element
+      - `editorId` (string): ID of the editor element
+    - Initializes a TinyMCE editable section for rich text editing.
+
+---
+
+## HTML Forms
+
+- **Form Fields (homeViewSections/form.php):**
+  - `firstName`, `lastName`, `email`, `phone`, `service-requested`, `notes`
+  - Used for quote requests and customer data entry.
+
+---
+
+If you need documentation for other files or more details, let me know!
