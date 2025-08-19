@@ -232,7 +232,7 @@
     <!-- end carousel -->
 
     <!-- services -->
-     <div class="services">
+     <div class="services col-lg-12">
         <div class="title col-12">Services</div>
      </div>
      <div class="pool-table">
