@@ -50,7 +50,7 @@
         <div class="sticky-btn">
             <button type="button" class="phone-num-btn">
                 <div>Call Now</div>
-                <div><a href="tel:+1234567890">(234) 567-890</a></div>
+                <div><a href="tel:+1234567890">(234) 567-8901</a></div>
             </button>
         </div>
      </div>
@@ -324,7 +324,7 @@
             <div class="header-img">
                 <img src="images/LogoTemp.png" alt="logo" class="logo-img">
             </div>
-            <div><a href="tel:+1234567890"><span style="color: white; font-weight: bold;">CONTACT: </span>234.567.890</a></div>
+            <div><a href="tel:+1234567890"><span style="color: white; font-weight: bold;">CONTACT: </span>234.567.8901</a></div>
             <div><a href="loginView.php">Admin Login</a></div>
         </div>
         <hr style="border: 5px solid white">
