@@ -75,8 +75,8 @@ body {
   background-color: #046879;
   margin-bottom: 24px;
   padding: 16px;
-  border-radius: 10px;
   position: relative;
+  border: 10px solid #00a19a
 }
 .review-divs p {
   width: 800px;
