@@ -233,7 +233,7 @@
 
     <!-- services -->
      <div class="services col-lg-12">
-        <div class="title col-12">Services</div>
+        <div class="title">Services</div>
      </div>
      <div class="pool-table">
         <div class="table-rows">
