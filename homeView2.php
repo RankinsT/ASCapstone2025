@@ -189,7 +189,7 @@
     ?>
 
 
-    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+    <div id="carouselExample" class="carousel slide col-lg-12" data-bs-ride="carousel">
         <div class="carousel-inner">
             <?php if (!empty($images)): ?>
                 <?php foreach ($images as $index => $image): ?>
