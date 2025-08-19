@@ -4,7 +4,7 @@ body {
   overflow-x: hidden;
 }
 .title {
-  font-family: 'Pacifico', cursive;
+  font-family: "Pacifico", cursive;
   color: white;
   /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
   font-size: 81px;
@@ -12,7 +12,7 @@ body {
   text-decoration-thickness: 2px;
 }
 .text {
-  font-family: 'Roboto', regular;
+  font-family: "Roboto", regular;
   font-size: 36px;
   color: white;
 }
@@ -76,7 +76,7 @@ body {
   display: none !important;
 }
 
- /* description/quote */
+/* description/quote */
 .quote-container {
   display: flex;
   flex-direction: column;
@@ -157,5 +157,9 @@ body {
   align-items: center;
 }
 .pool-table {
-  
+  background-image: url("../images/table.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 1200px;
 }
