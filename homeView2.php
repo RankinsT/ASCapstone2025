@@ -57,7 +57,7 @@
     
 
         <!-- review/form -->
-        <div class="review-quote-flex" style="display: flex; gap: 40px; align-items: flex-start;">
+        <div class="review-quote">
             <div class="reviews" id="reviews" style="display: flex; flex-direction: column; flex: 1; max-width: 500px;">
                 <div id="review-text1" class="review-divs">
                     <p>
