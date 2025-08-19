@@ -47,7 +47,7 @@
         <div class="header-img">
             <img src="images/LogoTemp.png" alt="logo" class="logo-img">
         </div>
-        <div>
+        <div class="sticky-btn">
             <button type="button" class="phone-num-btn">
                 <div>Call Now</div>
                 <div><a href="tel:+1234567890">(234) 567-890</a></div>
