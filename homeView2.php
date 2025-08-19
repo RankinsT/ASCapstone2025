@@ -327,6 +327,10 @@
         </div>
         <div class="footer-content">
             <p>&copy; 2025 NORCAL Pool Movers. All rights reserved.</p>
+            <!-- link to top -->
+            <div class="back-to-top">
+                <a href="#top" style="color: white; text-decoration: underline;">Back to Top</a>
+            </div>
         </div>
     </div>
 
