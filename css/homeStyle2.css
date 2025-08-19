@@ -211,3 +211,9 @@ body {
 .service-text {
   width: 500px;
 }
+
+/* footer */
+footer {
+  display: flex;
+  flex-direction: column;
+}
