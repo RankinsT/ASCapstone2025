@@ -97,9 +97,10 @@
                             <button type="button">next</button>
                         </div>
                     </div>
-                    <div class="progression-bar">
-                        <div>Progression bar</div>
-                    </div>
+                                                                <!-- Progress Bar Example -->
+                                                                <div class="progression-bar">
+                                                                    <div class="progression-bar-fill" style="width: 33%;"></div>
+                                                                </div>
                 </div>
 
                 <div class="quote-container quote-hide">
@@ -130,9 +131,9 @@
                             <button type="button">next</button>
                         </div>
                     </div>
-                    <div class="progression-bar">
-                        <div>Progression bar</div>
-                    </div>
+                                        <div class="progression-bar">
+                                            <div class="progression-bar-fill" style="width: 66%;"></div>
+                                        </div>
                 </div>
 
                 <div class="quote-container quote-hide">
@@ -165,9 +166,9 @@
                             <button class="send-btn" type="submit" name="send-btn">send</button>
                         </div>
                     </div>
-                    <div class="progression-bar">
-                        <div>Progression bar</div>
-                    </div>
+                                        <div class="progression-bar">
+                                            <div class="progression-bar-fill" style="width: 100%;"></div>
+                                        </div>
                 </div>
             </form>
         </div>
