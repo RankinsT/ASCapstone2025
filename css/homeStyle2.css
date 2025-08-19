@@ -155,6 +155,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 100px;
 }
 .pool-table {
   background-image: url("../images/table.png");
@@ -168,6 +169,7 @@ body {
   align-items: space-between;
   justify-content: space-between;
   color: white;
+  margin: 20px;
 }
 .table-rows {
   display: flex;
