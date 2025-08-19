@@ -237,12 +237,32 @@
      </div>
      <div class="pool-table">
         <div class="table-rows">
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
+            <div class="table-row-section">
+                <div class="title">Felt Replacement & Repairs</div>
+                <div class="text"> <p>Re-covering in a variety of colors, repairing small tears, and tightening rails.</p></div>
+            </div>
+            <div>
+                <div class="title">In-Home Relocation</div>
+                <div class="text"><p>Shifting your table to a new room or basement without leaving the property.</p></div>
+            </div>
+            <div>
+                <div class="title">Long-Distance Moves</div>
+                <div class="text"><p>Secure transport across states with full insurance coverage</p></div>
+            </div>
         </div>
         <div class="table-rows">
-            <div>4</div>
+            <div>
+                <div class="title">Residential & Commercial  Pool Table Moving</div>
+                <div class="text"><p>Moving tables for bars, clubs, rec centers, apartment complexs and event spaces.</p></div>
+            </div>
+            <div>
+                <div class="title">Slate Repair & Replacement</div>
+                <div class="text"><p>Handling cracked or damaged slate </p></div>
+            </div>
+            <div>
+                <div class="title">Assembly & Dismantle</div>
+                <div class="text"><p>Disassembly, transport, and reassembly of all table sizes, including slate tables.</p></div>
+            </div>
             <div>5</div>
             <div>6</div>
         </div>
