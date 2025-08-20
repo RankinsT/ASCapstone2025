@@ -186,12 +186,16 @@ body {
   flex-direction: column;
   align-items: center;
   margin-top: 100px;
-}
-.pool-table {
   background-image: url("../images/table.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+}
+.pool-table {
+  /* background-image: url("../images/table.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat; */
   min-height: 500px;
   /* min-width: 2400px; */
   display: flex;
@@ -199,7 +203,7 @@ body {
   align-items: space-between;
   justify-content: space-between;
   color: white;
-  margin: 100px;
+  /* margin: 100px; */
 }
 .table-rows {
   display: flex;
@@ -304,9 +308,16 @@ body {
     font-size: 1.5rem;
     width: 100%;
     text-align: left;
+    
   }
   .service-text {
     width: 100%;
     font-size: 1rem;
   }
+}
+.services {
+  background-image: url("../images/table.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
