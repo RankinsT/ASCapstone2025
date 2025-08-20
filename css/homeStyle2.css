@@ -207,8 +207,8 @@ body {
 }
 .table-rows {
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
   padding: 100px;
 }
 .table-row-section {
