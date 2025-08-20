@@ -205,7 +205,7 @@ body {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  padding: 200px;
+  padding: 100px;
 }
 .table-row-section {
   display: flex;
