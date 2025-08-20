@@ -23,6 +23,7 @@
 body {
   background: linear-gradient(135deg, #354444 0%, #4e5d5d 50%, #222c2c 100%);
   margin: 0;
+  overflow-x: hidden;
 }
 
 /* Fixed header section at the top */

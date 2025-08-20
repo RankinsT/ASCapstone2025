@@ -1,8 +1,56 @@
+/* Progress Bar */
+.progression-bar {
+  width: 100%;
+  max-width: 600px;
+  height: 32px;
+  background: #f5faff;
+  border-radius: 20px;
+  border: 2px solid #b3d1ff;
+  overflow: hidden;
+  margin: 48px auto 32px auto;
+  box-shadow: 0 6px 24px rgba(51, 122, 255, 0.08);
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.progression-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #337aff 0%, #6ed6ff 100%);
+  border-radius: 20px;
+  transition: width 0.5s cubic-bezier(0.4, 2, 0.3, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2rem;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 12px rgba(51, 122, 255, 0.12);
+}
+body {
+  background: linear-gradient(135deg, #354444 0%, #4e5d5d 50%, #222c2c 100%);
+  margin: 0;
+  overflow-x: hidden;
+}
+.title {
+  font-family: "Pacifico", cursive;
+  color: white;
+  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
+  font-size: 81px;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+.text {
+  font-family: "Roboto", regular;
+  font-size: 28px;
+  color: white;
+}
 /* header */
 .header {
-    display: flex;
-    /* justify-content: space-between;
-    align-items: center; */
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
 }
 .logo-img {
   width: 100px;
@@ -20,7 +68,7 @@
   transition: opacity 0.5s ease;
   pointer-events: none;
 }
-/* .phone-num-btn {
+.phone-num-btn {
   display: flex;
   flex-direction: column;
   background: rgba(255, 255, 255, 0.18);
@@ -30,16 +78,233 @@
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
   margin: 20px;
+  padding: 10px;
 }
 .phone-num-btn:hover {
   background-color: #00a19a;
   transition: background-color 0.3s ease;
 }
-.phone-num-btn p {
-  margin: 0px;
-}
-.phone-num-btn p a, p {
+.phone-num-btn * {
   color: white;
   text-decoration: none;
   font-weight: bold;
-} */
+}
+.sticky-btn {
+  position: fixed;
+  top: 30px;
+  right: 0;
+  z-index: 1000;
+}
+
+.description-quote {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 20px;
+}
+.quote-hide {
+  display: none !important;
+}
+
+/* description/quote */
+.quote-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  padding: 20px;
+  /* max-width: 500px; */
+  /* width: 100%; */
+  /* height: 100%; */
+  /* flex: 1; */
+  background-color: #00a19a;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  min-height: 600px;
+}
+.quote-container > div:first-child {
+  width: 100%;
+  text-align: left;
+  align-self: flex-start;
+  margin-bottom: 18px;
+}
+.customer-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.customer-info > div {
+  margin-bottom: 18px;
+}
+.customer-info input,
+.customer-info select,
+.customer-info textarea {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+.form {
+  max-width: 500px;
+  width: 100%;
+  height: 100%;
+}
+.form-btns-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+.form-btns-container button.previous-btn {
+  margin-right: auto;
+}
+.form-btns-container button.send-btn,
+.form-btns-container button[type="button"] {
+  margin-left: auto;
+}
+.progression-bar {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 18px;
+}
+
+/* carousel */
+.carousel {
+  padding: 20px;
+}
+
+/* services */
+.services {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+.pool-table {
+  background-image: url("../images/table.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 1200px;
+  /* min-width: 2400px; */
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  justify-content: space-between;
+  color: white;
+  margin: 50px;
+}
+.table-rows {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 200px;
+}
+.table-row-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.service-emblem {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 160px;
+  height: 50px;
+  border-radius: 50%;
+  background: none;
+  margin-bottom: 30px;
+}
+
+.service-emblem svg {
+  width: 140px;
+  height: 140px;
+}
+.service-title {
+  font-family: "Pacifico", cursive;
+  color: white;
+  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
+  font-size: 45px;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  width: 500px;
+}
+.service-text {
+  width: 500px;
+}
+
+/* footer */
+.home-footer {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.contact-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.contact-info a {
+  color: #00a19a;
+  text-decoration: none;
+}
+.contact-info a:hover {
+  text-decoration: underline;
+}
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+/* Add responsive styles for mobile */
+@media (max-width: 600px) {
+  .pool-table {
+    min-height: 600px;
+    padding: 16px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .table-rows {
+    flex-direction: column;
+    padding: 0;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .table-row-section {
+    width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 32px;
+  }
+  .service-emblem {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 16px;
+  }
+  .service-emblem svg {
+    width: 70px;
+    height: 70px;
+  }
+  .service-title {
+    font-size: 1.5rem;
+    width: 100%;
+    text-align: left;
+  }
+  .service-text {
+    width: 100%;
+    font-size: 1rem;
+  }
+}
