@@ -43,7 +43,7 @@
                 <img src="images/LogoTemp.png" alt="logo" class="login-logo">
             </div>
 
-            <div><a href="homeView.php">Go to Homepage</a></div>
+            <div><a href="homeView2.php">Go to Homepage</a></div>
 
             <div><input type="text" name="username" placeholder="Username" required></div>
             <div><input type="password" name="password" placeholder="Password" required></div>
