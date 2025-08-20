@@ -207,6 +207,7 @@ body {
 }
 .table-rows {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   padding: 100px;
