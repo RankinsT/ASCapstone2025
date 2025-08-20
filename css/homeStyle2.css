@@ -211,7 +211,6 @@ body {
   justify-content: center;
   align-items: flex-start;
   padding: 100px;
-  margin: 100px;
 }
 .table-row-section {
   display: flex;
@@ -246,7 +245,7 @@ body {
   width: 500px;
 }
 .service-text {
-  /* width: 500px; */
+  width: 500px;
 }
 
 /* footer */
@@ -278,7 +277,7 @@ body {
 /* Add responsive styles for mobile */
 @media (max-width: 600px) {
   .pool-table {
-    min-height: 600px;
+    min-height: 200px;
     padding: 16px;
     flex-direction: column;
     align-items: center;
