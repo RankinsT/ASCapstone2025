@@ -130,6 +130,12 @@ function updateCustomer($customerData) {
             WHERE ID = :id';
 
     $stmt = $db->prepare($sql); // Prepare the SQL statement
+    
+                // Check required fields
+                if (empty($firstName) || empty($lastName) || empty($email) || empty($street) || empty($city) || empty($state) || empty($zip) || empty($serviceRequested)) {
+                    echo "<script>alert('Please fill out all required fields.');</script>";
+                    return "Form incomplete";
+                }
 
     // Bind the customer data to the SQL statement
     $stmt->bindValue(':id', $customerData['ID']);
@@ -334,10 +340,14 @@ function requestQuote($firstName, $lastName, $email, $phoneNumber, $street, $apt
 
         if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
             $results = "Quote request submitted successfully";
+            echo "<script>alert('$results');</script>";
+        } else {
+            $errorInfo = $stmt->errorInfo();
+            return "SQL Error: " . htmlspecialchars($errorInfo[2]);
         }
     } catch (PDOException $e) {
         error_log("Error requesting quote: " . $e->getMessage());
-        return "Error requesting quote";
+        return "PDO Error: " . htmlspecialchars($e->getMessage());
     }
     return $results;
 }

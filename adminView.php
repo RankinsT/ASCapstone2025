@@ -203,7 +203,7 @@
                                 <th>City</th>
                                 <th>State</th>
                                 <th>Zipcode</th>
-                                <th>Service Requested</th>
+                                <th style="min-width:220px; white-space:normal;">Service Requested</th>
                                 <th>Notes</th>
                                 <th>Date Added</th>
                                 <th></th>
@@ -225,7 +225,7 @@
                                 <td><?= $customer["city"] ?></td>
                                 <td><?= $customer["state"] ?></td>
                                 <td><?= $customer["zipcode"] ?></td>
-                                <td><?= $customer["serviceRequested"] ?></td>
+                                <td style="max-width:300px; white-space:normal; word-break:break-word;"><?= $customer["serviceRequested"] ?></td>
                                 <td><?= $customer["notes"] ?></td>
                                 <td><?= $customer["dateAdded"] ?></td>
                                 <td>

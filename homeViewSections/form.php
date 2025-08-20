@@ -1,24 +1,25 @@
+
 <?php
-
 if(isset($_POST['send-btn'])) {
-    echo "form submitted";
-
-    $firstName = filter_input(INPUT_POST, 'firstName', FILTER_SANITIZE_STRING);
-    $lastName = filter_input(INPUT_POST, 'lastName', FILTER_SANITIZE_STRING);
-    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-    $phoneNumber = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_STRING);
-    $street = filter_input(INPUT_POST, 'street', FILTER_SANITIZE_STRING);
-    $apt = filter_input(INPUT_POST, 'unit', FILTER_SANITIZE_STRING);
-    $city = filter_input(INPUT_POST, 'city', FILTER_SANITIZE_STRING);
-    $state = filter_input(INPUT_POST, 'state', FILTER_SANITIZE_STRING);
-    $zip = filter_input(INPUT_POST, 'zip', FILTER_SANITIZE_STRING);
-    $serviceRequested = filter_input(INPUT_POST, 'service-requested', FILTER_SANITIZE_STRING);
-    $notes = filter_input(INPUT_POST, 'notes', FILTER_SANITIZE_STRING);
+    // Use htmlspecialchars and trim for sanitization
+    $firstName = isset($_POST['firstName']) ? htmlspecialchars(trim($_POST['firstName'])) : '';
+    $lastName = isset($_POST['lastName']) ? htmlspecialchars(trim($_POST['lastName'])) : '';
+    $email = isset($_POST['email']) ? htmlspecialchars(trim($_POST['email'])) : '';
+    $phoneNumber = isset($_POST['phone']) ? htmlspecialchars(trim($_POST['phone'])) : '';
+    $street = isset($_POST['street']) ? htmlspecialchars(trim($_POST['street'])) : '';
+    $apt = isset($_POST['unit']) ? htmlspecialchars(trim($_POST['unit'])) : '';
+    $city = isset($_POST['city']) ? htmlspecialchars(trim($_POST['city'])) : '';
+    $state = isset($_POST['state']) ? htmlspecialchars(trim($_POST['state'])) : '';
+    $zip = isset($_POST['zip']) ? htmlspecialchars(trim($_POST['zip'])) : '';
+    $serviceRequestedArr = isset($_POST['service-requested']) ? $_POST['service-requested'] : [];
+    $serviceRequested = $serviceRequestedArr ? implode(', ', array_map('htmlspecialchars', $serviceRequestedArr)) : '';
+    $notes = isset($_POST['notes']) ? htmlspecialchars(trim($_POST['notes'])) : '';
 
     requestQuote($firstName, $lastName, $email, $phoneNumber, $street, $apt, $city, $state, $zip, $serviceRequested, $notes);
 }
+?>
 
-// ?>
+<form class="form" method="POST">
 
 <div class="quote-container quote-show">
     <div>
@@ -90,15 +91,15 @@ if(isset($_POST['send-btn'])) {
     <div class="customer-info">
         <div>
             <div>
-                <select name="service-requested" id="service-requested" style="width:100%;">
-                    <option value="">Service Requested</option>
-                    <option value="Felt Replacement & Repairs">Felt Replacement & Repairs</option>
-                    <option value="In-Home Relocation">In-Home Relocation</option>
-                    <option value="Residential & Commercial  Pool Table Moving">Residential & Commercial  Pool Table Moving</option>
-                    <option value="Residential & Commercial  Pool Table Moving">Residential & Commercial  Pool Table Moving</option>
-                    <option value="Slate Repair & Replacement">Slate Repair & Replacement</option>
-                    <option value="Assembly & Dismantle">Assembly & Dismantle</option>
+                <select name="service-requested[]" id="service-requested" style="width:100%;" multiple>
+                    <option value="Felt Replacement & Repairs">1. Felt Replacement & Repairs</option>
+                    <option value="In-Home Relocation">2. In-Home Relocation</option>
+                    <option value="Long-Distance Moves">3. Long-Distance Moves</option>
+                    <option value="Residential & Commercial Pool Table Moving">4. Residential & Commercial Pool Table Moving</option>
+                    <option value="Slate Repair & Replacement">5. Slate Repair & Replacement</option>
+                    <option value="Assembly & Dismantle">6. Assembly & Dismantle</option>
                 </select>
+
             </div>
         </div>
         <div>
@@ -143,6 +144,23 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.form-btns-container button').forEach(button => {
         button.addEventListener('click', function() {
             if (this.textContent.toLowerCase() === 'next') {
+                // Validate required fields in the current step before proceeding
+                const visibleStep = quoteContainers[currentStep];
+                const requiredFields = visibleStep.querySelectorAll('input[required], select[required], textarea[required], select[name="service-requested[]"]');
+                let missing = [];
+                requiredFields.forEach(field => {
+                    if (field.tagName === 'SELECT') {
+                        if (!field.selectedOptions.length) {
+                            missing.push('Service Requested');
+                        }
+                    } else if (!field.value.trim()) {
+                        missing.push(field.placeholder || field.name);
+                    }
+                });
+                if (missing.length > 0) {
+                    alert('Please fill out all required fields: ' + missing.join(', '));
+                    return;
+                }
                 if (currentStep < quoteContainers.length - 1) {
                     currentStep++;
                     showCurrentStep();
@@ -157,5 +175,37 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     showCurrentStep(); // Initialize the first step
+
+    // Client-side validation for required fields
+    const form = document.querySelector('form.form');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            // Only validate fields in the currently visible step
+            const visibleStep = form.querySelector('.quote-container.quote-show');
+            const requiredFields = visibleStep ? visibleStep.querySelectorAll('input[required], select[required], textarea[required], select[name="service-requested[]"]') : [];
+            let missing = [];
+            requiredFields.forEach(field => {
+                if (field.tagName === 'SELECT') {
+                    if (!field.selectedOptions.length) {
+                        missing.push('Service Requested');
+                    }
+                } else if (!field.value.trim()) {
+                    missing.push(field.placeholder || field.name);
+                }
+            });
+            if (missing.length > 0) {
+                e.preventDefault();
+                alert('Please fill out all required fields: ' + missing.join(', '));
+            }
+        });
+    }
+});
+
+$(document).ready(function() {
+    $('#service-requested').select2({
+        placeholder: "Select services",
+        allowClear: true
+    });
 });
 </script>
+</form>
