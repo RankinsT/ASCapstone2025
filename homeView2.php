@@ -83,18 +83,14 @@
                         <div><h2>Free Quote</h2></div>
                         <div><p>Get a free quote today!</p></div>
                     </div>
-                    <div class="customer-info">
-                        <div>
-                            <div><button type="button">Get Started</button></div>
-                        </div>
-                        
-                    </div>
+                    
                     <div class="form-btns-container">
                         <div>
                             <!-- <button>previous</button> -->
                         </div>
-                        <div>
+                        <div class="get-started-btn">
                             <button type="button">Get Started</button>
+                            <a href="">Privacy Policy</a>
                         </div>
                     </div>
                                                                 <!-- Progress Bar Example -->

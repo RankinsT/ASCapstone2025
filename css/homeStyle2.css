@@ -161,6 +161,10 @@ body {
   margin-top: 18px;
   margin-bottom: 18px;
 }
+.get-started-btn {
+  display: flex;
+  flex-direction: column;
+}
 .form-btns-container button.previous-btn {
   margin-right: auto;
 }
