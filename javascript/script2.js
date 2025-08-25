@@ -20,16 +20,26 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentStep = 0;
 
   function updateProgressBars() {
-    // Update all progression bars in visible step
+    // Update all custom ball progress bars in visible step
     quoteContainers.forEach((container, index) => {
-      const bar = container.querySelector(".progression-bar");
-      const fill = bar ? bar.querySelector(".progression-bar-fill") : null;
-      if (fill) {
-        const percent = Math.round(
-          ((index + 1) / quoteContainers.length) * 100
-        );
-        fill.style.width = percent + "%";
-        fill.textContent = percent + "%";
+      const barBalls = container.querySelector(".progression-bar-balls");
+      if (barBalls) {
+        const balls = barBalls.querySelectorAll(".progress-ball");
+        const lines = barBalls.querySelectorAll(".progress-bar-line");
+        balls.forEach((ball, i) => {
+          ball.classList.remove("active", "complete");
+          if (i === currentStep) {
+            ball.classList.add("active");
+          } else if (i < currentStep) {
+            ball.classList.add("complete");
+          }
+        });
+        lines.forEach((line, i) => {
+          line.classList.remove("complete");
+          if (i < currentStep) {
+            line.classList.add("complete");
+          }
+        });
       }
     });
   }

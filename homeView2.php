@@ -93,9 +93,17 @@
                             <a href="">Privacy Policy</a>
                         </div>
                     </div>
-                                                                <!-- Progress Bar Example -->
-                                                                <div class="progression-bar">
-                                                                    <div class="progression-bar-fill" style="width: 33%;"></div>
+                                                                <!-- Custom Progress Bar with Balls -->
+                                                                <div class="progression-bar-balls">
+                                                                    <div class="progress-bar-track">
+                                                                        <div class="progress-ball" data-step="0"><span>1</span></div>
+                                                                        <div class="progress-bar-line"></div>
+                                                                        <div class="progress-ball" data-step="1"><span>2</span></div>
+                                                                        <div class="progress-bar-line"></div>
+                                                                        <div class="progress-ball" data-step="2"><span>3</span></div>
+                                                                        <div class="progress-bar-line"></div>
+                                                                        <div class="progress-ball" data-step="3"><span>4</span></div>
+                                                                    </div>
                                                                 </div>
                 </div>
 
@@ -122,9 +130,17 @@
                             <button type="button">next</button>
                         </div>
                     </div>
-                                                                <!-- Progress Bar Example -->
-                                                                <div class="progression-bar">
-                                                                    <div class="progression-bar-fill" style="width: 33%;"></div>
+                                                                <!-- Custom Progress Bar with Balls -->
+                                                                <div class="progression-bar-balls">
+                                                                    <div class="progress-bar-track">
+                                                                        <div class="progress-ball" data-step="0"><span>1</span></div>
+                                                                        <div class="progress-bar-line"></div>
+                                                                        <div class="progress-ball" data-step="1"><span>2</span></div>
+                                                                        <div class="progress-bar-line"></div>
+                                                                        <div class="progress-ball" data-step="2"><span>3</span></div>
+                                                                        <div class="progress-bar-line"></div>
+                                                                        <div class="progress-ball" data-step="3"><span>4</span></div>
+                                                                    </div>
                                                                 </div>
                 </div>
 
@@ -156,8 +172,16 @@
                             <button type="button">next</button>
                         </div>
                     </div>
-                                        <div class="progression-bar">
-                                            <div class="progression-bar-fill" style="width: 66%;"></div>
+                                        <div class="progression-bar-balls">
+                                            <div class="progress-bar-track">
+                                                <div class="progress-ball" data-step="0"><span>1</span></div>
+                                                <div class="progress-bar-line"></div>
+                                                <div class="progress-ball" data-step="1"><span>2</span></div>
+                                                <div class="progress-bar-line"></div>
+                                                <div class="progress-ball" data-step="2"><span>3</span></div>
+                                                <div class="progress-bar-line"></div>
+                                                <div class="progress-ball" data-step="3"><span>4</span></div>
+                                            </div>
                                         </div>
                 </div>
 
@@ -191,8 +215,16 @@
                             <button class="send-btn" type="submit" name="send-btn">send</button>
                         </div>
                     </div>
-                                        <div class="progression-bar">
-                                            <div class="progression-bar-fill" style="width: 100%;"></div>
+                                        <div class="progression-bar-balls">
+                                            <div class="progress-bar-track">
+                                                <div class="progress-ball" data-step="0"><span>1</span></div>
+                                                <div class="progress-bar-line"></div>
+                                                <div class="progress-ball" data-step="1"><span>2</span></div>
+                                                <div class="progress-bar-line"></div>
+                                                <div class="progress-ball" data-step="2"><span>3</span></div>
+                                                <div class="progress-bar-line"></div>
+                                                <div class="progress-ball" data-step="3"><span>4</span></div>
+                                            </div>
                                         </div>
                 </div>
             </form>
