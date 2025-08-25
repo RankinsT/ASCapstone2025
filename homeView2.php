@@ -74,7 +74,7 @@
                 <button id="edit-save-btn" type="button">Edit</button>
             <?php } ?>
         </div>
-
+                <!-- form -->
         <div class="form col-lg-6">
             <form action="" method="POST">
                 <div class="quote-container quote-show">
