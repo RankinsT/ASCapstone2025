@@ -80,7 +80,7 @@
 
                 <div class="quote-container quote-show starting-page" style="background-image: url('images/balls2.png'); background-size: cover; background-position: center; border:none; background-color: transparent; box-shadow: none; color: white;">
                     <div class="rotated">
-                        <div><h2>Get your<br> <span style="font-weight: bold;">FREE</span><br> estimate</h2></div>
+                        <div>Get your<br> <span style="font-weight: bold;">FREE</span><br> estimate</div>
                         <div></div>
                     </div>
                     

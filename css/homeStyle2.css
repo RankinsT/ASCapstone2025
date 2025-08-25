@@ -117,7 +117,7 @@ body {
   /* width: 100%; */
   /* height: 100%; */
   /* flex: 1; */
-  background-color: #00a19a;
+  /* background-color: #00a19a; */
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -183,7 +183,7 @@ body {
 }
 .getStarted-progressBar {
   display: flex;
-  flex-direction: column;;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -288,12 +288,12 @@ body {
 }
 
 .rotated {
-      display: inline-block; /* Needed for rotation */
-      transform: rotate(-25deg); /* Rotate 45 degrees */
-      transform-origin: center; /* Where the rotation pivots */
-      font-size: 3em;
-      margin-bottom: 50px;
-    }
+  display: inline-block; /* Needed for rotation */
+  transform: rotate(-25deg); /* Rotate 45 degrees */
+  transform-origin: top left; /* Where the rotation pivots */
+  font-size: 3em;
+  margin-bottom: 50px;
+}
 
 /* Add responsive styles for mobile */
 @media (max-width: 600px) {
@@ -331,11 +331,15 @@ body {
     font-size: 1.5rem;
     width: 100%;
     text-align: left;
-    
   }
   .service-text {
     width: 100%;
     font-size: 1rem;
+  }
+  .rotated {
+    transform: none !important;
+    font-size: 2em !important;
+    margin-bottom: 24px !important;
   }
 }
 .services {
