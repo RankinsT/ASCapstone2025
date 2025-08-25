@@ -287,6 +287,14 @@ body {
   color: white;
 }
 
+.rotated {
+      display: inline-block; /* Needed for rotation */
+      transform: rotate(-25deg); /* Rotate 45 degrees */
+      transform-origin: center; /* Where the rotation pivots */
+      font-size: 3em;
+      margin-bottom: 50px;
+    }
+
 /* Add responsive styles for mobile */
 @media (max-width: 600px) {
   .pool-table {

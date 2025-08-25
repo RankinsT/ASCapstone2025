@@ -79,9 +79,9 @@
             <form action="" method="POST">
 
                 <div class="quote-container quote-show starting-page" style="background-image: url('images/balls2.png'); background-size: cover; background-position: center; border:none; background-color: transparent; box-shadow: none; color: white;">
-                    <div>
-                        <div><h2>Free Quote</h2></div>
-                        <div><p>Get a free quote today!</p></div>
+                    <div class="rotated">
+                        <div><h2>Get your<br> <span style="font-weight: bold;">FREE</span><br> estimate</h2></div>
+                        <div></div>
                     </div>
                     
                     <div class="form-btns-container">
