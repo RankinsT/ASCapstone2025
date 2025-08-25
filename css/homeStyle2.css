@@ -165,6 +165,9 @@ body {
   display: flex;
   flex-direction: column;
 }
+.starting-page {
+  background-image: url("images/balls2.png");
+}
 .form-btns-container button.previous-btn {
   margin-right: auto;
 }
