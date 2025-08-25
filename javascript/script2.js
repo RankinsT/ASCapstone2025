@@ -42,39 +42,42 @@ document.addEventListener("DOMContentLoaded", function () {
     updateProgressBars();
   }
 
-  document.querySelectorAll(".form-btns-container button").forEach((button) => {
-    button.addEventListener("click", function () {
-      if (this.textContent.toLowerCase() === "next") {
-        const visibleStep = quoteContainers[currentStep];
-        const requiredFields = visibleStep.querySelectorAll(
-          'input[required], select[required], textarea[required], select[name="service-requested[]"]'
-        );
-        let missing = [];
-        requiredFields.forEach((field) => {
-          if (field.tagName === "SELECT") {
-            if (!field.selectedOptions.length) {
-              missing.push("Service Requested");
+  document
+    .querySelectorAll(".form-btns-container button, .get-started-btn .next-btn")
+    .forEach((button) => {
+      button.addEventListener("click", function () {
+        const btnText = this.textContent.trim().toLowerCase();
+        if (btnText === "next" || btnText === "get started") {
+          const visibleStep = quoteContainers[currentStep];
+          const requiredFields = visibleStep.querySelectorAll(
+            'input[required], select[required], textarea[required], select[name="service-requested[]"]'
+          );
+          let missing = [];
+          requiredFields.forEach((field) => {
+            if (field.tagName === "SELECT") {
+              if (!field.selectedOptions.length) {
+                missing.push("Service Requested");
+              }
+            } else if (!field.value.trim()) {
+              missing.push(field.placeholder || field.name);
             }
-          } else if (!field.value.trim()) {
-            missing.push(field.placeholder || field.name);
+          });
+          if (missing.length > 0) {
+            alert("Please fill out all required fields: " + missing.join(", "));
+            return;
           }
-        });
-        if (missing.length > 0) {
-          alert("Please fill out all required fields: " + missing.join(", "));
-          return;
+          if (currentStep < quoteContainers.length - 1) {
+            currentStep++;
+            showCurrentStep();
+          }
+        } else if (btnText === "previous") {
+          if (currentStep > 0) {
+            currentStep--;
+            showCurrentStep();
+          }
         }
-        if (currentStep < quoteContainers.length - 1) {
-          currentStep++;
-          showCurrentStep();
-        }
-      } else if (this.textContent.toLowerCase() === "previous") {
-        if (currentStep > 0) {
-          currentStep--;
-          showCurrentStep();
-        }
-      }
+      });
     });
-  });
 
   showCurrentStep();
 

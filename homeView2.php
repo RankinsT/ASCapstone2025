@@ -89,7 +89,7 @@
                             <!-- <button>previous</button> -->
                         </div>
                         <div class="get-started-btn">
-                            <button type="button">Get Started</button>
+                            <button type="button" class="next-btn">Get Started</button>
                             <a href="">Privacy Policy</a>
                         </div>
                     </div>
@@ -99,7 +99,7 @@
                                                                 </div>
                 </div>
 
-                <div class="quote-container quote-show">
+                <div class="quote-container quote-show" style="background-image: url('images/balls2.png'); background-size: cover; background-position: center; border:none; background-color: transparent; box-shadow: none; color: white;">
                     <div>
                         <div><h2>Free Quote</h2></div>
                         <div><p>Get a free quote today!</p></div>
@@ -128,7 +128,7 @@
                                                                 </div>
                 </div>
 
-                <div class="quote-container quote-hide">
+                <div class="quote-container quote-hide" style="background-image: url('images/balls2.png'); background-size: cover; background-position: center; border:none; background-color: transparent; box-shadow: none; color: white;">
                     <div>
                         <div><h2>Free Quote</h2></div>
                         <div><p>Get a free quote today!</p></div>
@@ -161,7 +161,7 @@
                                         </div>
                 </div>
 
-                <div class="quote-container quote-hide">
+                <div class="quote-container quote-hide" style="background-image: url('images/balls2.png'); background-size: cover; background-position: center; border:none; background-color: transparent; box-shadow: none; color: white;">
                     <div>
                         <div><h2>Free Quote</h2></div>
                         <div><p>Get a free quote today!</p></div>
