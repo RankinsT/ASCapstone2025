@@ -77,6 +77,32 @@
                 <!-- form -->
         <div class="form col-lg-6">
             <form action="" method="POST">
+
+                <div class="quote-container quote-show">
+                    <div>
+                        <div><h2>Free Quote</h2></div>
+                        <div><p>Get a free quote today!</p></div>
+                    </div>
+                    <div class="customer-info">
+                        <div>
+                            <div><button type="button">Get Started</button></div>
+                        </div>
+                        
+                    </div>
+                    <div class="form-btns-container">
+                        <div>
+                            <!-- <button>previous</button> -->
+                        </div>
+                        <div>
+                            <button type="button">Get Started</button>
+                        </div>
+                    </div>
+                                                                <!-- Progress Bar Example -->
+                                                                <div class="progression-bar">
+                                                                    <div class="progression-bar-fill" style="width: 33%;"></div>
+                                                                </div>
+                </div>
+
                 <div class="quote-container quote-show">
                     <div>
                         <div><h2>Free Quote</h2></div>
