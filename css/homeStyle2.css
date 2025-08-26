@@ -370,6 +370,8 @@ button.previous-btn:hover {
   transform-origin: top left; /* Where the rotation pivots */
   font-size: 3em;
   margin-bottom: 50px;
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000,
+    -2px 2px 0 #000;
 }
 
 /* Add responsive styles for mobile */
