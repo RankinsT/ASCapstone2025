@@ -156,6 +156,10 @@ body {
   min-height: 600px;
 }
 /* Stylized Form Buttons */
+.outlined-text {
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000,
+    -2px 2px 0 #000;
+}
 .form-btns-container button,
 .get-started-btn button,
 button.next-btn,
