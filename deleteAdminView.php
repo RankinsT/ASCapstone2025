@@ -6,13 +6,21 @@
     <title>Delete Admin View</title>
     <link rel="stylesheet" href="css/updateAccount.css">
     <link rel="stylesheet" href="css/adminStyle.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- sweetalert2 installation script -->
 </head>
 <body>
+    
     <?php
-        session_start();
-        include './models/model_admin.php';
+        session_start(); // Start session
+        include './models/model_admin.php'; // Include the model file
 
-        $adminlogin = getAllAdmins();
+        $adminlogin = getAllAdmins(); // Fetch all the admin accounts
+
+
+        if (isset($_SESSION['adminID'])) {
+            $adminID = $_SESSION['adminID'];
+        }
 
         // Handle admin deletion
         if (isset($_POST['deleteAdmin'])) {
@@ -25,7 +33,7 @@
 
     <div>
 
-        <?php if(isset($_SESSION['isLoggedIn']) && ($_SESSION['isLoggedIn'])): ?>
+        <?php if (isset($_SESSION['isLoggedIn']) && ($_SESSION['isLoggedIn'])): ?> <!-- Check if user is logged in as admin -->
 
             <div class="admin-delete-container">
                 <div class="admin-header">
@@ -49,6 +57,7 @@
 
                         <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>Username</th>
                                 <th>Password</th>
                                 <th>Admin Email</th>
@@ -60,16 +69,19 @@
                             <?php
                             foreach ($adminlogin as $admins): ?>
                             <tr>
+                                <td><?= $admins["adminID"]?></td>
                                 <td><?= $admins["username"] ?></td>
                                 <td><?= $admins["password"] ?></td>
                                 <td><?= $admins["adminEmail"] ?></td>
-
-                                <td>
-                                    <form method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this admin?');">
-                                        <input type="hidden" name="deleteAdmin" value="<?= $admins["username"] ?>">
-                                        <button type="submit" class="delete-button">Delete</button>
-                                    </form>
-                                </td>
+                                
+                                <?php if ($adminID == 1): ?>
+                                    <td>
+                                        <form method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this admin?');">
+                                            <input type="hidden" name="deleteAdmin" value="<?= $admins["username"] ?>">
+                                            <button type="submit" class="delete-button">Delete</button>
+                                        </form>
+                                    </td>
+                                <?php endif ?>
                             </tr>
                             <?php endforeach ?>
                         </tbody>
@@ -78,7 +90,7 @@
                 </div>
             </div>
 
-        <?php endif; ?>
+        <?php endif ?>
 
     </div>
 </body>
