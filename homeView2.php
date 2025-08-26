@@ -109,8 +109,8 @@
 
                 <div class="quote-container quote-show" style="background-image: url('images/balls2.png'); background-size: cover; background-position: center; border:none; background-color: transparent; box-shadow: none; color: white;">
                     <div>
-                        <div><h2>Free Quote</h2></div>
-                        <div><p>Get a free quote today!</p></div>
+                        <div><h2 class="outlined-text">Get a free quote today!</h2></div>
+                        <div><p class="outlined-text">Fill out the form below to get started.</p></div>
                     </div>
                     <div class="customer-info">
                         <div>
@@ -146,8 +146,8 @@
 
                 <div class="quote-container quote-hide" style="background-image: url('images/balls2.png'); background-size: cover; background-position: center; border:none; background-color: transparent; box-shadow: none; color: white;">
                     <div>
-                        <div><h2>Free Quote</h2></div>
-                        <div><p>Get a free quote today!</p></div>
+                        <div><h2>Get a free quote today!</h2></div>
+                        <div><p>Fill out the form below to get started.</p></div>
                     </div>
                     <div class="customer-info">
                         <div>
@@ -187,8 +187,8 @@
 
                 <div class="quote-container quote-hide" style="background-image: url('images/balls2.png'); background-size: cover; background-position: center; border:none; background-color: transparent; box-shadow: none; color: white;">
                     <div>
-                        <div><h2>Free Quote</h2></div>
-                        <div><p>Get a free quote today!</p></div>
+                        <div><h2>Get a free quote today!</h2></div>
+                        <div><p>Fill out the form below to get started.</p></div>
                     </div>
                     <div class="customer-info">
                         <div>
