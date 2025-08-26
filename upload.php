@@ -109,7 +109,7 @@ if (isset($_POST['delete']) && !empty($_POST['imageId'])) {
     <div class="container mt-5">
         <!-- Back to Home Button -->
         <div class="mb-3">
-            <a href="homeView.php" class="btn btn-secondary">Back to Home</a>
+            <a href="homeView2.php" class="btn btn-secondary">Back to Home</a>
         </div>
 
         <h2>Manage Images</h2>
