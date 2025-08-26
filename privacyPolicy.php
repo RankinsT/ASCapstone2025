@@ -56,7 +56,7 @@
                 <img src="images/LogoTemp.png" alt="logo" class="logo-img">
             </div>
             <div><a href="tel:+1234567890"><span style="color: white; font-weight: bold;">CONTACT: </span>234.567.8901</a></div>
-            <div><a href="loginView.php">Admin Login</a></div>
+            <div><a href="homeview2.php">Home Page</a></div>
         </div>
         <hr style="border: 5px solid white">
         <div class="footer-content">
