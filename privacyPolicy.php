@@ -11,7 +11,7 @@
 		<h1>Privacy Policy</h1>
 		<p>Effective Date: August 26, 2025</p>
 		<h2>Information We Collect</h2>
-		<p>We collect information you provide directly to us, such as when you create an account, submit forms, or contact us. This may include your name, email address, phone number, and other relevant details.</p>
+		<p>We collect information you provide directly to us, such as when you submit forms, or contact us. This may include your name, email address, phone number, and other relevant details.</p>
 		<h2>How We Use Your Information</h2>
 		<p>Your information is used to provide, maintain, and improve our services, respond to inquiries, and communicate updates. We do not sell or share your personal information except as required by law or with trusted service providers who assist us in operating the website.</p>
 		<h2>Cookies</h2>
