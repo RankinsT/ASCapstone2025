@@ -90,7 +90,7 @@
                         </div>
                         <div class="get-started-btn">
                             <button type="button" class="next-btn">Get Started</button>
-                            <a href="">Privacy Policy</a>
+                            <a href="privacyPolicy.php" class="outlined-text">Privacy Policy</a>
                         </div>
                     </div>
                                                                 <!-- Custom Progress Bar with Balls -->
