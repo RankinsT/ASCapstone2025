@@ -1,5 +1,25 @@
 /* Progress Bar */
 /* Custom Progress Bar with Balls */
+.progress-ball[data-step="0"] {
+  background: #fdd017; /* 1-ball: yellow */
+  border-color: #fdd017;
+  color: #222c2c;
+}
+.progress-ball[data-step="1"] {
+  background: #2242c2; /* 2-ball: blue */
+  border-color: #2242c2;
+  color: #fff;
+}
+.progress-ball[data-step="2"] {
+  background: #d12f2f; /* 3-ball: red */
+  border-color: #d12f2f;
+  color: #fff;
+}
+.progress-ball[data-step="3"] {
+  background: #e67e22; /* 4-ball: orange */
+  border-color: #e67e22;
+  color: #fff;
+}
 .progression-bar-balls {
   width: 100%;
   max-width: 600px;
@@ -36,10 +56,28 @@
   color: #fff;
   border-color: #00a19a;
 }
-.progress-ball.complete {
-  background: #ffd700;
+.progress-ball.complete[data-step="0"] {
+  background: #fdd017;
+  border-color: #fdd017;
+  color: #222c2c;
+  opacity: 1;
+}
+.progress-ball.complete[data-step="1"] {
+  background: #2242c2;
+  border-color: #2242c2;
   color: #fff;
-  border-color: #ffd700;
+  opacity: 1;
+}
+.progress-ball.complete[data-step="2"] {
+  background: #d12f2f;
+  border-color: #d12f2f;
+  color: #fff;
+  opacity: 1;
+}
+.progress-ball.complete[data-step="3"] {
+  background: #e67e22;
+  border-color: #e67e22;
+  color: #fff;
   opacity: 1;
 }
 .progress-ball span {
@@ -432,74 +470,70 @@ button.previous-btn:hover {
   background-repeat: no-repeat;
 }
 /* CArousel Controls*/
-  /* Responsive image height */
-  .carousel-img {
-    height: clamp(260px, 70vh, 780px);
-    object-fit: cover;
-    border-radius: 20px;
-  }
-  .carousel {
-    padding: 20px;
-  }
+/* Responsive image height */
+.carousel-img {
+  height: clamp(260px, 70vh, 780px);
+  object-fit: cover;
+  border-radius: 20px;
+}
+.carousel {
+  padding: 20px;
+}
 
-  /* Desktop overlay caption */
-  .cap-desktop {
-    background: linear-gradient(
-      to top,
-      rgba(0,0,0,0.85),
-      rgba(0,0,0,0)
-    );
-    border-radius: 0 0 20px 20px;
-  }
-  .cap-desktop.carousel-caption {
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    top: auto !important;
-    padding: 0 !important;   /* kill Bootstrap’s padding */
-    margin: 0 !important;
-    text-align: left;
-  }
-  
-  .cap-desktop .cap-text {
-    padding: 20px 40px;   /* controlled padding */
-    color: #fff;
-    font-size: 1.2rem;
-    line-height: 1.4;
-    max-width: 700px;
-  }
-  
-  .cap-desktop .review-stars {
-    font-size: 2.2rem;
-    color: gold;
-  }
-  /* Mobile caption strip (appears over bottom of image) */
-  .cap-mobile {
-    position: absolute;
-    left: 0; right: 0; bottom: 0;
-    padding: 12px 14px;
-    background: linear-gradient(
-      to top,
-      rgba(0,0,0,0.85),
-      rgba(0,0,0,0)
-    );
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-  }
-  .cap-mobile .cap-text {
-    color: #fff;
-    font-size: 0.95rem;
-    line-height: 1.35;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;      /* limit lines on small screens */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  .cap-mobile .review-stars {
-    font-size: 1.4rem;
-    color: gold;
-  }
+/* Desktop overlay caption */
+.cap-desktop {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0));
+  border-radius: 0 0 20px 20px;
+}
+.cap-desktop.carousel-caption {
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  top: auto !important;
+  padding: 0 !important; /* kill Bootstrap’s padding */
+  margin: 0 !important;
+  text-align: left;
+}
 
-  /* Ensure the slide is relatively positioned for absolute captions */
-  .carousel-item.styl { position: relative; }
-  /*UPDATE PUSH SWAGGER DOCS - IGNORE */
+.cap-desktop .cap-text {
+  padding: 20px 40px; /* controlled padding */
+  color: #fff;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  max-width: 700px;
+}
+
+.cap-desktop .review-stars {
+  font-size: 2.2rem;
+  color: gold;
+}
+/* Mobile caption strip (appears over bottom of image) */
+.cap-mobile {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 12px 14px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0));
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.cap-mobile .cap-text {
+  color: #fff;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* limit lines on small screens */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.cap-mobile .review-stars {
+  font-size: 1.4rem;
+  color: gold;
+}
+
+/* Ensure the slide is relatively positioned for absolute captions */
+.carousel-item.styl {
+  position: relative;
+}
+/*UPDATE PUSH SWAGGER DOCS - IGNORE */
