@@ -82,7 +82,7 @@
                 <div class="admin-header">
                     <div class="homepageButton-customerSearch">
                         <div class="homepageButton">
-                            <a href="homeView.php">Homepage</a>
+                            <a href="homeView2.php">Homepage</a>
                         </div>
                         <!-- <div class="homepageButton">
                             <a href="adminView.php">Admin Page</a>

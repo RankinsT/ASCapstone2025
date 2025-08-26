@@ -1,32 +1,63 @@
 /* Progress Bar */
-.progression-bar {
+/* Custom Progress Bar with Balls */
+.progression-bar-balls {
   width: 100%;
   max-width: 600px;
-  height: 32px;
-  background: #f5faff;
-  border-radius: 20px;
-  border: 2px solid #b3d1ff;
-  overflow: hidden;
-  margin: 48px auto 32px auto;
-  box-shadow: 0 6px 24px rgba(51, 122, 255, 0.08);
+  margin: 32px auto 32px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.progress-bar-track {
   display: flex;
   align-items: center;
-  position: relative;
+  width: 100%;
+  justify-content: space-between;
 }
-.progression-bar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #337aff 0%, #6ed6ff 100%);
-  border-radius: 20px;
-  transition: width 0.5s cubic-bezier(0.4, 2, 0.3, 1);
+.progress-ball {
+  width: 48px;
+  height: 48px;
+  background: #000;
+  border: 3px solid #000;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Roboto", sans-serif;
-  font-size: 1.2rem;
+  font-family: "Pacifico", cursive;
+  font-size: 1.6em;
   color: #fff;
-  font-weight: 600;
-  letter-spacing: 1px;
-  box-shadow: 0 2px 12px rgba(51, 122, 255, 0.12);
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: background 0.3s, color 0.3s, border 0.3s;
+}
+.progress-ball.active {
+  background: #00a19a;
+  color: #fff;
+  border-color: #00a19a;
+}
+.progress-ball.complete {
+  background: #ffd700;
+  color: #fff;
+  border-color: #ffd700;
+  opacity: 1;
+}
+.progress-ball span {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.progress-bar-line {
+  flex: 1;
+  height: 8px;
+  background: #000;
+  margin: 0 4px;
+  border-radius: 4px;
+  z-index: 1;
+  transition: background 0.3s;
+}
+.progress-bar-line.complete {
+  background: #000;
 }
 body {
   background: linear-gradient(135deg, #354444 0%, #4e5d5d 50%, #222c2c 100%);
@@ -117,7 +148,7 @@ body {
   /* width: 100%; */
   /* height: 100%; */
   /* flex: 1; */
-  background-color: #00a19a;
+  /* background-color: #00a19a; */
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -156,10 +187,17 @@ body {
 }
 .form-btns-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
   margin-top: 18px;
   margin-bottom: 18px;
+}
+.get-started-btn {
+  display: flex;
+  flex-direction: column;
+}
+.starting-page {
+  background-image: url("images/balls2.png");
 }
 .form-btns-container button.previous-btn {
   margin-right: auto;
@@ -174,9 +212,17 @@ body {
   width: 100%;
   margin-top: 18px;
 }
+.getStarted-progressBar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-
-
+/* carousel */
+.carousel {
+  padding: 20px;
+}
 
 /* services */
 .services {
@@ -272,6 +318,14 @@ body {
   color: white;
 }
 
+.rotated {
+  display: inline-block; /* Needed for rotation */
+  transform: rotate(-25deg); /* Rotate 45 degrees */
+  transform-origin: top left; /* Where the rotation pivots */
+  font-size: 3em;
+  margin-bottom: 50px;
+}
+
 /* Add responsive styles for mobile */
 @media (max-width: 600px) {
   .pool-table {
@@ -308,11 +362,15 @@ body {
     font-size: 1.5rem;
     width: 100%;
     text-align: left;
-    
   }
   .service-text {
     width: 100%;
     font-size: 1rem;
+  }
+  .rotated {
+    transform: none !important;
+    font-size: 2em !important;
+    margin-bottom: 24px !important;
   }
 }
 .services {

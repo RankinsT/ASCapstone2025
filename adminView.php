@@ -153,7 +153,7 @@
                 <div class="admin-header">
                     <div class="homepageButton-customerSearch">
                         <div class="homepageButton">
-                            <a href="homeView.php">Homepage</a>
+                            <a href="homeView2.php">Homepage</a>
                         </div>
                         <div class="customerSearch">
                             <form method="POST" style="display: flex; align-items: center; gap: 10px;">

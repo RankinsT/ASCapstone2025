@@ -74,10 +74,40 @@
                 <button id="edit-save-btn" type="button">Edit</button>
             <?php } ?>
         </div>
-
+                <!-- form -->
         <div class="form col-lg-6">
             <form action="" method="POST">
-                <div class="quote-container quote-show">
+
+                <div class="quote-container quote-show starting-page" style="background-image: url('images/balls2.png'); background-size: cover; background-position: center; border:none; background-color: transparent; box-shadow: none; color: white;">
+                    <div class="rotated">
+                        <div>Get your<br> <span style="font-weight: bold;">FREE</span><br> estimate</div>
+                        <div></div>
+                    </div>
+                    
+                    <div class="form-btns-container">
+                        <div>
+                            <!-- <button>previous</button> -->
+                        </div>
+                        <div class="get-started-btn">
+                            <button type="button" class="next-btn">Get Started</button>
+                            <a href="">Privacy Policy</a>
+                        </div>
+                    </div>
+                                                                <!-- Custom Progress Bar with Balls -->
+                                                                <div class="progression-bar-balls">
+                                                                    <div class="progress-bar-track">
+                                                                        <div class="progress-ball" data-step="0"><span>1</span></div>
+                                                                        <div class="progress-bar-line"></div>
+                                                                        <div class="progress-ball" data-step="1"><span>2</span></div>
+                                                                        <div class="progress-bar-line"></div>
+                                                                        <div class="progress-ball" data-step="2"><span>3</span></div>
+                                                                        <div class="progress-bar-line"></div>
+                                                                        <div class="progress-ball" data-step="3"><span>4</span></div>
+                                                                    </div>
+                                                                </div>
+                </div>
+
+                <div class="quote-container quote-show" style="background-image: url('images/balls2.png'); background-size: cover; background-position: center; border:none; background-color: transparent; box-shadow: none; color: white;">
                     <div>
                         <div><h2>Free Quote</h2></div>
                         <div><p>Get a free quote today!</p></div>
@@ -100,13 +130,21 @@
                             <button type="button">next</button>
                         </div>
                     </div>
-                                                                <!-- Progress Bar Example -->
-                                                                <div class="progression-bar">
-                                                                    <div class="progression-bar-fill" style="width: 33%;"></div>
+                                                                <!-- Custom Progress Bar with Balls -->
+                                                                <div class="progression-bar-balls">
+                                                                    <div class="progress-bar-track">
+                                                                        <div class="progress-ball" data-step="0"><span>1</span></div>
+                                                                        <div class="progress-bar-line"></div>
+                                                                        <div class="progress-ball" data-step="1"><span>2</span></div>
+                                                                        <div class="progress-bar-line"></div>
+                                                                        <div class="progress-ball" data-step="2"><span>3</span></div>
+                                                                        <div class="progress-bar-line"></div>
+                                                                        <div class="progress-ball" data-step="3"><span>4</span></div>
+                                                                    </div>
                                                                 </div>
                 </div>
 
-                <div class="quote-container quote-hide">
+                <div class="quote-container quote-hide" style="background-image: url('images/balls2.png'); background-size: cover; background-position: center; border:none; background-color: transparent; box-shadow: none; color: white;">
                     <div>
                         <div><h2>Free Quote</h2></div>
                         <div><p>Get a free quote today!</p></div>
@@ -134,12 +172,20 @@
                             <button type="button">next</button>
                         </div>
                     </div>
-                                        <div class="progression-bar">
-                                            <div class="progression-bar-fill" style="width: 66%;"></div>
+                                        <div class="progression-bar-balls">
+                                            <div class="progress-bar-track">
+                                                <div class="progress-ball" data-step="0"><span>1</span></div>
+                                                <div class="progress-bar-line"></div>
+                                                <div class="progress-ball" data-step="1"><span>2</span></div>
+                                                <div class="progress-bar-line"></div>
+                                                <div class="progress-ball" data-step="2"><span>3</span></div>
+                                                <div class="progress-bar-line"></div>
+                                                <div class="progress-ball" data-step="3"><span>4</span></div>
+                                            </div>
                                         </div>
                 </div>
 
-                <div class="quote-container quote-hide">
+                <div class="quote-container quote-hide" style="background-image: url('images/balls2.png'); background-size: cover; background-position: center; border:none; background-color: transparent; box-shadow: none; color: white;">
                     <div>
                         <div><h2>Free Quote</h2></div>
                         <div><p>Get a free quote today!</p></div>
@@ -169,8 +215,16 @@
                             <button class="send-btn" type="submit" name="send-btn">send</button>
                         </div>
                     </div>
-                                        <div class="progression-bar">
-                                            <div class="progression-bar-fill" style="width: 100%;"></div>
+                                        <div class="progression-bar-balls">
+                                            <div class="progress-bar-track">
+                                                <div class="progress-ball" data-step="0"><span>1</span></div>
+                                                <div class="progress-bar-line"></div>
+                                                <div class="progress-ball" data-step="1"><span>2</span></div>
+                                                <div class="progress-bar-line"></div>
+                                                <div class="progress-ball" data-step="2"><span>3</span></div>
+                                                <div class="progress-bar-line"></div>
+                                                <div class="progress-ball" data-step="3"><span>4</span></div>
+                                            </div>
                                         </div>
                 </div>
             </form>
