@@ -384,3 +384,20 @@ function getTextBox($ID) {
 
     return $textBox;
 }
+
+function getPhoneNumber($adminID) {
+    global $db;
+
+    $phoneNumber = null;
+
+    try {
+        $sql = 'SELECT phoneNumber FROM capstone_202540_qball.adminLogin WHERE adminID = :adminID';
+        $stmt = $db->prepare($sql);
+        $stmt->execute([':adminID' => $adminID]);
+        $phoneNumber = $stmt->fetchColumn();
+    } catch (PDOException $e) {
+        error_log("Error fetching phone number: " . $e->getMessage());
+    }
+
+    return $phoneNumber;
+}
