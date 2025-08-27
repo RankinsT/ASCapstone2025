@@ -367,9 +367,11 @@ button.previous-btn:hover {
 .pool-table {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0px 0px;
+  gap: 0px 500px;
   min-height: 500px;
   color: white;
+  margin: 0 auto;
+  max-width: 1200px;
 }
 
 @media (max-width: 600px) {
