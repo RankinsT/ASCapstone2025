@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delete Admin View</title>
-    <link rel="stylesheet" href="css/updateAccount.css">
+    <link rel="stylesheet" href="css/updateAccount.css"> 
     <link rel="stylesheet" href="css/adminStyle.css">
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- sweetalert2 installation script -->
