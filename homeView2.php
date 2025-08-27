@@ -319,8 +319,7 @@ try {
         <div class="title">Services</div>
      </div>
      <div class="pool-table">
-        <div class="table-rows">
-                        <div class="table-row-section">
+    <div class="table-row-section">
                                 <div class="service-emblem">
                                     <!-- Improved Toolbox Icon -->
                                     <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
@@ -343,8 +342,8 @@ try {
                                         <button id="edit-save-desc-btn-1" type="button" class="edit-save-desc-btn">Edit</button>
                                     <?php } ?>
                                 </div>
-                        </div>
-                        <div class="table-row-section">
+    </div>
+    <div class="table-row-section">
                                 <div class="service-emblem">
                                     <!-- Improved House Icon -->
                                     <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
@@ -367,8 +366,8 @@ try {
                                         <button id="edit-save-desc-btn-2" type="button" class="edit-save-desc-btn">Edit</button>
                                     <?php } ?>
                                 </div>
-                        </div>
-                        <div class="table-row-section">
+    </div>
+    <div class="table-row-section">
                                 <div class="service-emblem">
                                     <!-- Improved Box Truck Icon -->
                                     <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
@@ -392,10 +391,8 @@ try {
                                         <button id="edit-save-desc-btn-3" type="button" class="edit-save-desc-btn">Edit</button>
                                     <?php } ?>
                                 </div>
-                        </div>
-        </div>
-        <div class="table-rows">
-                        <div class="table-row-section">
+    </div>
+    <div class="table-row-section">
                                 <div class="service-emblem">
                                     <!-- Improved Commercial Building Icon -->
                                     <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
@@ -419,8 +416,8 @@ try {
                                         <button id="edit-save-desc-btn-4" type="button" class="edit-save-desc-btn">Edit</button>
                                     <?php } ?>
                                 </div>
-                        </div>
-                        <div class="table-row-section">
+    </div>
+    <div class="table-row-section">
                                 <div class="service-emblem">
                                     <!-- Improved Hammer Icon -->
                                     <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
@@ -442,8 +439,8 @@ try {
                                         <button id="edit-save-desc-btn-5" type="button" class="edit-save-desc-btn">Edit</button>
                                     <?php } ?>
                                 </div>
-                        </div>
-                        <div class="table-row-section">
+    </div>
+    <div class="table-row-section">
                                 <div class="service-emblem">
                                     <!-- Improved Screwdriver Icon -->
                                     <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
@@ -465,8 +462,7 @@ try {
                                         <button id="edit-save-desc-btn-6" type="button" class="edit-save-desc-btn">Edit</button>
                                     <?php } ?>
                                 </div>
-            </div>
-        </div>
+    </div>
      </div>
     <!-- end services -->
 
