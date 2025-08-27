@@ -21,7 +21,7 @@
     $email = ""; // Initialize email variable
     $currentPassword = ""; // Initialize current password variable
     $user = getAdmin($username);
-
+echo $user['phoneNumber'];
     ?>
 
     <div>
@@ -89,7 +89,7 @@
                                     <label for="phoneNumber">Phone Number:</label>
                                 </td>
                                 <td class="input-cell">
-                                    <input type="text" id="phoneNumber" name="phoneNumber" value="<?= htmlspecialchars($currentUser['phoneNumber'] ?? ''); ?>" placeholder="(555) 555-5555">
+                                    <input type="text" id="phoneNumber" name="phoneNumber" value="<?= htmlspecialchars($currentUser['phoneNumber'] ?? ''); ?>" placeholder="5555555555">
                                 </td>
                             </tr>
 
@@ -98,7 +98,7 @@
                                     <label for="currentPassword">Current Password:</label>
                                 </td>
                                 <td class="input-cell">
-                                    <input type="password" id="currentPassword" name="currentPassword" required>
+                                    <input type="password" id="currentPassword" name="currentPassword">
                                 </td>
                             </tr>
 
@@ -107,7 +107,7 @@
                                     <label for="newPassword">New Password:</label>
                                 </td>
                                 <td class="input-cell">
-                                    <input type="password" id="newPassword" name="newPassword" required>
+                                    <input type="password" id="newPassword" name="newPassword">
                                 </td>
                             </tr>
 
@@ -116,7 +116,7 @@
                                     <label for="confirmPassword">Confirm New Password:</label>
                                 </td>
                                 <td class="input-cell">
-                                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                                    <input type="password" id="confirmPassword" name="confirmPassword">
                                 </td>
                             </tr>
 

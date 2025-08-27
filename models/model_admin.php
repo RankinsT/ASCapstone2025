@@ -255,17 +255,18 @@ function register($username, $password, $email) {
     return $results; // Return the results message
 }
 
-function updateAccount($username, $email, $currentPassword, $newPassword) {
+function updateAccount($username, $email, $currentPassword, $newPassword, $phoneNumber) {
     global $db;
     $results = "";
     try {
         // First try with SHA1+salt (newer accounts)
-        $sql = 'UPDATE capstone_202540_qball.adminlogin SET adminEmail = :email, password = :newPassword WHERE username = :username AND password = :currentPassword';
+        $sql = 'UPDATE capstone_202540_qball.adminlogin SET adminEmail = :email, password = :newPassword, phoneNumber = :phoneNumber WHERE username = :username AND password = :currentPassword';
         $stmt = $db->prepare($sql);
         $binds = array(
             ':email' => $email,
             ':newPassword' => sha1("MY-TOP-SECRET-SALT$newPassword"),
             ':username' => $username,
+            ':phoneNumber' => $phoneNumber,
             ':currentPassword' => sha1("MY-TOP-SECRET-SALT$currentPassword")
         );
         $stmt->execute($binds);
@@ -274,13 +275,14 @@ function updateAccount($username, $email, $currentPassword, $newPassword) {
             return $results;
         }
         // If not, try with plain text (older accounts)
-        $sql2 = 'UPDATE capstone_202540_qball.adminlogin SET adminEmail = :email, password = :newPassword WHERE username = :username AND password = :currentPassword';
+        $sql2 = 'UPDATE capstone_202540_qball.adminlogin SET adminEmail = :email, password = :newPassword, phoneNumber = :phoneNumber WHERE username = :username AND password = :currentPassword';
         $stmt2 = $db->prepare($sql2);
         $binds2 = array(
             ':email' => $email,
             ':newPassword' => sha1("MY-TOP-SECRET-SALT$newPassword"),
             ':username' => $username,
-            ':currentPassword' => $currentPassword
+            ':currentPassword' => $currentPassword,
+            ':phoneNumber' => $phoneNumber
         );
         $stmt2->execute($binds2);
         if ($stmt2->rowCount() > 0) {
@@ -400,4 +402,29 @@ function getPhoneNumber($adminID) {
     }
 
     return $phoneNumber;
+}
+
+// Update only email and phone number for an admin (no password change)
+function updateContactInfo($username, $email, $phoneNumber) {
+    global $db;
+    $results = "";
+    try {
+        $sql = 'UPDATE capstone_202540_qball.adminlogin SET adminEmail = :email, phoneNumber = :phoneNumber WHERE username = :username';
+        $stmt = $db->prepare($sql);
+        $binds = array(
+            ':email' => $email,
+            ':phoneNumber' => $phoneNumber,
+            ':username' => $username
+        );
+        $stmt->execute($binds);
+        if ($stmt->rowCount() > 0) {
+            $results = "Contact info updated successfully";
+        } else {
+            $results = "No changes made or user not found";
+        }
+    } catch (PDOException $e) {
+        error_log("Error updating contact info: " . $e->getMessage());
+        return "Error updating contact info";
+    }
+    return $results;
 }
