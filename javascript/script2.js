@@ -174,13 +174,35 @@ if (editSaveBtn) {
       isEditing = true;
     } else {
       const content = tinymce.get("company-description-editor").getContent();
-      descText.innerHTML = content;
-      descText.style.display = "block";
-      descForm.style.display = "none";
-      editSaveBtn.textContent = "Edit";
-      tinymce.get("company-description-editor").remove();
-      isEditing = false;
-      // TODO: Add AJAX here to save to backend if needed
+      // AJAX to update company description (serviceId=1, type=desc)
+      fetch("updateService.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `serviceId=0&type=desc&value=${encodeURIComponent(content)}`,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log("Company description update response:", data);
+          if (data.success) {
+            descText.innerHTML = content;
+            descText.style.display = "block";
+            descForm.style.display = "none";
+            editSaveBtn.textContent = "Edit";
+            tinymce.get("company-description-editor").remove();
+            isEditing = false;
+          } else {
+            alert(
+              "Error saving description: " +
+                (data.error || "Unknown error") +
+                "\nDebug: " +
+                JSON.stringify(data.debug)
+            );
+          }
+        })
+        .catch((err) => {
+          console.error("Network error saving description", err);
+          alert("Network error saving description");
+        });
     }
   });
 }
@@ -203,25 +225,35 @@ for (let i = 1; i <= 6; i++) {
       } else {
         const newTitle = titleInput.value;
         // AJAX to update title
-        fetch('updateService.php', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: `serviceId=${i}&type=title&value=${encodeURIComponent(newTitle)}`
+        fetch("updateService.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: `serviceId=${i}&type=title&value=${encodeURIComponent(
+            newTitle
+          )}`,
         })
-        .then(res => res.json())
-        .then(data => {
-          console.log('Title update response:', data);
-          if (data.success) {
-            titleSpan.textContent = newTitle;
-            titleSpan.style.display = "inline-block";
-            titleInput.style.display = "none";
-            titleBtn.textContent = "Edit";
-            editingTitle = false;
-          } else {
-            alert('Error saving title: ' + (data.error || 'Unknown error') + '\nDebug: ' + JSON.stringify(data.debug));
-          }
-        })
-        .catch((err) => { console.error('Network error saving title', err); alert('Network error saving title'); });
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("Title update response:", data);
+            if (data.success) {
+              titleSpan.textContent = newTitle;
+              titleSpan.style.display = "inline-block";
+              titleInput.style.display = "none";
+              titleBtn.textContent = "Edit";
+              editingTitle = false;
+            } else {
+              alert(
+                "Error saving title: " +
+                  (data.error || "Unknown error") +
+                  "\nDebug: " +
+                  JSON.stringify(data.debug)
+              );
+            }
+          })
+          .catch((err) => {
+            console.error("Network error saving title", err);
+            alert("Network error saving title");
+          });
       }
     });
   }
@@ -270,26 +302,34 @@ for (let i = 1; i <= 6; i++) {
       } else {
         const content = tinymce.get(descEditorId).getContent();
         // AJAX to update description
-        fetch('updateService.php', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: `serviceId=${i}&type=desc&value=${encodeURIComponent(content)}`
+        fetch("updateService.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: `serviceId=${i}&type=desc&value=${encodeURIComponent(content)}`,
         })
-        .then(res => res.json())
-        .then(data => {
-          console.log('Desc update response:', data);
-          if (data.success) {
-            descSpan.innerHTML = content;
-            descSpan.style.display = "block";
-            descForm.style.display = "none";
-            descBtn.textContent = "Edit";
-            tinymce.get(descEditorId).remove();
-            editingDesc = false;
-          } else {
-            alert('Error saving description: ' + (data.error || 'Unknown error') + '\nDebug: ' + JSON.stringify(data.debug));
-          }
-        })
-        .catch((err) => { console.error('Network error saving description', err); alert('Network error saving description'); });
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("Desc update response:", data);
+            if (data.success) {
+              descSpan.innerHTML = content;
+              descSpan.style.display = "block";
+              descForm.style.display = "none";
+              descBtn.textContent = "Edit";
+              tinymce.get(descEditorId).remove();
+              editingDesc = false;
+            } else {
+              alert(
+                "Error saving description: " +
+                  (data.error || "Unknown error") +
+                  "\nDebug: " +
+                  JSON.stringify(data.debug)
+              );
+            }
+          })
+          .catch((err) => {
+            console.error("Network error saving description", err);
+            alert("Network error saving description");
+          });
       }
     });
   }

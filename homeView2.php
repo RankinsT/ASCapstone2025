@@ -72,9 +72,9 @@
     <div class="description-quote row elements row-1">
         <div class="description col-lg-6">
             <div class="title">Who are we?</div>
-            <p id="company-description-text" class="text">
+            <div id="company-description-text" class="text">
                 <?= $companyDescription['textBox'] ?? 'Description not available.' ?>
-            </p>
+            </div>
             <form id="company-description-form" style="display:none;">
                 <textarea id="company-description-editor">Welcome to TinyMCE!</textarea>
             </form>

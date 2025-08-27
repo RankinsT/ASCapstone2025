@@ -15,7 +15,7 @@ $serviceId = isset($_POST['serviceId']) ? intval($_POST['serviceId']) : 0;
 $type = isset($_POST['type']) ? $_POST['type'] : '';
 $value = isset($_POST['value']) ? $_POST['value'] : '';
 
-if ($serviceId < 1 || $serviceId > 6 || !in_array($type, ['title', 'desc'])) {
+if ($serviceId < 0 || $serviceId > 6 || !in_array($type, ['title', 'desc'])) {
     echo json_encode(['success' => false, 'error' => 'Invalid parameters']);
     exit;
 }

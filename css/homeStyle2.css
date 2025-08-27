@@ -1,3 +1,30 @@
+/* Edit-Save Button Styles */
+.edit-save-title-btn, .edit-save-desc-btn, #edit-save-btn {
+  background: linear-gradient(90deg, #00a19a 0%, #2242c2 100%);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 24px;
+  font-size: 1.1em;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 161, 154, 0.15);
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+  margin: 8px 0 8px 8px;
+  outline: none;
+  display: inline-block;
+}
+.edit-save-title-btn:hover, .edit-save-desc-btn:hover, #edit-save-btn:hover {
+  background: linear-gradient(90deg, #00897b 0%, #1a2a6c 100%);
+  box-shadow: 0 4px 16px rgba(0, 161, 154, 0.25);
+  transform: translateY(-2px) scale(1.04);
+}
+.edit-save-title-btn:active, .edit-save-desc-btn:active, #edit-save-btn:active {
+  background: linear-gradient(90deg, #005f56 0%, #1a2a6c 100%);
+  box-shadow: 0 2px 8px rgba(0, 161, 154, 0.15);
+  transform: scale(0.98);
+}
 /* Progress Bar */
 /* Custom Progress Bar with Balls */
 .progress-ball[data-step="0"] {
