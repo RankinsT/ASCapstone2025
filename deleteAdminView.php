@@ -17,10 +17,10 @@
 
         $adminlogin = getAllAdmins(); // Fetch all the admin accounts
 
+        $username = $_SESSION['username']; // Store current session's admin username
+        $adminID = getAdminID($username); // Use username to check and store admin id 
 
-        if (isset($_SESSION['adminID'])) {
-            $adminID = $_SESSION['adminID'];
-        }
+        // print_r($adminID);
 
         // Handle admin deletion
         if (isset($_POST['deleteAdmin'])) {
@@ -73,15 +73,15 @@
                                 <td><?= $admins["username"] ?></td>
                                 <td><?= $admins["password"] ?></td>
                                 <td><?= $admins["adminEmail"] ?></td>
-                                
-                                <?php if ($adminID == 1): ?>
+
+                                <?php if ($adminID = 1): ?>
                                     <td>
-                                        <form method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this admin?');">
+                                        <form method="POST" style="display: inline;" onsubmit= sweetAlertConfirm()> <!--"return confirm('Are you sure you want to delete this admin?');" -->
                                             <input type="hidden" name="deleteAdmin" value="<?= $admins["username"] ?>">
                                             <button type="submit" class="delete-button">Delete</button>
                                         </form>
                                     </td>
-                                <?php endif ?>
+                                    <?php endif ?>
                             </tr>
                             <?php endforeach ?>
                         </tbody>

@@ -228,8 +228,8 @@ function register($username, $password, $email) {
     $results = ""; // Initialize an empty string for results
 
     try {
-        $sql = 'INSERT INTO capstone_202540_qball.adminlogin (username, password, adminEmail) 
-                VALUES (:username, :password, :email)'; // SQL query to insert a new admin
+        $sql = 'INSERT INTO capstone_202540_qball.adminlogin (adminID, username, password, adminEmail) 
+                VALUES (:adminID, :username, :password, :email)'; // SQL query to insert a new admin
 
         $stmt = $db->prepare($sql); // Prepare the SQL statement
 
@@ -302,8 +302,23 @@ function getAdmin($username) {
     } catch (PDOException $e) {
         error_log("Error fetching admin: " . $e->getMessage());
     }
-
     return $admin;
+}
+
+function getAdminID($username) {
+    global $db;
+
+    $adminID = null;
+
+    try {
+        $sql = 'SELECT adminID FROM capstone_202540_qball.adminlogin WHERE username = :username';
+        $stmt = $db->prepare($sql);
+        $stmt->execute([':username' => $username]);
+        $adminID = $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        error_log("Error fetching admin ID: " . $e->getMessage());
+    }
+    return $adminID;
 }
 
 function deleteAdmin($username) {
