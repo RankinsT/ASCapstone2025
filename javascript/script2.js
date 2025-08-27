@@ -128,66 +128,140 @@ $(document).ready(function () {
 });
 
 // description
+// Generic edit-save for description
 let isEditing = false;
 const editSaveBtn = document.getElementById("edit-save-btn");
 const descText = document.getElementById("company-description-text");
 const descForm = document.getElementById("company-description-form");
 const descEditor = document.getElementById("company-description-editor");
 
-editSaveBtn.addEventListener("click", function () {
-  if (!isEditing) {
-    // Switch to edit mode
-    descEditor.value = descText.innerHTML;
-    descText.style.display = "none";
-    descForm.style.display = "block";
-    editSaveBtn.textContent = "Save";
+if (editSaveBtn) {
+  editSaveBtn.addEventListener("click", function () {
+    if (!isEditing) {
+      descEditor.value = descText.innerHTML;
+      descText.style.display = "none";
+      descForm.style.display = "block";
+      editSaveBtn.textContent = "Save";
 
-    tinymce.init({
-      selector: "#company-description-editor",
-      plugins:
-        "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount",
-      toolbar:
-        "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat",
-
-      // Enable image upload from local device
-      automatic_uploads: true,
-      file_picker_types: "image",
-      file_picker_callback: function (cb, value, meta) {
-        let input = document.createElement("input");
-        input.setAttribute("type", "file");
-        input.setAttribute("accept", "image/*");
-
-        input.onchange = function () {
-          let file = this.files[0];
-          let reader = new FileReader();
-
-          reader.onload = function () {
-            cb(reader.result, { title: file.name });
+      tinymce.init({
+        selector: "#company-description-editor",
+        plugins:
+          "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount",
+        toolbar:
+          "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat",
+        automatic_uploads: true,
+        file_picker_types: "image",
+        file_picker_callback: function (cb, value, meta) {
+          let input = document.createElement("input");
+          input.setAttribute("type", "file");
+          input.setAttribute("accept", "image/*");
+          input.onchange = function () {
+            let file = this.files[0];
+            let reader = new FileReader();
+            reader.onload = function () {
+              cb(reader.result, { title: file.name });
+            };
+            reader.readAsDataURL(file);
           };
-          reader.readAsDataURL(file);
-        };
+          input.click();
+        },
+        setup: function (editor) {
+          editor.on("init", function () {
+            editor.setContent(descText.innerHTML);
+          });
+        },
+      });
+      isEditing = true;
+    } else {
+      const content = tinymce.get("company-description-editor").getContent();
+      descText.innerHTML = content;
+      descText.style.display = "block";
+      descForm.style.display = "none";
+      editSaveBtn.textContent = "Edit";
+      tinymce.get("company-description-editor").remove();
+      isEditing = false;
+      // TODO: Add AJAX here to save to backend if needed
+    }
+  });
+}
 
-        input.click();
-      },
-
-      setup: function (editor) {
-        editor.on("init", function () {
-          editor.setContent(descText.innerHTML);
-        });
-      },
+// Edit-save for service titles and descriptions
+for (let i = 1; i <= 6; i++) {
+  // Title
+  const titleBtn = document.getElementById(`edit-save-title-btn-${i}`);
+  const titleSpan = document.getElementById(`service-title-${i}`);
+  const titleInput = document.getElementById(`service-title-input-${i}`);
+  if (titleBtn && titleSpan && titleInput) {
+    let editingTitle = false;
+    titleBtn.addEventListener("click", function () {
+      if (!editingTitle) {
+        titleInput.value = titleSpan.textContent;
+        titleSpan.style.display = "none";
+        titleInput.style.display = "inline-block";
+        titleBtn.textContent = "Save";
+        editingTitle = true;
+      } else {
+        titleSpan.textContent = titleInput.value;
+        titleSpan.style.display = "inline-block";
+        titleInput.style.display = "none";
+        titleBtn.textContent = "Edit";
+        editingTitle = false;
+        // TODO: Add AJAX here to save to backend if needed
+      }
     });
-
-    isEditing = true;
-  } else {
-    // Save changes
-    const content = tinymce.get("company-description-editor").getContent();
-    descText.innerHTML = content;
-    descText.style.display = "block";
-    descForm.style.display = "none";
-    editSaveBtn.textContent = "Edit";
-    tinymce.get("company-description-editor").remove();
-    isEditing = false;
-
-    // TODO: Add AJAX here to save to backend if needed
   }
-});
+  // Description
+  const descBtn = document.getElementById(`edit-save-desc-btn-${i}`);
+  const descSpan = document.getElementById(`service-desc-${i}`);
+  const descForm = document.getElementById(`service-desc-form-${i}`);
+  const descEditorId = `service-desc-editor-${i}`;
+  if (descBtn && descSpan && descForm) {
+    let editingDesc = false;
+    descBtn.addEventListener("click", function () {
+      if (!editingDesc) {
+        document.getElementById(descEditorId).value = descSpan.innerHTML;
+        descSpan.style.display = "none";
+        descForm.style.display = "block";
+        descBtn.textContent = "Save";
+        tinymce.init({
+          selector: `#${descEditorId}`,
+          plugins:
+            "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount",
+          toolbar:
+            "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat",
+          automatic_uploads: true,
+          file_picker_types: "image",
+          file_picker_callback: function (cb, value, meta) {
+            let input = document.createElement("input");
+            input.setAttribute("type", "file");
+            input.setAttribute("accept", "image/*");
+            input.onchange = function () {
+              let file = this.files[0];
+              let reader = new FileReader();
+              reader.onload = function () {
+                cb(reader.result, { title: file.name });
+              };
+              reader.readAsDataURL(file);
+            };
+            input.click();
+          },
+          setup: function (editor) {
+            editor.on("init", function () {
+              editor.setContent(descSpan.innerHTML);
+            });
+          },
+        });
+        editingDesc = true;
+      } else {
+        const content = tinymce.get(descEditorId).getContent();
+        descSpan.innerHTML = content;
+        descSpan.style.display = "block";
+        descForm.style.display = "none";
+        descBtn.textContent = "Edit";
+        tinymce.get(descEditorId).remove();
+        editingDesc = false;
+        // TODO: Add AJAX here to save to backend if needed
+      }
+    });
+  }
+}

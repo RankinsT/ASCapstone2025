@@ -328,8 +328,20 @@ try {
                                         <rect x="36" y="44" width="8" height="12" fill="#222c2c"/>
                                     </svg>
                                 </div>
-                                <div class="service-title"><?= $firstService['section'] ?? 'Service Title Not Available' ?></div>
-                                <div class="service-text text"> <p><?= $firstService['textBox'] ?? 'Description not available.' ?></p></div>
+                                <div class="service-title-group">
+                                    <span id="service-title-1" class="service-title"><?= $firstService['section'] ?? 'Service Title Not Available' ?></span>
+                                    <input id="service-title-input-1" class="service-title-input" type="text" style="display:none;" value="<?= htmlspecialchars($firstService['section'] ?? '') ?>">
+                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                                        <button id="edit-save-title-btn-1" type="button" class="edit-save-title-btn">Edit</button>
+                                    <?php } ?>
+                                </div>
+                                <div class="service-text-group">
+                                    <span id="service-desc-1" class="service-text text"><p><?= $firstService['textBox'] ?? 'Description not available.' ?></p></span>
+                                    <form id="service-desc-form-1" style="display:none;"><textarea id="service-desc-editor-1"></textarea></form>
+                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                                        <button id="edit-save-desc-btn-1" type="button" class="edit-save-desc-btn">Edit</button>
+                                    <?php } ?>
+                                </div>
                         </div>
                         <div class="table-row-section">
                                 <div class="service-emblem">
@@ -340,8 +352,20 @@ try {
                                         <rect x="36" y="52" width="8" height="12" fill="#222c2c"/>
                                     </svg>
                                 </div>
-                                <div class="service-title"><?= $secondService['section'] ?? 'Service Title Not Available' ?></div>
-                                <div class="service-text text"><p><?= $secondService['textBox'] ?? 'Description not available.' ?></p></div>
+                                <div class="service-title-group">
+                                    <span id="service-title-2" class="service-title"><?= $secondService['section'] ?? 'Service Title Not Available' ?></span>
+                                    <input id="service-title-input-2" class="service-title-input" type="text" style="display:none;" value="<?= htmlspecialchars($secondService['section'] ?? '') ?>">
+                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                                        <button id="edit-save-title-btn-2" type="button" class="edit-save-title-btn">Edit</button>
+                                    <?php } ?>
+                                </div>
+                                <div class="service-text-group">
+                                    <span id="service-desc-2" class="service-text text"><p><?= $secondService['textBox'] ?? 'Description not available.' ?></p></span>
+                                    <form id="service-desc-form-2" style="display:none;"><textarea id="service-desc-editor-2"></textarea></form>
+                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                                        <button id="edit-save-desc-btn-2" type="button" class="edit-save-desc-btn">Edit</button>
+                                    <?php } ?>
+                                </div>
                         </div>
                         <div class="table-row-section">
                                 <div class="service-emblem">
@@ -353,8 +377,20 @@ try {
                                         <circle cx="56" cy="64" r="6" fill="white" stroke="#222c2c" stroke-width="2"/>
                                     </svg>
                                 </div>
-                                <div class="service-title"><?= $thirdService['section'] ?? 'Service Title Not Available' ?></div>
-                                <div class="service-text text"><p><?= $thirdService['textBox'] ?? 'Description not available.' ?></p></div>
+                                <div class="service-title-group">
+                                    <span id="service-title-3" class="service-title"><?= $thirdService['section'] ?? 'Service Title Not Available' ?></span>
+                                    <input id="service-title-input-3" class="service-title-input" type="text" style="display:none;" value="<?= htmlspecialchars($thirdService['section'] ?? '') ?>">
+                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                                        <button id="edit-save-title-btn-3" type="button" class="edit-save-title-btn">Edit</button>
+                                    <?php } ?>
+                                </div>
+                                <div class="service-text-group">
+                                    <span id="service-desc-3" class="service-text text"><p><?= $thirdService['textBox'] ?? 'Description not available.' ?></p></span>
+                                    <form id="service-desc-form-3" style="display:none;"><textarea id="service-desc-editor-3"></textarea></form>
+                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                                        <button id="edit-save-desc-btn-3" type="button" class="edit-save-desc-btn">Edit</button>
+                                    <?php } ?>
+                                </div>
                         </div>
         </div>
         <div class="table-rows">
@@ -368,8 +404,20 @@ try {
                                         <rect x="36" y="32" width="8" height="8" fill="#222c2c"/>
                                     </svg>
                                 </div>
-                                <div class="service-title"><?= $fourthService['section'] ?? 'Service Title Not Available' ?></div>
-                                <div class="service-text text"><p><?= $fourthService['textBox'] ?? 'Description not available.' ?></p></div>
+                                <div class="service-title-group">
+                                    <span id="service-title-4" class="service-title"><?= $fourthService['section'] ?? 'Service Title Not Available' ?></span>
+                                    <input id="service-title-input-4" class="service-title-input" type="text" style="display:none;" value="<?= htmlspecialchars($fourthService['section'] ?? '') ?>">
+                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                                        <button id="edit-save-title-btn-4" type="button" class="edit-save-title-btn">Edit</button>
+                                    <?php } ?>
+                                </div>
+                                <div class="service-text-group">
+                                    <span id="service-desc-4" class="service-text text"><p><?= $fourthService['textBox'] ?? 'Description not available.' ?></p></span>
+                                    <form id="service-desc-form-4" style="display:none;"><textarea id="service-desc-editor-4"></textarea></form>
+                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                                        <button id="edit-save-desc-btn-4" type="button" class="edit-save-desc-btn">Edit</button>
+                                    <?php } ?>
+                                </div>
                         </div>
                         <div class="table-row-section">
                                 <div class="service-emblem">
@@ -379,8 +427,20 @@ try {
                                         <rect x="24" y="24" width="32" height="10" rx="5" fill="white" stroke="#222c2c" stroke-width="3"/>
                                     </svg>
                                 </div>
-                                <div class="service-title"><?= $fifthService['section'] ?? 'Service Title Not Available' ?></div>
-                                <div class="service-text text"><p><?= $fifthService['textBox'] ?? 'Description not available.' ?></p></div>
+                                <div class="service-title-group">
+                                    <span id="service-title-5" class="service-title"><?= $fifthService['section'] ?? 'Service Title Not Available' ?></span>
+                                    <input id="service-title-input-5" class="service-title-input" type="text" style="display:none;" value="<?= htmlspecialchars($fifthService['section'] ?? '') ?>">
+                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                                        <button id="edit-save-title-btn-5" type="button" class="edit-save-title-btn">Edit</button>
+                                    <?php } ?>
+                                </div>
+                                <div class="service-text-group">
+                                    <span id="service-desc-5" class="service-text text"><p><?= $fifthService['textBox'] ?? 'Description not available.' ?></p></span>
+                                    <form id="service-desc-form-5" style="display:none;"><textarea id="service-desc-editor-5"></textarea></form>
+                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                                        <button id="edit-save-desc-btn-5" type="button" class="edit-save-desc-btn">Edit</button>
+                                    <?php } ?>
+                                </div>
                         </div>
                         <div class="table-row-section">
                                 <div class="service-emblem">
@@ -390,8 +450,20 @@ try {
                                         <polygon points="40,48 34,60 46,60" fill="white" stroke="#222c2c" stroke-width="2"/>
                                     </svg>
                                 </div>
-                                <div class="service-title"><?= $sixthService['section'] ?? 'Service Title Not Available' ?></div>
-                                <div class="service-text text"><p><?= $sixthService['textBox'] ?? 'Description not available.' ?></p></div>
+                                <div class="service-title-group">
+                                    <span id="service-title-6" class="service-title"><?= $sixthService['section'] ?? 'Service Title Not Available' ?></span>
+                                    <input id="service-title-input-6" class="service-title-input" type="text" style="display:none;" value="<?= htmlspecialchars($sixthService['section'] ?? '') ?>">
+                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                                        <button id="edit-save-title-btn-6" type="button" class="edit-save-title-btn">Edit</button>
+                                    <?php } ?>
+                                </div>
+                                <div class="service-text-group">
+                                    <span id="service-desc-6" class="service-text text"><p><?= $sixthService['textBox'] ?? 'Description not available.' ?></p></span>
+                                    <form id="service-desc-form-6" style="display:none;"><textarea id="service-desc-editor-6"></textarea></form>
+                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                                        <button id="edit-save-desc-btn-6" type="button" class="edit-save-desc-btn">Edit</button>
+                                    <?php } ?>
+                                </div>
             </div>
         </div>
      </div>
