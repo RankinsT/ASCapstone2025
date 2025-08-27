@@ -15,7 +15,20 @@ if(isset($_POST['send-btn'])) {
     $serviceRequested = $serviceRequestedArr ? implode(', ', array_map('htmlspecialchars', $serviceRequestedArr)) : '';
     $notes = isset($_POST['notes']) ? htmlspecialchars(trim($_POST['notes'])) : '';
 
-        requestQuote($firstName, $lastName, $email, $phoneNumber, $street, $apt, $city, $state, $zip, $serviceRequested, $notes);
+    // Server-side validation
+    $validationError = '';
+    if (empty($firstName) || empty($lastName) || empty($email) || empty($street) || empty($city) || empty($state) || empty($zip) || empty($serviceRequested)) {
+        $validationError = 'Please fill out all required fields.';
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $validationError = 'Please enter a valid email address.';
+    }
+
+    if ($validationError) {
+        echo "<script>alert('$validationError');</script>";
+        return;
+    }
+
+    requestQuote($firstName, $lastName, $email, $phoneNumber, $street, $apt, $city, $state, $zip, $serviceRequested, $notes);
 
         // Use PHPMailer for email sending
         require_once __DIR__ . '/../src/PHPMailer.php';

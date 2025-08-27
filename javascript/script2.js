@@ -63,6 +63,8 @@ document.addEventListener("DOMContentLoaded", function () {
             'input[required], select[required], textarea[required], select[name="service-requested[]"]'
           );
           let missing = [];
+          let emailError = "";
+          let phoneError = "";
           requiredFields.forEach((field) => {
             if (field.tagName === "SELECT") {
               if (!field.selectedOptions.length) {
@@ -71,9 +73,56 @@ document.addEventListener("DOMContentLoaded", function () {
             } else if (!field.value.trim()) {
               missing.push(field.placeholder || field.name);
             }
+            if (field.type === "email" && field.value.trim()) {
+              // Simple email regex
+              const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+              if (!emailPattern.test(field.value.trim())) {
+                emailError = "Please enter a valid email address.";
+              }
+            }
           });
+          // Validate all phone fields in the visible step
+          const phoneFields = visibleStep.querySelectorAll('input[type="tel"]');
+          phoneFields.forEach((field) => {
+            if (field.value.trim()) {
+              const phonePattern = /^[0-9\s\-()+]+$/;
+              if (!phonePattern.test(field.value.trim())) {
+                phoneError =
+                  "Phone number can only contain digits and valid symbols (no letters).";
+              } else {
+                // Count digits
+                const digits = field.value.replace(/\D/g, "");
+                if (digits.length < 10) {
+                  phoneError = "Phone number must have at least 10 digits.";
+                }
+              }
+            }
+          });
+          // Validate zipcode field (must be 5 digits)
+          const zipFields = visibleStep.querySelectorAll('input[name="zip"]');
+          let zipError = "";
+          zipFields.forEach((field) => {
+            if (field.value.trim()) {
+              const zipPattern = /^\d{5}$/;
+              if (!zipPattern.test(field.value.trim())) {
+                zipError = "Zipcode must be exactly 5 digits.";
+              }
+            }
+          });
+          if (zipError) {
+            alert(zipError);
+            return;
+          }
           if (missing.length > 0) {
             alert("Please fill out all required fields: " + missing.join(", "));
+            return;
+          }
+          if (emailError) {
+            alert(emailError);
+            return;
+          }
+          if (phoneError) {
+            alert(phoneError);
             return;
           }
           if (currentStep < quoteContainers.length - 1) {
@@ -92,29 +141,75 @@ document.addEventListener("DOMContentLoaded", function () {
   showCurrentStep();
 
   // Only one form per quote section, so use querySelector
-  const form = document.querySelector(".form form");
-  if (form) {
-    form.addEventListener("submit", function (e) {
+  // Only one form per quote section, so use querySelector
+  const quoteForm = document.querySelector(".form form");
+  if (quoteForm) {
+    quoteForm.addEventListener("submit", function (e) {
       // Only validate fields in the currently visible step
-      const visibleStep = form.querySelector(".quote-container.quote-show");
-      const requiredFields = visibleStep
-        ? visibleStep.querySelectorAll(
-            'input[required], select[required], textarea[required], select[name="service-requested[]"]'
-          )
-        : [];
-      let missing = [];
-      requiredFields.forEach((field) => {
-        if (field.tagName === "SELECT") {
-          if (!field.selectedOptions.length) {
-            missing.push("Service Requested");
+      const visibleStep = quoteForm.querySelector(
+        ".quote-container.quote-show"
+      );
+      // Only block submit if on last step
+      if (visibleStep === quoteContainers[quoteContainers.length - 1]) {
+        let errors = [];
+        let missing = [];
+        // Validate required fields
+        const requiredFields = visibleStep.querySelectorAll(
+          'input[required], select[required], textarea[required], select[name="service-requested[]"]'
+        );
+        requiredFields.forEach((field) => {
+          if (field.tagName === "SELECT") {
+            if (!field.selectedOptions.length) {
+              missing.push("Service Requested");
+            }
+          } else if (!field.value.trim()) {
+            missing.push(field.placeholder || field.name);
           }
-        } else if (!field.value.trim()) {
-          missing.push(field.placeholder || field.name);
+          if (field.type === "email" && field.value.trim()) {
+            const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+            if (!emailPattern.test(field.value.trim())) {
+              errors.push("Please enter a valid email address.");
+            }
+          }
+        });
+        // Validate all phone fields in the visible step, regardless of required
+        const phoneFields = visibleStep.querySelectorAll('input[type="tel"]');
+        phoneFields.forEach((field) => {
+          if (field.value.trim()) {
+            const phonePattern = /^[0-9\s\-()+]+$/;
+            if (!phonePattern.test(field.value.trim())) {
+              errors.push(
+                "Phone number can only contain digits and valid symbols (no letters)."
+              );
+            } else {
+              // Count digits
+              const digits = field.value.replace(/\D/g, "");
+              if (digits.length < 10) {
+                errors.push("Phone number must have at least 10 digits.");
+              }
+            }
+          }
+        });
+        // Validate zipcode field (must be 5 digits)
+        const zipFields = visibleStep.querySelectorAll('input[name="zip"]');
+        zipFields.forEach((field) => {
+          if (field.value.trim()) {
+            const zipPattern = /^\d{5}$/;
+            if (!zipPattern.test(field.value.trim())) {
+              errors.push("Zipcode must be exactly 5 digits.");
+            }
+          }
+        });
+        if (missing.length > 0) {
+          errors.unshift(
+            "Please fill out all required fields: " + missing.join(", ")
+          );
         }
-      });
-      if (missing.length > 0) {
-        e.preventDefault();
-        alert("Please fill out all required fields: " + missing.join(", "));
+        if (errors.length > 0) {
+          e.preventDefault();
+          alert(errors.join("\n"));
+          return;
+        }
       }
     });
   }

@@ -350,11 +350,15 @@ function requestQuote($firstName, $lastName, $email, $phoneNumber, $street, $apt
             echo "<script>alert('$results');</script>";
         } else {
             $errorInfo = $stmt->errorInfo();
-            return "SQL Error: " . htmlspecialchars($errorInfo[2]);
+            $errorMsg = "Quote request was NOT submitted. Reason: SQL Error: " . htmlspecialchars($errorInfo[2]);
+            echo "<script>alert('$errorMsg');</script>";
+            return $errorMsg;
         }
     } catch (PDOException $e) {
         error_log("Error requesting quote: " . $e->getMessage());
-        return "PDO Error: " . htmlspecialchars($e->getMessage());
+        $errorMsg = "Quote request was NOT submitted. Reason: PDO Error: " . htmlspecialchars($e->getMessage());
+        echo "<script>alert('$errorMsg');</script>";
+        return $errorMsg;
     }
     return $results;
 }
