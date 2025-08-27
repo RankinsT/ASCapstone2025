@@ -28,6 +28,11 @@
     // Fetch company description with ID 1
     $companyDescription = getTextBox(1);
     $firstService = getTextBox(2);
+    $secondService = getTextBox(3);
+    $thirdService = getTextBox(4);
+    $fourthService = getTextBox(5);
+    $fifthService = getTextBox(6);
+    $sixthService = getTextBox(7);
 
     if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
     
@@ -324,7 +329,7 @@ try {
                                     </svg>
                                 </div>
                                 <div class="service-title"><?= $firstService['section'] ?? 'Service Title Not Available' ?></div>
-                                <div class="service-text text"> <p>Re-covering in a variety of colors, repairing small tears, and tightening rails.</p></div>
+                                <div class="service-text text"> <p><?= $firstService['textBox'] ?? 'Description not available.' ?></p></div>
                         </div>
                         <div class="table-row-section">
                                 <div class="service-emblem">
