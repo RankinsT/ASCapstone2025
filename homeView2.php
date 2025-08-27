@@ -217,7 +217,7 @@
                     </div>
                     <div class="form-btns-container">
                         <div>
-                            <button class="previous-btn" type="button">previous</button>
+                            <button type="button">previous</button>
                         </div>
                         <div>
                             <button class="send-btn" type="submit" name="send-btn">send</button>
