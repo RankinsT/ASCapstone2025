@@ -75,11 +75,21 @@
                             </tr>
 
                             <tr>
+
                                 <td class="label-cell">
                                     <label for="adminEmail">Email:</label>
                                 </td>
                                 <td class="input-cell">
                                     <input type="email" id="adminEmail" name="adminEmail" required value="<?= htmlspecialchars($currentUser['adminEmail'] ?? ''); ?>">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="label-cell">
+                                    <label for="phoneNumber">Phone Number:</label>
+                                </td>
+                                <td class="input-cell">
+                                    <input type="text" id="phoneNumber" name="phoneNumber" value="<?= htmlspecialchars($currentUser['phoneNumber'] ?? ''); ?>" placeholder="(555) 555-5555">
                                 </td>
                             </tr>
 
