@@ -1,6 +1,7 @@
 body {
   margin: 0;
   background-color: rgb(255, 249, 249);
+  background-color: #002B59;
 }
 .login-grid-container {
   display: grid;
@@ -34,7 +35,7 @@ body {
 }
 
 .login-form button {
-  background-color: #007bff;
+  background-color: #002B59;
   color: white;
   border: none;
   padding: 8px 12px;
