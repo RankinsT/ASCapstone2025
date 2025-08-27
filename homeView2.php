@@ -27,6 +27,7 @@
     include './models/php.php';
     // Fetch company description with ID 1
     $companyDescription = getTextBox(1);
+    $firstService = getTextBox(2);
 
     if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
     
@@ -322,7 +323,7 @@ try {
                                         <rect x="36" y="44" width="8" height="12" fill="#222c2c"/>
                                     </svg>
                                 </div>
-                                <div class="service-title">Felt Replacement & Repairs</div>
+                                <div class="service-title"><?= $firstService['section'] ?? 'Service Title Not Available' ?></div>
                                 <div class="service-text text"> <p>Re-covering in a variety of colors, repairing small tears, and tightening rails.</p></div>
                         </div>
                         <div class="table-row-section">
