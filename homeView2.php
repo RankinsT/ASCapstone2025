@@ -340,8 +340,8 @@ try {
                                         <rect x="36" y="52" width="8" height="12" fill="#222c2c"/>
                                     </svg>
                                 </div>
-                                <div class="service-title">In-Home Relocation</div>
-                                <div class="service-text text"><p>Shifting your table to a new room or basement without leaving the property.</p></div>
+                                <div class="service-title"><?= $secondService['section'] ?? 'Service Title Not Available' ?></div>
+                                <div class="service-text text"><p><?= $secondService['textBox'] ?? 'Description not available.' ?></p></div>
                         </div>
                         <div class="table-row-section">
                                 <div class="service-emblem">
@@ -353,8 +353,8 @@ try {
                                         <circle cx="56" cy="64" r="6" fill="white" stroke="#222c2c" stroke-width="2"/>
                                     </svg>
                                 </div>
-                                <div class="service-title">Long-Distance Moves</div>
-                                <div class="service-text text"><p>Secure transport across states with full insurance coverage</p></div>
+                                <div class="service-title"><?= $thirdService['section'] ?? 'Service Title Not Available' ?></div>
+                                <div class="service-text text"><p><?= $thirdService['textBox'] ?? 'Description not available.' ?></p></div>
                         </div>
         </div>
         <div class="table-rows">
@@ -368,8 +368,8 @@ try {
                                         <rect x="36" y="32" width="8" height="8" fill="#222c2c"/>
                                     </svg>
                                 </div>
-                                <div class="service-title">Residential & Commercial  Pool Table Moving</div>
-                                <div class="service-text text"><p>Moving tables for bars, clubs, rec centers, apartment complexs and event spaces.</p></div>
+                                <div class="service-title"><?= $fourthService['section'] ?? 'Service Title Not Available' ?></div>
+                                <div class="service-text text"><p><?= $fourthService['textBox'] ?? 'Description not available.' ?></p></div>
                         </div>
                         <div class="table-row-section">
                                 <div class="service-emblem">
@@ -379,8 +379,8 @@ try {
                                         <rect x="24" y="24" width="32" height="10" rx="5" fill="white" stroke="#222c2c" stroke-width="3"/>
                                     </svg>
                                 </div>
-                                <div class="service-title">Slate Repair & Replacement</div>
-                                <div class="service-text text"><p>Handling cracked or damaged slate </p></div>
+                                <div class="service-title"><?= $fifthService['section'] ?? 'Service Title Not Available' ?></div>
+                                <div class="service-text text"><p><?= $fifthService['textBox'] ?? 'Description not available.' ?></p></div>
                         </div>
                         <div class="table-row-section">
                                 <div class="service-emblem">
@@ -390,8 +390,8 @@ try {
                                         <polygon points="40,48 34,60 46,60" fill="white" stroke="#222c2c" stroke-width="2"/>
                                     </svg>
                                 </div>
-                                <div class="service-title">Assembly & Dismantle</div>
-                                <div class="service-text text"><p>Disassembly, transport, and reassembly of all table sizes, including slate tables.</p></div>
+                                <div class="service-title"><?= $sixthService['section'] ?? 'Service Title Not Available' ?></div>
+                                <div class="service-text text"><p><?= $sixthService['textBox'] ?? 'Description not available.' ?></p></div>
             </div>
         </div>
      </div>
