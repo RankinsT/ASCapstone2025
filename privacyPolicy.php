@@ -23,6 +23,12 @@
         p {
             color: white;
         }
+        h1, h2 {
+            color: #00a19a;
+        }
+        h1 {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
