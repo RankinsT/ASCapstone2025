@@ -201,12 +201,27 @@ for (let i = 1; i <= 6; i++) {
         titleBtn.textContent = "Save";
         editingTitle = true;
       } else {
-        titleSpan.textContent = titleInput.value;
-        titleSpan.style.display = "inline-block";
-        titleInput.style.display = "none";
-        titleBtn.textContent = "Edit";
-        editingTitle = false;
-        // TODO: Add AJAX here to save to backend if needed
+        const newTitle = titleInput.value;
+        // AJAX to update title
+        fetch('updateService.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: `serviceId=${i}&type=title&value=${encodeURIComponent(newTitle)}`
+        })
+        .then(res => res.json())
+        .then(data => {
+          console.log('Title update response:', data);
+          if (data.success) {
+            titleSpan.textContent = newTitle;
+            titleSpan.style.display = "inline-block";
+            titleInput.style.display = "none";
+            titleBtn.textContent = "Edit";
+            editingTitle = false;
+          } else {
+            alert('Error saving title: ' + (data.error || 'Unknown error') + '\nDebug: ' + JSON.stringify(data.debug));
+          }
+        })
+        .catch((err) => { console.error('Network error saving title', err); alert('Network error saving title'); });
       }
     });
   }
@@ -254,13 +269,27 @@ for (let i = 1; i <= 6; i++) {
         editingDesc = true;
       } else {
         const content = tinymce.get(descEditorId).getContent();
-        descSpan.innerHTML = content;
-        descSpan.style.display = "block";
-        descForm.style.display = "none";
-        descBtn.textContent = "Edit";
-        tinymce.get(descEditorId).remove();
-        editingDesc = false;
-        // TODO: Add AJAX here to save to backend if needed
+        // AJAX to update description
+        fetch('updateService.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: `serviceId=${i}&type=desc&value=${encodeURIComponent(content)}`
+        })
+        .then(res => res.json())
+        .then(data => {
+          console.log('Desc update response:', data);
+          if (data.success) {
+            descSpan.innerHTML = content;
+            descSpan.style.display = "block";
+            descForm.style.display = "none";
+            descBtn.textContent = "Edit";
+            tinymce.get(descEditorId).remove();
+            editingDesc = false;
+          } else {
+            alert('Error saving description: ' + (data.error || 'Unknown error') + '\nDebug: ' + JSON.stringify(data.debug));
+          }
+        })
+        .catch((err) => { console.error('Network error saving description', err); alert('Network error saving description'); });
       }
     });
   }
