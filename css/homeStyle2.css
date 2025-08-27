@@ -1,5 +1,7 @@
 /* Edit-Save Button Styles */
-.edit-save-title-btn, .edit-save-desc-btn, #edit-save-btn {
+.edit-save-title-btn,
+.edit-save-desc-btn,
+#edit-save-btn {
   background: linear-gradient(90deg, #00a19a 0%, #2242c2 100%);
   color: #fff;
   border: none;
@@ -15,12 +17,16 @@
   outline: none;
   display: inline-block;
 }
-.edit-save-title-btn:hover, .edit-save-desc-btn:hover, #edit-save-btn:hover {
+.edit-save-title-btn:hover,
+.edit-save-desc-btn:hover,
+#edit-save-btn:hover {
   background: linear-gradient(90deg, #00897b 0%, #1a2a6c 100%);
   box-shadow: 0 4px 16px rgba(0, 161, 154, 0.25);
   transform: translateY(-2px) scale(1.04);
 }
-.edit-save-title-btn:active, .edit-save-desc-btn:active, #edit-save-btn:active {
+.edit-save-title-btn:active,
+.edit-save-desc-btn:active,
+#edit-save-btn:active {
   background: linear-gradient(90deg, #005f56 0%, #1a2a6c 100%);
   box-shadow: 0 2px 8px rgba(0, 161, 154, 0.15);
   transform: scale(0.98);
@@ -79,9 +85,17 @@
   transition: background 0.3s, color 0.3s, border 0.3s;
 }
 .progress-ball.active {
-  background: #00a19a;
-  color: #fff;
-  border-color: #00a19a;
+  width: 64px;
+  height: 64px;
+  background: #fff;
+  color: #00a19a;
+  border: 5px solid #00a19a;
+  box-shadow: 0 0 16px 4px #00a19a, 0 4px 24px 0 rgba(0, 161, 154, 0.25);
+  z-index: 3;
+  font-size: 2.2em;
+  transform: scale(1.18);
+  transition: width 0.3s, height 0.3s, background 0.3s, color 0.3s, border 0.3s,
+    box-shadow 0.3s, font-size 0.3s, transform 0.3s;
 }
 .progress-ball.complete[data-step="0"] {
   background: #fdd017;
