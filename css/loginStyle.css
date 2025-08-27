@@ -1,7 +1,7 @@
 body {
   margin: 0;
   background-color: rgb(255, 249, 249);
-  background-color: #002B59;
+  background-color: #002b59;
 }
 .login-grid-container {
   display: grid;
@@ -20,8 +20,12 @@ body {
   justify-content: center;
   height: 100%;
   border: 1px solid #ccc;
-  background: #007BFF;
-  background: linear-gradient(0deg, rgba(0, 123, 255, 1) 0%, rgba(0, 42, 87, 1) 100%);
+  background: #007bff;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 123, 255, 1) 0%,
+    rgba(0, 42, 87, 1) 100%
+  );
   padding: 50px;
   width: 25%;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -35,7 +39,7 @@ body {
 }
 
 .login-form button {
-  background-color: #002B59;
+  background-color: #002b59;
   color: white;
   border: none;
   padding: 8px 12px;
@@ -91,8 +95,8 @@ a:hover {
 }
 
 .login-logo {
-  width: 100px;
-  height: 100px;
+  width: 260px;
+  height: 260px;
   object-fit: cover;
   border-radius: 50%;
   background: #f0f0f0;
