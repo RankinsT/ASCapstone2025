@@ -21,7 +21,6 @@
     $email = ""; // Initialize email variable
     $currentPassword = ""; // Initialize current password variable
     $user = getAdmin($username);
-echo $user['phoneNumber'];
     ?>
 
     <div>
