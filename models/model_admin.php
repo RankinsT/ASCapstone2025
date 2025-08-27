@@ -367,3 +367,20 @@ function getAllTextBoxes() {
 
     return $results;
 }
+
+function getTextBox($ID) {
+    global $db;
+
+    $textBox = null;
+
+    try {
+        $sql = 'SELECT * FROM capstone_202540_qball.textboxes WHERE `ID` = :ID';
+        $stmt = $db->prepare($sql);
+        $stmt->execute([':ID' => $ID]);
+        $textBox = $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        error_log("Error fetching text box: " . $e->getMessage());
+    }
+
+    return $textBox;
+}

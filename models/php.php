@@ -17,3 +17,6 @@ if(isset($_POST['send-btn'])) {
 
     requestQuote($firstName, $lastName, $email, $phoneNumber, $street, $apt, $city, $state, $zip, $serviceRequested, $notes);
 }
+
+// Fetch all text boxes
+$textBoxes = getAllTextBoxes();
