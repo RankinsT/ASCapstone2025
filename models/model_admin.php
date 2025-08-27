@@ -228,14 +228,14 @@ function getAllAdmins() {
     return $results; // Return the array of admin data
 }
 
-function register($username, $password, $email) {
+function register($username, $password, $email, $phoneNumber) {
     global $db;
 
     $results = ""; // Initialize an empty string for results
 
     try {
-        $sql = 'INSERT INTO capstone_202540_qball.adminlogin (username, password, adminEmail) 
-                VALUES (:username, :password, :email)'; // SQL query to insert a new admin
+        $sql = 'INSERT INTO capstone_202540_qball.adminlogin (username, password, adminEmail, phoneNumber) 
+                VALUES (:username, :password, :email, :phoneNumber)'; // SQL query to insert a new admin
 
         $stmt = $db->prepare($sql); // Prepare the SQL statement
 
@@ -243,14 +243,19 @@ function register($username, $password, $email) {
         $bindsAdmin = array(
             ':username' => $username,
             ':password' => sha1("MY-TOP-SECRET-SALT$password"), // In a real application, ensure to hash the password
-            ':email' => $email
+            ':email' => $email,
+            ':phoneNumber' => $phoneNumber
         );
         if ($stmt->execute($bindsAdmin) && $stmt->rowCount() > 0) {
             $results = "Admin registered successfully"; // Set success message
-        }   
+        } else {
+            $errorInfo = $stmt->errorInfo();
+            error_log("SQL Error registering admin: " . implode(", ", $errorInfo));
+            $results = "SQL Error: " . htmlspecialchars($errorInfo[2]);
+        }
     } catch (PDOException $e) {
-        error_log("Error registering admin: " . $e->getMessage()); // Log any errors
-        return "Error registering admin"; // Return error message
+        error_log("PDO Error registering admin: " . $e->getMessage()); // Log any errors
+        return "PDO Error: " . htmlspecialchars($e->getMessage()); // Return error message
     }
     return $results; // Return the results message
 }
