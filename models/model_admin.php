@@ -351,3 +351,19 @@ function requestQuote($firstName, $lastName, $email, $phoneNumber, $street, $apt
     }
     return $results;
 }
+
+function getAllTextBoxes() {
+    global $db;
+    $results = [];
+
+    $sql = 'SELECT * FROM capstone_202540_qball.textboxes'; // SQL query to select all text boxes
+    try {
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        error_log("Error fetching text boxes: " . $e->getMessage());
+    }
+
+    return $results;
+}
