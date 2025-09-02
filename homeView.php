@@ -12,6 +12,11 @@
 
     <script src="https://cdn.tiny.cloud/1/a568yvdjcxzu2hhaiwp0fdun5rd6z9s4d51urh6m0lrpw0eu/tinymce/8/tinymce.min.js" referrerpolicy="origin" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 
 </head>
 <body>
@@ -59,13 +64,13 @@
             </div>
             <!-- div /reviews -->
 
-            <form method="POST" class="form col-lg-6 col-md-6 col-sm-12">
+            <div class="form col-lg-6 col-md-6 col-sm-12">
                 <?php include 'homeViewSections/form.php'; ?> <!-- Include the form section -->
-            </form>
+            </div>
             <!-- div /form -->
         </div>
         
-        <div class="row elements row-4">
+        <div class="row elements row-4" style="margin-left:7px">
             <div class="companyDescription col-lg-4">
                 <?php include 'homeViewSections/companyDescription.php'; ?> <!-- Include the company description section -->
             </div>
@@ -81,14 +86,14 @@
         </div>
         
         <div class="row elements row-3 col-lg-12">
-            <div class="services">
+            <div class="services" style="margin-left:7px">
                 <?php include 'homeViewSections/services.php'; ?> <!-- Include the services section -->
             </div>
             <!-- div /services -->  
         </div>
 
         <div class="row elements row-4">
-            <div class="locations">
+            <div class="locations" style="margin-left:10px">
                 <?php include 'homeViewSections/locations.php'; ?> <!-- Include the locations section -->
             </div>
             <!-- div /locations -->

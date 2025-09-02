@@ -3,63 +3,490 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomePage 2</title>
+    <title>Homepage 2</title>
 
-    <link rel="stylesheet" href="css/homeStyle2.css">
-    <link rel="stylesheet" href="css/adminStyle.css">
-
-    <!-- carousel stuff -->
-     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_back_ios" />
+    <link rel="stylesheet" href="./css/homeStyle2.css"> <!-- Link to your home CSS file -->
+    <link rel="stylesheet" href="./css/adminStyle.css"> <!-- Link to your admin CSS file -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_back_ios" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <!-- bootstrap -->
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.tiny.cloud/1/a568yvdjcxzu2hhaiwp0fdun5rd6z9s4d51urh6m0lrpw0eu/tinymce/8/tinymce.min.js" referrerpolicy="origin" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
-     <!-- tinymce -->
-      <script src="https://cdn.tiny.cloud/1/a568yvdjcxzu2hhaiwp0fdun5rd6z9s4d51urh6m0lrpw0eu/tinymce/8/tinymce.min.js" referrerpolicy="origin" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 <body>
-    <?php 
-    
+    <?php
     session_start();
-    include './models/model_admin.php';
+    include './models/model_admin.php'; // Include the model file
+    include './models/php.php';
+    // Fetch company description with ID 1
+    $companyDescription = getTextBox(1);
+    $firstService = getTextBox(2);
+    $secondService = getTextBox(3);
+    $thirdService = getTextBox(4);
+    $fourthService = getTextBox(5);
+    $fifthService = getTextBox(6);
+    $sixthService = getTextBox(7);
+    $contactInfo = getPhoneNumber(1);
 
-    // if user is logged in 
-    if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']): ?> 
+    if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
     
-    <!-- admin header  -->
+    <!-- admin-header -->
      <div class="admin-header">
         <div class="homepageButton-customerSearch">
             <div class="homepageButton">
                 <a href="adminView.php">Admin Page</a>
             </div>
-            <div class="logoutButton-updateAccountButton">
-                <div class="logoutButton">
-                    <a href="loginView.php">Logout</a>
-                </div>
+        </div>
+
+        <div class="logoutButton-updateAccountButton">
+            <div class="logoutButton">
+                <a href="loginView.php">Logout</a>
             </div>
         </div>
      </div>
-
-    <?php endif; ?>
+    <?php } ?>
+    <!-- end admin-header -->
 
     <!-- header -->
-
-    <div class="header-container">
-        
+     <div class="header">
         <div class="header-img">
-
             <img src="images/LogoTemp.png" alt="logo" class="logo-img">
         </div>
-
-        <div>
+        <div class="sticky-btn">
             <button type="button" class="phone-num-btn">
-                <p>Call Now!</p>
-                <p><a href="tel:508-717-1249">508-717-1249</a></p>
+                <div>Call Now</div>
+                <div><a href="tel:<?= htmlspecialchars($contactInfo) ?? 'Phone number not available.' ?>"><?= htmlspecialchars(formatPhoneNumber($contactInfo)) ?? 'Phone number not available.' ?></a></div>
             </button>
         </div>
+     </div>
+    <!-- end header -->
+    
 
+    <!-- review/form -->
+    <div class="description-quote row elements row-1">
+        <div class="description col-lg-6">
+            <div class="title">Who are we?</div>
+            <div id="company-description-text" class="text">
+                <?= $companyDescription['textBox'] ?? 'Description not available.' ?>
+            </div>
+            <form id="company-description-form" style="display:none;">
+                <textarea id="company-description-editor">Welcome to TinyMCE!</textarea>
+            </form>
+            <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                <button id="edit-save-btn" type="button">Edit</button>
+            <?php } ?>
+        </div>
+                <!-- form -->
+        <div class="form col-lg-6">
+            <form action="" method="POST">
+
+                <div class="quote-container quote-show starting-page" style="background-image: url('images/balls2.png'); background-size: cover; background-position: center; border:none; background-color: transparent; box-shadow: none; color: white;">
+                    <div class="rotated">
+                        <div>Get your<br> <span style="font-weight: bold;">FREE</span><br> estimate</div>
+                        <div></div>
+                    </div>
+                    
+                    <div class="form-btns-container">
+                        <div>
+                            <!-- <button>previous</button> -->
+                        </div>
+                        <div class="get-started-btn">
+                            <button type="button" class="next-btn">Get Started</button>
+                            <a href="privacyPolicy.php" class="outlined-text">Privacy Policy</a>
+                        </div>
+                    </div>
+                                                                <!-- Custom Progress Bar with Balls -->
+                                                                <div class="progression-bar-balls">
+                                                                    <div class="progress-bar-track">
+                                                                        <div class="progress-ball" data-step="0"><span>1</span></div>
+                                                                        <div class="progress-bar-line"></div>
+                                                                        <div class="progress-ball" data-step="1"><span>2</span></div>
+                                                                        <div class="progress-bar-line"></div>
+                                                                        <div class="progress-ball" data-step="2"><span>3</span></div>
+                                                                        <div class="progress-bar-line"></div>
+                                                                        <div class="progress-ball" data-step="3"><span>4</span></div>
+                                                                    </div>
+                                                                </div>
+                </div>
+
+                <div class="quote-container quote-show" style="background-image: url('images/balls2.png'); background-size: cover; background-position: center; border:none; background-color: transparent; box-shadow: none; color: white;">
+                    <div>
+                        <div><h2 class="outlined-text">Get a free quote today!</h2></div>
+                        <div><p class="outlined-text">Fill out the form below to get started.</p></div>
+                    </div>
+                    <div class="customer-info">
+                        <div>
+                            <div><input type="text" id="firstName" name="firstName" placeholder="First Name*" autocomplete="given-name" required></div>
+                        </div>
+                        <div>
+                            <div><input type="text" id="lastName" name="lastName" placeholder="Last Name*" autocomplete="family-name" required></div>
+                        </div>
+                        <div><input type="email" id="email" name="email" placeholder="Email*" autocomplete="email" required></div>
+                        <div><input type="tel" id="phone" name="phone" placeholder="Phone" autocomplete="tel"></div>
+                    </div>
+                    <div class="form-btns-container">
+                        <div>
+                            <!-- <button>previous</button> -->
+                        </div>
+                        <div>
+                            <button type="button">next</button>
+                        </div>
+                    </div>
+                                                                <!-- Custom Progress Bar with Balls -->
+                                                                <div class="progression-bar-balls">
+                                                                    <div class="progress-bar-track">
+                                                                        <div class="progress-ball" data-step="0"><span>1</span></div>
+                                                                        <div class="progress-bar-line"></div>
+                                                                        <div class="progress-ball" data-step="1"><span>2</span></div>
+                                                                        <div class="progress-bar-line"></div>
+                                                                        <div class="progress-ball" data-step="2"><span>3</span></div>
+                                                                        <div class="progress-bar-line"></div>
+                                                                        <div class="progress-ball" data-step="3"><span>4</span></div>
+                                                                    </div>
+                                                                </div>
+                </div>
+
+                <div class="quote-container quote-hide" style="background-image: url('images/balls2.png'); background-size: cover; background-position: center; border:none; background-color: transparent; box-shadow: none; color: white;">
+                    <div>
+                        <div><h2 class="outlined-text">Get a free quote today!</h2></div>
+                        <div><p class="outlined-text">Fill out the form below to get started.</p></div>
+                    </div>
+                    <div class="customer-info">
+                        <div>
+                            <div><input type="text" id="street" name="street" placeholder="Street Address*" autocomplete="street-address" required></div>
+                        </div>
+                        <div><input type="text" id="unit" name="unit" placeholder="Unit/Apt" autocomplete="address-line2"></div>
+                        <div>
+                            <div><input type="text" id="city" name="city" placeholder="City*" autocomplete="address-level2" required></div>
+                        </div>
+                        <div>
+                            <div><input type="text" id="state" name="state" placeholder="State*" autocomplete="address-level1" required></div>
+                        </div>
+                        <div>
+                            <div><input type="text" id="zip" name="zip" placeholder="Zip Code*" autocomplete="postal-code" required></div>
+                        </div>
+                    </div>
+                    <div class="form-btns-container">
+                        <div>
+                            <button type="button">previous</button>
+                        </div>
+                        <div>
+                            <button type="button">next</button>
+                        </div>
+                    </div>
+                                        <div class="progression-bar-balls">
+                                            <div class="progress-bar-track">
+                                                <div class="progress-ball" data-step="0"><span>1</span></div>
+                                                <div class="progress-bar-line"></div>
+                                                <div class="progress-ball" data-step="1"><span>2</span></div>
+                                                <div class="progress-bar-line"></div>
+                                                <div class="progress-ball" data-step="2"><span>3</span></div>
+                                                <div class="progress-bar-line"></div>
+                                                <div class="progress-ball" data-step="3"><span>4</span></div>
+                                            </div>
+                                        </div>
+                </div>
+
+                <div class="quote-container quote-hide" style="background-image: url('images/balls2.png'); background-size: cover; background-position: center; border:none; background-color: transparent; box-shadow: none; color: white;">
+                    <div>
+                        <div><h2 class="outlined-text">Get a free quote today!</h2></div>
+                        <div><p class="outlined-text">Fill out the form below to get started.</p></div>
+                    </div>
+                    <div class="customer-info">
+                        <div>
+                            <div>
+                                <select name="service-requested[]" id="service-requested" style="width:100%;" autocomplete="off" multiple>
+                                    <option value="Felt Replacement & Repairs">1. Felt Replacement & Repairs</option>
+                                    <option value="In-Home Relocation">2. In-Home Relocation</option>
+                                    <option value="Long-Distance Moves">3. Long-Distance Moves</option>
+                                    <option value="Residential & Commercial Pool Table Moving">4. Residential & Commercial Pool Table Moving</option>
+                                    <option value="Slate Repair & Replacement">5. Slate Repair & Replacement</option>
+                                    <option value="Assembly & Dismantle">6. Assembly & Dismantle</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <textarea id="notes" name="notes" placeholder="Additional Notes" autocomplete="off"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-btns-container">
+                        <div>
+                            <button type="button">previous</button>
+                        </div>
+                        <div>
+                            <button class="send-btn" type="submit" name="send-btn">send</button>
+                        </div>
+                    </div>
+                                        <div class="progression-bar-balls">
+                                            <div class="progress-bar-track">
+                                                <div class="progress-ball" data-step="0"><span>1</span></div>
+                                                <div class="progress-bar-line"></div>
+                                                <div class="progress-ball" data-step="1"><span>2</span></div>
+                                                <div class="progress-bar-line"></div>
+                                                <div class="progress-ball" data-step="2"><span>3</span></div>
+                                                <div class="progress-bar-line"></div>
+                                                <div class="progress-ball" data-step="3"><span>4</span></div>
+                                            </div>
+                                        </div>
+                </div>
+            </form>
+        </div>
     </div>
+    <!-- end review/form -->
 
+<!-- carousel -->
+<?php
+try {
+    $stmt = $db->query("SELECT * FROM bcimage ORDER BY id ASC");
+    $images = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "<h3>Error fetching images: " . htmlspecialchars($e->getMessage()) . "</h3>";
+    $images = [];
+}
+?>
+
+
+
+<div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000">
+  <div class="carousel-inner">
+    <?php if (!empty($images)): ?>
+      <?php foreach ($images as $index => $image): ?>
+        <div class="carousel-item styl <?php echo $index === 0 ? 'active' : ''; ?>">
+          <img
+            src="./bcimage/<?php echo htmlspecialchars($image['filename']); ?>"
+            class="d-block w-100 carousel-img"
+            alt="Slide <?php echo $index + 1; ?>"
+            loading="lazy"
+          >
+
+          <!-- Desktop caption (overlay, your original layout) -->
+            <div class="carousel-caption cap-desktop d-none d-md-block">
+                <div class="cap-text">
+                    <?php echo htmlspecialchars($image['description']); ?><br>
+                    <span class="review-stars">★★★★★</span>
+                </div>
+            </div>
+
+          <!-- Mobile caption (visible on < md) -->
+          <div class="cap-mobile d-block d-md-none">
+            <div class="cap-text">
+              <?php echo htmlspecialchars($image['description']); ?>
+            </div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+        </div>
+      <?php endforeach; ?>
+    <?php else: ?>
+      <div class="carousel-item active">
+        <div class="d-flex justify-content-center align-items-center" style="height: 25em; background-color:rgb(46, 138, 230); border-radius: 20px;">
+          <h5 class="text-white m-0">No images available</h5>
+        </div>
+      </div>
+    <?php endif; ?>
+  </div>
+
+  <!-- Indicators -->
+  <div class="carousel-indicators">
+    <?php foreach ($images as $index => $image): ?>
+      <button type="button" data-bs-target="#carouselExample"
+              data-bs-slide-to="<?php echo $index; ?>"
+              class="<?php echo $index === 0 ? 'active' : ''; ?>"
+              aria-label="Slide <?php echo $index + 1; ?>"></button>
+    <?php endforeach; ?>
+  </div>
+
+  <!-- Controls -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true" style="filter: drop-shadow(0 0 3px rgba(0,0,0,.74));"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true" style="filter: drop-shadow(0 0 3px rgba(0,0,0,.74));"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<!-- end carousel -->
+
+    <!-- services -->
+     <div class="services col-lg-12">
+        <div class="title">Services</div>
+     </div>
+     <div class="pool-table">
+    <div class="table-row-section">
+                                <div class="service-emblem">
+                                    <!-- Improved Toolbox Icon -->
+                                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                                        <rect x="16" y="32" width="48" height="32" rx="8" fill="white" stroke="#222c2c" stroke-width="3"/>
+                                        <rect x="26" y="20" width="28" height="16" rx="5" fill="white" stroke="#222c2c" stroke-width="2"/>
+                                        <rect x="36" y="44" width="8" height="12" fill="#222c2c"/>
+                                    </svg>
+                                </div>
+                                <div class="service-title-group">
+                                    <span id="service-title-1" class="service-title"><?= $firstService['section'] ?? 'Service Title Not Available' ?></span>
+                                    <input id="service-title-input-1" class="service-title-input" type="text" style="display:none;" value="<?= htmlspecialchars($firstService['section'] ?? '') ?>">
+                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                                        <button id="edit-save-title-btn-1" type="button" class="edit-save-title-btn">Edit</button>
+                                    <?php } ?>
+                                </div>
+                                <div class="service-text-group">
+                                    <span id="service-desc-1" class="service-text text"><p><?= $firstService['textBox'] ?? 'Description not available.' ?></p></span>
+                                    <form id="service-desc-form-1" style="display:none;"><textarea id="service-desc-editor-1"></textarea></form>
+                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                                        <button id="edit-save-desc-btn-1" type="button" class="edit-save-desc-btn">Edit</button>
+                                    <?php } ?>
+                                </div>
+    </div>
+    <div class="table-row-section">
+                                <div class="service-emblem">
+                                    <!-- Improved House Icon -->
+                                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                                        <polygon points="40,16 16,40 64,40" fill="white" stroke="#222c2c" stroke-width="3"/>
+                                        <rect x="24" y="40" width="32" height="24" fill="white" stroke="#222c2c" stroke-width="2"/>
+                                        <rect x="36" y="52" width="8" height="12" fill="#222c2c"/>
+                                    </svg>
+                                </div>
+                                <div class="service-title-group">
+                                    <span id="service-title-2" class="service-title"><?= $secondService['section'] ?? 'Service Title Not Available' ?></span>
+                                    <input id="service-title-input-2" class="service-title-input" type="text" style="display:none;" value="<?= htmlspecialchars($secondService['section'] ?? '') ?>">
+                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                                        <button id="edit-save-title-btn-2" type="button" class="edit-save-title-btn">Edit</button>
+                                    <?php } ?>
+                                </div>
+                                <div class="service-text-group">
+                                    <span id="service-desc-2" class="service-text text"><p><?= $secondService['textBox'] ?? 'Description not available.' ?></p></span>
+                                    <form id="service-desc-form-2" style="display:none;"><textarea id="service-desc-editor-2"></textarea></form>
+                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                                        <button id="edit-save-desc-btn-2" type="button" class="edit-save-desc-btn">Edit</button>
+                                    <?php } ?>
+                                </div>
+    </div>
+    <div class="table-row-section">
+                                <div class="service-emblem">
+                                    <!-- Improved Box Truck Icon -->
+                                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                                        <rect x="12" y="40" width="36" height="20" rx="4" fill="white" stroke="#222c2c" stroke-width="3"/>
+                                        <rect x="48" y="48" width="16" height="12" rx="2" fill="white" stroke="#222c2c" stroke-width="2"/>
+                                        <circle cx="24" cy="64" r="6" fill="white" stroke="#222c2c" stroke-width="2"/>
+                                        <circle cx="56" cy="64" r="6" fill="white" stroke="#222c2c" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <div class="service-title-group">
+                                    <span id="service-title-3" class="service-title"><?= $thirdService['section'] ?? 'Service Title Not Available' ?></span>
+                                    <input id="service-title-input-3" class="service-title-input" type="text" style="display:none;" value="<?= htmlspecialchars($thirdService['section'] ?? '') ?>">
+                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                                        <button id="edit-save-title-btn-3" type="button" class="edit-save-title-btn">Edit</button>
+                                    <?php } ?>
+                                </div>
+                                <div class="service-text-group">
+                                    <span id="service-desc-3" class="service-text text"><p><?= $thirdService['textBox'] ?? 'Description not available.' ?></p></span>
+                                    <form id="service-desc-form-3" style="display:none;"><textarea id="service-desc-editor-3"></textarea></form>
+                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                                        <button id="edit-save-desc-btn-3" type="button" class="edit-save-desc-btn">Edit</button>
+                                    <?php } ?>
+                                </div>
+    </div>
+    <div class="table-row-section">
+                                <div class="service-emblem">
+                                    <!-- Improved Commercial Building Icon -->
+                                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                                        <rect x="20" y="24" width="40" height="32" fill="white" stroke="#222c2c" stroke-width="3"/>
+                                        <rect x="28" y="44" width="8" height="12" fill="#222c2c"/>
+                                        <rect x="44" y="44" width="8" height="12" fill="#222c2c"/>
+                                        <rect x="36" y="32" width="8" height="8" fill="#222c2c"/>
+                                    </svg>
+                                </div>
+                                <div class="service-title-group">
+                                    <span id="service-title-4" class="service-title"><?= $fourthService['section'] ?? 'Service Title Not Available' ?></span>
+                                    <input id="service-title-input-4" class="service-title-input" type="text" style="display:none;" value="<?= htmlspecialchars($fourthService['section'] ?? '') ?>">
+                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                                        <button id="edit-save-title-btn-4" type="button" class="edit-save-title-btn">Edit</button>
+                                    <?php } ?>
+                                </div>
+                                <div class="service-text-group">
+                                    <span id="service-desc-4" class="service-text text"><p><?= $fourthService['textBox'] ?? 'Description not available.' ?></p></span>
+                                    <form id="service-desc-form-4" style="display:none;"><textarea id="service-desc-editor-4"></textarea></form>
+                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                                        <button id="edit-save-desc-btn-4" type="button" class="edit-save-desc-btn">Edit</button>
+                                    <?php } ?>
+                                </div>
+    </div>
+    <div class="table-row-section">
+                                <div class="service-emblem">
+                                    <!-- Improved Hammer Icon -->
+                                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                                        <rect x="36" y="48" width="8" height="20" fill="white" stroke="#222c2c" stroke-width="2"/>
+                                        <rect x="24" y="24" width="32" height="10" rx="5" fill="white" stroke="#222c2c" stroke-width="3"/>
+                                    </svg>
+                                </div>
+                                <div class="service-title-group">
+                                    <span id="service-title-5" class="service-title"><?= $fifthService['section'] ?? 'Service Title Not Available' ?></span>
+                                    <input id="service-title-input-5" class="service-title-input" type="text" style="display:none;" value="<?= htmlspecialchars($fifthService['section'] ?? '') ?>">
+                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                                        <button id="edit-save-title-btn-5" type="button" class="edit-save-title-btn">Edit</button>
+                                    <?php } ?>
+                                </div>
+                                <div class="service-text-group">
+                                    <span id="service-desc-5" class="service-text text"><p><?= $fifthService['textBox'] ?? 'Description not available.' ?></p></span>
+                                    <form id="service-desc-form-5" style="display:none;"><textarea id="service-desc-editor-5"></textarea></form>
+                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                                        <button id="edit-save-desc-btn-5" type="button" class="edit-save-desc-btn">Edit</button>
+                                    <?php } ?>
+                                </div>
+    </div>
+    <div class="table-row-section">
+                                <div class="service-emblem">
+                                    <!-- Improved Screwdriver Icon -->
+                                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                                        <rect x="38" y="20" width="4" height="28" fill="white" stroke="#222c2c" stroke-width="2"/>
+                                        <polygon points="40,48 34,60 46,60" fill="white" stroke="#222c2c" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <div class="service-title-group">
+                                    <span id="service-title-6" class="service-title"><?= $sixthService['section'] ?? 'Service Title Not Available' ?></span>
+                                    <input id="service-title-input-6" class="service-title-input" type="text" style="display:none;" value="<?= htmlspecialchars($sixthService['section'] ?? '') ?>">
+                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                                        <button id="edit-save-title-btn-6" type="button" class="edit-save-title-btn">Edit</button>
+                                    <?php } ?>
+                                </div>
+                                <div class="service-text-group">
+                                    <span id="service-desc-6" class="service-text text"><p><?= $sixthService['textBox'] ?? 'Description not available.' ?></p></span>
+                                    <form id="service-desc-form-6" style="display:none;"><textarea id="service-desc-editor-6"></textarea></form>
+                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                                        <button id="edit-save-desc-btn-6" type="button" class="edit-save-desc-btn">Edit</button>
+                                    <?php } ?>
+                                </div>
+    </div>
+     </div>
+    <!-- end services -->
+
+    <!-- footer -->
+    <div class="home-footer">
+        <hr style="border: 5px solid white">
+        <hr style="border: 5px solid white">
+        <div class="contact-info">
+            <div class="header-img">
+                <img src="images/LogoTemp.png" alt="logo" class="logo-img">
+            </div>
+            <div><a href="tel:<?= htmlspecialchars($contactInfo) ?? 'Phone number not available.' ?>"><span style="color: white; font-weight: bold;">CONTACT: </span><?= htmlspecialchars(formatPhoneNumber($contactInfo)) ?? 'Phone number not available.' ?></a></div>
+            <div><a href="loginView.php">Admin Login</a></div>
+        </div>
+        <hr style="border: 5px solid white">
+        <div class="footer-content">
+            <p>&copy; 2025 NORCAL Pool Movers. All rights reserved.</p>
+            <!-- link to top -->
+            <div class="back-to-top">
+                <a href="#top" style="color: white; text-decoration: underline;">Back to Top</a>
+            </div>
+        </div>
+    </div>
+    <!-- end footer -->
+    <script src="javascript/script2.js"></script>
 </body>
 </html>

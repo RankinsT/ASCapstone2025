@@ -153,7 +153,7 @@
                 <div class="admin-header">
                     <div class="homepageButton-customerSearch">
                         <div class="homepageButton">
-                            <a href="homeView.php">Homepage</a>
+                            <a href="homeView2.php">Homepage</a>
                         </div>
                         <div class="customerSearch">
                             <form method="POST" style="display: flex; align-items: center; gap: 10px;">
@@ -203,6 +203,7 @@
                                 <th>City</th>
                                 <th>State</th>
                                 <th>Zipcode</th>
+                                <th style="min-width:220px; white-space:normal;">Service Requested</th>
                                 <th>Notes</th>
                                 <th>Date Added</th>
                                 <th></th>
@@ -224,6 +225,7 @@
                                 <td><?= $customer["city"] ?></td>
                                 <td><?= $customer["state"] ?></td>
                                 <td><?= $customer["zipcode"] ?></td>
+                                <td style="max-width:300px; white-space:normal; word-break:break-word;"><?= $customer["serviceRequested"] ?></td>
                                 <td><?= $customer["notes"] ?></td>
                                 <td><?= $customer["dateAdded"] ?></td>
                                 <td>

@@ -1,0 +1,72 @@
+Technical Design Documentation
+Project: ASCapstone2025
+
+1. Overview
+ASCapstone2025 is a PHP-based web application designed to manage customer profiles, administrative tasks, and user accounts. It features a modular structure with separate views, models, and assets for maintainability and scalability.
+
+2. Architecture
+Frontend:
+- HTML, CSS (css/), JavaScript (javascript/)
+- Views: PHP files for each page (homeView.php, adminView.php, etc.)
+- Components: Reusable sections in homeViewSections/ (carousel, header, footer, etc.)
+
+Backend:
+- PHP scripts for business logic and data handling (models/)
+- Database configuration via dbconfig.ini
+- Database access through db.php
+- Admin and customer profile management via model_admin.php, customer_profiles.php
+
+Assets:
+- Images (images/, bcimage/)
+- Stylesheets (css/)
+- JavaScript files (javascript/)
+
+3. Main Modules
+3.1 Views
+- homeView.php, adminView.php, loginView.php, etc.: Render main pages, include sections from homeViewSections/.
+
+3.2 Models
+- db.php: Handles database connection and queries.
+- customer_profiles.php: Manages customer profile data.
+- model_admin.php: Handles admin-specific operations.
+
+3.3 Controllers
+- Each view PHP file acts as a controller, processing user input and interacting with models.
+
+3.4 Assets
+- CSS: Styles for each view and component.
+- JavaScript: Client-side interactivity and validation.
+
+4. Data Flow
+1. User Request: User accesses a page (e.g., homeView.php).
+2. Controller Logic: The PHP view file processes input, interacts with models, and renders the page.
+3. Model Interaction: Models query/update the database as needed.
+4. Response: The view renders HTML, CSS, and JavaScript to the user.
+
+5. Database Design
+- Configuration: dbconfig.ini stores DB credentials.
+- Tables:
+  - Customers
+  - Admins
+  - Accounts
+  - (Others as needed for reviews, services, etc.)
+
+6. Security
+- Input validation in PHP and JavaScript.
+- Passwords and sensitive data handled securely.
+- File uploads (upload.php) validated for type and size.
+
+7. Extensibility
+- Modular sections in homeViewSections/ for easy updates.
+- Separate CSS and JS files for maintainability.
+- Models can be extended for new features.
+
+8. Deployment
+- Runs on XAMPP (Apache, MySQL, PHP).
+- All files located in /Applications/XAMPP/xamppfiles/htdocs/ASCapstone2025.
+
+9. Future Improvements
+- Add RESTful API endpoints.
+- Implement user roles and permissions.
+- Enhance frontend with frameworks (React, Vue, etc.).
+- Add automated tests.

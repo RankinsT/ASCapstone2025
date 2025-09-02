@@ -21,7 +21,6 @@
     $email = ""; // Initialize email variable
     $currentPassword = ""; // Initialize current password variable
     $user = getAdmin($username);
-
     ?>
 
     <div>
@@ -31,7 +30,7 @@
                 <div class="admin-header">
                     <div class="homepageButton-customerSearch">
                         <div class="homepageButton">
-                            <a href="homeView.php">Homepage</a>
+                            <a href="homeView2.php">Homepage</a>
                         </div>
                         <!-- <div class="homepageButton">
                             <a href="adminView.php">Admin Page</a>
@@ -75,6 +74,7 @@
                             </tr>
 
                             <tr>
+
                                 <td class="label-cell">
                                     <label for="adminEmail">Email:</label>
                                 </td>
@@ -85,10 +85,19 @@
 
                             <tr>
                                 <td class="label-cell">
+                                    <label for="phoneNumber">Phone Number:</label>
+                                </td>
+                                <td class="input-cell">
+                                    <input type="text" id="phoneNumber" name="phoneNumber" value="<?= htmlspecialchars($currentUser['phoneNumber'] ?? ''); ?>" placeholder="5555555555">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="label-cell">
                                     <label for="currentPassword">Current Password:</label>
                                 </td>
                                 <td class="input-cell">
-                                    <input type="password" id="currentPassword" name="currentPassword" required>
+                                    <input type="password" id="currentPassword" name="currentPassword">
                                 </td>
                             </tr>
 
@@ -97,7 +106,7 @@
                                     <label for="newPassword">New Password:</label>
                                 </td>
                                 <td class="input-cell">
-                                    <input type="password" id="newPassword" name="newPassword" required>
+                                    <input type="password" id="newPassword" name="newPassword">
                                 </td>
                             </tr>
 
@@ -106,7 +115,7 @@
                                     <label for="confirmPassword">Confirm New Password:</label>
                                 </td>
                                 <td class="input-cell">
-                                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                                    <input type="password" id="confirmPassword" name="confirmPassword">
                                 </td>
                             </tr>
 

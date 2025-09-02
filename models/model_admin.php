@@ -130,6 +130,12 @@ function updateCustomer($customerData) {
             WHERE ID = :id';
 
     $stmt = $db->prepare($sql); // Prepare the SQL statement
+    
+                // Check required fields
+                if (empty($firstName) || empty($lastName) || empty($email) || empty($street) || empty($city) || empty($state) || empty($zip) || empty($serviceRequested)) {
+                    echo "<script>alert('Please fill out all required fields.');</script>";
+                    return "Form incomplete";
+                }
 
     // Bind the customer data to the SQL statement
     $stmt->bindValue(':id', $customerData['ID']);
@@ -222,14 +228,14 @@ function getAllAdmins() {
     return $results; // Return the array of admin data
 }
 
-function register($username, $password, $email) {
+function register($username, $password, $email, $phoneNumber) {
     global $db;
 
     $results = ""; // Initialize an empty string for results
 
     try {
-        $sql = 'INSERT INTO capstone_202540_qball.adminlogin (adminID, username, password, adminEmail) 
-                VALUES (:adminID, :username, :password, :email)'; // SQL query to insert a new admin
+        $sql = 'INSERT INTO capstone_202540_qball.adminlogin (adminID, username, password, adminEmail, phoneNumber) 
+                VALUES (:adminID, :username, :password, :email, :phoneNumber)'; // SQL query to insert a new admin
 
         $stmt = $db->prepare($sql); // Prepare the SQL statement
 
@@ -237,29 +243,35 @@ function register($username, $password, $email) {
         $bindsAdmin = array(
             ':username' => $username,
             ':password' => sha1("MY-TOP-SECRET-SALT$password"), // In a real application, ensure to hash the password
-            ':email' => $email
+            ':email' => $email,
+            ':phoneNumber' => $phoneNumber
         );
         if ($stmt->execute($bindsAdmin) && $stmt->rowCount() > 0) {
             $results = "Admin registered successfully"; // Set success message
-        }   
+        } else {
+            $errorInfo = $stmt->errorInfo();
+            error_log("SQL Error registering admin: " . implode(", ", $errorInfo));
+            $results = "SQL Error: " . htmlspecialchars($errorInfo[2]);
+        }
     } catch (PDOException $e) {
-        error_log("Error registering admin: " . $e->getMessage()); // Log any errors
-        return "Error registering admin"; // Return error message
+        error_log("PDO Error registering admin: " . $e->getMessage()); // Log any errors
+        return "PDO Error: " . htmlspecialchars($e->getMessage()); // Return error message
     }
     return $results; // Return the results message
 }
 
-function updateAccount($username, $email, $currentPassword, $newPassword) {
+function updateAccount($username, $email, $currentPassword, $newPassword, $phoneNumber) {
     global $db;
     $results = "";
     try {
         // First try with SHA1+salt (newer accounts)
-        $sql = 'UPDATE capstone_202540_qball.adminlogin SET adminEmail = :email, password = :newPassword WHERE username = :username AND password = :currentPassword';
+        $sql = 'UPDATE capstone_202540_qball.adminlogin SET adminEmail = :email, password = :newPassword, phoneNumber = :phoneNumber WHERE username = :username AND password = :currentPassword';
         $stmt = $db->prepare($sql);
         $binds = array(
             ':email' => $email,
             ':newPassword' => sha1("MY-TOP-SECRET-SALT$newPassword"),
             ':username' => $username,
+            ':phoneNumber' => $phoneNumber,
             ':currentPassword' => sha1("MY-TOP-SECRET-SALT$currentPassword")
         );
         $stmt->execute($binds);
@@ -268,13 +280,14 @@ function updateAccount($username, $email, $currentPassword, $newPassword) {
             return $results;
         }
         // If not, try with plain text (older accounts)
-        $sql2 = 'UPDATE capstone_202540_qball.adminlogin SET adminEmail = :email, password = :newPassword WHERE username = :username AND password = :currentPassword';
+        $sql2 = 'UPDATE capstone_202540_qball.adminlogin SET adminEmail = :email, password = :newPassword, phoneNumber = :phoneNumber WHERE username = :username AND password = :currentPassword';
         $stmt2 = $db->prepare($sql2);
         $binds2 = array(
             ':email' => $email,
             ':newPassword' => sha1("MY-TOP-SECRET-SALT$newPassword"),
             ':username' => $username,
-            ':currentPassword' => $currentPassword
+            ':currentPassword' => $currentPassword,
+            ':phoneNumber' => $phoneNumber
         );
         $stmt2->execute($binds2);
         if ($stmt2->rowCount() > 0) {
@@ -344,4 +357,121 @@ function deleteAdmin($username) {
     return $results;
 }
 
+function requestQuote($firstName, $lastName, $email, $phoneNumber, $street, $apt, $city, $state, $zip, $serviceRequested, $notes) {
+    global $db;
 
+    $results = ""; // Initialize an empty string for results
+
+    try {
+        $sql = 'INSERT INTO capstone_202540_qball.customers (firstName, lastName, phoneNumber, email, street, apt, city, state, zipcode, serviceRequested, notes) 
+                VALUES (:firstName, :lastName, :phoneNumber, :email, :street, :apt, :city, :state, :zipcode, :serviceRequested, :notes)';
+
+        $stmt = $db->prepare($sql);
+
+        // Bind the parameters
+        $binds = array(
+            ':firstName' => $firstName,
+            ':lastName' => $lastName,
+            ':email' => $email,
+            ':phoneNumber' => $phoneNumber,
+            ':street' => $street,
+            ':apt' => $apt,
+            ':city' => $city,
+            ':state' => $state,
+            ':zipcode' => $zip,
+            ':serviceRequested' => $serviceRequested,
+            ':notes' => $notes
+        );
+
+        if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
+            $results = "Quote request submitted successfully";
+            echo "<script>alert('$results');</script>";
+        } else {
+            $errorInfo = $stmt->errorInfo();
+            $errorMsg = "Quote request was NOT submitted. Reason: SQL Error: " . htmlspecialchars($errorInfo[2]);
+            echo "<script>alert('$errorMsg');</script>";
+            return $errorMsg;
+        }
+    } catch (PDOException $e) {
+        error_log("Error requesting quote: " . $e->getMessage());
+        $errorMsg = "Quote request was NOT submitted. Reason: PDO Error: " . htmlspecialchars($e->getMessage());
+        echo "<script>alert('$errorMsg');</script>";
+        return $errorMsg;
+    }
+    return $results;
+}
+
+function getAllTextBoxes() {
+    global $db;
+    $results = [];
+
+    $sql = 'SELECT * FROM capstone_202540_qball.textboxes'; // SQL query to select all text boxes
+    try {
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        error_log("Error fetching text boxes: " . $e->getMessage());
+    }
+
+    return $results;
+}
+
+function getTextBox($ID) {
+    global $db;
+
+    $textBox = null;
+
+    try {
+        $sql = 'SELECT * FROM capstone_202540_qball.textboxes WHERE `ID` = :ID';
+        $stmt = $db->prepare($sql);
+        $stmt->execute([':ID' => $ID]);
+        $textBox = $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        error_log("Error fetching text box: " . $e->getMessage());
+    }
+
+    return $textBox;
+}
+
+function getPhoneNumber($adminID) {
+    global $db;
+
+    $phoneNumber = null;
+
+    try {
+        $sql = 'SELECT phoneNumber FROM capstone_202540_qball.adminLogin WHERE adminID = :adminID';
+        $stmt = $db->prepare($sql);
+        $stmt->execute([':adminID' => $adminID]);
+        $phoneNumber = $stmt->fetchColumn();
+    } catch (PDOException $e) {
+        error_log("Error fetching phone number: " . $e->getMessage());
+    }
+
+    return $phoneNumber;
+}
+
+// Update only email and phone number for an admin (no password change)
+function updateContactInfo($username, $email, $phoneNumber) {
+    global $db;
+    $results = "";
+    try {
+        $sql = 'UPDATE capstone_202540_qball.adminlogin SET adminEmail = :email, phoneNumber = :phoneNumber WHERE username = :username';
+        $stmt = $db->prepare($sql);
+        $binds = array(
+            ':email' => $email,
+            ':phoneNumber' => $phoneNumber,
+            ':username' => $username
+        );
+        $stmt->execute($binds);
+        if ($stmt->rowCount() > 0) {
+            $results = "Contact info updated successfully";
+        } else {
+            $results = "No changes made or user not found";
+        }
+    } catch (PDOException $e) {
+        error_log("Error updating contact info: " . $e->getMessage());
+        return "Error updating contact info";
+    }
+    return $results;
+}
