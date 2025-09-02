@@ -208,26 +208,33 @@ function showEditCustomerForm(customer) {
   form.submit();
 }
 
-function sweetAlertConfirm() {
-  Swal.fire({
-    title: "Are you sure?",
-    text: "You won't be able to revert this!",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Yes, delete it!"
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire({
-        title: "Deleted!",
-        text: "Your file has been deleted.",
-        icon: "success"
-      });
-    }
-  });
-}
+import Swal from 'sweetalert2'
 
+// function delAdminConfirm() {
+
+//   const delAdminBtn = document.getElementById('delete-admin-btn');
+
+//   delAdminBtn.addEventListener('click', () => {
+
+//     Swal.fire({
+//       title: "Are you sure?",
+//       text: "This account will be permanently deleted!",
+//       icon: "warning",
+//       showCancelButton: true,
+//       confirmButtonColor: "#3085d6",
+//       cancelButtonColor: "#d33",
+//       confirmButtonText: "Yes, delete account."
+//     }).then((result) => {
+//       if (result.isConfirmed) {
+//         Swal.fire({
+//           title: "Deleted!",
+//           text: "Account deleted.",
+//           icon: "success"
+//         });
+//       }
+//     });
+//   })
+// }
 
 // tinymce function
 function initEditableSection({

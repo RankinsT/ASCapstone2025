@@ -15,7 +15,7 @@
         session_start(); // Start session
         include './models/model_admin.php'; // Include the model file
 
-        $adminlogin = getAllAdmins(); // Fetch all the admin accounts
+        $allAdmins = getAllAdmins(); // Fetch all the admin accounts
 
         $username = $_SESSION['username']; // Store current session's admin username
         $adminID = getAdminID($username); // Use username to check and store admin id 
@@ -67,7 +67,7 @@
 
                         <tbody>
                             <?php
-                            foreach ($adminlogin as $admins): ?>
+                            foreach ($allAdmins as $admins): ?>
                             <tr>
                                 <td><?= $admins["adminID"]?></td>
                                 <td><?= $admins["username"] ?></td>
@@ -76,9 +76,9 @@
 
                                 <?php if ($adminID = 1): ?>
                                     <td>
-                                        <form method="POST" style="display: inline;" onsubmit= sweetAlertConfirm()> <!--"return confirm('Are you sure you want to delete this admin?');" -->
-                                            <input type="hidden" name="deleteAdmin" value="<?= $admins["username"] ?>">
-                                            <button type="submit" class="delete-button">Delete</button>
+                                        <form method="POST" style="display: inline;" onsubmit= "return confirm('Are you sure you want to delete this admin?');"> <!--"return confirm('Are you sure you want to delete this admin?');" -->
+                                            <input type="hidden" name="deleteAdmin" value="<?= htmlspecialchars($admins["username"]); ?>">
+                                            <button type="submit" id="delete-admin-btn" class="delete-button">Delete</button>
                                         </form>
                                     </td>
                                     <?php endif ?>
