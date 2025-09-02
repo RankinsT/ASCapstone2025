@@ -476,15 +476,20 @@ try {
             </div>
             <div><a href="tel:<?= htmlspecialchars($contactInfo) ?? 'Phone number not available.' ?>"><span style="color: white; font-weight: bold;">CONTACT: </span><?= htmlspecialchars(formatPhoneNumber($contactInfo)) ?? 'Phone number not available.' ?></a></div>
             <div><a href="loginView.php">Admin Login</a></div>
+            
         </div>
         <hr style="border: 5px solid white">
-        <div class="footer-content">
-            <p>&copy; 2025 NORCAL Pool Movers. All rights reserved.</p>
-            <!-- link to top -->
-            <div class="back-to-top">
-                <a href="#top" style="color: white; text-decoration: underline;">Back to Top</a>
-            </div>
+    <div class="footer-content">
+        <p>&copy; 2025 NORCAL Pool Movers. All rights reserved.</p>
+        <!-- link to top -->
+        <div class="back-to-top">
+            <a href="#top" style="color: white; text-decoration: underline;">Back to Top</a>
         </div>
+        <div>
+             <a href="index.html" style="color: white; text-decoration: underline;">Code Review</a>
+        </div>
+        
+    </div>
     </div>
     <!-- end footer -->
     <script src="javascript/script2.js"></script>

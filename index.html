@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ASCapstone2025 — Technical Design Document</title>
+  <meta name="description" content="Technical Design Document site for ASCapstone2025 (PHP-based web app).">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22%2300a37a%22/><text x=%2250%22 y=%2258%22 text-anchor=%22middle%22 font-size=%2244%22 fill=%22white%22 font-family=%22Arial%22>AS</text></svg>">
+</head>
+<body data-bs-spy="scroll" data-bs-target="#toc" data-bs-offset="120" tabindex="0">
+  <!-- Hero -->
+  <header class="py-5 mb-4 bg-hero text-white" id="top">
+    <div class="container pt-5">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-8">
+          <h1 class="display-5 fw-bold mb-3">ASCapstone2025 Technical Design Document</h1>
+          <p class="lead mb-4">A PHP-based web application for managing customers, admins, and a public homepage for a pool table movers business.</p>
+          <div class="d-flex gap-2 flex-wrap">
+            <a href="#overview" class="btn btn-light btn-lg">Read the overview</a>
+            <a href="#architecture" class="btn btn-outline-light btn-lg">Jump to architecture</a>
+            <a href="assets/ASCapstone2025_Code_and_Design_Documentation.pdf " class="btn btn-outline-light btn-lg" target="_blank" rel="noopener">View full PDF document</a>
+            <a href="homeView2.php" class="btn btn-outline-light btn-lg">Go to live site</a>
+ 
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card card-glass">
+            <div class="card-body">
+              <h5 class="card-title">Quick facts</h5>
+              <ul class="mb-0">
+                <li>Stack: PHP, MySQL, Bootstrap</li>
+                <li>Auth: Sessions (Admin)</li>
+                <li>Uploads: Image upload to <code>bcimage/</code></li>
+                <li>Views: Modular PHP includes</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="row">
+      <!-- Sidebar TOC -->
+      <aside class="col-lg-3 d-none d-lg-block">
+        <nav id="toc" class="position-sticky" style="top: 6.5rem">
+          <div class="list-group list-group-flush small">
+            <a href="#overview" class="list-group-item list-group-item-action">1. Overview</a>
+            <a href="#architecture" class="list-group-item list-group-item-action">2. System Architecture</a>
+            <a href="#technologies" class="list-group-item list-group-item-action">3. Technologies Used</a>
+            <a href="#database-design" class="list-group-item list-group-item-action">4. Database Design</a>
+            <a href="#frontend" class="list-group-item list-group-item-action">5. Frontend Components</a>
+            <a href="#backend" class="list-group-item list-group-item-action">6. Backend Components</a>
+            <a href="#security" class="list-group-item list-group-item-action">7. Security Considerations</a>
+            <a href="#deployment" class="list-group-item list-group-item-action">8. Deployment</a>
+            <a href="#extensibility" class="list-group-item list-group-item-action">9. Extensibility & Improvements</a>
+            <a href="#conclusion" class="list-group-item list-group-item-action">10. Conclusion</a>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- Content -->
+      <section class="col-lg-9">
+        <!-- 1. Overview -->
+        <article id="overview" class="doc-section">
+          <h2>1. Overview</h2>
+          <p><strong>ASCapstone2025</strong> is a PHP-based web application designed for managing customer profiles, administrative tasks, user accounts, and providing a public-facing homepage for a pool table movers business. The application supports customer management (CRUD operations), admin login and registration, quote requests, and dynamic content display through modular sections. It follows a modular architecture for maintainability and scalability, with separate concerns for views, models, and assets.</p>
+          <p><strong>Purpose:</strong> To provide a centralized system for business operations, including customer data management, admin oversight, and user interaction via forms and displays.</p>
+          <p><strong>Scope:</strong> Includes user authentication, customer profile management, admin panel, public homepage with sections like reviews, services, locations, and a contact form.</p>
+        </article>
+
+        <hr>
+
+        <!-- 2. System Architecture -->
+        <article id="architecture" class="doc-section">
+          <h2>2. System Architecture</h2>
+          <p>The application follows an MVC-like pattern, with PHP handling controller and view logic.</p>
+          <h5>Frontend</h5>
+          <ul>
+            <li>HTML rendered by PHP views.</li>
+            <li>CSS for styling (separate files such as <code>homeStyle.css</code>, <code>adminStyle.css</code>).</li>
+            <li>JavaScript for interactivity (e.g., <code>adminScript.js</code>, <code>script2.js</code>).</li>
+            <li>External libraries: Bootstrap 5.3.3, TinyMCE, Select2, and jQuery.</li>
+            <li>Modular sections via <code>homeViewSections/</code> (e.g., <code>header.php</code>, <code>reviews.php</code>, <code>form.php</code>, <code>carousel.php</code>, <code>companyDescription.php</code>, <code>footer.php</code>, <code>locations.php</code>, <code>map.php</code>, <code>services.php</code>).</li>
+          </ul>
+          <h5>Backend</h5>
+          <ul>
+            <li>PHP scripts for business logic and data handling.</li>
+            <li>Models in <code>models/</code>: <code>db.php</code> (PDO connection), <code>model_admin.php</code> (admin &amp; customer operations), <code>customer_profiles.php</code>.</li>
+            <li>Database configuration via <code>dbconfig.ini</code>.</li>
+            <li>Session-based authentication for admin access.</li>
+          </ul>
+          <h5>Assets</h5>
+          <ul>
+            <li>Images in <code>images/</code> (e.g., <code>LogoTemp.png</code>, <code>BilliardBalls.png</code>) and uploaded images in <code>bcimage/</code>.</li>
+            <li>Image file uploads handled by <code>upload.php</code>.</li>
+          </ul>
+          <h5>Data Flow</h5>
+          <ol>
+            <li>User accesses a page (e.g., <code>homeView.php</code> via <code>index.php</code> redirect).</li>
+            <li>PHP view processes session, includes models, renders HTML with includes.</li>
+            <li>Models interact with database using PDO for queries.</li>
+            <li>JavaScript handles client-side validation and interactions.</li>
+            <li>Responses update the UI or redirect as needed.</li>
+          </ol>
+        </article>
+
+        <hr>
+
+        <!-- 3. Technologies Used -->
+        <article id="technologies" class="doc-section">
+          <h2>3. Technologies Used</h2>
+          <ul>
+            <li><strong>Language:</strong> PHP 7+</li>
+            <li><strong>Database:</strong> MySQL (via PDO)</li>
+            <li><strong>Frontend:</strong> HTML5, CSS3, JavaScript (ES6+)</li>
+            <li><strong>Libraries:</strong> Bootstrap 5.3.3, jQuery 3.6.0, TinyMCE 8, Select2 4.1.0</li>
+            <li><strong>Web Server:</strong> Apache (XAMPP)</li>
+            <li><strong>Environment:</strong> XAMPP (Apache, MySQL, PHP)</li>
+            <li><strong>State:</strong> PHP Sessions</li>
+            <li><strong>Uploads:</strong> File/image uploads</li>
+          </ul>
+        </article>
+
+        <hr>
+
+        <!-- 4. Database Design -->
+        <article id="database-design" class="doc-section">
+          <h2>4. Database Design</h2>
+          <p><strong>Configuration:</strong> Stored in <code>models/dbconfig.ini</code> (servername, port, dbname, username, password).</p>
+          <p><strong>Connection:</strong> Established in <code>models/db.php</code> using PDO with security-focused attributes.</p>
+          <p><strong>Tables:</strong></p>
+          <ul>
+            <li><code>customers</code>: ID, firstName, lastName, phoneNumber, email, street, apt, city, state, zipcode, serviceRequested, notes.</li>
+            <li><code>adminlogin</code>: username, password (hashed with SHA1 + salt), adminEmail.</li>
+            <li>Other tables may exist for reviews, services, etc.</li>
+          </ul>
+          <p><strong>Security:</strong> Passwords hashed with SHA1 and a salt (<code>MY-TOP-SECRET-SALT</code>). Supports legacy plaintext login for backward compatibility.</p>
+          <p><strong>Queries:</strong> Prepared statements used to prevent SQL injection.</p>
+        </article>
+
+        <hr>
+
+        <!-- 5. Frontend Components -->
+        <article id="frontend" class="doc-section">
+          <h2>5. Frontend Components</h2>
+          <p><strong>Main Views:</strong></p>
+          <ul>
+            <li><code>homeView2.php</code>: Public homepage (admin header if logged in) with modular sections.</li>
+            <li><code>adminView.php</code>: Admin dashboard (manage customers).</li>
+            <li><code>loginView.php</code>: Admin login form.</li>
+            <li><code>updateAccount.php</code> / <code>updateAccountView.php</code>: Account update forms.</li>
+            <li><code>addAdminView.php</code>: Add new admin.</li>
+            <li><code>privicyPolicy.php</code>: Privacy policy information.</li>
+          </ul>
+          <p><strong>Modular Sections (<code>homeViewSections/</code>):</strong> <code>header.php</code>, <code>reviews.php</code>, <code>form.php</code>, <code>carousel.php</code> / <code>carousel2.php</code>, <code>companyDescription.php</code>, <code>footer.php</code>, <code>locations.php</code>, <code>map.php</code>, <code>services.php</code>.</p>
+          <p><strong>Styling:</strong> Separate CSS files per view with Bootstrap for consistency.</p>
+          <p><strong>Interactivity:</strong> JavaScript files for admin operations and form validation.</p>
+        </article>
+
+        <hr>
+
+        <!-- 6. Backend Components -->
+        <article id="backend" class="doc-section">
+          <h2>6. Backend Components</h2>
+          <p><strong>Models (<code>models/</code>):</strong></p>
+          <ul>
+            <li><code>db.php</code>: Database connection setup (PDO).</li>
+            <li><code>model_admin.php</code>: Authentication, Customer CRUD, Admin management, Quote requests.</li>
+            <li><code>customer_profiles.php</code>: Additional customer-related functions (assumed).</li>
+            <li><code>php.php</code>: Contains addition php logic and functions. (assumed).</li>
+            <li><code>UpdateAccount.php</code>:  Functions for update account page </li>
+            <li><code>updateServices.php</code>: Allows access to tinymce to update services displayed on frontend.</li>
+          </ul>
+          <p><strong>File Uploads:</strong> Handled in <code>upload.php</code></p>
+          <p><strong>Controllers:</strong> PHP view files act as controllers, processing <code>POST</code>/<code>GET</code>, calling model functions, and rendering views.</p>
+          <p><strong>Security:</strong> Input validation, error logging, session checks.</p>
+        </article>
+
+        <hr>
+
+        <!-- 7. Security Considerations -->
+        <article id="security" class="doc-section">
+          <h2>7. Security Considerations</h2>
+          <ul>
+            <li><strong>Authentication:</strong> Session-based admin login. Passwords hashed with SHA1 + salt.</li>
+            <li><strong>Authorization:</strong> Admin-only access to privileged views.</li>
+            <li><strong>Input Validation:</strong> Required fields validated server-side; client-side via JS.</li>
+            <li><strong>SQL Injection Prevention:</strong> PDO prepared statements.</li>
+            <li><strong>File Uploads:</strong> Validated type/size in <code>upload.php</code>.</li>
+            <li><strong>Error Handling:</strong> Try/catch around PDO; error logging.</li>
+            <li><strong>HTTPS:</strong> Recommended for production.</li>
+            <li><strong>Session Management:</strong> Standard PHP sessions; consider ID regeneration on login.</li>
+          </ul>
+        </article>
+
+        <hr>
+
+        <!-- 8. Deployment -->
+        <article id="deployment" class="doc-section">
+          <h2>8. Deployment</h2>
+          <ul>
+            <li><strong>Environment:</strong> XAMPP on Windows (<code>c:/xampp/htdocs/ASCapstone2025</code>).</li>
+            <li><strong>Requirements:</strong> Apache, MySQL, PHP.</li>
+            <li><strong>Setup:</strong> Place files in <code>htdocs</code>, configure <code>dbconfig.ini</code> with DB credentials.</li>
+            <li><strong>Production:</strong> Dedicated server, environment variables for config, enable HTTPS, database backups.</li>
+          </ul>
+        </article>
+
+        <hr>
+
+        <!-- 9. Extensibility -->
+        <article id="extensibility" class="doc-section">
+          <h2>9. Extensibility &amp; Future Improvements</h2>
+          <ul>
+            <li>Modular additions to <code>homeViewSections/</code> or new models.</li>
+            <li>Potential RESTful API for mobile apps.</li>
+            <li>Frontend SPA (React/Vue) and accessibility improvements.</li>
+            <li>Backend roles/permissions; possible OAuth.</li>
+            <li>Testing: Unit tests for models; integration tests for views.</li>
+            <li>Performance: Query optimization; asset caching.</li>
+            <li>Monitoring: Action logging; error tracking.</li>
+            <li>Scalability: Consider Laravel framework for stronger structure.</li>
+          </ul>
+        </article>
+
+        <hr>
+
+        <!-- 10. Conclusion -->
+        <article id="conclusion" class="doc-section">
+          <h2>10. Conclusion</h2>
+          <p>This site presents the technical design of <strong>ASCapstone2025</strong>, outlining its architecture, components, and recommended improvements. The modular approach supports easy updates and expansion.</p>
+
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <footer class="border-top py-4 mt-5">
+    <div class="container d-flex justify-content-between align-items-center gap-3 flex-wrap">
+      <span class="small text-body-secondary">© <span id="year"></span> ASCapstone2025</span>
+      <div class="d-flex gap-2">
+        <a class="btn btn-outline-secondary btn-sm" href="#top">Back to top</a>
+        <button id="themeToggleFooter" class="btn btn-secondary btn-sm" type="button">Toggle theme</button>
+      </div>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="btn btn-primary rounded-pill shadow back-to-top" type="button" aria-label="Back to top">↑</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="assets/script.js"></script>
+</body>
+</html>
