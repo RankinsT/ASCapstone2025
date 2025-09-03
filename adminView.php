@@ -106,10 +106,7 @@
 
     // Handle editing an existing customer
     if (isset($_POST['editCustomer'])) {
-        // Debug: Log what data we received
-        error_log("Edit customer POST data: " . print_r($_POST, true));
-        
-        // Create customer data array using the ID field from the form
+    // Create customer data array using the ID field from the form
         $customerData = [
             'ID' => $_POST['ID'],
             'firstName' => $_POST['firstName'] ?? '',
@@ -125,10 +122,7 @@
             'notes' => $_POST['notes'] ?? ''
         ];
         
-        // Debug: Log the customer data being sent to update function
-        error_log("Customer data for update: " . print_r($customerData, true));
-        
-        // Call the updateCustomer function to update the customer in database
+    // Call the updateCustomer function to update the customer in database
         $result = updateCustomer($customerData); // Call the function to update the customer
         
         // Since updateCustomer returns true/false, not a message, handle accordingly

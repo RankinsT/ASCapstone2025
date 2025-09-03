@@ -11,26 +11,26 @@ function showAddCustomerForm() {
   // Exit early if user cancels last name entry
   if (lastName === null) return;
 
-  // Display prompt for phone number input
-  let phoneNumber = prompt("Enter Phone Number:");
-  if (phoneNumber === null) return;
-  // Validate phone number (US format: 10 digits, allows dashes, spaces, parentheses)
+  // Prompt for phone number until valid or cancelled
+  let phoneNumber;
   const phoneRegex = /^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;
-  if (!phoneRegex.test(phoneNumber)) {
+  while (true) {
+    phoneNumber = prompt("Enter Phone Number:");
+    if (phoneNumber === null) return;
+    if (phoneRegex.test(phoneNumber)) break;
     alert(
       "Invalid phone number. Please enter a valid US phone number (e.g. 555-555-5555)"
     );
-    return;
   }
 
-  // Display prompt for email address input
-  let email = prompt("Enter Email:");
-  if (email === null) return;
-  // Validate email
+  // Prompt for email until valid or cancelled
+  let email;
   const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-  if (!emailRegex.test(email)) {
+  while (true) {
+    email = prompt("Enter Email:");
+    if (email === null) return;
+    if (emailRegex.test(email)) break;
     alert("Invalid email address. Please enter a valid email.");
-    return;
   }
 
   // Display prompt for street address input
@@ -48,14 +48,14 @@ function showAddCustomerForm() {
   const state = prompt("Enter State:");
   if (state === null) return;
 
-  // Display prompt for zipcode input
-  let zipcode = prompt("Enter Zipcode:");
-  if (zipcode === null) return;
-  // Validate zipcode (must be exactly 5 digits)
+  // Prompt for zipcode until valid or cancelled
+  let zipcode;
   const zipRegex = /^\d{5}$/;
-  if (!zipRegex.test(zipcode)) {
+  while (true) {
+    zipcode = prompt("Enter Zipcode:");
+    if (zipcode === null) return;
+    if (zipRegex.test(zipcode)) break;
     alert("Invalid zipcode. Please enter a 5-digit US zipcode (e.g. 12345)");
-    return;
   }
 
   // Display prompt for notes (this field is optional)
@@ -141,26 +141,26 @@ function showEditCustomerForm(customer) {
   // Exit early if user cancels last name entry
   if (lastName === null) return;
 
-  // Display prompt with current phone number pre-filled
-  let phoneNumber = prompt("Enter Phone Number:", customer.phoneNumber || "");
-  if (phoneNumber === null) return;
-  // Validate phone number (US format: 10 digits, allows dashes, spaces, parentheses)
-  const phoneRegex = /^(\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4})$/;
-  if (!phoneRegex.test(phoneNumber)) {
+  // Prompt for phone number until valid or cancelled
+  let phoneNumber;
+  const phoneRegex = /^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;
+  while (true) {
+    phoneNumber = prompt("Enter Phone Number:", customer.phoneNumber || "");
+    if (phoneNumber === null) return;
+    if (phoneRegex.test(phoneNumber)) break;
     alert(
       "Invalid phone number. Please enter a valid US phone number (e.g. 555-555-5555)"
     );
-    return;
   }
 
-  // Display prompt with current email pre-filled
-  let email = prompt("Enter Email:", customer.email || "");
-  if (email === null) return;
-  // Validate email
+  // Prompt for email until valid or cancelled
+  let email;
   const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-  if (!emailRegex.test(email)) {
+  while (true) {
+    email = prompt("Enter Email:", customer.email || "");
+    if (email === null) return;
+    if (emailRegex.test(email)) break;
     alert("Invalid email address. Please enter a valid email.");
-    return;
   }
 
   // Display prompt with current street address pre-filled
@@ -178,14 +178,14 @@ function showEditCustomerForm(customer) {
   const state = prompt("Enter State:", customer.state || "");
   if (state === null) return;
 
-  // Display prompt with current zipcode pre-filled
-  let zipcode = prompt("Enter Zipcode:", customer.zipcode || "");
-  if (zipcode === null) return;
-  // Validate zipcode (must be exactly 5 digits)
+  // Prompt for zipcode until valid or cancelled
+  let zipcode;
   const zipRegex = /^\d{5}$/;
-  if (!zipRegex.test(zipcode)) {
+  while (true) {
+    zipcode = prompt("Enter Zipcode:", customer.zipcode || "");
+    if (zipcode === null) return;
+    if (zipRegex.test(zipcode)) break;
     alert("Invalid zipcode. Please enter a 5-digit US zipcode (e.g. 12345)");
-    return;
   }
 
   // Display prompt with current serviceRequested pre-filled
