@@ -109,9 +109,9 @@
         // Debug: Log what data we received
         error_log("Edit customer POST data: " . print_r($_POST, true));
         
-        // Create customer data array using the customerID from the form
+        // Create customer data array using the ID field from the form
         $customerData = [
-            'ID' => $_POST['customerID'], // Use customerID field sent from JavaScript
+            'ID' => $_POST['ID'],
             'firstName' => $_POST['firstName'] ?? '',
             'lastName' => $_POST['lastName'] ?? '',
             'phoneNumber' => $_POST['phoneNumber'] ?? '',
@@ -121,6 +121,7 @@
             'city' => $_POST['city'] ?? '',
             'state' => $_POST['state'] ?? '',
             'zipcode' => $_POST['zipcode'] ?? '',
+            'serviceRequested' => $_POST['serviceRequested'] ?? '',
             'notes' => $_POST['notes'] ?? ''
         ];
         
@@ -241,6 +242,7 @@
                                         city: '<?= addslashes($customer['city']) ?>',
                                         state: '<?= addslashes($customer['state']) ?>',
                                         zipcode: '<?= addslashes($customer['zipcode']) ?>',
+                                        serviceRequested: '<?= addslashes($customer['serviceRequested']) ?>',
                                         notes: '<?= addslashes($customer['notes']) ?>'
                                     })">Edit</button>
                                 </td>

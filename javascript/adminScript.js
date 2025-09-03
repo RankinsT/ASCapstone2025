@@ -162,13 +162,18 @@ function showEditCustomerForm(customer) {
   // Exit early if user cancels zipcode entry
   if (zipcode === null) return;
 
+  // Display prompt with current serviceRequested pre-filled
+  const serviceRequested = prompt(
+    "Enter Service Requested:",
+    customer.serviceRequested || ""
+  );
   // Display prompt with current notes pre-filled (optional field)
   const notes = prompt("Enter Notes (optional):", customer.notes || "");
 
   // Create object with all form fields including customer ID for database update
   const fields = {
     editCustomer: "1", // Flag to indicate this is an "edit customer" operation
-    customerID: customer.ID, // Include customer ID so PHP knows which record to update
+    ID: customer.ID, // Use 'ID' to match PHP handler
     firstName: firstName,
     lastName: lastName,
     phoneNumber: phoneNumber,
@@ -178,6 +183,7 @@ function showEditCustomerForm(customer) {
     city: city,
     state: state,
     zipcode: zipcode,
+    serviceRequested: serviceRequested || "",
     notes: notes || "", // Use entered notes or empty string if null
   };
 
@@ -213,7 +219,7 @@ function initEditableSection({
   editButtonId,
   textElementId,
   formId,
-  editorId
+  editorId,
 }) {
   let isEditing = false;
 
@@ -222,32 +228,34 @@ function initEditableSection({
   const formEl = document.getElementById(formId);
   const editorEl = document.getElementById(editorId);
 
-  editBtn.addEventListener('click', function() {
+  editBtn.addEventListener("click", function () {
     if (!isEditing) {
       // Switch to edit mode
       editorEl.value = textEl.innerHTML;
-      textEl.style.display = 'none';
-      formEl.style.display = 'block';
-      editBtn.textContent = 'Save';
+      textEl.style.display = "none";
+      formEl.style.display = "block";
+      editBtn.textContent = "Save";
 
       tinymce.init({
         selector: `#${editorId}`,
-        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        plugins:
+          "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount",
+        toolbar:
+          "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat",
 
         // Allow selecting images from local device
         automatic_uploads: true,
-        file_picker_types: 'image',
-        file_picker_callback: function(cb, value, meta) {
-          let input = document.createElement('input');
-          input.setAttribute('type', 'file');
-          input.setAttribute('accept', 'image/*');
+        file_picker_types: "image",
+        file_picker_callback: function (cb, value, meta) {
+          let input = document.createElement("input");
+          input.setAttribute("type", "file");
+          input.setAttribute("accept", "image/*");
 
-          input.onchange = function() {
+          input.onchange = function () {
             let file = this.files[0];
             let reader = new FileReader();
 
-            reader.onload = function() {
+            reader.onload = function () {
               cb(reader.result, { title: file.name });
             };
             reader.readAsDataURL(file);
@@ -256,11 +264,11 @@ function initEditableSection({
           input.click();
         },
 
-        setup: function(editor) {
-          editor.on('init', function() {
+        setup: function (editor) {
+          editor.on("init", function () {
             editor.setContent(textEl.innerHTML);
           });
-        }
+        },
       });
 
       isEditing = true;
@@ -268,9 +276,9 @@ function initEditableSection({
       // Save changes
       const content = tinymce.get(editorId).getContent();
       textEl.innerHTML = content;
-      textEl.style.display = 'block';
-      formEl.style.display = 'none';
-      editBtn.textContent = 'Edit';
+      textEl.style.display = "block";
+      formEl.style.display = "none";
+      editBtn.textContent = "Edit";
       tinymce.get(editorId).remove();
       isEditing = false;
 
