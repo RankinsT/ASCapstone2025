@@ -185,29 +185,27 @@
                         </div>
                     <?php endif; ?>
                     
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Phone Number</th>
-                                <th>Email</th>
-                                <th>Street</th>
-                                <th>APT</th>
-                                <th>City</th>
-                                <th>State</th>
-                                <th>Zipcode</th>
-                                <th style="min-width:220px; white-space:normal;">Service Requested</th>
-                                <th>Notes</th>
-                                <th>Date Added</th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                    </table>
                     <div style="max-height:400px; overflow-y:auto;">
-                        <table>
+                        <table style="width:100%; border-collapse:collapse;">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Phone Number</th>
+                                    <th>Email</th>
+                                    <th>Street</th>
+                                    <th>APT</th>
+                                    <th>City</th>
+                                    <th>State</th>
+                                    <th>Zipcode</th>
+                                    <th style="min-width:220px; white-space:normal;">Service Requested</th>
+                                    <th>Notes</th>
+                                    <th>Date Added</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
                             <tbody>
                                 <?php
                                 foreach ($customers as $customer): ?>
