@@ -130,18 +130,29 @@ function showEditCustomerForm(customer) {
   if (lastName === null) return;
 
   // Display prompt with current phone number pre-filled
-  const phoneNumber = prompt("Enter Phone Number:", customer.phoneNumber || "");
-  // Exit early if user cancels phone number entry
+  let phoneNumber = prompt("Enter Phone Number:", customer.phoneNumber || "");
   if (phoneNumber === null) return;
+  // Validate phone number (US format: 10 digits, allows dashes, spaces, parentheses)
+  const phoneRegex = /^(\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4})$/;
+  if (!phoneRegex.test(phoneNumber)) {
+    alert(
+      "Invalid phone number. Please enter a valid US phone number (e.g. 555-555-5555)"
+    );
+    return;
+  }
 
   // Display prompt with current email pre-filled
-  const email = prompt("Enter Email:", customer.email || "");
-  // Exit early if user cancels email entry
+  let email = prompt("Enter Email:", customer.email || "");
   if (email === null) return;
+  // Validate email
+  const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+  if (!emailRegex.test(email)) {
+    alert("Invalid email address. Please enter a valid email.");
+    return;
+  }
 
   // Display prompt with current street address pre-filled
   const street = prompt("Enter Street Address:", customer.street || "");
-  // Exit early if user cancels street address entry
   if (street === null) return;
 
   // Display prompt with current apartment/unit pre-filled (optional field)
@@ -149,18 +160,21 @@ function showEditCustomerForm(customer) {
 
   // Display prompt with current city pre-filled
   const city = prompt("Enter City:", customer.city || "");
-  // Exit early if user cancels city entry
   if (city === null) return;
 
   // Display prompt with current state pre-filled
   const state = prompt("Enter State:", customer.state || "");
-  // Exit early if user cancels state entry
   if (state === null) return;
 
   // Display prompt with current zipcode pre-filled
-  const zipcode = prompt("Enter Zipcode:", customer.zipcode || "");
-  // Exit early if user cancels zipcode entry
+  let zipcode = prompt("Enter Zipcode:", customer.zipcode || "");
   if (zipcode === null) return;
+  // Validate zipcode (must be exactly 5 digits)
+  const zipRegex = /^\d{5}$/;
+  if (!zipRegex.test(zipcode)) {
+    alert("Invalid zipcode. Please enter a 5-digit US zipcode (e.g. 12345)");
+    return;
+  }
 
   // Display prompt with current serviceRequested pre-filled
   const serviceRequested = prompt(
