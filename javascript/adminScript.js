@@ -12,41 +12,53 @@ function showAddCustomerForm() {
   if (lastName === null) return;
 
   // Display prompt for phone number input
-  const phoneNumber = prompt("Enter Phone Number:");
-  // Exit early if user cancels phone number entry
+  let phoneNumber = prompt("Enter Phone Number:");
   if (phoneNumber === null) return;
+  // Validate phone number (US format: 10 digits, allows dashes, spaces, parentheses)
+  const phoneRegex = /^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;
+  if (!phoneRegex.test(phoneNumber)) {
+    alert(
+      "Invalid phone number. Please enter a valid US phone number (e.g. 555-555-5555)"
+    );
+    return;
+  }
 
   // Display prompt for email address input
-  const email = prompt("Enter Email:");
-  // Exit early if user cancels email entry
+  let email = prompt("Enter Email:");
   if (email === null) return;
+  // Validate email
+  const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+  if (!emailRegex.test(email)) {
+    alert("Invalid email address. Please enter a valid email.");
+    return;
+  }
 
   // Display prompt for street address input
   const street = prompt("Enter Street Address:");
-  // Exit early if user cancels street address entry
   if (street === null) return;
 
   // Display prompt for apartment/unit (this field is optional)
-  // Note: No null check here, so user can skip this field
   const apt = prompt("Enter Apartment/Unit (optional):");
 
   // Display prompt for city input
   const city = prompt("Enter City:");
-  // Exit early if user cancels city entry
   if (city === null) return;
 
   // Display prompt for state input
   const state = prompt("Enter State:");
-  // Exit early if user cancels state entry
   if (state === null) return;
 
   // Display prompt for zipcode input
-  const zipcode = prompt("Enter Zipcode:");
-  // Exit early if user cancels zipcode entry
+  let zipcode = prompt("Enter Zipcode:");
   if (zipcode === null) return;
+  // Validate zipcode (must be exactly 5 digits)
+  const zipRegex = /^\d{5}$/;
+  if (!zipRegex.test(zipcode)) {
+    alert("Invalid zipcode. Please enter a 5-digit US zipcode (e.g. 12345)");
+    return;
+  }
 
   // Display prompt for notes (this field is optional)
-  // Note: No null check here, so user can skip this field
   const notes = prompt("Enter Notes (optional):");
 
   // Create a new HTML form element dynamically in memory
