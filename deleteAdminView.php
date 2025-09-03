@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/adminStyle.css">
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- sweetalert2 installation script -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jquery installation script -->
 </head>
 <body>
     
@@ -18,9 +19,13 @@
         $allAdmins = getAllAdmins(); // Fetch all the admin accounts
 
         $username = $_SESSION['username']; // Store current session's admin username
-        $adminID = getAdminID($username); // Use username to check and store admin id 
+        var_dump($username);
 
-        // print_r($adminID);
+        $adminIDInt = getAdminID($username); // Use username to check and store admin id 
+        var_dump($adminIDInt);
+
+        $currentAdminID = $adminIDInt['adminID'];
+        var_dump($currentAdminID);
 
         // Handle admin deletion
         if (isset($_POST['deleteAdmin'])) {
@@ -61,7 +66,9 @@
                                 <th>Username</th>
                                 <th>Password</th>
                                 <th>Admin Email</th>
-                                <th></th>
+                                <?php if ($currentAdminID === 1): ?>
+                                    <th></th>
+                                <?php endif ?>
                             </tr>
                         </thead>
 
@@ -74,14 +81,12 @@
                                 <td><?= $admins["password"] ?></td>
                                 <td><?= $admins["adminEmail"] ?></td>
 
-                                <?php if ($adminID = 1): ?>
+                                <?php if ($currentAdminID === 1): ?>
                                     <td>
-                                        <form method="POST" style="display: inline;" onsubmit= "return confirm('Are you sure you want to delete this admin?');"> <!--"return confirm('Are you sure you want to delete this admin?');" -->
-                                            <input type="hidden" name="deleteAdmin" value="<?= htmlspecialchars($admins["username"]); ?>">
-                                            <button type="submit" id="delete-admin-btn" class="delete-button">Delete</button>
-                                        </form>
+                                        <!-- <input type="hidden" name="deleteAdmin" value="<?= htmlspecialchars($admins["username"]); ?>"> -->
+                                        <button type="button" class="delete-button">Delete</button>
                                     </td>
-                                    <?php endif ?>
+                                <?php endif ?>
                             </tr>
                             <?php endforeach ?>
                         </tbody>

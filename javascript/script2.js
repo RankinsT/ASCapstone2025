@@ -141,7 +141,6 @@ document.addEventListener("DOMContentLoaded", function () {
   showCurrentStep();
 
   // Only one form per quote section, so use querySelector
-  // Only one form per quote section, so use querySelector
   const quoteForm = document.querySelector(".form form");
   if (quoteForm) {
     quoteForm.addEventListener("submit", function (e) {

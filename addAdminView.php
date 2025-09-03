@@ -27,16 +27,16 @@
         $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
         $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
         $confirmPassword = filter_input(INPUT_POST, 'confirmPassword', FILTER_SANITIZE_STRING);
-    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-    $phoneNumber = filter_input(INPUT_POST, 'phoneNumber', FILTER_SANITIZE_STRING);
+        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+        $phoneNumber = filter_input(INPUT_POST, 'phoneNumber', FILTER_SANITIZE_STRING);
 
         // Validation
         if ($username == "") $error .= "<li>Username is required</li>";
         if ($password == "") $error .= "<li>Password is required</li>";
         if ($confirmPassword == "") $error .= "<li>Confirm Password is required</li>";
         if ($email == "") $error .= "<li>Email is required</li>";
-    if ($password !== $confirmPassword) $error .= "<li>Passwords do not match</li>";
-    if ($phoneNumber == "") $error .= "<li>Phone number is required</li>";
+        if ($password !== $confirmPassword) $error .= "<li>Passwords do not match</li>";
+        if ($phoneNumber == "") $error .= "<li>Phone number is required</li>";
 
         // Check for duplicate username
         foreach ($allAdmins as $admin) {
@@ -47,7 +47,7 @@
         }
 
         // If no errors, register the admin
-        if ($error == "") {
+        if ($error === "") {
             $result = register($username, $password, $email, $phoneNumber); // Call the register function to add the new admin
             
             // Check if the admin was actually added by looking for them in the database

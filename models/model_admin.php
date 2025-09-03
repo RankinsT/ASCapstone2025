@@ -234,8 +234,8 @@ function register($username, $password, $email, $phoneNumber) {
     $results = ""; // Initialize an empty string for results
 
     try {
-        $sql = 'INSERT INTO capstone_202540_qball.adminlogin (adminID, username, password, adminEmail, phoneNumber) 
-                VALUES (:adminID, :username, :password, :email, :phoneNumber)'; // SQL query to insert a new admin
+        $sql = 'INSERT INTO capstone_202540_qball.adminlogin (username, password, adminEmail, phoneNumber) 
+                VALUES (:username, :password, :email, :phoneNumber)'; // SQL query to insert a new admin
 
         $stmt = $db->prepare($sql); // Prepare the SQL statement
 
@@ -348,7 +348,7 @@ function deleteAdmin($username) {
         if ($stmt->rowCount() > 0) {
             $results = "Admin deleted successfully"; // Set success message
         } else {
-            $results = "No admin found with that username"; // Set failure message
+            $results = "Admin not found"; // Set failure message
         }
     } catch (PDOException $e) {
         error_log("Error deleting admin") . $e->getMessage(); // Log any errors

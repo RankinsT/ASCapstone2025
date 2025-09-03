@@ -159,10 +159,6 @@ body {
   border-radius: 4px;
 }
 
-/* #delete-admin-btn {
-  display: none;
-} */
-
 .delete-button:hover {
   background-color: darkred;
 }

@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2' //import sweetalert2 library
+
 // JavaScript function to collect customer data through browser prompts and submit via form
 function showAddCustomerForm() {
   // Display a prompt dialog asking user to enter first name
@@ -208,33 +210,55 @@ function showEditCustomerForm(customer) {
   form.submit();
 }
 
-import Swal from 'sweetalert2'
+function confirmDeleteAdmin() {
 
-// function delAdminConfirm() {
+  document.addEventListener('DOMContentLoaded', function () {
+    const delAdminBtn = document.getElementById('delete-admin');
+  })
 
-//   const delAdminBtn = document.getElementById('delete-admin-btn');
+  delAdminBtn.addEventListener('submit', () => {
 
-//   delAdminBtn.addEventListener('click', () => {
+    Swal.fire({
 
-//     Swal.fire({
-//       title: "Are you sure?",
-//       text: "This account will be permanently deleted!",
-//       icon: "warning",
-//       showCancelButton: true,
-//       confirmButtonColor: "#3085d6",
-//       cancelButtonColor: "#d33",
-//       confirmButtonText: "Yes, delete account."
-//     }).then((result) => {
-//       if (result.isConfirmed) {
-//         Swal.fire({
-//           title: "Deleted!",
-//           text: "Account deleted.",
-//           icon: "success"
-//         });
-//       }
-//     });
-//   })
-// }
+      title: "Delete '{$username}?' ",
+      text: "This account will be permanently deleted!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete account."
+
+    })
+    .then((result) => {
+
+      if (result.isConfirmed) {
+        
+        fetch("/deleteAdminView.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ adminID: adminID })
+
+        })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Account deleted.",
+              icon: "success"
+    
+            });
+          }
+        })
+      }
+    })
+    .catch(error => {
+      Swal.fire({
+        title: "Error: ",
+      })
+    })
+  })
+}
 
 // tinymce function
 function initEditableSection({
