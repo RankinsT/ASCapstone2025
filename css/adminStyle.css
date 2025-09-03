@@ -12,13 +12,15 @@ body {
 
 .admin-header {
   grid-area: admin-header;
-  /* background-color: #007bff; */
   background: #007BFF;
   background: linear-gradient(0deg, rgba(0, 123, 255, 1) 0%, rgba(0, 42, 87, 1) 100%);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .admin-customers {
