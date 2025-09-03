@@ -12,8 +12,12 @@ body {
 
 .admin-header {
   grid-area: admin-header;
-  background: #007BFF;
-  background: linear-gradient(0deg, rgba(0, 123, 255, 1) 0%, rgba(0, 42, 87, 1) 100%);
+  background: #007bff;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 123, 255, 1) 0%,
+    rgba(0, 42, 87, 1) 100%
+  );
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -34,7 +38,8 @@ body {
 }
 
 .homepageButton a,
-.logoutButton-updateAccountButton a, .homepageButton button{
+.logoutButton-updateAccountButton a,
+.homepageButton button {
   background-color: #4caf50; /* Green */
   border: none;
   color: white;
@@ -62,7 +67,8 @@ body {
 }
 
 .homepageButton-customerSearch a:hover,
-.logoutButton-updateAccountButton a:hover, .homepageButton button:hover {
+.logoutButton-updateAccountButton a:hover,
+.homepageButton button:hover {
   background-color: #45a049; /* Darker Green */
 }
 
@@ -216,25 +222,25 @@ body {
 
 .footer {
   grid-area: footer;
-  background-color: #f0f0f0; 
-  border: 1px solid #ccc; 
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
   padding: 10px;
   text-align: center;
 }
 
 .search-results {
   padding: 10px;
-  background-color: #e7f3ff; 
-  border: 1px solid #b3d9ff; 
-  margin-bottom: 10px; 
+  background-color: #e7f3ff;
+  border: 1px solid #b3d9ff;
+  margin-bottom: 10px;
   border-radius: 4px;
 }
 
 .no-search-results {
-  padding: 10px; 
-  background-color: #f0f0f0; 
-  border: 1px solid #ccc; 
-  margin-bottom: 10px; 
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
   border-radius: 4px;
 }
 
