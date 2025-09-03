@@ -205,51 +205,54 @@
                                 <th></th>
                             </tr>
                         </thead>
-
-                        <tbody>
-                            <?php
-                            foreach ($customers as $customer): ?>
-                            <tr>
-                                <td><?= $customer["ID"] ?></td>
-                                <td><?= $customer["firstName"] ?></td>
-                                <td><?= $customer["lastName"] ?></td>
-                                <td><?= $customer["phoneNumber"] ?></td>
-                                <td><?= $customer["email"] ?></td>
-                                <td><?= $customer["street"] ?></td>
-                                <td><?= $customer["apt"] ?></td>
-                                <td><?= $customer["city"] ?></td>
-                                <td><?= $customer["state"] ?></td>
-                                <td><?= $customer["zipcode"] ?></td>
-                                <td style="max-width:300px; white-space:normal; word-break:break-word;"><?= $customer["serviceRequested"] ?></td>
-                                <td><?= $customer["notes"] ?></td>
-                                <td><?= $customer["dateAdded"] ?></td>
-                                <td>
-                                    <!-- Uses addslashes to escape any quotes or special characters, preventing JavaScript syntax errors. -->
-                                    <button class="edit-button" onclick="showEditCustomerForm({
-                                        ID: <?= $customer['ID'] ?>,
-                                        firstName: '<?= addslashes($customer['firstName']) ?>',
-                                        lastName: '<?= addslashes($customer['lastName']) ?>',
-                                        phoneNumber: '<?= addslashes($customer['phoneNumber']) ?>',
-                                        email: '<?= addslashes($customer['email']) ?>',
-                                        street: '<?= addslashes($customer['street']) ?>',
-                                        apt: '<?= addslashes($customer['apt']) ?>',
-                                        city: '<?= addslashes($customer['city']) ?>',
-                                        state: '<?= addslashes($customer['state']) ?>',
-                                        zipcode: '<?= addslashes($customer['zipcode']) ?>',
-                                        serviceRequested: '<?= addslashes($customer['serviceRequested']) ?>',
-                                        notes: '<?= addslashes($customer['notes']) ?>'
-                                    })">Edit</button>
-                                </td>
-                                <td>
-                                    <form method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this customer?');">
-                                        <input type="hidden" name="deleteCustomer" value="<?= $customer["ID"] ?>">
-                                        <button type="submit" class="delete-button">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
-                            <?php endforeach; ?>
-                        </tbody>
                     </table>
+                    <div style="max-height:400px; overflow-y:auto;">
+                        <table>
+                            <tbody>
+                                <?php
+                                foreach ($customers as $customer): ?>
+                                <tr>
+                                    <td><?= $customer["ID"] ?></td>
+                                    <td><?= $customer["firstName"] ?></td>
+                                    <td><?= $customer["lastName"] ?></td>
+                                    <td><?= $customer["phoneNumber"] ?></td>
+                                    <td><?= $customer["email"] ?></td>
+                                    <td><?= $customer["street"] ?></td>
+                                    <td><?= $customer["apt"] ?></td>
+                                    <td><?= $customer["city"] ?></td>
+                                    <td><?= $customer["state"] ?></td>
+                                    <td><?= $customer["zipcode"] ?></td>
+                                    <td style="max-width:300px; white-space:normal; word-break:break-word;"><?= $customer["serviceRequested"] ?></td>
+                                    <td><?= $customer["notes"] ?></td>
+                                    <td><?= $customer["dateAdded"] ?></td>
+                                    <td>
+                                        <!-- Uses addslashes to escape any quotes or special characters, preventing JavaScript syntax errors. -->
+                                        <button class="edit-button" onclick="showEditCustomerForm({
+                                            ID: <?= $customer['ID'] ?>,
+                                            firstName: '<?= addslashes($customer['firstName']) ?>',
+                                            lastName: '<?= addslashes($customer['lastName']) ?>',
+                                            phoneNumber: '<?= addslashes($customer['phoneNumber']) ?>',
+                                            email: '<?= addslashes($customer['email']) ?>',
+                                            street: '<?= addslashes($customer['street']) ?>',
+                                            apt: '<?= addslashes($customer['apt']) ?>',
+                                            city: '<?= addslashes($customer['city']) ?>',
+                                            state: '<?= addslashes($customer['state']) ?>',
+                                            zipcode: '<?= addslashes($customer['zipcode']) ?>',
+                                            serviceRequested: '<?= addslashes($customer['serviceRequested']) ?>',
+                                            notes: '<?= addslashes($customer['notes']) ?>'
+                                        })">Edit</button>
+                                    </td>
+                                    <td>
+                                        <form method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this customer?');">
+                                            <input type="hidden" name="deleteCustomer" value="<?= $customer["ID"] ?>">
+                                            <button type="submit" class="delete-button">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <!-- div /customers -->
 
