@@ -123,6 +123,27 @@
                             </tr>
                             <tr>
                                 <td class="label-cell">
+<script>
+document.querySelector('.form form').addEventListener('submit', function(e) {
+    // Email validation
+    const email = document.getElementById('email').value.trim();
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        alert('Please enter a valid email address.');
+        e.preventDefault();
+        return;
+    }
+
+    // Phone validation (US 10 digits, numbers only)
+    const phone = document.getElementById('phoneNumber').value.trim();
+    const phonePattern = /^\d{10}$/;
+    if (!phonePattern.test(phone)) {
+        alert('Please enter a valid 10-digit phone number (numbers only).');
+        e.preventDefault();
+        return;
+    }
+});
+</script>
                                     <label for="phoneNumber">Phone Number:</label>
                                 </td>
                                 <td class="input-cell">
