@@ -452,6 +452,10 @@ try {
                 }
             </style>
 
+            <div style="text-align:center; margin: 2em 0;">
+                <a href="#" onclick="document.querySelector('.form').scrollIntoView({behavior: 'smooth'}); return false;" class="edit-save-title-btn" style="display:inline-block; background:#00897b;">Get a Free Quote</a>
+            </div>
+
     <!-- footer -->
     <div class="home-footer">
         <hr style="border: 5px solid white">
