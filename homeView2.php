@@ -318,7 +318,7 @@ try {
             <!-- services -->
             <div class="services-section col-lg-12" style="margin-top: 3em;">
                 <div class="title" style="font-size:2em; font-weight:700; text-align:center; margin-bottom:1em;">Our Services</div>
-                <div class="services-intro" style="text-align:center; color:white; margin-bottom:2em; font-size:1.1em;">Professional pool table moving, repair, and installation. Explore what we offer below!</div>
+                <div class="services-intro text" style="text-align:center; color:white; margin-bottom:2em; font-size:1.1em;">Professional pool table moving, repair, and installation. Explore what we offer below!</div>
                 <div class="services-cards row justify-content-center" style="gap:2em;">
                     <?php
                     $services = [
@@ -406,8 +406,8 @@ try {
                                 <button id="<?= $service['editTitleBtnId'] ?>" type="button" class="edit-save-title-btn" style="margin-top:0.5em;">Edit</button>
                             <?php } ?>
                         </div>
-                        <div class="service-text-group" style="width:100%; display:flex; flex-direction:column; align-items:center; margin-top:1em;">
-                            <span id="<?= $service['descId'] ?>" class="service-text text" style="color:#222c2c; font-size:1em; text-align:center; max-width:90%;">
+                        <div class="service-text-group" style="width:100%; display:flex; flex-direction:column; align-items:center; margin-top:1em; font-family: "Roboto", regular;">
+                            <span id="<?= $service['descId'] ?>" class="service-text text" style="color:#222c2c; font-size:1.25em; text-align:center; max-width:90%;">
                                 <?= $service['desc'] ?>
                             </span>
                             <form id="<?= $service['descFormId'] ?>" style="display:none; width:100%;"><textarea id="<?= $service['descEditorId'] ?>" style="width:100%;"></textarea></form>
