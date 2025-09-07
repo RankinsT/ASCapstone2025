@@ -314,7 +314,14 @@ try {
 </div>
 <!-- end carousel -->
 
-    <!-- services -->
+        <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                    <div style="text-align:center; margin: 1.5em 0;">
+                                <form action="upload.php" method="get" style="display:inline-block;">
+                                    <button type="submit" class="edit-save-title-btn">Edit Carousel</button>
+                                </form>
+                    </div>
+        <?php } ?>
+        <!-- services -->
             <!-- services -->
             <div class="services-section col-lg-12" style="margin-top: 3em;">
                 <div class="title" style="font-size:2em; font-weight:700; text-align:center; margin-bottom:1em;">Our Services</div>
