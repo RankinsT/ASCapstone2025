@@ -324,7 +324,7 @@ try {
         <!-- services -->
             <!-- services -->
             <div class="services-section col-lg-12" style="margin-top: 3em;">
-                <div class="title" style="font-size:2em; font-weight:700; text-align:center; margin-bottom:1em;">Our Services</div>
+                <div class="title" style="font-size:3em; font-weight:800; text-align:center; margin-bottom:1em;">Our Services</div>
                 <div class="services-intro text" style="text-align:center; color:white; margin-bottom:2em; font-size:1.1em;">Professional pool table moving, repair, and installation. Explore what we offer below!</div>
                 <div class="services-cards row justify-content-center" style="gap:2em;">
                     <?php
@@ -407,7 +407,7 @@ try {
                     <div class="service-card col-md-4 col-sm-6 col-12" style="background: #fff; border-radius: 18px; box-shadow: 0 4px 16px rgba(46,138,230,0.10); padding:2em 1.5em; margin-bottom:2em; transition: box-shadow 0.2s; min-height: 320px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; position:relative;">
                         <div class="service-icon" style="margin-bottom:1em;"><?= $service['icon'] ?></div>
                         <div class="service-title-group" style="width:100%; text-align:center;">
-                            <span id="<?= $service['titleId'] ?>" class="service-title" style="font-size:1.3em; font-weight:600; color:#00a19a;"><?= htmlspecialchars($service['title']) ?></span>
+                            <span id="<?= $service['titleId'] ?>" class="service-title" style="font-size:2em; font-weight:700; color:#00a19a;"><?= htmlspecialchars($service['title']) ?></span>
                             <input id="<?= $service['titleInputId'] ?>" class="service-title-input" type="text" style="display:none; width:100%; margin-top:0.5em;" value="<?= htmlspecialchars($service['title']) ?>">
                             <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
                                 <button id="<?= $service['editTitleBtnId'] ?>" type="button" class="edit-save-title-btn" style="margin-top:0.5em;">Edit</button>
