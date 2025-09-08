@@ -126,16 +126,16 @@ function updateCustomer($customerData) {
 
     $sql = 'UPDATE capstone_202540_qball.customers 
             SET firstName = :firstName, lastName = :lastName, phoneNumber = :phoneNumber, email = :email, 
-                street = :street, apt = :apt, city = :city, state = :state, zipcode = :zipcode, notes = :notes 
+                street = :street, apt = :apt, city = :city, state = :state, zipcode = :zipcode, serviceRequested = :serviceRequested, notes = :notes 
             WHERE ID = :id';
 
     $stmt = $db->prepare($sql); // Prepare the SQL statement
     
-                // Check required fields
-                if (empty($firstName) || empty($lastName) || empty($email) || empty($street) || empty($city) || empty($state) || empty($zip) || empty($serviceRequested)) {
-                    echo "<script>alert('Please fill out all required fields.');</script>";
-                    return "Form incomplete";
-                }
+    // Check required fields using customerData keys
+    if (empty($customerData['firstName']) || empty($customerData['lastName']) || empty($customerData['email']) || empty($customerData['street']) || empty($customerData['city']) || empty($customerData['state']) || empty($customerData['zipcode'])) {
+        error_log('Form incomplete: missing required fields in updateCustomer');
+        return false;
+    }
 
     // Bind the customer data to the SQL statement
     $stmt->bindValue(':id', $customerData['ID']);
@@ -148,6 +148,7 @@ function updateCustomer($customerData) {
     $stmt->bindValue(':city', $customerData['city']);
     $stmt->bindValue(':state', $customerData['state']);
     $stmt->bindValue(':zipcode', $customerData['zipcode']);
+    $stmt->bindValue(':serviceRequested', $customerData['serviceRequested']);
     $stmt->bindValue(':notes', $customerData['notes']);
 
     if ($stmt->execute()) {

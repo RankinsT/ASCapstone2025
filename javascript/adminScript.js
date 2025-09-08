@@ -13,42 +13,54 @@ function showAddCustomerForm() {
   // Exit early if user cancels last name entry
   if (lastName === null) return;
 
-  // Display prompt for phone number input
-  const phoneNumber = prompt("Enter Phone Number:");
-  // Exit early if user cancels phone number entry
-  if (phoneNumber === null) return;
+  // Prompt for phone number until valid or cancelled
+  let phoneNumber;
+  const phoneRegex = /^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;
+  while (true) {
+    phoneNumber = prompt("Enter Phone Number:");
+    if (phoneNumber === null) return;
+    if (phoneRegex.test(phoneNumber)) break;
+    alert(
+      "Invalid phone number. Please enter a valid US phone number (e.g. 555-555-5555)"
+    );
+  }
 
-  // Display prompt for email address input
-  const email = prompt("Enter Email:");
-  // Exit early if user cancels email entry
-  if (email === null) return;
+  // Prompt for email until valid or cancelled
+  let email;
+  const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+  while (true) {
+    email = prompt("Enter Email:");
+    if (email === null) return;
+    if (emailRegex.test(email)) break;
+    alert("Invalid email address. Please enter a valid email.");
+  }
 
   // Display prompt for street address input
   const street = prompt("Enter Street Address:");
-  // Exit early if user cancels street address entry
   if (street === null) return;
 
   // Display prompt for apartment/unit (this field is optional)
-  // Note: No null check here, so user can skip this field
   const apt = prompt("Enter Apartment/Unit (optional):");
 
   // Display prompt for city input
   const city = prompt("Enter City:");
-  // Exit early if user cancels city entry
   if (city === null) return;
 
   // Display prompt for state input
   const state = prompt("Enter State:");
-  // Exit early if user cancels state entry
   if (state === null) return;
 
-  // Display prompt for zipcode input
-  const zipcode = prompt("Enter Zipcode:");
-  // Exit early if user cancels zipcode entry
-  if (zipcode === null) return;
+  // Prompt for zipcode until valid or cancelled
+  let zipcode;
+  const zipRegex = /^\d{5}$/;
+  while (true) {
+    zipcode = prompt("Enter Zipcode:");
+    if (zipcode === null) return;
+    if (zipRegex.test(zipcode)) break;
+    alert("Invalid zipcode. Please enter a 5-digit US zipcode (e.g. 12345)");
+  }
 
   // Display prompt for notes (this field is optional)
-  // Note: No null check here, so user can skip this field
   const notes = prompt("Enter Notes (optional):");
 
   // Create a new HTML form element dynamically in memory
@@ -131,19 +143,30 @@ function showEditCustomerForm(customer) {
   // Exit early if user cancels last name entry
   if (lastName === null) return;
 
-  // Display prompt with current phone number pre-filled
-  const phoneNumber = prompt("Enter Phone Number:", customer.phoneNumber || "");
-  // Exit early if user cancels phone number entry
-  if (phoneNumber === null) return;
+  // Prompt for phone number until valid or cancelled
+  let phoneNumber;
+  const phoneRegex = /^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;
+  while (true) {
+    phoneNumber = prompt("Enter Phone Number:", customer.phoneNumber || "");
+    if (phoneNumber === null) return;
+    if (phoneRegex.test(phoneNumber)) break;
+    alert(
+      "Invalid phone number. Please enter a valid US phone number (e.g. 555-555-5555)"
+    );
+  }
 
-  // Display prompt with current email pre-filled
-  const email = prompt("Enter Email:", customer.email || "");
-  // Exit early if user cancels email entry
-  if (email === null) return;
+  // Prompt for email until valid or cancelled
+  let email;
+  const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+  while (true) {
+    email = prompt("Enter Email:", customer.email || "");
+    if (email === null) return;
+    if (emailRegex.test(email)) break;
+    alert("Invalid email address. Please enter a valid email.");
+  }
 
   // Display prompt with current street address pre-filled
   const street = prompt("Enter Street Address:", customer.street || "");
-  // Exit early if user cancels street address entry
   if (street === null) return;
 
   // Display prompt with current apartment/unit pre-filled (optional field)
@@ -151,26 +174,34 @@ function showEditCustomerForm(customer) {
 
   // Display prompt with current city pre-filled
   const city = prompt("Enter City:", customer.city || "");
-  // Exit early if user cancels city entry
   if (city === null) return;
 
   // Display prompt with current state pre-filled
   const state = prompt("Enter State:", customer.state || "");
-  // Exit early if user cancels state entry
   if (state === null) return;
 
-  // Display prompt with current zipcode pre-filled
-  const zipcode = prompt("Enter Zipcode:", customer.zipcode || "");
-  // Exit early if user cancels zipcode entry
-  if (zipcode === null) return;
+  // Prompt for zipcode until valid or cancelled
+  let zipcode;
+  const zipRegex = /^\d{5}$/;
+  while (true) {
+    zipcode = prompt("Enter Zipcode:", customer.zipcode || "");
+    if (zipcode === null) return;
+    if (zipRegex.test(zipcode)) break;
+    alert("Invalid zipcode. Please enter a 5-digit US zipcode (e.g. 12345)");
+  }
 
+  // Display prompt with current serviceRequested pre-filled
+  const serviceRequested = prompt(
+    "Enter Service Requested:",
+    customer.serviceRequested || ""
+  );
   // Display prompt with current notes pre-filled (optional field)
   const notes = prompt("Enter Notes (optional):", customer.notes || "");
 
   // Create object with all form fields including customer ID for database update
   const fields = {
     editCustomer: "1", // Flag to indicate this is an "edit customer" operation
-    customerID: customer.ID, // Include customer ID so PHP knows which record to update
+    ID: customer.ID, // Use 'ID' to match PHP handler
     firstName: firstName,
     lastName: lastName,
     phoneNumber: phoneNumber,
@@ -180,6 +211,7 @@ function showEditCustomerForm(customer) {
     city: city,
     state: state,
     zipcode: zipcode,
+    serviceRequested: serviceRequested || "",
     notes: notes || "", // Use entered notes or empty string if null
   };
 
@@ -265,7 +297,7 @@ function initEditableSection({
   editButtonId,
   textElementId,
   formId,
-  editorId
+  editorId,
 }) {
   let isEditing = false;
 
@@ -274,32 +306,34 @@ function initEditableSection({
   const formEl = document.getElementById(formId);
   const editorEl = document.getElementById(editorId);
 
-  editBtn.addEventListener('click', function() {
+  editBtn.addEventListener("click", function () {
     if (!isEditing) {
       // Switch to edit mode
       editorEl.value = textEl.innerHTML;
-      textEl.style.display = 'none';
-      formEl.style.display = 'block';
-      editBtn.textContent = 'Save';
+      textEl.style.display = "none";
+      formEl.style.display = "block";
+      editBtn.textContent = "Save";
 
       tinymce.init({
         selector: `#${editorId}`,
-        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        plugins:
+          "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount",
+        toolbar:
+          "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat",
 
         // Allow selecting images from local device
         automatic_uploads: true,
-        file_picker_types: 'image',
-        file_picker_callback: function(cb, value, meta) {
-          let input = document.createElement('input');
-          input.setAttribute('type', 'file');
-          input.setAttribute('accept', 'image/*');
+        file_picker_types: "image",
+        file_picker_callback: function (cb, value, meta) {
+          let input = document.createElement("input");
+          input.setAttribute("type", "file");
+          input.setAttribute("accept", "image/*");
 
-          input.onchange = function() {
+          input.onchange = function () {
             let file = this.files[0];
             let reader = new FileReader();
 
-            reader.onload = function() {
+            reader.onload = function () {
               cb(reader.result, { title: file.name });
             };
             reader.readAsDataURL(file);
@@ -308,11 +342,11 @@ function initEditableSection({
           input.click();
         },
 
-        setup: function(editor) {
-          editor.on('init', function() {
+        setup: function (editor) {
+          editor.on("init", function () {
             editor.setContent(textEl.innerHTML);
           });
-        }
+        },
       });
 
       isEditing = true;
@@ -320,9 +354,9 @@ function initEditableSection({
       // Save changes
       const content = tinymce.get(editorId).getContent();
       textEl.innerHTML = content;
-      textEl.style.display = 'block';
-      formEl.style.display = 'none';
-      editBtn.textContent = 'Edit';
+      textEl.style.display = "block";
+      formEl.style.display = "none";
+      editBtn.textContent = "Edit";
       tinymce.get(editorId).remove();
       isEditing = false;
 

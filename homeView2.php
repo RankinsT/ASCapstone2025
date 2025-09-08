@@ -314,157 +314,147 @@ try {
 </div>
 <!-- end carousel -->
 
-    <!-- services -->
-     <div class="services col-lg-12">
-        <div class="title">Services</div>
-     </div>
-     <div class="pool-table">
-    <div class="table-row-section">
-                                <div class="service-emblem">
-                                    <!-- Improved Toolbox Icon -->
-                                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-                                        <rect x="16" y="32" width="48" height="32" rx="8" fill="white" stroke="#222c2c" stroke-width="3"/>
-                                        <rect x="26" y="20" width="28" height="16" rx="5" fill="white" stroke="#222c2c" stroke-width="2"/>
-                                        <rect x="36" y="44" width="8" height="12" fill="#222c2c"/>
-                                    </svg>
-                                </div>
-                                <div class="service-title-group">
-                                    <span id="service-title-1" class="service-title"><?= $firstService['section'] ?? 'Service Title Not Available' ?></span>
-                                    <input id="service-title-input-1" class="service-title-input" type="text" style="display:none;" value="<?= htmlspecialchars($firstService['section'] ?? '') ?>">
-                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
-                                        <button id="edit-save-title-btn-1" type="button" class="edit-save-title-btn">Edit</button>
-                                    <?php } ?>
-                                </div>
-                                <div class="service-text-group">
-                                    <span id="service-desc-1" class="service-text text"><p><?= $firstService['textBox'] ?? 'Description not available.' ?></p></span>
-                                    <form id="service-desc-form-1" style="display:none;"><textarea id="service-desc-editor-1"></textarea></form>
-                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
-                                        <button id="edit-save-desc-btn-1" type="button" class="edit-save-desc-btn">Edit</button>
-                                    <?php } ?>
-                                </div>
-    </div>
-    <div class="table-row-section">
-                                <div class="service-emblem">
-                                    <!-- Improved House Icon -->
-                                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-                                        <polygon points="40,16 16,40 64,40" fill="white" stroke="#222c2c" stroke-width="3"/>
-                                        <rect x="24" y="40" width="32" height="24" fill="white" stroke="#222c2c" stroke-width="2"/>
-                                        <rect x="36" y="52" width="8" height="12" fill="#222c2c"/>
-                                    </svg>
-                                </div>
-                                <div class="service-title-group">
-                                    <span id="service-title-2" class="service-title"><?= $secondService['section'] ?? 'Service Title Not Available' ?></span>
-                                    <input id="service-title-input-2" class="service-title-input" type="text" style="display:none;" value="<?= htmlspecialchars($secondService['section'] ?? '') ?>">
-                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
-                                        <button id="edit-save-title-btn-2" type="button" class="edit-save-title-btn">Edit</button>
-                                    <?php } ?>
-                                </div>
-                                <div class="service-text-group">
-                                    <span id="service-desc-2" class="service-text text"><p><?= $secondService['textBox'] ?? 'Description not available.' ?></p></span>
-                                    <form id="service-desc-form-2" style="display:none;"><textarea id="service-desc-editor-2"></textarea></form>
-                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
-                                        <button id="edit-save-desc-btn-2" type="button" class="edit-save-desc-btn">Edit</button>
-                                    <?php } ?>
-                                </div>
-    </div>
-    <div class="table-row-section">
-                                <div class="service-emblem">
-                                    <!-- Improved Box Truck Icon -->
-                                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-                                        <rect x="12" y="40" width="36" height="20" rx="4" fill="white" stroke="#222c2c" stroke-width="3"/>
-                                        <rect x="48" y="48" width="16" height="12" rx="2" fill="white" stroke="#222c2c" stroke-width="2"/>
-                                        <circle cx="24" cy="64" r="6" fill="white" stroke="#222c2c" stroke-width="2"/>
-                                        <circle cx="56" cy="64" r="6" fill="white" stroke="#222c2c" stroke-width="2"/>
-                                    </svg>
-                                </div>
-                                <div class="service-title-group">
-                                    <span id="service-title-3" class="service-title"><?= $thirdService['section'] ?? 'Service Title Not Available' ?></span>
-                                    <input id="service-title-input-3" class="service-title-input" type="text" style="display:none;" value="<?= htmlspecialchars($thirdService['section'] ?? '') ?>">
-                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
-                                        <button id="edit-save-title-btn-3" type="button" class="edit-save-title-btn">Edit</button>
-                                    <?php } ?>
-                                </div>
-                                <div class="service-text-group">
-                                    <span id="service-desc-3" class="service-text text"><p><?= $thirdService['textBox'] ?? 'Description not available.' ?></p></span>
-                                    <form id="service-desc-form-3" style="display:none;"><textarea id="service-desc-editor-3"></textarea></form>
-                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
-                                        <button id="edit-save-desc-btn-3" type="button" class="edit-save-desc-btn">Edit</button>
-                                    <?php } ?>
-                                </div>
-    </div>
-    <div class="table-row-section">
-                                <div class="service-emblem">
-                                    <!-- Improved Commercial Building Icon -->
-                                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-                                        <rect x="20" y="24" width="40" height="32" fill="white" stroke="#222c2c" stroke-width="3"/>
-                                        <rect x="28" y="44" width="8" height="12" fill="#222c2c"/>
-                                        <rect x="44" y="44" width="8" height="12" fill="#222c2c"/>
-                                        <rect x="36" y="32" width="8" height="8" fill="#222c2c"/>
-                                    </svg>
-                                </div>
-                                <div class="service-title-group">
-                                    <span id="service-title-4" class="service-title"><?= $fourthService['section'] ?? 'Service Title Not Available' ?></span>
-                                    <input id="service-title-input-4" class="service-title-input" type="text" style="display:none;" value="<?= htmlspecialchars($fourthService['section'] ?? '') ?>">
-                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
-                                        <button id="edit-save-title-btn-4" type="button" class="edit-save-title-btn">Edit</button>
-                                    <?php } ?>
-                                </div>
-                                <div class="service-text-group">
-                                    <span id="service-desc-4" class="service-text text"><p><?= $fourthService['textBox'] ?? 'Description not available.' ?></p></span>
-                                    <form id="service-desc-form-4" style="display:none;"><textarea id="service-desc-editor-4"></textarea></form>
-                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
-                                        <button id="edit-save-desc-btn-4" type="button" class="edit-save-desc-btn">Edit</button>
-                                    <?php } ?>
-                                </div>
-    </div>
-    <div class="table-row-section">
-                                <div class="service-emblem">
-                                    <!-- Improved Hammer Icon -->
-                                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-                                        <rect x="36" y="48" width="8" height="20" fill="white" stroke="#222c2c" stroke-width="2"/>
-                                        <rect x="24" y="24" width="32" height="10" rx="5" fill="white" stroke="#222c2c" stroke-width="3"/>
-                                    </svg>
-                                </div>
-                                <div class="service-title-group">
-                                    <span id="service-title-5" class="service-title"><?= $fifthService['section'] ?? 'Service Title Not Available' ?></span>
-                                    <input id="service-title-input-5" class="service-title-input" type="text" style="display:none;" value="<?= htmlspecialchars($fifthService['section'] ?? '') ?>">
-                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
-                                        <button id="edit-save-title-btn-5" type="button" class="edit-save-title-btn">Edit</button>
-                                    <?php } ?>
-                                </div>
-                                <div class="service-text-group">
-                                    <span id="service-desc-5" class="service-text text"><p><?= $fifthService['textBox'] ?? 'Description not available.' ?></p></span>
-                                    <form id="service-desc-form-5" style="display:none;"><textarea id="service-desc-editor-5"></textarea></form>
-                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
-                                        <button id="edit-save-desc-btn-5" type="button" class="edit-save-desc-btn">Edit</button>
-                                    <?php } ?>
-                                </div>
-    </div>
-    <div class="table-row-section">
-                                <div class="service-emblem">
-                                    <!-- Improved Screwdriver Icon -->
-                                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-                                        <rect x="38" y="20" width="4" height="28" fill="white" stroke="#222c2c" stroke-width="2"/>
-                                        <polygon points="40,48 34,60 46,60" fill="white" stroke="#222c2c" stroke-width="2"/>
-                                    </svg>
-                                </div>
-                                <div class="service-title-group">
-                                    <span id="service-title-6" class="service-title"><?= $sixthService['section'] ?? 'Service Title Not Available' ?></span>
-                                    <input id="service-title-input-6" class="service-title-input" type="text" style="display:none;" value="<?= htmlspecialchars($sixthService['section'] ?? '') ?>">
-                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
-                                        <button id="edit-save-title-btn-6" type="button" class="edit-save-title-btn">Edit</button>
-                                    <?php } ?>
-                                </div>
-                                <div class="service-text-group">
-                                    <span id="service-desc-6" class="service-text text"><p><?= $sixthService['textBox'] ?? 'Description not available.' ?></p></span>
-                                    <form id="service-desc-form-6" style="display:none;"><textarea id="service-desc-editor-6"></textarea></form>
-                                    <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
-                                        <button id="edit-save-desc-btn-6" type="button" class="edit-save-desc-btn">Edit</button>
-                                    <?php } ?>
-                                </div>
-    </div>
-     </div>
-    <!-- end services -->
+        <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                    <div style="text-align:center; margin: 1.5em 0;">
+                                <form action="upload.php" method="get" style="display:inline-block;">
+                                    <button type="submit" class="edit-save-title-btn">Edit Carousel</button>
+                                </form>
+                    </div>
+        <?php } ?>
+        <!-- services -->
+            <!-- services -->
+            <div class="services-section col-lg-12" style="margin-top: 3em;">
+                <div class="title" style="font-size:3em; font-weight:800; text-align:center; margin-bottom:1em;">Our Services</div>
+                <div class="services-intro text" style="text-align:center; color:white; margin-bottom:2em; font-size:1.1em;">Professional pool table moving, repair, and installation. Explore what we offer below!</div>
+                <div class="services-cards row justify-content-center" style="gap:2em;">
+                    <?php
+                    $services = [
+                        [
+                            'icon' => '<svg width="48" height="48" viewBox="0 0 80 80" fill="none"><rect x="16" y="32" width="48" height="32" rx="8" fill="white" stroke="#222c2c" stroke-width="3"/><rect x="26" y="20" width="28" height="16" rx="5" fill="white" stroke="#222c2c" stroke-width="2"/><rect x="36" y="44" width="8" height="12" fill="#222c2c"/></svg>',
+                            'title' => $firstService['section'] ?? 'Service Title Not Available',
+                            'desc' => $firstService['textBox'] ?? 'Description not available.',
+                            'titleId' => 'service-title-1',
+                            'descId' => 'service-desc-1',
+                            'titleInputId' => 'service-title-input-1',
+                            'descFormId' => 'service-desc-form-1',
+                            'descEditorId' => 'service-desc-editor-1',
+                            'editTitleBtnId' => 'edit-save-title-btn-1',
+                            'editDescBtnId' => 'edit-save-desc-btn-1',
+                        ],
+                        [
+                            'icon' => '<svg width="48" height="48" viewBox="0 0 80 80" fill="none"><polygon points="40,16 16,40 64,40" fill="white" stroke="#222c2c" stroke-width="3"/><rect x="24" y="40" width="32" height="24" fill="white" stroke="#222c2c" stroke-width="2"/><rect x="36" y="52" width="8" height="12" fill="#222c2c"/></svg>',
+                            'title' => $secondService['section'] ?? 'Service Title Not Available',
+                            'desc' => $secondService['textBox'] ?? 'Description not available.',
+                            'titleId' => 'service-title-2',
+                            'descId' => 'service-desc-2',
+                            'titleInputId' => 'service-title-input-2',
+                            'descFormId' => 'service-desc-form-2',
+                            'descEditorId' => 'service-desc-editor-2',
+                            'editTitleBtnId' => 'edit-save-title-btn-2',
+                            'editDescBtnId' => 'edit-save-desc-btn-2',
+                        ],
+                        [
+                            'icon' => '<svg width="48" height="48" viewBox="0 0 80 80" fill="none"><rect x="12" y="40" width="36" height="20" rx="4" fill="white" stroke="#222c2c" stroke-width="3"/><rect x="48" y="48" width="16" height="12" rx="2" fill="white" stroke="#222c2c" stroke-width="2"/><circle cx="24" cy="64" r="6" fill="white" stroke="#222c2c" stroke-width="2"/><circle cx="56" cy="64" r="6" fill="white" stroke="#222c2c" stroke-width="2"/></svg>',
+                            'title' => $thirdService['section'] ?? 'Service Title Not Available',
+                            'desc' => $thirdService['textBox'] ?? 'Description not available.',
+                            'titleId' => 'service-title-3',
+                            'descId' => 'service-desc-3',
+                            'titleInputId' => 'service-title-input-3',
+                            'descFormId' => 'service-desc-form-3',
+                            'descEditorId' => 'service-desc-editor-3',
+                            'editTitleBtnId' => 'edit-save-title-btn-3',
+                            'editDescBtnId' => 'edit-save-desc-btn-3',
+                        ],
+                        [
+                            'icon' => '<svg width="48" height="48" viewBox="0 0 80 80" fill="none"><rect x="20" y="24" width="40" height="32" fill="white" stroke="#222c2c" stroke-width="3"/><rect x="28" y="44" width="8" height="12" fill="#222c2c"/><rect x="44" y="44" width="8" height="12" fill="#222c2c"/><rect x="36" y="32" width="8" height="8" fill="#222c2c"/></svg>',
+                            'title' => $fourthService['section'] ?? 'Service Title Not Available',
+                            'desc' => $fourthService['textBox'] ?? 'Description not available.',
+                            'titleId' => 'service-title-4',
+                            'descId' => 'service-desc-4',
+                            'titleInputId' => 'service-title-input-4',
+                            'descFormId' => 'service-desc-form-4',
+                            'descEditorId' => 'service-desc-editor-4',
+                            'editTitleBtnId' => 'edit-save-title-btn-4',
+                            'editDescBtnId' => 'edit-save-desc-btn-4',
+                        ],
+                        [
+                            'icon' => '<svg width="48" height="48" viewBox="0 0 80 80" fill="none"><rect x="36" y="48" width="8" height="20" fill="white" stroke="#222c2c" stroke-width="2"/><rect x="24" y="24" width="32" height="10" rx="5" fill="white" stroke="#222c2c" stroke-width="3"/></svg>',
+                            'title' => $fifthService['section'] ?? 'Service Title Not Available',
+                            'desc' => $fifthService['textBox'] ?? 'Description not available.',
+                            'titleId' => 'service-title-5',
+                            'descId' => 'service-desc-5',
+                            'titleInputId' => 'service-title-input-5',
+                            'descFormId' => 'service-desc-form-5',
+                            'descEditorId' => 'service-desc-editor-5',
+                            'editTitleBtnId' => 'edit-save-title-btn-5',
+                            'editDescBtnId' => 'edit-save-desc-btn-5',
+                        ],
+                        [
+                            'icon' => '<svg width="48" height="48" viewBox="0 0 80 80" fill="none"><rect x="38" y="20" width="4" height="28" fill="white" stroke="#222c2c" stroke-width="2"/><polygon points="40,48 34,60 46,60" fill="white" stroke="#222c2c" stroke-width="2"/></svg>',
+                            'title' => $sixthService['section'] ?? 'Service Title Not Available',
+                            'desc' => $sixthService['textBox'] ?? 'Description not available.',
+                            'titleId' => 'service-title-6',
+                            'descId' => 'service-desc-6',
+                            'titleInputId' => 'service-title-input-6',
+                            'descFormId' => 'service-desc-form-6',
+                            'descEditorId' => 'service-desc-editor-6',
+                            'editTitleBtnId' => 'edit-save-title-btn-6',
+                            'editDescBtnId' => 'edit-save-desc-btn-6',
+                        ],
+                    ];
+                    foreach ($services as $i => $service) {
+                    ?>
+                    <div class="service-card col-md-4 col-sm-6 col-12" style="background: #fff; border-radius: 18px; box-shadow: 0 4px 16px rgba(46,138,230,0.10); padding:2em 1.5em; margin-bottom:2em; transition: box-shadow 0.2s; min-height: 320px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; position:relative;">
+                        <div class="service-icon" style="margin-bottom:1em;"><?= $service['icon'] ?></div>
+                        <div class="service-title-group" style="width:100%; text-align:center;">
+                            <span id="<?= $service['titleId'] ?>" class="service-title" style="font-size:2em; font-weight:700; color:#00a19a;"><?= htmlspecialchars($service['title']) ?></span>
+                            <input id="<?= $service['titleInputId'] ?>" class="service-title-input" type="text" style="display:none; width:100%; margin-top:0.5em;" value="<?= htmlspecialchars($service['title']) ?>">
+                            <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                                <button id="<?= $service['editTitleBtnId'] ?>" type="button" class="edit-save-title-btn" style="margin-top:0.5em;">Edit</button>
+                            <?php } ?>
+                        </div>
+                        <div class="service-text-group" style="width:100%; display:flex; flex-direction:column; align-items:center; margin-top:1em; font-family: "Roboto", regular;">
+                            <span id="<?= $service['descId'] ?>" class="service-text text" style="color:#222c2c; font-size:1.25em; text-align:center; max-width:90%;">
+                                <?= $service['desc'] ?>
+                            </span>
+                            <form id="<?= $service['descFormId'] ?>" style="display:none; width:100%;"><textarea id="<?= $service['descEditorId'] ?>" style="width:100%;"></textarea></form>
+                            <?php if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) { ?>
+                                <button id="<?= $service['editDescBtnId'] ?>" type="button" class="edit-save-desc-btn" style="margin-top:0.5em;">Edit</button>
+                            <?php } ?>
+                        </div>
+                    </div>
+                    <?php } ?>
+                </div>
+            </div>
+            <!-- end services -->
+            <style>
+                .service-card:hover {
+                    box-shadow: 0 8px 32px rgba(46,138,230,0.18);
+                    transform: translateY(-4px);
+                }
+                @media (max-width: 768px) {
+                    .services-cards {
+                        gap: 1em !important;
+                    }
+                    .service-card {
+                        min-height: 260px;
+                        padding: 1.2em 0.7em;
+                    }
+                }
+                @media (max-width: 576px) {
+                    .service-card {
+                        min-height: 180px;
+                        padding: 0.7em 0.2em;
+                    }
+                    .services-section .title {
+                        font-size: 1.3em !important;
+                    }
+                }
+            </style>
+
+            <div style="text-align:center; margin: 2em 0;">
+                <a href="#" onclick="document.querySelector('.form').scrollIntoView({behavior: 'smooth'}); return false;" class="edit-save-title-btn" style="display:inline-block; background:#00897b;">Get a Free Quote</a>
+            </div>
 
     <!-- footer -->
     <div class="home-footer">
@@ -476,15 +466,20 @@ try {
             </div>
             <div><a href="tel:<?= htmlspecialchars($contactInfo) ?? 'Phone number not available.' ?>"><span style="color: white; font-weight: bold;">CONTACT: </span><?= htmlspecialchars(formatPhoneNumber($contactInfo)) ?? 'Phone number not available.' ?></a></div>
             <div><a href="loginView.php">Admin Login</a></div>
+            
         </div>
         <hr style="border: 5px solid white">
-        <div class="footer-content">
-            <p>&copy; 2025 NORCAL Pool Movers. All rights reserved.</p>
-            <!-- link to top -->
-            <div class="back-to-top">
-                <a href="#top" style="color: white; text-decoration: underline;">Back to Top</a>
-            </div>
+    <div class="footer-content">
+        <p>&copy; 2025 NORCAL Pool Movers. All rights reserved.</p>
+        <!-- link to top -->
+        <div class="back-to-top">
+            <a href="#top" style="color: white; text-decoration: underline;">Back to Top</a>
         </div>
+        <div>
+             <a href="index.html" style="color: white; text-decoration: underline;">Code Review</a>
+        </div>
+        
+    </div>
     </div>
     <!-- end footer -->
     <script src="javascript/script2.js"></script>
