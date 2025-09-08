@@ -109,13 +109,34 @@ document.addEventListener("DOMContentLoaded", function () {
               }
             }
           });
+          // Validate state field (block next if invalid)
+          const stateField = visibleStep.querySelector('input[name="state"]');
+          let stateError = "";
+          if (stateField && stateField.value.trim()) {
+            const statePattern = /^([A-Za-z]{2}|[A-Za-z .'-]{4,})$/;
+            if (
+              !statePattern.test(stateField.value.trim()) ||
+              /\d/.test(stateField.value.trim())
+            ) {
+              stateError =
+                "Please enter a valid state (letters only, no numbers).";
+            }
+          }
           if (zipError) {
             // alert(zipError);
             Swal.fire({
               icon: "error",
               title: "Error",
-              text: zipError
-            })
+              text: zipError,
+            });
+            return;
+          }
+          if (stateError) {
+            Swal.fire({
+              icon: "error",
+              title: "Error",
+              text: stateError,
+            });
             return;
           }
           if (missing.length > 0) {
@@ -123,8 +144,9 @@ document.addEventListener("DOMContentLoaded", function () {
             Swal.fire({
               icon: "error",
               title: "Error",
-              text: "Please fill out all required fields: " + missing.join(", ")
-            })
+              text:
+                "Please fill out all required fields: " + missing.join(", "),
+            });
             return;
           }
           if (emailError) {
@@ -132,8 +154,8 @@ document.addEventListener("DOMContentLoaded", function () {
             Swal.fire({
               icon: "error",
               title: "Error",
-              text: emailError
-            })
+              text: emailError,
+            });
             return;
           }
           if (phoneError) {
@@ -141,8 +163,8 @@ document.addEventListener("DOMContentLoaded", function () {
             Swal.fire({
               icon: "error",
               title: "Error",
-              text: phoneError
-            })
+              text: phoneError,
+            });
             return;
           }
           if (currentStep < quoteContainers.length - 1) {
@@ -219,6 +241,40 @@ document.addEventListener("DOMContentLoaded", function () {
             }
           }
         });
+        // Address validation
+        const streetField = visibleStep.querySelector('input[name="street"]');
+        if (streetField && streetField.value.trim()) {
+          // Require at least 5 characters, allow numbers, letters, spaces, and . #
+          const streetPattern = /^[a-zA-Z0-9 .#'-]{5,}$/;
+          if (!streetPattern.test(streetField.value.trim())) {
+            errors.push(
+              "Please enter a valid street address (min 5 characters, no special symbols)."
+            );
+          }
+        }
+        const cityField = visibleStep.querySelector('input[name="city"]');
+        if (cityField && cityField.value.trim()) {
+          // Only letters, spaces, and hyphens
+          const cityPattern = /^[a-zA-Z .'-]{2,}$/;
+          if (!cityPattern.test(cityField.value.trim())) {
+            errors.push(
+              "Please enter a valid city name (letters and spaces only)."
+            );
+          }
+        }
+        const stateField = visibleStep.querySelector('input[name="state"]');
+        if (stateField && stateField.value.trim()) {
+          // Accept only 2-letter codes or full state names (letters, spaces, hyphens, periods, apostrophes), no numbers
+          const statePattern = /^([A-Za-z]{2}|[A-Za-z .'-]{4,})$/;
+          if (
+            !statePattern.test(stateField.value.trim()) ||
+            /\d/.test(stateField.value.trim())
+          ) {
+            errors.push(
+              "Please enter a valid state (letters only, no numbers)."
+            );
+          }
+        }
         if (missing.length > 0) {
           errors.unshift(
             "Please fill out all required fields: " + missing.join(", ")
@@ -230,8 +286,8 @@ document.addEventListener("DOMContentLoaded", function () {
           Swal.fire({
             icon: "error",
             title: "Error",
-            text: errors.join("\n")
-          })
+            text: errors.join("\n"),
+          });
           return;
         }
       }
