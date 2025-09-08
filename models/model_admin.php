@@ -348,7 +348,14 @@ function requestQuote($firstName, $lastName, $email, $phoneNumber, $street, $apt
 
         if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
             $results = "Quote request submitted successfully";
-            echo "<script>alert('$results');</script>";
+            // echo "<script>alert('$results');</script>";
+            echo "<script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: '$results'
+                });
+            </script>";
         } else {
             $errorInfo = $stmt->errorInfo();
             $errorMsg = "Quote request was NOT submitted. Reason: SQL Error: " . htmlspecialchars($errorInfo[2]);
