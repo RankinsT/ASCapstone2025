@@ -316,8 +316,46 @@ function getAdmin($username) {
     } catch (PDOException $e) {
         error_log("Error fetching admin: " . $e->getMessage());
     }
-
     return $admin;
+}
+
+function getAdminID($username) {
+    global $db;
+
+    $adminID = null;
+
+    try {
+        $sql = 'SELECT adminID FROM capstone_202540_qball.adminlogin WHERE username = :username';
+        $stmt = $db->prepare($sql);
+        $stmt->execute([':username' => $username]);
+        $adminID = $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        error_log("Error fetching admin ID: " . $e->getMessage());
+    }
+    return $adminID;
+}
+
+function deleteAdmin($username) {
+    global $db;
+
+    $results = "";
+
+    try {
+        $sql = 'DELETE FROM capstone_202540_qball.adminlogin WHERE username = :username'; // SQL query to delete an admin by username
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':username', $username);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            $results = "Admin deleted successfully"; // Set success message
+        } else {
+            $results = "Admin not found"; // Set failure message
+        }
+    } catch (PDOException $e) {
+        error_log("Error deleting admin") . $e->getMessage(); // Log any errors
+        return "Error deleting admin"; // Return error message
+    }
+    return $results;
 }
 
 function requestQuote($firstName, $lastName, $email, $phoneNumber, $street, $apt, $city, $state, $zip, $serviceRequested, $notes) {

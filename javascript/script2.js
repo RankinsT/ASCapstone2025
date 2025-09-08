@@ -110,19 +110,39 @@ document.addEventListener("DOMContentLoaded", function () {
             }
           });
           if (zipError) {
-            alert(zipError);
+            // alert(zipError);
+            Swal.fire({
+              icon: "error",
+              title: "Error",
+              text: zipError
+            })
             return;
           }
           if (missing.length > 0) {
-            alert("Please fill out all required fields: " + missing.join(", "));
+            // alert("Please fill out all required fields: " + missing.join(", "));
+            Swal.fire({
+              icon: "error",
+              title: "Error",
+              text: "Please fill out all required fields: " + missing.join(", ")
+            })
             return;
           }
           if (emailError) {
-            alert(emailError);
+            // alert(emailError);
+            Swal.fire({
+              icon: "error",
+              title: "Error",
+              text: emailError
+            })
             return;
           }
           if (phoneError) {
-            alert(phoneError);
+            // alert(phoneError);
+            Swal.fire({
+              icon: "error",
+              title: "Error",
+              text: phoneError
+            })
             return;
           }
           if (currentStep < quoteContainers.length - 1) {
@@ -140,7 +160,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   showCurrentStep();
 
-  // Only one form per quote section, so use querySelector
   // Only one form per quote section, so use querySelector
   const quoteForm = document.querySelector(".form form");
   if (quoteForm) {
@@ -207,7 +226,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         if (errors.length > 0) {
           e.preventDefault();
-          alert(errors.join("\n"));
+          // alert(errors.join("\n"));
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: errors.join("\n")
+          })
           return;
         }
       }
