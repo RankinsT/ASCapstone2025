@@ -19,13 +19,13 @@
         $allAdmins = getAllAdmins(); // Fetch all the admin accounts
 
         $username = $_SESSION['username']; // Store current session's admin username
-        var_dump($username);
+        // var_dump($username);
 
         $adminIDInt = getAdminID($username); // Use username to check and store admin id 
-        var_dump($adminIDInt);
+        // var_dump($adminIDInt);
 
         $currentAdminID = $adminIDInt['adminID'];
-        var_dump($currentAdminID);
+        // var_dump($currentAdminID);
 
         // Handle admin deletion
         if (isset($_POST['deleteAdmin'])) {
@@ -44,7 +44,7 @@
                 <div class="admin-header">
                     <div class="homepageButton-deleteAdmin">
                         <div class="homepageButton">
-                            <a href="homeView.php">Homepage</a>
+                            <a href="homeView2.php">Homepage</a>
                         </div>
                     </div>
 
@@ -81,10 +81,13 @@
                                 <td><?= $admins["password"] ?></td>
                                 <td><?= $admins["adminEmail"] ?></td>
 
+
                                 <?php if ($currentAdminID === 1): ?>
                                     <td>
-                                        <!-- <input type="hidden" name="deleteAdmin" value="<?= htmlspecialchars($admins["username"]); ?>"> -->
-                                        <button type="button" class="delete-button">Delete</button>
+                                        <form method="POST" onsubmit="return Confirm()">
+                                            <!-- <input type="hidden" name="deleteAdmin" value="<?= htmlspecialchars($admins["username"]); ?>"> -->
+                                            <button class="delete-button" name="deleteAdmin" value="<?= htmlspecialchars($admins["username"]); ?>">Delete</button>
+                                        </form>
                                     </td>
                                 <?php endif ?>
                             </tr>
@@ -98,5 +101,6 @@
         <?php endif ?>
 
     </div>
+    <script src="javascript/adminScript.js"></script>
 </body>
 </html>
