@@ -68,10 +68,6 @@ body {
   background-color: darkred; /* Darker Red */
 }
 
-.homepageButton {
-  margin-bottom: 10px;
-}
-
 .logoutButton-updateAccountButton {
   display: flex;
   flex-direction: column;

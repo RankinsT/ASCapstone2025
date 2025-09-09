@@ -6,6 +6,8 @@
     <title>AdminView</title>
 
     <link rel="stylesheet" href="./css/adminStyle.css"> <!-- Link to your admin CSS file -->
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
@@ -241,10 +243,31 @@
                                         })">Edit</button>
                                     </td>
                                     <td>
-                                        <form method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this customer?');">
+                                        <form method="POST" style="display: inline;" class="delete-customer-form">
                                             <input type="hidden" name="deleteCustomer" value="<?= $customer["ID"] ?>">
                                             <button type="submit" class="delete-button">Delete</button>
                                         </form>
+                                        <script>
+                                        document.querySelectorAll('.delete-customer-form').forEach(function(form) {
+                                            form.addEventListener('submit', function(e) {
+                                                e.preventDefault();
+                                                Swal.fire({
+                                                    title: 'Are you sure you want to delete this customer?',
+                                                    text: 'This action cannot be undone.',
+                                                    icon: 'warning',
+                                                    showCancelButton: true,
+                                                    confirmButtonColor: '#d33',
+                                                    cancelButtonColor: '#3085d6',
+                                                    confirmButtonText: 'Yes, delete',
+                                                    cancelButtonText: 'Cancel'
+                                                }).then((result) => {
+                                                    if (result.isConfirmed) {
+                                                        form.submit();
+                                                    }
+                                                });
+                                            });
+                                        });
+                                        </script>
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>
