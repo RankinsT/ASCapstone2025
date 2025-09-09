@@ -19,9 +19,11 @@
           <p class="lead mb-4">A PHP-based web application for managing customers, admins, and a public homepage for a pool table movers business.</p>
           <div class="d-flex gap-2 flex-wrap">
             <a href="#overview" class="btn btn-light btn-lg">Read the overview</a>
-            <a href="#architecture" class="btn btn-outline-light btn-lg">Jump to architecture</a>
+            <a href="https://pixso.net/app/design/LjdEJua0R8NOrn1k7YFP7A?icon_type=1&page-id=0%3A1" class="btn btn-outline-light btn-lg">Protype/Pixo</a>
             <a href="assets/ASCapstone2025_Code_and_Design_Documentation.pdf " class="btn btn-outline-light btn-lg" target="_blank" rel="noopener">View full Technical PDF document</a>
+            <a href="assets/proposalDocumentV4.docx.pdf" class="btn btn-outline-light btn-lg" target="_blank" rel="noopener">View Proposal Document</a>
             <a href="homeView2.php" class="btn btn-outline-light btn-lg">Go to live site</a>
+
  
           </div>
         </div>
@@ -146,8 +148,10 @@
           <p><strong>Tables:</strong></p>
           <ul>
             <li><code>customers</code>: ID, firstName, lastName, phoneNumber, email, street, apt, city, state, zipcode, serviceRequested, notes.</li>
+            
             <li><code>adminlogin</code>: username, password (hashed with SHA1 + salt), adminEmail.</li>
             <li>Other tables may exist for reviews, services, etc.</li>
+            <img src="assets/Wk10Erd.jpg" alt="ERD" class="img-thumbnail">
           </ul>
           <p><strong>Security:</strong> Passwords hashed with SHA1 and a salt (<code>MY-TOP-SECRET-SALT</code>). Supports legacy plaintext login for backward compatibility.</p>
           <p><strong>Queries:</strong> Prepared statements used to prevent SQL injection.</p>
@@ -170,6 +174,13 @@
           <p><strong>Modular Sections (<code>homeViewSections/</code>):</strong> <code>header.php</code>, <code>reviews.php</code>, <code>form.php</code>, <code>carousel.php</code> / <code>carousel2.php</code>, <code>companyDescription.php</code>, <code>footer.php</code>, <code>locations.php</code>, <code>map.php</code>, <code>services.php</code>.</p>
           <p><strong>Styling:</strong> Separate CSS files per view with Bootstrap for consistency.</p>
           <p><strong>Interactivity:</strong> JavaScript files for admin operations and form validation.</p>
+          <P><Strong>Client Side Screenshoots</Strong>:</P>
+          <ul>
+            <li>Banner</li>
+            <img src="assets/Hero.png" alt="hero" class="img-thumbnail">
+            <li>Image carousel</li>
+            <img src="assets/imgcar.png" alt="carousel" class="img-thumbnail">
+          </ul>
         </article>
 
         <hr>
