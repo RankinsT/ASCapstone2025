@@ -12,6 +12,7 @@ function showAddCustomerForm() {
       '<input id="swal-city" class="swal2-input" placeholder="City">' +
       '<input id="swal-state" class="swal2-input" placeholder="State">' +
       '<input id="swal-zip" class="swal2-input" placeholder="Zipcode">' +
+      '<input id="swal-serviceRequested" class="swal2-input" placeholder="Service Requested">' +
       '<input id="swal-notes" class="swal2-input" placeholder="Notes (optional)">',
     focusConfirm: false,
     showCancelButton: true,
@@ -25,6 +26,9 @@ function showAddCustomerForm() {
       const city = document.getElementById("swal-city").value.trim();
       const state = document.getElementById("swal-state").value.trim();
       const zip = document.getElementById("swal-zip").value.trim();
+      const serviceRequested = document
+        .getElementById("swal-serviceRequested")
+        .value.trim();
       const notes = document.getElementById("swal-notes").value.trim();
       // Basic validation
       if (
@@ -65,6 +69,7 @@ function showAddCustomerForm() {
         city,
         state,
         zip,
+        serviceRequested,
         notes,
       };
     },
