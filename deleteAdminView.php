@@ -29,8 +29,8 @@
 
         // Handle admin deletion
         if (isset($_POST['deleteAdmin'])) {
-            $username = $_POST['deleteAdmin']; // Get the admin username to delete
-            deleteAdmin($username); // Call the function to delete the admin
+            $adminID = $_POST['deleteAdmin']; // Get the admin username to delete
+            deleteAdmin($adminID); // Call the function to delete the admin
             header('Location: deleteAdminView.php'); // Redirect to the delete admin view after deletion
             exit();
         }
@@ -84,11 +84,34 @@
 
                                 <?php if ($currentAdminID === 1): ?>
                                     <td>
-                                        <form method="POST" onsubmit="return confirm('Warning! This admin will be permanently deleted')">
-                                            <button type="submit" class="delete-button" name="deleteAdmin" value="<?= htmlspecialchars($admins["username"]); ?>">Delete</button>
+                                        <form method="POST" class="delete-admin-form">
+                                            <input type="hidden" name="deleteAdmin" value="<?= $admins["adminID"]; ?>">
+                                            <button type="submit" class="delete-button" <?= $admins["adminID"] == 1 ? 'disabled title="This admin is protected and cannot be deleted!"' : ''?>>Delete</button>
                                         </form>
+                                        <script>
+                                        document.querySelectorAll('.delete-admin-form').forEach(function(form) {
+                                            form.addEventListener('submit', function(e) {
+                                                e.preventDefault();
+                                                Swal.fire({
+                                                    title: 'Are you sure you want to permanently delete this admin?',
+                                                    text: 'This action cannot be undone.',
+                                                    icon: 'warning',
+                                                    showCancelButton: true,
+                                                    confirmButtonColor: '#d33',
+                                                    cancelButtonColor: '#3085d6',
+                                                    confirmButtonText: 'Yes, delete',
+                                                    cancelButtonText: 'Cancel'
+                                                }).then((result) => {
+                                                    if (result.isConfirmed) {
+                                                        form.submit();
+                                                    }
+                                                });
+                                            });
+                                        });
+                                        </script>
                                     </td>
                                 <?php endif ?>
+
                             </tr>
                             <?php endforeach ?>
                         </tbody>
@@ -96,10 +119,11 @@
                     </table>
                 </div>
             </div>
-
-        <?php endif ?>
+        <?php else:
+            header('Location: loginView.php'); // Redirect to login view if not logged in
+            exit();
+        endif ?>
 
     </div>
-    <script src="javascript/adminScript.js"></script>
 </body>
 </html>

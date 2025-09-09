@@ -335,15 +335,15 @@ function getAdminID($username) {
     return $adminID;
 }
 
-function deleteAdmin($username) {
+function deleteAdmin($adminID) {
     global $db;
 
     $results = "";
 
     try {
-        $sql = 'DELETE FROM capstone_202540_qball.adminlogin WHERE username = :username'; // SQL query to delete an admin by username
+        $sql = 'DELETE FROM capstone_202540_qball.adminlogin WHERE adminID = :adminID'; // SQL query to delete an admin by username
         $stmt = $db->prepare($sql);
-        $stmt->bindValue(':username', $username);
+        $stmt->bindValue(':adminID', $adminID);
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
