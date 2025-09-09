@@ -62,13 +62,13 @@ function showAddCustomerForm() {
       return {
         firstName,
         lastName,
-        phone,
+        phoneNumber: phone,
         email,
         street,
         apt,
         city,
         state,
-        zip,
+        zipcode: zip,
         serviceRequested,
         notes,
       };
