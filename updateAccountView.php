@@ -47,7 +47,7 @@
                     </div>
                 </div>
 
-                <div class="title"><br><div class="back-button"><a href="adminView.php">< Admin Page</a>&nbsp;&nbsp;<span style="font-weight: bold;">|</span>&nbsp;&nbsp;<a href="addAdminView.php">Add Admin ></a></div><h1>Update Information</h1></div>
+                <div class="title"><br><div class="back-button"><a href="adminView.php"><< Admin Page</a>&nbsp;&nbsp;<span style="font-weight: bold;">|</span>&nbsp;&nbsp;<a href="addAdminView.php">Add Admin >></a>&nbsp;&nbsp;<span style="font-weight: bold;">|</span>&nbsp;&nbsp;<a href="deleteAdminView.php">Delete Admin >></a></div><h1>Update Information</h1></div>
 
                 <div class="form">
                     
@@ -140,6 +140,27 @@
                     ?>
                         </div>
                     </form>
+                        <script>
+                        document.querySelector('.form form').addEventListener('submit', function(e) {
+                            // Email validation
+                            const email = document.getElementById('adminEmail').value.trim();
+                            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                            if (!emailPattern.test(email)) {
+                                alert('Please enter a valid email address.');
+                                e.preventDefault();
+                                return;
+                            }
+
+                            // Phone validation (US 10 digits, numbers only)
+                            const phone = document.getElementById('phoneNumber').value.trim();
+                            const phonePattern = /^\d{10}$/;
+                            if (!phonePattern.test(phone)) {
+                                alert('Please enter a valid 10-digit phone number (numbers only).');
+                                e.preventDefault();
+                                return;
+                            }
+                        });
+                        </script>
                 </div>
 
             </div>

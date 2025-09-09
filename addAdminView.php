@@ -27,16 +27,16 @@
         $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
         $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
         $confirmPassword = filter_input(INPUT_POST, 'confirmPassword', FILTER_SANITIZE_STRING);
-    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-    $phoneNumber = filter_input(INPUT_POST, 'phoneNumber', FILTER_SANITIZE_STRING);
+        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+        $phoneNumber = filter_input(INPUT_POST, 'phoneNumber', FILTER_SANITIZE_STRING);
 
         // Validation
         if ($username == "") $error .= "<li>Username is required</li>";
         if ($password == "") $error .= "<li>Password is required</li>";
         if ($confirmPassword == "") $error .= "<li>Confirm Password is required</li>";
         if ($email == "") $error .= "<li>Email is required</li>";
-    if ($password !== $confirmPassword) $error .= "<li>Passwords do not match</li>";
-    if ($phoneNumber == "") $error .= "<li>Phone number is required</li>";
+        if ($password !== $confirmPassword) $error .= "<li>Passwords do not match</li>";
+        if ($phoneNumber == "") $error .= "<li>Phone number is required</li>";
 
         // Check for duplicate username
         foreach ($allAdmins as $admin) {
@@ -47,7 +47,7 @@
         }
 
         // If no errors, register the admin
-        if ($error == "") {
+        if ($error === "") {
             $result = register($username, $password, $email, $phoneNumber); // Call the register function to add the new admin
             
             // Check if the admin was actually added by looking for them in the database
@@ -97,7 +97,7 @@
                     </div>
                 </div>
 
-                <div class="title"><br><div class="back-button"><a href="updateAccountView.php">< Update Account</a></div><h1>Add New Admin</h1></div>
+                <div class="title"><br><div class="back-button"><a href="updateAccountView.php"><< Update Account</a></div><h1>Add New Admin</h1></div>
                 <div class="form">
 
                     
@@ -123,6 +123,27 @@
                             </tr>
                             <tr>
                                 <td class="label-cell">
+<script>
+document.querySelector('.form form').addEventListener('submit', function(e) {
+    // Email validation
+    const email = document.getElementById('email').value.trim();
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        alert('Please enter a valid email address.');
+        e.preventDefault();
+        return;
+    }
+
+    // Phone validation (US 10 digits, numbers only)
+    const phone = document.getElementById('phoneNumber').value.trim();
+    const phonePattern = /^\d{10}$/;
+    if (!phonePattern.test(phone)) {
+        alert('Please enter a valid 10-digit phone number (numbers only).');
+        e.preventDefault();
+        return;
+    }
+});
+</script>
                                     <label for="phoneNumber">Phone Number:</label>
                                 </td>
                                 <td class="input-cell">

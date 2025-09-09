@@ -6,6 +6,8 @@
     <title>AdminView</title>
 
     <link rel="stylesheet" href="./css/adminStyle.css"> <!-- Link to your admin CSS file -->
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
@@ -106,12 +108,9 @@
 
     // Handle editing an existing customer
     if (isset($_POST['editCustomer'])) {
-        // Debug: Log what data we received
-        error_log("Edit customer POST data: " . print_r($_POST, true));
-        
-        // Create customer data array using the customerID from the form
+    // Create customer data array using the ID field from the form
         $customerData = [
-            'ID' => $_POST['customerID'], // Use customerID field sent from JavaScript
+            'ID' => $_POST['ID'],
             'firstName' => $_POST['firstName'] ?? '',
             'lastName' => $_POST['lastName'] ?? '',
             'phoneNumber' => $_POST['phoneNumber'] ?? '',
@@ -121,13 +120,11 @@
             'city' => $_POST['city'] ?? '',
             'state' => $_POST['state'] ?? '',
             'zipcode' => $_POST['zipcode'] ?? '',
+            'serviceRequested' => $_POST['serviceRequested'] ?? '',
             'notes' => $_POST['notes'] ?? ''
         ];
         
-        // Debug: Log the customer data being sent to update function
-        error_log("Customer data for update: " . print_r($customerData, true));
-        
-        // Call the updateCustomer function to update the customer in database
+    // Call the updateCustomer function to update the customer in database
         $result = updateCustomer($customerData); // Call the function to update the customer
         
         // Since updateCustomer returns true/false, not a message, handle accordingly
@@ -190,70 +187,93 @@
                         </div>
                     <?php endif; ?>
                     
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Phone Number</th>
-                                <th>Email</th>
-                                <th>Street</th>
-                                <th>APT</th>
-                                <th>City</th>
-                                <th>State</th>
-                                <th>Zipcode</th>
-                                <th style="min-width:220px; white-space:normal;">Service Requested</th>
-                                <th>Notes</th>
-                                <th>Date Added</th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <?php
-                            foreach ($customers as $customer): ?>
-                            <tr>
-                                <td><?= $customer["ID"] ?></td>
-                                <td><?= $customer["firstName"] ?></td>
-                                <td><?= $customer["lastName"] ?></td>
-                                <td><?= $customer["phoneNumber"] ?></td>
-                                <td><?= $customer["email"] ?></td>
-                                <td><?= $customer["street"] ?></td>
-                                <td><?= $customer["apt"] ?></td>
-                                <td><?= $customer["city"] ?></td>
-                                <td><?= $customer["state"] ?></td>
-                                <td><?= $customer["zipcode"] ?></td>
-                                <td style="max-width:300px; white-space:normal; word-break:break-word;"><?= $customer["serviceRequested"] ?></td>
-                                <td><?= $customer["notes"] ?></td>
-                                <td><?= $customer["dateAdded"] ?></td>
-                                <td>
-                                    <!-- Uses addslashes to escape any quotes or special characters, preventing JavaScript syntax errors. -->
-                                    <button class="edit-button" onclick="showEditCustomerForm({
-                                        ID: <?= $customer['ID'] ?>,
-                                        firstName: '<?= addslashes($customer['firstName']) ?>',
-                                        lastName: '<?= addslashes($customer['lastName']) ?>',
-                                        phoneNumber: '<?= addslashes($customer['phoneNumber']) ?>',
-                                        email: '<?= addslashes($customer['email']) ?>',
-                                        street: '<?= addslashes($customer['street']) ?>',
-                                        apt: '<?= addslashes($customer['apt']) ?>',
-                                        city: '<?= addslashes($customer['city']) ?>',
-                                        state: '<?= addslashes($customer['state']) ?>',
-                                        zipcode: '<?= addslashes($customer['zipcode']) ?>',
-                                        notes: '<?= addslashes($customer['notes']) ?>'
-                                    })">Edit</button>
-                                </td>
-                                <td>
-                                    <form method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this customer?');">
-                                        <input type="hidden" name="deleteCustomer" value="<?= $customer["ID"] ?>">
-                                        <button type="submit" class="delete-button">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                    <div style="max-height:400px; overflow-y:auto;">
+                        <table style="width:100%; border-collapse:collapse;">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Phone Number</th>
+                                    <th>Email</th>
+                                    <th>Street</th>
+                                    <th>APT</th>
+                                    <th>City</th>
+                                    <th>State</th>
+                                    <th>Zipcode</th>
+                                    <th style="min-width:220px; white-space:normal;">Service Requested</th>
+                                    <th>Notes</th>
+                                    <th>Date Added</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                foreach ($customers as $customer): ?>
+                                <tr>
+                                    <td><?= $customer["ID"] ?></td>
+                                    <td><?= $customer["firstName"] ?></td>
+                                    <td><?= $customer["lastName"] ?></td>
+                                    <td><?= $customer["phoneNumber"] ?></td>
+                                    <td><?= $customer["email"] ?></td>
+                                    <td><?= $customer["street"] ?></td>
+                                    <td><?= $customer["apt"] ?></td>
+                                    <td><?= $customer["city"] ?></td>
+                                    <td><?= $customer["state"] ?></td>
+                                    <td><?= $customer["zipcode"] ?></td>
+                                    <td style="max-width:300px; white-space:normal; word-break:break-word;"><?= $customer["serviceRequested"] ?></td>
+                                    <td><?= $customer["notes"] ?></td>
+                                    <td><?= $customer["dateAdded"] ?></td>
+                                    <td>
+                                        <!-- Uses addslashes to escape any quotes or special characters, preventing JavaScript syntax errors. -->
+                                        <button class="edit-button" onclick="showEditCustomerForm({
+                                            ID: <?= $customer['ID'] ?>,
+                                            firstName: '<?= addslashes($customer['firstName']) ?>',
+                                            lastName: '<?= addslashes($customer['lastName']) ?>',
+                                            phoneNumber: '<?= addslashes($customer['phoneNumber']) ?>',
+                                            email: '<?= addslashes($customer['email']) ?>',
+                                            street: '<?= addslashes($customer['street']) ?>',
+                                            apt: '<?= addslashes($customer['apt']) ?>',
+                                            city: '<?= addslashes($customer['city']) ?>',
+                                            state: '<?= addslashes($customer['state']) ?>',
+                                            zipcode: '<?= addslashes($customer['zipcode']) ?>',
+                                            serviceRequested: '<?= addslashes($customer['serviceRequested']) ?>',
+                                            notes: '<?= addslashes($customer['notes']) ?>'
+                                        })">Edit</button>
+                                    </td>
+                                    <td>
+                                        <form method="POST" style="display: inline;" class="delete-customer-form">
+                                            <input type="hidden" name="deleteCustomer" value="<?= $customer["ID"] ?>">
+                                            <button type="submit" class="delete-button">Delete</button>
+                                        </form>
+                                        <script>
+                                        document.querySelectorAll('.delete-customer-form').forEach(function(form) {
+                                            form.addEventListener('submit', function(e) {
+                                                e.preventDefault();
+                                                Swal.fire({
+                                                    title: 'Are you sure you want to delete this customer?',
+                                                    text: 'This action cannot be undone.',
+                                                    icon: 'warning',
+                                                    showCancelButton: true,
+                                                    confirmButtonColor: '#d33',
+                                                    cancelButtonColor: '#3085d6',
+                                                    confirmButtonText: 'Yes, delete',
+                                                    cancelButtonText: 'Cancel'
+                                                }).then((result) => {
+                                                    if (result.isConfirmed) {
+                                                        form.submit();
+                                                    }
+                                                });
+                                            });
+                                        });
+                                        </script>
+                                    </td>
+                                </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <!-- div /customers -->
 

@@ -126,16 +126,16 @@ function updateCustomer($customerData) {
 
     $sql = 'UPDATE capstone_202540_qball.customers 
             SET firstName = :firstName, lastName = :lastName, phoneNumber = :phoneNumber, email = :email, 
-                street = :street, apt = :apt, city = :city, state = :state, zipcode = :zipcode, notes = :notes 
+                street = :street, apt = :apt, city = :city, state = :state, zipcode = :zipcode, serviceRequested = :serviceRequested, notes = :notes 
             WHERE ID = :id';
 
     $stmt = $db->prepare($sql); // Prepare the SQL statement
     
-                // Check required fields
-                if (empty($firstName) || empty($lastName) || empty($email) || empty($street) || empty($city) || empty($state) || empty($zip) || empty($serviceRequested)) {
-                    echo "<script>alert('Please fill out all required fields.');</script>";
-                    return "Form incomplete";
-                }
+    // Check required fields using customerData keys
+    if (empty($customerData['firstName']) || empty($customerData['lastName']) || empty($customerData['email']) || empty($customerData['street']) || empty($customerData['city']) || empty($customerData['state']) || empty($customerData['zipcode'])) {
+        error_log('Form incomplete: missing required fields in updateCustomer');
+        return false;
+    }
 
     // Bind the customer data to the SQL statement
     $stmt->bindValue(':id', $customerData['ID']);
@@ -148,6 +148,7 @@ function updateCustomer($customerData) {
     $stmt->bindValue(':city', $customerData['city']);
     $stmt->bindValue(':state', $customerData['state']);
     $stmt->bindValue(':zipcode', $customerData['zipcode']);
+    $stmt->bindValue(':serviceRequested', $customerData['serviceRequested']);
     $stmt->bindValue(':notes', $customerData['notes']);
 
     if ($stmt->execute()) {
@@ -315,8 +316,46 @@ function getAdmin($username) {
     } catch (PDOException $e) {
         error_log("Error fetching admin: " . $e->getMessage());
     }
-
     return $admin;
+}
+
+function getAdminID($username) {
+    global $db;
+
+    $adminID = null;
+
+    try {
+        $sql = 'SELECT adminID FROM capstone_202540_qball.adminlogin WHERE username = :username';
+        $stmt = $db->prepare($sql);
+        $stmt->execute([':username' => $username]);
+        $adminID = $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        error_log("Error fetching admin ID: " . $e->getMessage());
+    }
+    return $adminID;
+}
+
+function deleteAdmin($username) {
+    global $db;
+
+    $results = "";
+
+    try {
+        $sql = 'DELETE FROM capstone_202540_qball.adminlogin WHERE username = :username'; // SQL query to delete an admin by username
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':username', $username);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            $results = "Admin deleted successfully"; // Set success message
+        } else {
+            $results = "Admin not found"; // Set failure message
+        }
+    } catch (PDOException $e) {
+        error_log("Error deleting admin") . $e->getMessage(); // Log any errors
+        return "Error deleting admin"; // Return error message
+    }
+    return $results;
 }
 
 function requestQuote($firstName, $lastName, $email, $phoneNumber, $street, $apt, $city, $state, $zip, $serviceRequested, $notes) {
@@ -347,7 +386,14 @@ function requestQuote($firstName, $lastName, $email, $phoneNumber, $street, $apt
 
         if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
             $results = "Quote request submitted successfully";
-            echo "<script>alert('$results');</script>";
+            // echo "<script>alert('$results');</script>";
+            echo "<script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: '$results'
+                });
+            </script>";
         } else {
             $errorInfo = $stmt->errorInfo();
             $errorMsg = "Quote request was NOT submitted. Reason: SQL Error: " . htmlspecialchars($errorInfo[2]);

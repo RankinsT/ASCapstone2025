@@ -11,42 +11,54 @@ function showAddCustomerForm() {
   // Exit early if user cancels last name entry
   if (lastName === null) return;
 
-  // Display prompt for phone number input
-  const phoneNumber = prompt("Enter Phone Number:");
-  // Exit early if user cancels phone number entry
-  if (phoneNumber === null) return;
+  // Prompt for phone number until valid or cancelled
+  let phoneNumber;
+  const phoneRegex = /^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;
+  while (true) {
+    phoneNumber = prompt("Enter Phone Number:");
+    if (phoneNumber === null) return;
+    if (phoneRegex.test(phoneNumber)) break;
+    alert(
+      "Invalid phone number. Please enter a valid US phone number (e.g. 555-555-5555)"
+    );
+  }
 
-  // Display prompt for email address input
-  const email = prompt("Enter Email:");
-  // Exit early if user cancels email entry
-  if (email === null) return;
+  // Prompt for email until valid or cancelled
+  let email;
+  const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+  while (true) {
+    email = prompt("Enter Email:");
+    if (email === null) return;
+    if (emailRegex.test(email)) break;
+    alert("Invalid email address. Please enter a valid email.");
+  }
 
   // Display prompt for street address input
   const street = prompt("Enter Street Address:");
-  // Exit early if user cancels street address entry
   if (street === null) return;
 
   // Display prompt for apartment/unit (this field is optional)
-  // Note: No null check here, so user can skip this field
   const apt = prompt("Enter Apartment/Unit (optional):");
 
   // Display prompt for city input
   const city = prompt("Enter City:");
-  // Exit early if user cancels city entry
   if (city === null) return;
 
   // Display prompt for state input
   const state = prompt("Enter State:");
-  // Exit early if user cancels state entry
   if (state === null) return;
 
-  // Display prompt for zipcode input
-  const zipcode = prompt("Enter Zipcode:");
-  // Exit early if user cancels zipcode entry
-  if (zipcode === null) return;
+  // Prompt for zipcode until valid or cancelled
+  let zipcode;
+  const zipRegex = /^\d{5}$/;
+  while (true) {
+    zipcode = prompt("Enter Zipcode:");
+    if (zipcode === null) return;
+    if (zipRegex.test(zipcode)) break;
+    alert("Invalid zipcode. Please enter a 5-digit US zipcode (e.g. 12345)");
+  }
 
   // Display prompt for notes (this field is optional)
-  // Note: No null check here, so user can skip this field
   const notes = prompt("Enter Notes (optional):");
 
   // Create a new HTML form element dynamically in memory
@@ -119,101 +131,376 @@ function showEditCustomerForm(customer) {
   }
 
   // Display prompt with current first name pre-filled as default value
-  // Second parameter of prompt() sets the default text in the input box
-  const firstName = prompt("Enter First Name:", customer.firstName || "");
-  // Exit early if user clicks Cancel (returns null)
-  if (firstName === null) return; // User cancelled
+  // const firstName = prompt("Enter First Name:", customer.firstName || "");
+  // if (firstName === null) return; // User cancelled
 
   // Display prompt with current last name pre-filled
-  const lastName = prompt("Enter Last Name:", customer.lastName || "");
-  // Exit early if user cancels last name entry
-  if (lastName === null) return;
+  // const lastName = prompt("Enter Last Name:", customer.lastName || "");
+  // if (lastName === null) return;
 
-  // Display prompt with current phone number pre-filled
-  const phoneNumber = prompt("Enter Phone Number:", customer.phoneNumber || "");
-  // Exit early if user cancels phone number entry
-  if (phoneNumber === null) return;
+  // Prompt for phone number until valid or cancelled
+  // let phoneNumber;
+  // const phoneRegex = /^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;
+  // while (true) {
+  //   phoneNumber = prompt("Enter Phone Number:", customer.phoneNumber || "");
+  //   if (phoneNumber === null) return;
+  //   if (phoneRegex.test(phoneNumber)) break;
+  //   alert(
+  //     "Invalid phone number. Please enter a valid US phone number (e.g. 555-555-5555)"
+  //   );
+  // }
 
-  // Display prompt with current email pre-filled
-  const email = prompt("Enter Email:", customer.email || "");
-  // Exit early if user cancels email entry
-  if (email === null) return;
+  // Prompt for email until valid or cancelled
+  // let email;
+  // const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+  // while (true) {
+  //   email = prompt("Enter Email:", customer.email || "");
+  //   if (email === null) return;
+  //   if (emailRegex.test(email)) break;
+  //   alert("Invalid email address. Please enter a valid email.");
+  // }
+
+  // SweetAlert2 chained modals for first name, last name, phone, and email
+  Swal.fire({
+    title: "Enter First Name:",
+    input: "text",
+    inputValue: customer.firstName || "",
+    showCancelButton: true,
+    inputValidator: (value) => {
+      if (!value) {
+        return "First name is required!";
+      }
+    },
+  }).then((firstResult) => {
+    if (!firstResult.isConfirmed) return;
+    const firstName = firstResult.value;
+    Swal.fire({
+      title: "Enter Last Name:",
+      input: "text",
+      inputValue: customer.lastName || "",
+      showCancelButton: true,
+      inputValidator: (value) => {
+        if (!value) {
+          return "Last name is required!";
+        }
+      },
+    }).then((lastResult) => {
+      if (!lastResult.isConfirmed) return;
+      const lastName = lastResult.value;
+      const phoneRegex = /^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;
+      Swal.fire({
+        title: "Enter Phone Number:",
+        input: "text",
+        inputValue: customer.phoneNumber || "",
+        showCancelButton: true,
+        inputValidator: (value) => {
+          if (!value) {
+            return "Phone number is required!";
+          }
+          if (!phoneRegex.test(value)) {
+            return "Invalid phone number. Please enter a valid US phone number (e.g. 555-555-5555)";
+          }
+        },
+      }).then((phoneResult) => {
+        if (!phoneResult.isConfirmed) return;
+        const phoneNumber = phoneResult.value;
+        const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+        Swal.fire({
+          title: "Enter Email:",
+          input: "text",
+          inputValue: customer.email || "",
+          showCancelButton: true,
+          inputValidator: (value) => {
+            if (!value) {
+              return "Email is required!";
+            }
+            if (!emailRegex.test(value)) {
+              return "Invalid email address. Please enter a valid email.";
+            }
+          },
+        }).then((emailResult) => {
+          if (!emailResult.isConfirmed) return;
+          const email = emailResult.value;
+          // Continue chaining for other fields or proceed with form logic here
+          // ...existing code...
+        });
+      });
+    });
+  });
 
   // Display prompt with current street address pre-filled
-  const street = prompt("Enter Street Address:", customer.street || "");
-  // Exit early if user cancels street address entry
-  if (street === null) return;
+  // const street = prompt("Enter Street Address:", customer.street || "");
+  // if (street === null) return;
 
   // Display prompt with current apartment/unit pre-filled (optional field)
-  const apt = prompt("Enter Apartment/Unit (optional):", customer.apt || "");
+  // const apt = prompt("Enter Apartment/Unit (optional):", customer.apt || "");
 
   // Display prompt with current city pre-filled
-  const city = prompt("Enter City:", customer.city || "");
-  // Exit early if user cancels city entry
-  if (city === null) return;
+  // const city = prompt("Enter City:", customer.city || "");
+  // if (city === null) return;
 
   // Display prompt with current state pre-filled
-  const state = prompt("Enter State:", customer.state || "");
-  // Exit early if user cancels state entry
-  if (state === null) return;
+  // const state = prompt("Enter State:", customer.state || "");
+  // if (state === null) return;
 
-  // Display prompt with current zipcode pre-filled
-  const zipcode = prompt("Enter Zipcode:", customer.zipcode || "");
-  // Exit early if user cancels zipcode entry
-  if (zipcode === null) return;
+  // Prompt for zipcode until valid or cancelled
+  // let zipcode;
+  // const zipRegex = /^\d{5}$/;
+  // while (true) {
+  //   zipcode = prompt("Enter Zipcode:", customer.zipcode || "");
+  //   if (zipcode === null) return;
+  //   if (zipRegex.test(zipcode)) break;
+  //   alert("Invalid zipcode. Please enter a 5-digit US zipcode (e.g. 12345)");
+  // }
 
+  // Display prompt with current serviceRequested pre-filled
+  // const serviceRequested = prompt(
+  //   "Enter Service Requested:",
+  //   customer.serviceRequested || ""
+  // );
   // Display prompt with current notes pre-filled (optional field)
-  const notes = prompt("Enter Notes (optional):", customer.notes || "");
+  // const notes = prompt("Enter Notes (optional):", customer.notes || "");
 
-  // Create object with all form fields including customer ID for database update
-  const fields = {
-    editCustomer: "1", // Flag to indicate this is an "edit customer" operation
-    customerID: customer.ID, // Include customer ID so PHP knows which record to update
-    firstName: firstName,
-    lastName: lastName,
-    phoneNumber: phoneNumber,
-    email: email,
-    street: street,
-    apt: apt || "", // Use entered apartment or empty string if null
-    city: city,
-    state: state,
-    zipcode: zipcode,
-    notes: notes || "", // Use entered notes or empty string if null
-  };
+  // Chain SweetAlert2 modals for remaining fields
+  Swal.fire({
+    title: "Enter First Name:",
+    input: "text",
+    inputValue: customer.firstName || "",
+    showCancelButton: true,
+    inputValidator: (value) => {
+      if (!value) {
+        return "First name is required!";
+      }
+    },
+  }).then((firstResult) => {
+    if (!firstResult.isConfirmed) return;
+    const firstName = firstResult.value;
+    Swal.fire({
+      title: "Enter Last Name:",
+      input: "text",
+      inputValue: customer.lastName || "",
+      showCancelButton: true,
+      inputValidator: (value) => {
+        if (!value) {
+          return "Last name is required!";
+        }
+      },
+    }).then((lastResult) => {
+      if (!lastResult.isConfirmed) return;
+      const lastName = lastResult.value;
+      const phoneRegex = /^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;
+      Swal.fire({
+        title: "Enter Phone Number:",
+        input: "text",
+        inputValue: customer.phoneNumber || "",
+        showCancelButton: true,
+        inputValidator: (value) => {
+          if (!value) {
+            return "Phone number is required!";
+          }
+          if (!phoneRegex.test(value)) {
+            return "Invalid phone number. Please enter a valid US phone number (e.g. 555-555-5555)";
+          }
+        },
+      }).then((phoneResult) => {
+        if (!phoneResult.isConfirmed) return;
+        const phoneNumber = phoneResult.value;
+        const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+        Swal.fire({
+          title: "Enter Email:",
+          input: "text",
+          inputValue: customer.email || "",
+          showCancelButton: true,
+          inputValidator: (value) => {
+            if (!value) {
+              return "Email is required!";
+            }
+            if (!emailRegex.test(value)) {
+              return "Invalid email address. Please enter a valid email.";
+            }
+          },
+        }).then((emailResult) => {
+          if (!emailResult.isConfirmed) return;
+          const email = emailResult.value;
+          Swal.fire({
+            title: "Enter Street Address:",
+            input: "text",
+            inputValue: customer.street || "",
+            showCancelButton: true,
+            inputValidator: (value) => {
+              if (!value) {
+                return "Street address is required!";
+              }
+            },
+          }).then((streetResult) => {
+            if (!streetResult.isConfirmed) return;
+            const street = streetResult.value;
+            Swal.fire({
+              title: "Enter Apartment/Unit (optional):",
+              input: "text",
+              inputValue: customer.apt || "",
+              showCancelButton: true,
+            }).then((aptResult) => {
+              const apt = aptResult.isConfirmed ? aptResult.value : "";
+              Swal.fire({
+                title: "Enter City:",
+                input: "text",
+                inputValue: customer.city || "",
+                showCancelButton: true,
+                inputValidator: (value) => {
+                  if (!value) {
+                    return "City is required!";
+                  }
+                },
+              }).then((cityResult) => {
+                if (!cityResult.isConfirmed) return;
+                const city = cityResult.value;
+                Swal.fire({
+                  title: "Enter State:",
+                  input: "text",
+                  inputValue: customer.state || "",
+                  showCancelButton: true,
+                  inputValidator: (value) => {
+                    if (!value) {
+                      return "State is required!";
+                    }
+                  },
+                }).then((stateResult) => {
+                  if (!stateResult.isConfirmed) return;
+                  const state = stateResult.value;
+                  const zipRegex = /^\d{5}$/;
+                  Swal.fire({
+                    title: "Enter Zipcode:",
+                    input: "text",
+                    inputValue: customer.zipcode || "",
+                    showCancelButton: true,
+                    inputValidator: (value) => {
+                      if (!value) {
+                        return "Zipcode is required!";
+                      }
+                      if (!zipRegex.test(value)) {
+                        return "Invalid zipcode. Please enter a 5-digit US zipcode (e.g. 12345)";
+                      }
+                    },
+                  }).then((zipResult) => {
+                    if (!zipResult.isConfirmed) return;
+                    const zipcode = zipResult.value;
+                    Swal.fire({
+                      title: "Enter Service Requested:",
+                      input: "text",
+                      inputValue: customer.serviceRequested || "",
+                      showCancelButton: true,
+                    }).then((serviceResult) => {
+                      const serviceRequested = serviceResult.isConfirmed
+                        ? serviceResult.value
+                        : "";
+                      Swal.fire({
+                        title: "Enter Notes (optional):",
+                        input: "text",
+                        inputValue: customer.notes || "",
+                        showCancelButton: true,
+                      }).then((notesResult) => {
+                        const notes = notesResult.isConfirmed
+                          ? notesResult.value
+                          : "";
+                        // Create object with all form fields including customer ID for database update
+                        const fields = {
+                          editCustomer: "1", // Flag to indicate this is an "edit customer" operation
+                          ID: customer.ID, // Use 'ID' to match PHP handler
+                          firstName: firstName,
+                          lastName: lastName,
+                          phoneNumber: phoneNumber,
+                          email: email,
+                          street: street,
+                          apt: apt || "", // Use entered apartment or empty string if null
+                          city: city,
+                          state: state,
+                          zipcode: zipcode,
+                          serviceRequested: serviceRequested || "",
+                          notes: notes || "", // Use entered notes or empty string if null
+                        };
 
-  // Create hidden form element for submission
-  const form = document.createElement("form");
-  // Set form method to POST for server processing
-  form.method = "POST";
-  // Hide the form from user view (invisible submission)
-  form.style.display = "none"; // Hide the form
+                        // Create hidden form element for submission
+                        const form = document.createElement("form");
+                        // Set form method to POST for server processing
+                        form.method = "POST";
+                        // Hide the form from user view (invisible submission)
+                        form.style.display = "none"; // Hide the form
 
-  // Loop through all field names and values to create hidden inputs
-  for (const [name, value] of Object.entries(fields)) {
-    // Create a hidden input element for each field
-    const input = document.createElement("input");
-    // Set input type to hidden (not visible to user)
-    input.type = "hidden";
-    // Set the name attribute (becomes $_POST key in PHP)
-    input.name = name;
-    // Set the value attribute (becomes $_POST value in PHP)
-    input.value = value;
-    // Add this input as child element to the form
-    form.appendChild(input);
-  }
+                        // Loop through all field names and values to create hidden inputs
+                        for (const [name, value] of Object.entries(fields)) {
+                          // Create a hidden input element for each field
+                          const input = document.createElement("input");
+                          // Set input type to hidden (not visible to user)
+                          input.type = "hidden";
+                          // Set the name attribute (becomes $_POST key in PHP)
+                          input.name = name;
+                          // Set the value attribute (becomes $_POST value in PHP)
+                          input.value = value;
+                          // Add this input as child element to the form
+                          form.appendChild(input);
+                        }
 
-  // Add the completed form to the document body (makes it part of the page)
-  document.body.appendChild(form);
-  // Submit the form programmatically (sends data to server)
-  form.submit();
+                        // Add the completed form to the document body (makes it part of the page)
+                        document.body.appendChild(form);
+                        // Submit the form programmatically (sends data to server)
+                        form.submit();
+                      });
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+  });
 }
+
+// function confirmDeleteAdmin() {
+
+//     Swal.fire({
+
+//       title: "Delete this admin? ",
+//       text: "Warning! This account will be permanently deleted!",
+//       icon: "warning",
+//       showCancelButton: true,
+//       confirmButtonColor: "#3085d6",
+//       cancelButtonColor: "#d33",
+//       confirmButtonText: "Yes, delete account."
+
+//     })
+//     .then((result) => {
+
+//       if (result.isConfirmed) {
+
+//         fetch("/deleteAdminView.php", {
+//           method: "POST",
+//           headers: { "Content-Type": "application/json" },
+//           body: JSON.stringify({ adminID: adminID })
+//         })
+//         .then(res => {console.log(0); res.json()})
+//         .then(data => {
+//           if (data.success) {
+//             Swal.fire({
+//               title: "Deleted!",
+//               text: "Account deleted.",
+//               icon: "success"
+
+//             });
+//           }
+//         })
+//       }
+//     })
+// }
 
 // tinymce function
 function initEditableSection({
   editButtonId,
   textElementId,
   formId,
-  editorId
+  editorId,
 }) {
   let isEditing = false;
 
@@ -222,32 +509,34 @@ function initEditableSection({
   const formEl = document.getElementById(formId);
   const editorEl = document.getElementById(editorId);
 
-  editBtn.addEventListener('click', function() {
+  editBtn.addEventListener("click", function () {
     if (!isEditing) {
       // Switch to edit mode
       editorEl.value = textEl.innerHTML;
-      textEl.style.display = 'none';
-      formEl.style.display = 'block';
-      editBtn.textContent = 'Save';
+      textEl.style.display = "none";
+      formEl.style.display = "block";
+      editBtn.textContent = "Save";
 
       tinymce.init({
         selector: `#${editorId}`,
-        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        plugins:
+          "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount",
+        toolbar:
+          "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat",
 
         // Allow selecting images from local device
         automatic_uploads: true,
-        file_picker_types: 'image',
-        file_picker_callback: function(cb, value, meta) {
-          let input = document.createElement('input');
-          input.setAttribute('type', 'file');
-          input.setAttribute('accept', 'image/*');
+        file_picker_types: "image",
+        file_picker_callback: function (cb, value, meta) {
+          let input = document.createElement("input");
+          input.setAttribute("type", "file");
+          input.setAttribute("accept", "image/*");
 
-          input.onchange = function() {
+          input.onchange = function () {
             let file = this.files[0];
             let reader = new FileReader();
 
-            reader.onload = function() {
+            reader.onload = function () {
               cb(reader.result, { title: file.name });
             };
             reader.readAsDataURL(file);
@@ -256,11 +545,11 @@ function initEditableSection({
           input.click();
         },
 
-        setup: function(editor) {
-          editor.on('init', function() {
+        setup: function (editor) {
+          editor.on("init", function () {
             editor.setContent(textEl.innerHTML);
           });
-        }
+        },
       });
 
       isEditing = true;
@@ -268,9 +557,9 @@ function initEditableSection({
       // Save changes
       const content = tinymce.get(editorId).getContent();
       textEl.innerHTML = content;
-      textEl.style.display = 'block';
-      formEl.style.display = 'none';
-      editBtn.textContent = 'Edit';
+      textEl.style.display = "block";
+      formEl.style.display = "none";
+      editBtn.textContent = "Edit";
       tinymce.get(editorId).remove();
       isEditing = false;
 
