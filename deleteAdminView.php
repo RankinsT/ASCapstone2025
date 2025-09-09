@@ -84,9 +84,8 @@
 
                                 <?php if ($currentAdminID === 1): ?>
                                     <td>
-                                        <form method="POST" onsubmit="return Confirm()">
-                                            <!-- <input type="hidden" name="deleteAdmin" value="<?= htmlspecialchars($admins["username"]); ?>"> -->
-                                            <button class="delete-button" name="deleteAdmin" value="<?= htmlspecialchars($admins["username"]); ?>">Delete</button>
+                                        <form method="POST" onsubmit="return confirm('Warning! This admin will be permanently deleted')">
+                                            <button type="submit" class="delete-button" name="deleteAdmin" value="<?= htmlspecialchars($admins["username"]); ?>">Delete</button>
                                         </form>
                                     </td>
                                 <?php endif ?>
