@@ -119,7 +119,13 @@ if (isset($_POST['update']) && !empty($_POST['imageId'])) {
             echo "<div class='alert alert-danger mt-3'>Invalid file type. Only JPG, JPEG, PNG, and GIF are allowed.</div>";
         }
     } else {
-    echo "<div class='alert alert-danger mt-3'>No file selected or error uploading file.</div>";
+        // No file uploaded, just update description
+        $stmt = $db->prepare("UPDATE bcimage SET description = :description WHERE id = :id");
+        $stmt->bindParam(':description', $description, PDO::PARAM_STR);
+        $stmt->bindParam(':id', $imageId, PDO::PARAM_INT);
+        $stmt->execute();
+        header("Location: upload.php");
+        exit();
     }
 }
 if (isset($_POST['delete']) && !empty($_POST['imageId'])) {
