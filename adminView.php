@@ -24,7 +24,6 @@
         // Create an associative array to store all customer information
         // The ?? operator provides a default empty string if the POST value doesn't exist
         $customerData = [
-            // Extract first name from form submission, default to empty string if not set
             'firstName' => $_POST['firstName'] ?? '',
             'lastName' => $_POST['lastName'] ?? '',
             'phoneNumber' => $_POST['phoneNumber'] ?? '',
@@ -34,6 +33,7 @@
             'city' => $_POST['city'] ?? '',
             'state' => $_POST['state'] ?? '',
             'zipcode' => $_POST['zipcode'] ?? '',
+            'serviceRequested' => $_POST['serviceRequested'] ?? '',
             'notes' => $_POST['notes'] ?? ''
         ];
         
