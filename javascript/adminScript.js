@@ -128,72 +128,72 @@ function showAddCustomerForm() {
   // document.body.appendChild(form);
   // Trigger form submission, which sends all the hidden inputs via POST to the server
   // form.submit();
-  Swal.fire({
-    title: "Enter First Name:",
-    input: "text",
-    inputValue: customer.firstName || "",
-    showCancelButton: true,
-    inputValidator: (value) => {
-      if (!value) {
-        return "First name is required!";
-      }
-    },
-  }).then((firstResult) => {
-    if (!firstResult.isConfirmed) return;
-    const firstName = firstResult.value;
-    Swal.fire({
-      title: "Enter Last Name:",
-      input: "text",
-      inputValue: customer.lastName || "",
-      showCancelButton: true,
-      inputValidator: (value) => {
-        if (!value) {
-          return "Last name is required!";
-        }
-      },
-    }).then((lastResult) => {
-      if (!lastResult.isConfirmed) return;
-      const lastName = lastResult.value;
-      const phoneRegex = /^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;
-      Swal.fire({
-        title: "Enter Phone Number:",
-        input: "text",
-        inputValue: customer.phoneNumber || "",
-        showCancelButton: true,
-        inputValidator: (value) => {
-          if (!value) {
-            return "Phone number is required!";
-          }
-          if (!phoneRegex.test(value)) {
-            return "Invalid phone number. Please enter a valid US phone number (e.g. 555-555-5555)";
-          }
-        },
-      }).then((phoneResult) => {
-        if (!phoneResult.isConfirmed) return;
-        const phoneNumber = phoneResult.value;
-        const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-        Swal.fire({
-          title: "Enter Email:",
-          input: "text",
-          inputValue: customer.email || "",
-          showCancelButton: true,
-          inputValidator: (value) => {
-            if (!value) {
-              return "Email is required!";
-            }
-            if (!emailRegex.test(value)) {
-              return "Invalid email address. Please enter a valid email.";
-            }
-          },
-        }).then((emailResult) => {
-          if (!emailResult.isConfirmed) return;
-          const email = emailResult.value;
-          // Continue chaining for other fields or proceed with form logic here
-          // ...existing code...
-        });
-      });
-    });
-  });
+  // Swal.fire({
+  //   title: "Enter First Name:",
+  //   input: "text",
+  //   inputValue: customer.firstName || "",
+  //   showCancelButton: true,
+  //   inputValidator: (value) => {
+  //     if (!value) {
+  //       return "First name is required!";
+  //     }
+  //   },
+  // }).then((firstResult) => {
+  //   if (!firstResult.isConfirmed) return;
+  //   const firstName = firstResult.value;
+  //   Swal.fire({
+  //     title: "Enter Last Name:",
+  //     input: "text",
+  //     inputValue: customer.lastName || "",
+  //     showCancelButton: true,
+  //     inputValidator: (value) => {
+  //       if (!value) {
+  //         return "Last name is required!";
+  //       }
+  //     },
+  //   }).then((lastResult) => {
+  //     if (!lastResult.isConfirmed) return;
+  //     const lastName = lastResult.value;
+  //     const phoneRegex = /^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;
+  //     Swal.fire({
+  //       title: "Enter Phone Number:",
+  //       input: "text",
+  //       inputValue: customer.phoneNumber || "",
+  //       showCancelButton: true,
+  //       inputValidator: (value) => {
+  //         if (!value) {
+  //           return "Phone number is required!";
+  //         }
+  //         if (!phoneRegex.test(value)) {
+  //           return "Invalid phone number. Please enter a valid US phone number (e.g. 555-555-5555)";
+  //         }
+  //       },
+  //     }).then((phoneResult) => {
+  //       if (!phoneResult.isConfirmed) return;
+  //       const phoneNumber = phoneResult.value;
+  //       const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+  //       Swal.fire({
+  //         title: "Enter Email:",
+  //         input: "text",
+  //         inputValue: customer.email || "",
+  //         showCancelButton: true,
+  //         inputValidator: (value) => {
+  //           if (!value) {
+  //             return "Email is required!";
+  //           }
+  //           if (!emailRegex.test(value)) {
+  //             return "Invalid email address. Please enter a valid email.";
+  //           }
+  //         },
+  //       }).then((emailResult) => {
+  //         if (!emailResult.isConfirmed) return;
+  //         const email = emailResult.value;
+  //         // Continue chaining for other fields or proceed with form logic here
+  //         // ...existing code...
+  //       });
+  //     });
+  //   });
+  // });
 }
 
 // JavaScript function to edit existing customer data with pre-filled prompts
