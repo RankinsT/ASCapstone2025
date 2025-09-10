@@ -92,8 +92,8 @@ function addCustomer($customerData) {
 
     $results = ""; // Initialize an empty string for results
 
-    $sql = 'INSERT INTO capstone_202540_qball.customers (firstName, lastName, phoneNumber, email, street, apt, city, state, zipcode, notes) 
-            VALUES (:firstName, :lastName, :phoneNumber, :email, :street, :apt, :city, :state, :zipcode, :notes)';
+    $sql = 'INSERT INTO capstone_202540_qball.customers (firstName, lastName, phoneNumber, email, street, apt, city, state, zipcode, serviceRequested, notes) 
+            VALUES (:firstName, :lastName, :phoneNumber, :email, :street, :apt, :city, :state, :zipcode, :serviceRequested, :notes)';
 
     $stmt = $db->prepare($sql); // Prepare the SQL statement
 
@@ -107,6 +107,7 @@ function addCustomer($customerData) {
     $stmt->bindValue(':city', $customerData['city']);
     $stmt->bindValue(':state', $customerData['state']);
     $stmt->bindValue(':zipcode', $customerData['zipcode']);
+    $stmt->bindValue(':serviceRequested', $customerData['serviceRequested']);
     $stmt->bindValue(':notes', $customerData['notes']);
 
     if ($stmt->execute()) {
