@@ -234,8 +234,9 @@ body {
 }
 /* Stylized Form Buttons */
 .outlined-text {
-  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000,
-    -2px 2px 0 #000;
+  color: #fff;
+  text-shadow: -1px -1px 5px #000, 1px -1px 5px #000, -1px 1px 5px #000,
+    1px 1px 5px #000;
 }
 .form-btns-container button,
 .get-started-btn button,
