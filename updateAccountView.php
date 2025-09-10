@@ -47,7 +47,7 @@
                     </div>
                 </div>
 
-                <div class="title"><br><div class="back-button"><a href="adminView.php"><< Admin Page</a>&nbsp;&nbsp;<span style="font-weight: bold;">|</span>&nbsp;&nbsp;<a href="addAdminView.php">Add Admin >></a>&nbsp;&nbsp;<span style="font-weight: bold;">|</span>&nbsp;&nbsp;<a href="deleteAdminView.php"><?= ($currentAdminID === 1) ? "Delete Admin" : "Employees"; ?></a></div><h1>Update Information</h1></div>
+                <div class="title"><br><div class="back-button"><a href="adminView.php"><< Admin Page</a>&nbsp;&nbsp;<span style="font-weight: bold;">|</span>&nbsp;&nbsp;<a href="addAdminView.php">Add Admin >></a>&nbsp;&nbsp;<span style="font-weight: bold;">|</span>&nbsp;&nbsp;<a href="deleteAdminView.php"><?= ($currentAdminID === 1) ? "Delete Admin" : "Admins List"; ?></a></div><h1>Update Information</h1></div>
 
                 <div class="form">
                     

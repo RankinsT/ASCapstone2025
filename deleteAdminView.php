@@ -55,7 +55,7 @@
                     </div>
                 </div>
 
-                <div class="title"><br><div class="back-button"><a href="updateAccountView.php"><< Update Account</a></div><h1><?= ($currentAdminID === 1) ? "Delete Admin" : "Employees"; ?></h1></div>
+                <div class="title"><br><div class="back-button"><a href="updateAccountView.php"><< Update Account</a></div><h1><?= ($currentAdminID === 1) ? "Delete Admin" : "Admins List"; ?></h1></div>
 
                 <div class="admin-customers">
                     <table>
