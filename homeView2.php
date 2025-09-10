@@ -414,7 +414,7 @@ try {
                                 <button id="<?= $service['editTitleBtnId'] ?>" type="button" class="edit-save-title-btn" style="margin-top:0.5em;">Edit</button>
                             <?php } ?>
                         </div>
-                        <div class="service-text-group" style="width:100%; display:flex; flex-direction:column; align-items:center; margin-top:1em; font-family: "Roboto", regular;">
+                        <div class="service-text-group" style="width:100%; display:flex; flex-direction:column; align-items:center; margin-top:1em; font-family: 'Roboto', regular;">
                             <span id="<?= $service['descId'] ?>" class="service-text text" style="color:#222c2c; font-size:1.25em; text-align:center; max-width:90%;">
                                 <?= $service['desc'] ?>
                             </span>
