@@ -55,7 +55,7 @@
                     </div>
                 </div>
 
-                <div class="title"><br><div class="back-button"><a href="updateAccountView.php"><< Update Account</a></div><h1>Delete Admin</h1></div>
+                <div class="title"><br><div class="back-button"><a href="updateAccountView.php"><< Update Account</a></div><h1><?= ($currentAdminID === 1) ? "Delete Admin" : "Employees"; ?></h1></div>
 
                 <div class="admin-customers">
                     <table>
@@ -64,8 +64,8 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Username</th>
-                                <th>Password</th>
-                                <th>Admin Email</th>
+                                <th>Phone Number</th>
+                                <th>Email</th>
                                 <?php if ($currentAdminID === 1): ?>
                                     <th></th>
                                 <?php endif ?>
@@ -75,18 +75,17 @@
                         <tbody>
                             <?php
                             foreach ($allAdmins as $admins): ?>
+                            <?php if ($admins["adminID"] != 1): ?>
                             <tr>
-                                <td><?= $admins["adminID"]?></td>
+                                <td><?= $admins["adminID"] ?></td>
                                 <td><?= $admins["username"] ?></td>
-                                <td><?= $admins["password"] ?></td>
+                                <td><?= $admins["phoneNumber"] ?></td>
                                 <td><?= $admins["adminEmail"] ?></td>
-
-
                                 <?php if ($currentAdminID === 1): ?>
                                     <td>
                                         <form method="POST" class="delete-admin-form">
                                             <input type="hidden" name="deleteAdmin" value="<?= $admins["adminID"]; ?>">
-                                            <button type="submit" class="delete-button" <?= $admins["adminID"] == 1 ? 'disabled title="This admin is protected and cannot be deleted!"' : ''?>>Delete</button>
+                                            <button type="submit" class="delete-button">Delete</button>
                                         </form>
                                         <script>
                                         document.querySelectorAll('.delete-admin-form').forEach(function(form) {
@@ -111,8 +110,8 @@
                                         </script>
                                     </td>
                                 <?php endif ?>
-
                             </tr>
+                            <?php endif ?>
                             <?php endforeach ?>
                         </tbody>
                         
