@@ -266,7 +266,7 @@ if (isset($_POST['delete']) && !empty($_POST['imageId'])) {
                 cropControls.style.display = 'block';
                 if (cropper) cropper.destroy();
                 cropper = new Cropper(previewImage, {
-                    aspectRatio: 1,
+                    aspectRatio: 16/9,
                     viewMode: 1
                 });
             };
@@ -334,7 +334,7 @@ if (isset($_POST['delete']) && !empty($_POST['imageId'])) {
                     cropControls.style.display = 'block';
                     if (updateCropper) updateCropper.destroy();
                     updateCropper = new Cropper(previewImage, {
-                        aspectRatio: 1,
+                        aspectRatio: 16/9,
                         viewMode: 1
                     });
                 };
