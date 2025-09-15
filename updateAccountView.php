@@ -21,6 +21,15 @@
     $email = ""; // Initialize email variable
     $currentPassword = ""; // Initialize current password variable
     $user = getAdmin($username);
+
+    $username = $_SESSION['username']; // Store current session's admin username
+    // var_dump($username);
+
+    $adminIDInt = getAdminID($username); // Use username to check and store admin id 
+    // var_dump($adminIDInt);
+
+    $currentAdminID = $adminIDInt['adminID'];
+    // var_dump($currentAdminID);
     ?>
 
     <div>
@@ -47,7 +56,7 @@
                     </div>
                 </div>
 
-                <div class="title"><br><div class="back-button"><a href="adminView.php"><< Admin Page</a>&nbsp;&nbsp;<span style="font-weight: bold;">|</span>&nbsp;&nbsp;<a href="addAdminView.php">Add Admin >></a>&nbsp;&nbsp;<span style="font-weight: bold;">|</span>&nbsp;&nbsp;<a href="deleteAdminView.php"><?= ($currentAdminID === 1) ? "Delete Admin" : "Admins List"; ?></a></div><h1>Update Information</h1></div>
+                <div class="title"><br><div class="back-button"><a href="adminView.php"><< Admin Page</a>&nbsp;&nbsp;<span style="font-weight: bold;">|</span>&nbsp;&nbsp;<a href="addAdminView.php">Add Admin >></a>&nbsp;&nbsp;<span style="font-weight: bold;">|</span>&nbsp;&nbsp;<a href="deleteAdminView.php"><?= ($currentAdminID === 1) ? "Delete Admin >>" : "Admins List >>"; ?></a></div><h1>Update Information</h1></div>
 
                 <div class="form">
                     
